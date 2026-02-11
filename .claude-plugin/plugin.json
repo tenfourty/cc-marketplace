@@ -1,0 +1,8 @@
+{
+  "name": "chief-of-staff",
+  "version": "0.1.0",
+  "description": "AI Chief of Staff for technology executives. Layers on top of the productivity plugin to provide strategic briefings, meeting intelligence, decision support, and proactive oversight. CTO-flavoured but adaptable to any executive role.",
+  "author": {
+    "name": "Jeremy Brown"
+  }
+}
