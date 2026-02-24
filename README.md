@@ -1,17 +1,17 @@
 # Chief of Staff Plugin
 
-An AI Chief of Staff for technology executives, built as a Claude Cowork plugin. Layers on top of the [Anthropic productivity plugin](https://github.com/anthropics/knowledge-work-plugins/tree/main/productivity) to provide strategic briefings, meeting intelligence, decision support, and proactive oversight.
+An AI Chief of Staff for technology executives, built as a Claude Cowork plugin. Provides strategic briefings, meeting intelligence, decision support, and proactive oversight using `kbx` (knowledge base) and `gm` (calendar/tasks) as primary data sources.
 
 CTO-flavoured by default, adaptable to any executive role.
 
 ## Prerequisites
 
-This plugin layers on top of the [Anthropic productivity plugin](https://github.com/anthropics/knowledge-work-plugins/tree/main/productivity), which provides the task management (`TASKS.md`) and memory system (`memory/`) that the Chief of Staff builds upon.
+This plugin requires two local CLI tools:
 
-If you haven't already, install it:
-```
-claude plugins add knowledge-work-plugins/productivity
-```
+- **kbx** — Knowledge base with hybrid search across meetings, people, projects, notes
+- **gm** — Calendar events and cross-source task management (Morgen, Linear, Notion)
+
+Both should be configured with session startup hooks so their usage and context are available automatically.
 
 ## Installation
 
@@ -19,7 +19,7 @@ claude plugins add knowledge-work-plugins/productivity
 claude plugins add <path-to-this-directory>
 ```
 
-Then run `/cos:setup` to personalise the Chief of Staff for your role, team, and priorities. It will check whether the productivity plugin's files exist and guide you through creating them if needed.
+Then run `/cos:setup` to personalise the Chief of Staff for your role, team, and priorities.
 
 ## Commands
 
@@ -57,34 +57,42 @@ Then run `/cos:setup` to personalise the Chief of Staff for your role, team, and
 | `cross-source-search` | Searches all sources for a topic/person/project |
 | `action-tracker` | Extracts commitments from transcripts, audits action items |
 
-### Memory Structure
-Extends the productivity plugin's memory system with:
-```
-memory/
-├── decisions/        # Monthly decision logs
-├── priorities/       # CIRs and active initiatives
-├── meetings/         # Recurring meeting context
-└── rhythms/          # Operating rhythm definitions
-```
+### Memory System
 
-## Connected Tools (Claude.ai Integrations)
+kbx IS the memory system. Core reference documents are stored as pinned kbx notes:
 
-This plugin uses Claude.ai platform integrations rather than bundling its own MCP servers. Connect these through your Claude.ai account settings:
+| Concept | Tag | Pinned |
+|---------|-----|--------|
+| Critical Information Requirements | `cir` | Yes |
+| Active initiatives | `initiative` | Yes |
+| Operating rhythm / cadence | `cadence` | Yes |
+| Recurring meetings | `meetings` | Yes |
+| Decisions | `decision` | No |
+| People context | kbx person entities | — |
+| Projects | kbx project entities | — |
 
-| Integration | Placeholder | Purpose |
-|-------------|-------------|---------|
-| Calendar | `~~calendar` | Schedule awareness, meeting prep |
-| Slack | `~~chat` | Team communication intelligence |
-| Linear | `~~project tracker` | Issue tracking, engineering velocity |
-| Notion | `~~knowledge base` | Documentation, wikis, team pages |
-| Granola | `~~meeting transcripts` | Meeting transcripts and notes |
+Pinned docs appear in `kbx context` output, loaded at session start.
+
+### Task System
+
+gm IS the task system. Task lifecycle uses tags (Right-Now, Active, Waiting-On, Someday) and lists (Leadership, People, Ops, Admin, Home, Routines).
+
+## Connected Tools
+
+| Tool | Type | Purpose |
+|------|------|---------|
+| kbx | CLI (primary) | Knowledge base, search, people, projects, notes |
+| gm | CLI (primary) | Calendar, tasks, scheduling |
+| Slack | Claude.ai MCP | Real-time team communication |
+| Linear | Claude.ai MCP | Issue creation/updates (write operations) |
+| Granola | Claude.ai MCP (fallback) | Meeting transcripts if kbx returns nothing |
+| Notion | Claude.ai MCP (fallback) | Knowledge base if kbx returns nothing |
 
 Optional: Figma, HubSpot, n8n. See [CONNECTORS.md](CONNECTORS.md) for details.
 
 ## Design Influences
 
 - [McChrystal Group Chief of Staff Playbook](https://www.mcchrystalgroup.com/) — CIR framework, decision-making framework, operating rhythm, trust model
-- [Anthropic Productivity Plugin](https://github.com/anthropics/knowledge-work-plugins/tree/main/productivity) — Task management, memory architecture, connector patterns
 - [goagentflow/ai-chief-of-staff](https://github.com/goagentflow/ai-chief-of-staff) — Files-as-memory philosophy, Quick Status tables, permission tiers
 - [mboverell/ai-chief-of-staff](https://github.com/mboverell/ai-chief-of-staff) — Coach voice design, weekly review as killer feature, trajectory analysis
 - [bbinto/bb-chiefofstaff](https://github.com/bbinto/bb-chiefofstaff) — Specialised agent pattern, MCP integration approach

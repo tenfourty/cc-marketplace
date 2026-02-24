@@ -9,43 +9,44 @@ You are generating a daily briefing for an executive. Use the **staff voice**: e
 
 ## Voice
 
-Be concise and structured. Lead with what matters most. Use the executive's shorthand and terminology from CLAUDE.md and memory/glossary.md. Don't explain things the executive already knows -- reference them by their established names.
+Be concise and structured. Lead with what matters most. Use the executive's shorthand and terminology. Don't explain things the executive already knows -- reference them by their established names.
 
 ## Process
 
 ### 1. Load Context
-- Read CLAUDE.md for current priorities and CIRs
-- Read memory/priorities/cirs.md for information requirements
-- Read memory/priorities/initiatives.md for active initiatives
-- Read TASKS.md for current task state
+
+Use `kbx context` output if already in context, otherwise run it. This provides pinned docs including CIRs, initiatives, recurring meetings, and operating rhythm.
+
+For full content of a specific pinned doc, use `kbx view <path>`.
 
 ### 2. Gather Intelligence
 
-**Calendar (~~calendar):**
+**Calendar (gm):**
+- Use `gm today` output if already in context, otherwise run `gm today --json --response-format concise --no-frames`
 - Today's meetings with times, attendees, and purpose
-- Flag any meetings that need prep (check memory/meetings/recurring.md for prep requirements)
+- Flag any meetings that need prep (check recurring meetings from kbx context)
 - Flag any scheduling conflicts or back-to-back stretches with no buffer
 
-**Tasks (TASKS.md):**
-- Items in "Active" that are overdue or due today
-- Items in "Waiting On" that have been waiting too long (>3 business days)
-- Any tasks added by the /debrief command since last briefing
+**Tasks (gm):**
+- `gm tasks list --tag Right-Now --json` for today's focus items
+- `gm tasks list --overdue --json` for overdue items
+- `gm tasks list --tag Waiting-On --json` for items pending from others that have been waiting too long (>3 business days)
 
-**Chat (~~chat):**
+**Chat (Slack MCP):**
 - Scan key channels for messages requiring executive attention
 - Check DMs for unanswered messages from direct reports or key stakeholders
 - Flag any threads matching CIR criteria (immediate or daily thresholds)
 
-**Project Tracker (~~project tracker):**
+**Project Tracker (gm + Linear):**
+- `gm tasks list --source linear --json` for Linear task status
 - Any blocked or stalled items on active initiatives
 - New issues assigned to the executive
-- Sprint/cycle status if relevant
 
 ### 3. Synthesise
 
 Cross-reference findings. Look for:
 - Connections between meeting topics and open tasks/decisions
-- Topics that appear in multiple channels (Slack + Linear + transcripts = something important)
+- Topics that appear in multiple channels (Slack + Linear + kbx transcripts = something important)
 - Items that match CIR thresholds
 
 ### 4. Present the Briefing
@@ -68,7 +69,7 @@ Use this structure:
 [Items pending from others, with how long they've been waiting]
 
 ### Signals
-[Notable patterns or items from chat/email that don't require action but the exec should know about]
+[Notable patterns or items from chat that don't require action but the exec should know about]
 
 ### Quick Stats
 [Any relevant metrics: open issues count, sprint progress, items completed this week]
@@ -84,9 +85,9 @@ After presenting the briefing, offer:
 ## Graceful Degradation
 
 If a data source is unavailable:
-- **No calendar:** Skip schedule section, note it's unavailable
-- **No chat:** Skip signals from chat, note it
-- **No project tracker:** Skip sprint stats, note it
-- **No transcripts:** Not needed for daily briefing
+- **No gm:** Fall back to Calendar MCP if available, note tasks unavailable
+- **No kbx:** Note context is limited, skip CIR-based filtering
+- **No Slack:** Skip signals from chat, note it
+- **No Linear:** Skip project tracker stats, note it
 
 Always deliver whatever briefing is possible with available data. Never fail silently -- tell the executive what you couldn't check.

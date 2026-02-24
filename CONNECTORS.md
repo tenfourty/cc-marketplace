@@ -1,33 +1,36 @@
-# Connectors
+# Tools
 
-This plugin uses tool-agnostic references in its skills and commands so the same workflows work regardless of which specific tools are connected.
+This plugin uses local CLI tools as primary data sources, with Claude.ai integrations as fallbacks.
 
-## Claude.ai Integrations
+## Primary Tools
 
-This plugin relies on **Claude.ai integrations** (platform-managed MCP servers) rather than bundling its own. Connect these through your Claude.ai account settings before using the plugin.
+### kbx — Knowledge Base
 
-### Required Integrations
+Local knowledge base with hybrid search across meetings, people, projects, notes.
+The `kbx usage` output should be in context from session startup hooks. If not, run `kbx usage` to load the command reference.
 
-| Claude.ai Integration | Placeholder | Purpose |
-|----------------------|-------------|---------|
-| **Calendar** | `~~calendar` | Schedule awareness, meeting prep, operating rhythm |
-| **Slack** | `~~chat` | Team communication, thread monitoring, channel scanning |
-| **Linear** | `~~project tracker` | Issue tracking, sprint status, engineering velocity |
-| **Notion** | `~~knowledge base` | Documentation, wikis, team pages, meeting notes |
-| **Granola** | `~~meeting transcripts` | Meeting transcripts, action extraction, decision capture |
+Key capabilities: search (keyword + semantic), people/project profiles, notes with tags, agent context orientation.
 
-### Optional Integrations
+### gm — Calendar & Tasks
 
-| Claude.ai Integration | Purpose |
-|----------------------|---------|
-| **Figma** | Design context for technical discussions |
-| **HubSpot** | Customer/stakeholder relationship context |
-| **n8n** | Workflow automation triggers |
+Calendar events (Google/Fastmail) + cross-source tasks (Morgen, Linear, Notion).
+The `gm usage` output should be in context from session startup hooks. If not, run `gm usage` to load the command reference.
 
-## How Placeholders Work
+Key capabilities: events, tasks (cross-source), availability, scheduling, task lifecycle via tags (Right-Now, Active, Waiting-On, Someday) and lists (Leadership, People, Ops, Admin, Home, Routines).
 
-When a skill or command references `~~chat`, Claude uses whichever matching tool is available (Slack via Claude.ai, etc.). This decouples the workflow logic from the specific integration.
+## Claude.ai Integrations (Fallback)
+
+When CLI tools are unavailable, use these Claude.ai integrations:
+- **Granola** — meeting transcripts, if kbx search returns nothing
+- **Notion** — knowledge base, if kbx search returns nothing
+- **Linear** — issue updates/creation (gm only reads Linear tasks)
+
+## Always via MCP
+
+These tools are always accessed via Claude.ai MCP (no CLI equivalent):
+- **Slack** — real-time team communication and channel scanning
+- **Linear** — for write operations (create/update issues)
 
 ## Graceful Degradation
 
-All commands degrade gracefully when integrations are unavailable. Missing sources are noted in output, and the plugin works with whatever subset is connected. Even with just the local file system (TASKS.md, memory/), core functionality is available.
+All commands degrade gracefully when tools are unavailable. Missing sources are noted in output, and the plugin works with whatever subset is available.

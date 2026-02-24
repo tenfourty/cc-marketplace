@@ -8,15 +8,17 @@ args: meeting
 
 You are extracting structured intelligence from a meeting that just happened. Use the **staff voice**: precise, thorough, action-oriented.
 
-**Input:** The user may provide a meeting name/time, or say "my last meeting" or just "/debrief". If no argument, use the most recent meeting from ~~meeting transcripts.
+**Input:** The user may provide a meeting name/time, or say "my last meeting" or just "/debrief". If no argument, find the most recent meeting transcript.
 
 ## Process
 
 ### 1. Find the Transcript
 
-Use ~~meeting transcripts (Granola, Notion Meetings) to locate the most recent or specified meeting transcript. If multiple candidates, ask for clarification.
+Use `kbx search "meeting title" --fast --json --limit 5` to find the most recent or specified meeting transcript. Use `kbx view <path>` to read it.
 
-If no transcript is available, ask the user to provide a summary of what happened (they can paste notes, or just talk through it).
+If not found in kbx, fall back to Granola MCP for the transcript.
+
+If no transcript is available from any source, ask the user to provide a summary of what happened (they can paste notes, or just talk through it).
 
 ### 2. Extract Structured Data
 
@@ -41,20 +43,20 @@ From the transcript, extract:
 - New facts or context that should be remembered
 - Updates to project status, timelines, or scope
 - Changes to people's roles, responsibilities, or availability
-- Anything that matches CIR criteria from memory/priorities/cirs.md
+- Anything that matches CIR criteria (from kbx context pinned CIRs doc)
 
 **Commitments from Others:**
 - What other people promised to do
 - When they said they'd have it done
-- These become "Waiting On" items
+- These become "Waiting-On" tagged tasks
 
 ### 3. Cross-Reference
 
 Check extracted items against:
-- TASKS.md -- are any of these already tracked? Update status if so
-- memory/decisions/ -- does this decision relate to or supersede previous decisions?
-- memory/priorities/initiatives.md -- do any items affect active initiatives?
-- memory/people/ -- any new context about people that should be captured?
+- `gm tasks list --json --response-format concise` — are any of these already tracked? Update status if so
+- `kbx note list --tag decision --json` — does this decision relate to or supersede previous decisions?
+- kbx context pinned docs — do any items affect active initiatives?
+- `kbx person find "Name"` — any new context about people that should be captured?
 
 ### 4. Present the Debrief
 
@@ -68,7 +70,7 @@ Check extracted items against:
 1. [Action] — due [date/timeframe]
 
 ### Action Items (Others)
-[Numbered list of others' commitments → these become Waiting On items]
+[Numbered list of others' commitments → these become Waiting-On items]
 1. [Person]: [Action] — due [date/timeframe]
 
 ### Decisions Made
@@ -79,39 +81,29 @@ Check extracted items against:
 [Items that need tracking but aren't concrete action items yet]
 
 ### Notable Context
-[New information worth remembering — will be added to memory]
+[New information worth remembering — will be added to kbx]
 ```
 
-### 5. Update Files
+### 5. Update Systems
 
 **Ask permission before updating**, then:
 
-**TASKS.md:**
-- Add the executive's action items to "Active"
-- Add others' commitments to "Waiting On" with the person's name and expected date
+**Tasks (gm):**
+- Executive's action items: `gm tasks create --title "..." --tag Active --list LIST --due ISO`
+- Others' commitments: `gm tasks create --title "..." --tag Waiting-On --list LIST`
 - Update any existing tasks that were discussed
 
-**memory/decisions/ (YYYY-MM.md):**
-- Append decisions in the standard format:
-  ```
-  ### [Date] — [Decision Title]
-  - **Meeting:** [meeting name]
-  - **Decision:** [what was decided]
-  - **Rationale:** [why]
-  - **Alternatives considered:** [if any]
-  - **Owner:** [who's responsible for execution]
-  ```
+**Decisions (kbx):**
+- `kbx memory add "Decision Title" --body "structured markdown" --tags decision` for each decision made
+- If person-related, also `--entity "Name"`
 
-**memory/people/:**
-- Update profiles with any new context learned about people
-
-**CLAUDE.md:**
-- If any decision or context is significant enough to affect daily operations, add it to the hot cache
+**People context (kbx):**
+- `kbx memory add "context" --entity "Name"` for new context about attendees
 
 ### 6. Offer Next Steps
 
 - "Want me to send follow-up messages to anyone about their action items?"
-- "Should I create ~~project tracker issues for any of these?"
+- "Should I create Linear issues for any of these?" (via Linear MCP)
 - "Any of these items need to be added to a specific initiative?"
 
 ## When No Transcript is Available

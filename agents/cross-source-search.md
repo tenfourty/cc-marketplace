@@ -1,5 +1,5 @@
 ---
-description: Searches across all connected sources for a topic, person, project, or query. Returns consolidated results from chat, transcripts, project tracker, and knowledge base.
+description: Searches across kbx, gm, Slack, and Linear for a topic, person, project, or query. Returns consolidated results from all available sources.
 model: haiku
 ---
 
@@ -15,33 +15,28 @@ You will be given a search query — a topic, person name, project name, or natu
 
 Search these sources in parallel:
 
-### 1. Internal Memory
-- TASKS.md for related tasks
-- memory/decisions/ for related decisions
-- memory/priorities/initiatives.md for related initiatives
-- memory/people/ for related people
-- memory/glossary.md for terminology
-- CLAUDE.md for quick-reference entries
+### 1. kbx (Primary Search)
+- `kbx search "query" --json --limit 10` for semantic search
+- `kbx search "query" --fast --json` for keyword search
+- `kbx person find "Name" --json` if query matches a person
+- `kbx project find "Name" --json` if query matches a project
+- `kbx note list --tag decision --json` for related decisions
 
-### 2. Chat (~~chat)
+### 2. Tasks (gm)
+- `gm tasks list --json --response-format concise` filtered for the query
+- `gm tasks list --source linear --json` for related Linear items
+
+### 3. Chat (Slack MCP)
 - Search across relevant channels for the query
 - Find the most recent and most relevant messages
 - Note which channels and who is discussing this
 
-### 3. Meeting Transcripts (~~meeting transcripts)
-- Search for when this topic was discussed in meetings
-- Find the most recent mentions
-- Note what was said and any decisions made
+### 4. Linear (for deeper detail)
+- Linear MCP for detailed issue information when gm task search indicates related items
 
-### 4. Project Tracker (~~project tracker)
-- Search for related issues, items, or projects
-- Note current status and recent activity
-- Find any related blockers or dependencies
-
-### 5. Knowledge Base (~~knowledge base)
-- Search for related documents, pages, or wikis
-- Find the most recently updated content
-- Note key information from documents
+### 5. Notion (fallback)
+- Only if kbx returns nothing relevant for the query
+- Notion MCP to search for related documents or pages
 
 ## Output Format
 
@@ -51,20 +46,17 @@ Search these sources in parallel:
 ### Summary
 [2-3 sentence overview of what was found across all sources]
 
-### Memory
-[Relevant entries from internal memory files]
+### Knowledge Base (kbx)
+[Relevant entries: transcripts, notes, people, projects]
 
-### Chat
+### Tasks (gm)
+[Relevant tasks with status, tags, and lists]
+
+### Chat (Slack)
 [Relevant messages with channel, author, date, and snippet]
 
-### Meetings
-[Relevant transcript excerpts with meeting name and date]
-
-### Project Tracker
+### Project Tracker (Linear)
 [Relevant items with status]
-
-### Knowledge Base
-[Relevant documents with titles and snippets]
 
 ### Sources Unavailable
 [Any sources that couldn't be searched]
@@ -75,5 +67,5 @@ Search these sources in parallel:
 - Cast a wide net. Better to return too much than miss something relevant.
 - Always include the source and date for each result so the executive can dig deeper.
 - If the query is ambiguous (could refer to multiple things), return results for all interpretations and let the user clarify.
-- Deduplicate: if the same information appears in multiple sources, note that ("mentioned in both Slack and a meeting") rather than repeating it.
+- Deduplicate: if the same information appears in multiple sources, note that ("mentioned in both Slack and a kbx transcript") rather than repeating it.
 - Order results by recency within each source (most recent first).

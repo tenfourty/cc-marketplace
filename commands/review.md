@@ -20,44 +20,44 @@ This is not a status report. It's a thinking session. You are the trusted adviso
 
 ### 1. Load Full Context
 
-- Read CLAUDE.md, memory/priorities/cirs.md, memory/priorities/initiatives.md
-- Read TASKS.md (full state)
-- Read memory/rhythms/cadence.md for what the review should cover
-- Read memory/decisions/ for this month's decisions
-- Read any previous weekly review (if saved) for trajectory comparison
+Use `kbx context` if already in context (provides pinned docs: CIRs, initiatives, recurring meetings, cadence).
+- `kbx note list --tag decision --json` for this month's decisions
+- For full content of any pinned doc: `kbx view <path>`
 
 ### 2. Dispatch the Weekly Review Agent
 
 The weekly-review agent should gather in parallel:
 
-**Calendar (~~calendar) — Week in Review:**
+**Calendar (gm) — Week in Review:**
+- `gm this-week --json --response-format concise --no-frames` for the week's events and tasks
 - Where did the executive actually spend time this week?
 - How does actual time allocation compare to stated priorities?
 - What percentage was meetings vs. focus time?
 - Any meetings that happened that weren't in the rhythm?
 
-**Tasks (TASKS.md) — Movement Analysis:**
-- What moved from Active to Done this week?
-- What's been in Active for >2 weeks without progress?
-- What's been in Waiting On for >1 week?
-- What was added this week? (Accumulation rate)
+**Tasks (gm) — Movement Analysis:**
+- `gm tasks list --status completed --updated-after YYYY-MM-DD --json` for tasks completed this week
+- `gm tasks list --status open --json --response-format concise` for current open items
+- `gm tasks list --overdue --json` for stale items
+- `gm tasks list --tag Waiting-On --json` for pending-from-others
 - Net task count: growing, shrinking, or stable?
 
-**Chat (~~chat) — Communication Patterns:**
+**Chat (Slack MCP) — Communication Patterns:**
 - Themes across Slack messages this week
 - Channels with notably high or low activity
 - Threads the executive started vs. was pulled into
 - Any tension or conflict signals in team communications
 - Topics that keep coming up (recurring themes)
 
-**Meeting Transcripts (~~meeting transcripts) — Decision Flow:**
-- Decisions made across all meetings this week
-- Action items that came out of meetings — which are done, which aren't?
-- Topics that appeared in multiple meetings (convergence signals)
+**Meeting Transcripts (kbx) — Decision Flow:**
+- `kbx search "decision" --from YYYY-MM-DD --fast --json` for this week's decisions across meetings
+- `kbx search "action item" --from YYYY-MM-DD --fast --json` for commitments
+- Cross-meeting themes via broader `kbx search` queries
 - Commitments made by others — are they being honoured?
 
-**Project Tracker (~~project tracker) — Initiative Health:**
-- Status of each active initiative
+**Project Tracker (gm + kbx) — Initiative Health:**
+- `gm tasks list --source linear --json --response-format concise` for Linear status
+- `kbx project find "Name" --json` for each active initiative
 - Velocity trends (improving, stable, declining)
 - Any initiatives that are drifting without attention
 - New blockers or dependencies that emerged
@@ -119,7 +119,7 @@ This is where you earn your keep. Don't just compile -- think.
 [Based on the analysis, suggest 3-5 focus areas]
 
 ### Memory Updates
-[Proposed changes to priorities, CIRs, or people context based on this week's signals]
+[Proposed changes to kbx pinned docs (priorities, CIRs, initiatives) based on this week's signals]
 ```
 
 ### 5. Interactive Discussion
@@ -132,11 +132,10 @@ After presenting the review, invite discussion:
 ### 6. Update Memory
 
 Based on the discussion:
-- Update memory/priorities/initiatives.md with status changes
-- Update memory/priorities/cirs.md if thresholds should change
-- Update CLAUDE.md hot cache if priorities shifted
+- Update kbx pinned initiatives note if status changed: `kbx view <path>` then `kbx memory add` or edit
+- Update kbx pinned CIRs note if thresholds should change
 - Archive completed initiatives
-- Update memory/people/ with any new context
+- `kbx memory add "context" --entity "Name"` for new people context
 
 ## Trajectory Comparison
 
@@ -148,11 +147,11 @@ If a previous weekly review exists, always compare:
 
 ## Graceful Degradation
 
-This review is most powerful with all sources. But even with just TASKS.md and calendar, it provides value. Note which sources were unavailable and what insights they would have added.
+This review is most powerful with all sources. But even with just gm and kbx, it provides value. Note which sources were unavailable and what insights they would have added.
 
 | Sources Available | Review Quality |
 |---|---|
-| All sources | Full strategic review |
-| Calendar + Tasks + Chat | Good operational review, limited on meeting insights |
-| Calendar + Tasks only | Basic time/task analysis, limited pattern detection |
-| Tasks only | Task movement analysis only, flag that more data would help |
+| All sources (kbx + gm + Slack + Linear) | Full strategic review |
+| kbx + gm + Slack | Good operational review, limited on project tracking |
+| kbx + gm only | Basic time/task analysis, limited pattern detection |
+| gm only | Task and calendar movement analysis only, flag that more data would help |

@@ -13,7 +13,7 @@ Based on the McChrystal Group decision-making framework, every significant decis
 
 ### 2. Inputs — Gather Information
 - What data and context is relevant?
-- What have we tried before? (check memory/decisions/ for related past decisions)
+- What have we tried before? (check `kbx search` and `kbx note list --tag decision` for related past decisions)
 - What are the constraints? (time, budget, people, technical)
 - What alternatives exist?
 
@@ -37,11 +37,19 @@ Based on the McChrystal Group decision-making framework, every significant decis
 
 ## Decision Log Format
 
-Store in `memory/decisions/YYYY-MM.md` (one file per month):
+Decisions are stored as kbx notes tagged `decision`:
 
+```bash
+kbx memory add "Decision Title" --body "structured markdown" --tags decision
+```
+
+If person-related, also link to the entity:
+```bash
+kbx memory add "Decision Title" --body "structured markdown" --tags decision --entity "Name"
+```
+
+Structured markdown format:
 ```markdown
-# Decisions — [Month Year]
-
 ### [Date] — [Decision Title]
 - **Context:** [why this decision was needed]
 - **Decision:** [what was decided, stated clearly]
@@ -52,8 +60,12 @@ Store in `memory/decisions/YYYY-MM.md` (one file per month):
 - **Actions:** [what happens next]
 - **Owner:** [who's responsible for execution]
 - **Revisit by:** [date, or "no revisit needed"]
-- **Source:** [meeting, conversation, email thread, etc.]
+- **Source:** [meeting, conversation, etc.]
 ```
+
+Also:
+- Create follow-up tasks via `gm tasks create --title "..." --tag Active --list LIST --due ISO`
+- Update initiatives via `kbx memory add --tags initiative` if the decision affects an active initiative
 
 ## Decision Types
 
@@ -114,16 +126,16 @@ The Chief of Staff should suggest a pre-mortem when:
 When recalling decisions:
 
 ### By Topic
-Search memory/decisions/ across all months for a topic. Present chronologically to show how thinking evolved.
+`kbx search "topic" --json` for semantic match, `kbx note list --tag decision --json` for all decisions. Present chronologically to show how thinking evolved.
 
 ### By Person
-Find decisions involving a specific person. Useful for 1:1 prep.
+`kbx search "person name" --json` filtered to decision notes. Useful for 1:1 prep.
 
 ### By Time Period
-Show all decisions from a specific period. Useful for quarterly reviews.
+`kbx note list --tag decision --json` filtered by date range. Useful for quarterly reviews.
 
 ### Decision Audit
 Periodically (in weekly review), check:
 - Decisions with "Revisit by" dates that have passed
-- Decisions whose action items are still incomplete
+- Decisions whose action items are still incomplete in `gm tasks list`
 - Decisions that might need revisiting given new information

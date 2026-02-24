@@ -14,7 +14,7 @@ You are preparing the executive for a meeting. Use the **staff voice**: efficien
 
 ### 1. Identify the Meeting
 
-Use ~~calendar to find the specific meeting. If ambiguous, ask for clarification. Extract:
+Use `gm today` output if already in context, otherwise run `gm today --json --response-format concise --no-frames`. Match the user's description to a specific event. If ambiguous, ask for clarification. Extract:
 - Meeting title
 - Time and duration
 - Attendees list
@@ -23,37 +23,34 @@ Use ~~calendar to find the specific meeting. If ambiguous, ask for clarification
 
 ### 2. Load Context
 
-**From memory:**
-- Check memory/meetings/recurring.md for established context about this meeting type
-- Check memory/people/ for profiles of each attendee
-- Check CLAUDE.md for quick-reference info about attendees
-- Check memory/priorities/initiatives.md for relevant initiatives
+Use `kbx context` if already in context (provides pinned docs including CIRs, initiatives, recurring meetings, cadence).
 
-**From decision history:**
-- Check memory/decisions/ for recent decisions involving these attendees or topics
+For each attendee:
+- `kbx person find "Name" --json` for their profile
+- Check if they relate to any known projects via `kbx project find "Name"`
 
-**From tasks:**
-- Check TASKS.md for items owned by or waiting on attendees
-- Check for items related to the meeting topic
+For the meeting topic:
+- Check if it relates to an active initiative (from kbx context pinned docs)
+- `kbx note list --tag decision --json` for recent decisions involving these attendees or topics
 
 ### 3. Gather Recent Intelligence
 
 **Dispatch the meeting-prep agent** to search in parallel across:
 
-**Chat (~~chat):**
-- Recent messages from/to each attendee (last 7 days)
+**Recent interactions:**
+- `kbx person timeline "Name" --from YYYY-MM-DD --json` for each attendee (last 7 days)
+- Slack MCP for recent messages from/to each attendee
 - Relevant channel discussions related to the meeting topic
-- Any unresolved threads involving attendees
 
-**Meeting transcripts (~~meeting transcripts):**
-- Last meeting with same attendees (if recurring)
+**Previous occurrence (if recurring):**
+- `kbx search "meeting title" --fast --json --limit 3` to find last transcript
+- `kbx view <path>` to read it
 - Action items from the previous occurrence
 - Any commitments made that may need follow-up
 
-**Project tracker (~~project tracker):**
-- Issues/items relevant to the meeting topic
-- Items assigned to or created by attendees
-- Sprint/project status for relevant initiatives
+**Tasks and project status:**
+- `gm tasks list --json --response-format concise` filtered for tasks related to attendees or topic
+- `gm tasks list --source linear --json` for related Linear items
 
 ### 4. Present the Brief
 
@@ -92,8 +89,8 @@ Use this structure:
 
 ## For Recurring Meetings
 
-If this meeting is in memory/meetings/recurring.md, also include:
-- What was discussed last time
+If this meeting appears in the pinned recurring meetings note (from `kbx context`), also include:
+- What was discussed last time (via `kbx search`)
 - Which action items from last time are still open
 - Any changes in the attendee list since last time
 
@@ -101,8 +98,7 @@ If this meeting is in memory/meetings/recurring.md, also include:
 
 | Missing Source | Impact | Fallback |
 |---|---|---|
-| Calendar | Cannot identify meeting | Ask user for details |
-| People memory | No attendee context | Note "no profile on file" and offer to create one |
-| Chat | No recent interaction history | Note "no recent threads found" |
-| Transcripts | No previous meeting history | Note "no transcript available for last occurrence" |
-| Project tracker | No project status | Skip that section |
+| gm | Cannot identify meeting | Fall back to Calendar MCP if available, or ask user for details |
+| kbx | No attendee or meeting context | Fall back to Granola MCP for previous occurrence, note limited people context |
+| Slack | No recent interaction history | Note "no recent threads found" |
+| Linear | No project status | Skip that section |

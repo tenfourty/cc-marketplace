@@ -4,7 +4,7 @@ This skill defines how the Chief of Staff monitors strategic initiatives, detect
 
 ## Initiative Tracking
 
-Active initiatives are stored in `memory/priorities/initiatives.md`.
+Active initiatives are stored in a pinned kbx note tagged `initiative`. This appears in `kbx context` output at session start.
 
 ### Initiative Format
 ```markdown
@@ -33,12 +33,12 @@ Monitor these signals for each initiative:
 
 | Signal | Source | Meaning |
 |--------|--------|---------|
-| No ~~chat activity in 7+ days | Slack | Possibly stalled |
-| No ~~project tracker movement in 5+ days | Linear | Execution has stopped |
-| Owner hasn't mentioned it in 2+ weeks | Transcripts/Slack | May have deprioritised |
-| Scope changes discussed without decision | Transcripts | Scope creep risk |
-| Multiple people asking "what's happening with X?" | Slack/email | Visibility gap |
-| Deadline passed without update | Memory | Slippage |
+| No Slack activity in 7+ days | Slack MCP | Possibly stalled |
+| No Linear movement in 5+ days | `gm tasks list --source linear` | Execution has stopped |
+| Owner hasn't mentioned it in 2+ weeks | `kbx search` + Slack MCP | May have deprioritised |
+| Scope changes discussed without decision | `kbx search` transcripts | Scope creep risk |
+| Multiple people asking "what's happening with X?" | Slack MCP | Visibility gap |
+| Deadline passed without update | kbx pinned initiative note | Slippage |
 
 ## Pattern Detection
 
@@ -47,7 +47,7 @@ The Chief of Staff's highest-value strategic function is detecting patterns the 
 ### Types of Patterns
 
 **Convergence:** Multiple sources pointing to the same issue
-- Same topic in Slack + meeting + email → something important is emerging
+- Same topic in Slack + kbx transcript + Linear → something important is emerging
 - Three people independently raising the same concern → systemic issue
 
 **Divergence:** Stated intent vs. actual behaviour
@@ -66,7 +66,7 @@ The Chief of Staff's highest-value strategic function is detecting patterns the 
 
 **Acceleration/Deceleration:** Rate of change shifting
 - Meeting frequency on a topic increasing → something heating up
-- ~~project tracker velocity declining → team may be struggling
+- Linear velocity declining (`gm tasks list --source linear`) → team may be struggling
 - Decision-making speeding up → possible reactive mode
 
 ### How to Surface Patterns

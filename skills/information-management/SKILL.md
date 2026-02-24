@@ -9,7 +9,7 @@ CIRs are the backbone of information management (McChrystal Group framework). Th
 - **When** they need it (threshold-based)
 - **How** it should be delivered (format and channel)
 
-CIRs are stored in `memory/priorities/cirs.md` and established during `/setup`.
+CIRs are stored in a pinned kbx note tagged `cir` and established during `/setup`. They appear in `kbx context` output at session start.
 
 ### CIR Tiers
 
@@ -26,7 +26,6 @@ Include in the morning briefing via `/briefing`. Examples:
 - Calendar conflicts or notable gaps
 - Overdue action items (>2 days past due)
 - Key Slack threads requiring response
-- Emails from key stakeholders awaiting reply
 - Sprint/project blockers
 
 **Tier 3 — Weekly:**
@@ -39,12 +38,12 @@ Include in the weekly review via `/review`. Examples:
 
 ### Evaluating Information Against CIRs
 
-When scanning any source (Slack, email, transcripts, Linear), evaluate each item:
+When scanning any source (kbx, gm, Slack MCP, Linear), evaluate each item:
 
 1. **Does it match a Tier 1 CIR?** → Surface immediately with context
 2. **Does it match a Tier 2 CIR?** → Queue for next briefing
 3. **Does it match a Tier 3 CIR?** → Queue for next review
-4. **Does it match none?** → File it if relevant to memory, otherwise skip
+4. **Does it match none?** → File it if relevant to kbx, otherwise skip
 
 ## Information Filtering Principles
 
@@ -75,41 +74,42 @@ The highest-value information management is connecting signals across sources:
 
 | Pattern | What It Means |
 |---------|--------------|
-| Same topic in Slack + email + meeting | Convergence signal: this is important and needs attention |
+| Same topic in Slack + kbx transcript + Linear | Convergence signal: this is important and needs attention |
 | Person mentioned in 3+ contexts this week | This person is central to something — check in with them |
-| Project in tracker has no recent chat/email activity | Possibly stalled or deprioritised silently |
-| Decision from meeting not reflected in tracker | Execution gap: decision made but not actioned |
-| Action item in tasks but no follow-up in any channel | Dropped ball: nobody's working on this |
+| Project in Linear has no recent Slack or kbx activity | Possibly stalled or deprioritised silently |
+| Decision from meeting not reflected in gm tasks | Execution gap: decision made but not actioned |
+| Action item in gm tasks but no follow-up in any channel | Dropped ball: nobody's working on this |
 
-## Context Window Management
+## Memory Management
 
-The executive's working context (CLAUDE.md) is a limited resource. Manage it like memory:
+kbx IS the memory system. Manage information across two tiers:
 
-### Hot Cache (CLAUDE.md)
-- Current top priorities (3-5)
-- Key people quick reference (name → role, one line)
-- Active CIRs summary
-- This week's focus areas
-- Recent high-impact decisions
+### Hot Cache (kbx pinned notes)
+Pinned notes appear in `kbx context` output, loaded every session:
+- CIRs (tagged `cir`)
+- Active initiatives (tagged `initiative`)
+- Operating rhythm (tagged `cadence`)
+- Recurring meetings (tagged `meetings`)
 
-Keep to ~50-80 lines. If it grows beyond that, demote less-referenced items.
+Keep pinned notes focused and current. If they grow too large, refactor into smaller, more specific notes.
 
-### Warm Storage (memory/)
-- Full people profiles
-- Complete decision logs
-- Initiative details with history
-- Meeting context and patterns
-- Organisational context
+### Deep Storage (kbx search)
+All indexed content is searchable via `kbx search`:
+- Meeting transcripts
+- Decision notes (tagged `decision`)
+- People profiles (kbx person entities)
+- Project context (kbx project entities)
+- Historical notes
 
 ### Promotion Rules
-- Referenced 3+ times in a week → promote to CLAUDE.md
-- New hire, new initiative, new priority → add to CLAUDE.md immediately
-- Person becoming central to current work → promote to CLAUDE.md
+- Topic referenced 3+ times in a week → consider pinning a summary note
+- New initiative, new priority → add to pinned initiatives note
+- Person becoming central to current work → ensure kbx person profile is current
 
 ### Demotion Rules
-- Not referenced in 2+ weeks → demote from CLAUDE.md to memory/
-- Initiative completed or deprioritised → archive from CLAUDE.md
-- Person no longer in regular interaction → demote from CLAUDE.md
+- Initiative completed or deprioritised → remove from pinned initiatives note
+- Information no longer actively referenced → leave in kbx search, unpin if pinned
+- Stale context → update or remove from pinned notes
 
 ## Information Freshness
 

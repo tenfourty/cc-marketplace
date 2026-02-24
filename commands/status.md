@@ -19,39 +19,36 @@ You are running a cross-source status check. Use the **staff voice**: fast, fact
 ### 1. Understand the Query
 
 Parse what the user is asking about. It could be:
-- A **project/initiative** from memory/priorities/initiatives.md
-- A **person** from memory/people/
+- A **project/initiative** from kbx (check pinned initiatives in `kbx context`)
+- A **person** — use `kbx person find "Name" --json`
 - A **topic** that spans multiple contexts
-- A **task** from TASKS.md
+- A **task** — search `gm tasks list --json --response-format concise`
 - Something not yet tracked
 
 ### 2. Dispatch Cross-Source Search Agent
 
 Search in parallel across all available sources:
 
-**Internal Memory:**
-- TASKS.md for related tasks and their status
-- memory/decisions/ for related decisions
-- memory/priorities/initiatives.md for initiative status
-- memory/people/ for person context
+**kbx (primary search):**
+- `kbx search "topic" --json --limit 10` for semantic search across all indexed content
+- `kbx person find "Name"` if it's a person
+- `kbx project find "Name"` if it's a project
+- `kbx note list --tag decision --json` for related decisions
 
-**Chat (~~chat):**
+**Tasks (gm):**
+- `gm tasks list --json --response-format concise` filtered for related items
+- `gm tasks list --source linear --json` for related Linear issues
+
+**Chat (Slack MCP):**
 - Search for the topic across relevant channels
 - Find the most recent substantive discussion
 - Note who's been talking about it and what they're saying
 
-**Meeting Transcripts (~~meeting transcripts):**
-- Search for when this topic was last discussed in a meeting
-- What was said, decided, or committed to
+**Linear (for deeper detail):**
+- Linear MCP if gm task search suggests related issues needing more detail
 
-**Project Tracker (~~project tracker):**
-- Related issues/items, their status
-- Recent activity (comments, status changes)
-- Any blockers
-
-**Knowledge Base (~~knowledge base):**
-- Related documents or pages
-- Recent updates to documentation
+**Notion (fallback):**
+- kbx covers synced Notion content. Fall back to Notion MCP only if kbx returns nothing relevant.
 
 ### 3. Present the Status
 
@@ -75,7 +72,7 @@ Search in parallel across all available sources:
 [Related tasks, action items, or pending decisions]
 
 ### Related Decisions
-[Any decisions from memory/decisions/ that bear on this topic]
+[Any decisions from kbx that bear on this topic]
 ```
 
 ### 4. Offer Follow-ups
@@ -88,5 +85,14 @@ Search in parallel across all available sources:
 
 If the topic isn't found in any source:
 - Tell the executive: "I don't have any tracked information on [topic]. Would you like me to start tracking it?"
-- Offer to create an initiative entry, task, or memory file
+- Offer to create an initiative entry via kbx or a task via gm
 - Ask if there's a different name or framing that might match
+
+## Graceful Degradation
+
+| Missing Source | Impact | Fallback |
+|---|---|---|
+| kbx | No knowledge base search | Fall back to Granola + Notion MCPs |
+| gm | No task search | Skip task section |
+| Slack | No chat search | Note it |
+| Linear | No deep issue detail | Use gm task list only |

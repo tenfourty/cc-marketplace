@@ -1,5 +1,5 @@
 ---
-description: Extracts commitments and action items from meeting transcripts and maps them to TASKS.md. Tracks who owes what and flags overdue items.
+description: Extracts commitments and action items from meeting transcripts and maps them to gm tasks. Tracks who owes what and flags overdue items.
 model: haiku
 ---
 
@@ -35,13 +35,13 @@ For each item, extract:
 
 ### 3. Categorise
 
-- **Executive's own items** → Will go to TASKS.md "Active"
-- **Others' commitments** → Will go to TASKS.md "Waiting On"
+- **Executive's own items** → Will be created via `gm tasks create --tag Active --list LIST`
+- **Others' commitments** → Will be created via `gm tasks create --tag Waiting-On --list LIST`
 - **Follow-ups (no clear owner)** → Flag for the executive to assign
 
 ### 4. Cross-Reference
 
-Check each item against TASKS.md:
+Check each item against `gm tasks list --json --response-format concise`:
 - Is this already tracked? If so, note it (don't duplicate)
 - Does this update an existing task? If so, note the update
 - Is this entirely new? Flag it for addition
@@ -54,12 +54,12 @@ Check each item against TASKS.md:
 ### Executive's Actions
 1. [Action] — due [date] — confidence: [clear/implied/vague]
    Context: [why]
-   Existing in TASKS.md: [yes/no, with reference if yes]
+   Existing in gm tasks: [yes/no, with reference if yes]
 
 ### Waiting On Others
 1. [Person]: [Action] — due [date] — confidence: [clear/implied/vague]
    Context: [why]
-   Existing in TASKS.md: [yes/no, with reference if yes]
+   Existing in gm tasks: [yes/no, with reference if yes]
 
 ### Unassigned Follow-ups
 1. [Topic] — needs an owner
@@ -74,16 +74,16 @@ Check each item against TASKS.md:
 When asked to audit:
 
 ### 1. Load All Sources
-- Read TASKS.md (Active, Waiting On sections)
-- Check ~~project tracker for assigned items
-- Search recent ~~chat for commitment language ("I'll", "I will", "by Friday")
-- Search recent ~~meeting transcripts for action items
+- `gm tasks list --tag Active --json` and `gm tasks list --tag Waiting-On --json` for current tasks
+- `gm tasks list --source linear --json` for Linear items
+- Slack MCP for recent commitment language ("I'll", "I will", "by Friday")
+- `kbx search "action item" --from YYYY-MM-DD --fast --json` for recent transcript action items
 
 ### 2. Cross-Reference
-- Items in TASKS.md that also appear in ~~project tracker → status consistent?
-- Items in transcripts not in TASKS.md → dropped balls
-- Items in ~~chat not in TASKS.md → informal commitments not tracked
-- Items in TASKS.md with no activity in any source for >5 days → possibly stalled
+- Items in gm from Linear source → status consistent with Linear?
+- Items in kbx transcripts not in gm tasks → dropped balls
+- Items in Slack not in gm tasks → informal commitments not tracked
+- Items in gm tasks with no activity in any source for >5 days → possibly stalled
 
 ### 3. Age Analysis
 - Items due today or overdue
@@ -105,10 +105,10 @@ When asked to audit:
 [Items with no recent activity in any source]
 
 ### Untracked Commitments
-[Items found in transcripts/chat not in TASKS.md]
+[Items found in transcripts/chat not in gm tasks]
 
 ### Inconsistencies
-[Items where TASKS.md and tracker status don't match]
+[Items where gm task and Linear status don't match]
 
 ### Stats
 - Total active items: [count]
@@ -122,5 +122,5 @@ When asked to audit:
 
 - Precision matters for action tracking. Don't invent commitments that weren't made.
 - When confidence is "vague", suggest a specific clarifying question.
-- Always use exact names and terminology from the transcript and CLAUDE.md.
+- Always use exact names and terminology from the transcript.
 - Flag patterns: Is one person consistently late? Is one type of action item always stalling?

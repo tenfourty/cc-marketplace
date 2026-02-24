@@ -7,24 +7,22 @@ user_invocable: true
 
 You are running the initial setup for the Chief of Staff plugin. Your goal is to learn enough about this executive to be an effective Chief of Staff from day one.
 
-**Prerequisites:** The productivity plugin should already be installed and `/productivity:start` should have been run (creating TASKS.md and the memory/ directory).
+## Step 1: Check Tool Availability
 
-## Step 1: Check What Exists
+Verify the required CLI tools are available:
+- Run `kbx usage` if not already in context — confirms kbx is installed and shows commands
+- Run `gm usage` if not already in context — confirms gm is installed and shows commands
 
-Check for existing files from the productivity plugin:
-- `TASKS.md` -- task list
-- `CLAUDE.md` -- working memory
-- `memory/` -- deep storage
+If either tool is missing, tell the user which tool is needed and how to set it up.
 
-If these don't exist, tell the user to run `/productivity:start` first, then come back.
+Check for existing pinned notes:
+- Run `kbx context` if not already in context — shows any existing pinned docs (CIRs, initiatives, cadence, recurring meetings)
 
-Also check for CoS-specific files that may already exist:
-- `memory/decisions/` -- decision logs
-- `memory/priorities/` -- CIRs and initiatives
-- `memory/meetings/` -- meeting intelligence
-- `memory/rhythms/` -- operating rhythm
+Check for existing task lists:
+- `gm lists list --json` — verify required lists exist (Leadership, People, Ops, Admin, Home, Routines)
+- Suggest creating any missing lists via `gm lists create`
 
-Create any CoS directories that don't exist yet.
+If pinned docs already exist from a previous setup, offer to update them rather than starting from scratch.
 
 ## Step 2: Learn the Executive
 
@@ -60,11 +58,16 @@ Based on the McChrystal Group framework, establish what information the executiv
 - When do you prefer to receive briefings? (morning, evening, ad-hoc)
 - What tools do you use most? (helps prioritise which integrations to lean on)
 
-## Step 3: Write Memory Files
+## Step 3: Write to kbx
 
-Based on the conversation, create or update:
+Based on the conversation, create or update pinned kbx notes:
 
-### memory/priorities/cirs.md
+### Critical Information Requirements
+```bash
+kbx memory add "Critical Information Requirements" --body "structured CIRs markdown" --tags cir --pin
+```
+
+Content format:
 ```markdown
 # Critical Information Requirements
 
@@ -80,7 +83,12 @@ Last updated: [date]
 - [items from conversation]
 ```
 
-### memory/priorities/initiatives.md
+### Active Strategic Initiatives
+```bash
+kbx memory add "Active Strategic Initiatives" --body "initiatives markdown" --tags initiative --pin
+```
+
+Content format:
 ```markdown
 # Active Strategic Initiatives
 
@@ -93,7 +101,12 @@ Last updated: [date]
 - **Next milestone:** [what and when]
 ```
 
-### memory/meetings/recurring.md
+### Recurring Meetings
+```bash
+kbx memory add "Recurring Meetings" --body "meetings markdown" --tags meetings --pin
+```
+
+Content format:
 ```markdown
 # Recurring Meetings
 
@@ -105,7 +118,12 @@ Last updated: [date]
 - **Prep needed:** [what to prepare]
 ```
 
-### memory/rhythms/cadence.md
+### Operating Rhythm
+```bash
+kbx memory add "Operating Rhythm" --body "cadence markdown" --tags cadence --pin
+```
+
+Content format:
 ```markdown
 # Operating Rhythm
 
@@ -121,24 +139,13 @@ Last updated: [date]
 - [any monthly rhythms]
 ```
 
-### Update CLAUDE.md
-Add a "Chief of Staff Context" section to the existing CLAUDE.md with:
-- Role summary (1-2 lines)
-- Top 3-5 current priorities
-- Key people quick reference (name -> role, one line each)
-- Active CIRs summary
-- Preferred communication style
+### People Context
+For each key person mentioned:
+```bash
+kbx memory add "[Name] context" --entity "Name" --tags people
+```
 
-Keep it concise -- this is the hot cache. Full details live in memory/.
-
-### Update memory/people/
-Create or update profiles for key people mentioned, with:
-- Full name
-- Role/title
-- Relationship to the executive
-- What they own/are responsible for
-- Communication preferences (if known)
-- Any relevant context
+Include: full name, role/title, relationship to the executive, what they own, communication preferences, relevant context.
 
 ## Step 4: Confirm and Orient
 
@@ -156,4 +163,4 @@ Based on what you've learned:
 - Suggest running `/briefing` to test the daily briefing
 - If there's an upcoming meeting, suggest `/prep [meeting name]`
 - If it's Friday, suggest `/review` for a weekly review
-- Offer to do a quick scan of ~~chat and ~~project tracker to bootstrap context
+- Offer to do a quick scan of Slack MCP to bootstrap communication context

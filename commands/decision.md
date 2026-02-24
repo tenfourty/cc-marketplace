@@ -40,10 +40,20 @@ Follow the McChrystal Group decision-making framework. Ask for (or extract from 
 - **Who owns execution?**
 - **When should we revisit this?**
 
-### Write to Decision Log
+### Write to kbx
 
-Append to `memory/decisions/YYYY-MM.md`:
+Log the decision as a kbx note:
 
+```bash
+kbx memory add "Decision Title" --body "structured markdown" --tags decision
+```
+
+If person-related, also link to the entity:
+```bash
+kbx memory add "Decision Title" --body "structured markdown" --tags decision --entity "Name"
+```
+
+The structured markdown body should follow this format:
 ```markdown
 ### [Date] — [Decision Title]
 - **Context:** [why this decision was needed]
@@ -59,19 +69,20 @@ Append to `memory/decisions/YYYY-MM.md`:
 ```
 
 Also:
-- Update TASKS.md if the decision creates action items
-- Update memory/priorities/initiatives.md if it affects an initiative
-- Update CLAUDE.md hot cache if it's a high-impact decision
+- Create follow-up tasks: `gm tasks create --title "..." --tag Active --list LIST --due ISO`
+- Update initiatives: `kbx memory add "Initiative update" --entity "Project Name" --tags initiative` if applicable
 
 ## Recalling Decisions
 
 When the user asks to recall:
 
 ### 1. Search
-- Search memory/decisions/ for the topic
-- Search ~~meeting transcripts for decisions discussed in meetings
-- Search ~~chat for decision-related threads
-- Search ~~knowledge base for decision docs
+- `kbx search "topic" --fast --json` for keyword match
+- `kbx search "topic" --json` for semantic match
+- `kbx note list --tag decision --json` for all decision notes
+- `kbx search "topic decision" --from YYYY-MM-DD --json` for decisions in meeting transcripts
+- Slack MCP for decision-related threads
+- Notion MCP if kbx returns nothing relevant
 
 ### 2. Present
 Show decisions in reverse chronological order:
@@ -80,7 +91,7 @@ Show decisions in reverse chronological order:
 ## Decisions on: [Topic]
 
 ### [Date] — [Decision Title]
-[Full decision record from the log]
+[Full decision record from kbx]
 
 ### [Earlier Date] — [Related Decision]
 [Full decision record]
@@ -90,12 +101,12 @@ Show decisions in reverse chronological order:
 When showing past decisions, add:
 - **Pattern:** "You've made 3 decisions on this topic in 2 months. Is the framing right?"
 - **Trajectory:** "This decision reversed one from [date]. What changed?"
-- **Open items:** "The action items from this decision are still in TASKS.md — are they done?"
+- **Open items:** "The action items from this decision are still in gm tasks — are they done?"
 - **Revisit flag:** "You said to revisit this by [date]. That's [past due / coming up]."
 
 ## Quick Log
 
 If the user just says something like "we decided to go with option B on the API migration", capture it efficiently:
-1. Log the decision with whatever context is available
+1. Log the decision with whatever context is available via `kbx memory add --tags decision`
 2. Ask briefly: "Who decided? Any alternatives considered? When should we revisit?"
 3. Don't block on getting perfect data -- a logged decision with gaps is better than an unlogged one

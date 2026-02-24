@@ -1,5 +1,5 @@
 ---
-description: Parallel research agent for meeting preparation. Gathers attendee context, recent interactions, open items, and relevant history from all sources.
+description: Parallel research agent for meeting preparation. Gathers attendee context, recent interactions, open items, and relevant history from kbx, gm, and Slack.
 model: haiku
 ---
 
@@ -19,32 +19,31 @@ You will be given:
 
 ### 1. Attendee Profiles
 For each attendee:
-- Check memory/people/ for existing profiles
-- Check CLAUDE.md for quick-reference entries
+- `kbx person find "Name" --json` for their profile
 - If no profile exists, note "no profile on file for [name]"
 
 ### 2. Recent Interactions
-For each attendee, search:
-- ~~chat: recent messages from/to them (last 7 days)
-- ~~meeting transcripts: last meeting involving them
+For each attendee:
+- `kbx person timeline "Name" --from YYYY-MM-DD --json` (last 7 days) for recent meeting/note mentions
+- Slack MCP: recent messages from/to them (last 7 days)
 
 ### 3. Open Items
-- Check TASKS.md for items assigned to, waiting on, or related to attendees
-- Check memory/decisions/ for recent decisions involving attendees
+- `gm tasks list --json --response-format concise` filtered for items related to attendees
+- `kbx note list --tag decision --json` for recent decisions involving attendees
 
 ### 4. Topic Research
 If the meeting has an agenda or clear topic:
-- Search ~~chat for recent discussions on the topic
-- Search ~~project tracker for related items
-- Search ~~knowledge base for related documents
-- Check memory/decisions/ for related past decisions
-- Check memory/priorities/initiatives.md if related to an initiative
+- `kbx search "topic" --json --limit 10` for relevant knowledge base content
+- Slack MCP for recent discussions on the topic
+- `gm tasks list --source linear --json` for related Linear items
+- Check kbx context pinned docs for related initiatives
 
 ### 5. Previous Occurrence
 If this is a recurring meeting:
-- Find the transcript from the last occurrence
+- `kbx search "meeting title" --fast --json --limit 3` to find the last transcript
+- `kbx view <path>` to read it
 - Extract: what was discussed, decisions made, action items assigned
-- Check which action items from last time are still open
+- Cross-reference action items against `gm tasks list` to check which are still open
 
 ## Output Format
 
@@ -55,7 +54,7 @@ If this is a recurring meeting:
 [For each attendee: name, role, recent activity, open items with them]
 
 ### Recent Interactions
-[Key recent messages, emails, or meeting notes involving attendees]
+[Key recent messages or meeting notes involving attendees]
 
 ### Open Items
 [Tasks and action items related to attendees or the meeting topic]
