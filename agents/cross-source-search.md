@@ -1,5 +1,5 @@
 ---
-description: Searches across all connected sources for a topic, person, project, or query. Returns consolidated results from chat, email, transcripts, project tracker, and knowledge base.
+description: Searches across all connected sources for a topic, person, project, or query. Returns consolidated results from chat, transcripts, project tracker, and knowledge base.
 model: haiku
 ---
 
@@ -28,22 +28,17 @@ Search these sources in parallel:
 - Find the most recent and most relevant messages
 - Note which channels and who is discussing this
 
-### 3. Email (~~email)
-- Search for related email threads
-- Find the most recent correspondence
-- Note key participants in email discussions
-
-### 4. Meeting Transcripts (~~meeting transcripts)
+### 3. Meeting Transcripts (~~meeting transcripts)
 - Search for when this topic was discussed in meetings
 - Find the most recent mentions
 - Note what was said and any decisions made
 
-### 5. Project Tracker (~~project tracker)
+### 4. Project Tracker (~~project tracker)
 - Search for related issues, items, or projects
 - Note current status and recent activity
 - Find any related blockers or dependencies
 
-### 6. Knowledge Base (~~knowledge base)
+### 5. Knowledge Base (~~knowledge base)
 - Search for related documents, pages, or wikis
 - Find the most recently updated content
 - Note key information from documents
@@ -61,9 +56,6 @@ Search these sources in parallel:
 
 ### Chat
 [Relevant messages with channel, author, date, and snippet]
-
-### Email
-[Relevant threads with participants and date]
 
 ### Meetings
 [Relevant transcript excerpts with meeting name and date]
@@ -83,5 +75,5 @@ Search these sources in parallel:
 - Cast a wide net. Better to return too much than miss something relevant.
 - Always include the source and date for each result so the executive can dig deeper.
 - If the query is ambiguous (could refer to multiple things), return results for all interpretations and let the user clarify.
-- Deduplicate: if the same information appears in multiple sources, note that ("mentioned in both Slack and email") rather than repeating it.
+- Deduplicate: if the same information appears in multiple sources, note that ("mentioned in both Slack and a meeting") rather than repeating it.
 - Order results by recency within each source (most recent first).

@@ -61,7 +61,7 @@ Recurring meetings have context in `memory/meetings/recurring.md`. For these:
 
 ### For One-Off Meetings
 
-1. Research attendees via memory/people/, ~~chat, ~~email
+1. Research attendees via memory/people/, ~~chat
 2. Identify the likely topic/agenda from the calendar invite
 3. Find relevant context from memory/decisions/, memory/priorities/
 4. Check for any open items or pending decisions with attendees

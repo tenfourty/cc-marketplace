@@ -45,10 +45,6 @@ Use ~~calendar to find the specific meeting. If ambiguous, ask for clarification
 - Relevant channel discussions related to the meeting topic
 - Any unresolved threads involving attendees
 
-**Email (~~email):**
-- Recent email threads with attendees
-- Any emails referencing the meeting topic
-
 **Meeting transcripts (~~meeting transcripts):**
 - Last meeting with same attendees (if recurring)
 - Action items from the previous occurrence
@@ -107,6 +103,6 @@ If this meeting is in memory/meetings/recurring.md, also include:
 |---|---|---|
 | Calendar | Cannot identify meeting | Ask user for details |
 | People memory | No attendee context | Note "no profile on file" and offer to create one |
-| Chat/email | No recent interaction history | Note "no recent threads found" |
+| Chat | No recent interaction history | Note "no recent threads found" |
 | Transcripts | No previous meeting history | Note "no transcript available for last occurrence" |
 | Project tracker | No project status | Skip that section |

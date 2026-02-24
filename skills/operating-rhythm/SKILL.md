@@ -44,8 +44,7 @@ The rhythms below are defaults. Actual cadence is stored in `memory/rhythms/cade
 1. Calendar for today
 2. TASKS.md for overdue/due-today items
 3. ~~chat for overnight/morning signals
-4. ~~email for high-priority messages
-5. ~~project tracker for blockers
+4. ~~project tracker for blockers
 
 ### Weekly Review Routine
 **When:** Friday afternoon or Monday morning (configurable)

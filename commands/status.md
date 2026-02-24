@@ -40,11 +40,6 @@ Search in parallel across all available sources:
 - Find the most recent substantive discussion
 - Note who's been talking about it and what they're saying
 
-**Email (~~email):**
-- Search for related email threads
-- Find most recent correspondence
-- Note any pending responses
-
 **Meeting Transcripts (~~meeting transcripts):**
 - Search for when this topic was last discussed in a meeting
 - What was said, decided, or committed to

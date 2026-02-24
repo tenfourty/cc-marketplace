@@ -67,16 +67,19 @@ memory/
 └── rhythms/          # Operating rhythm definitions
 ```
 
-## Connected Tools
+## Connected Tools (Claude.ai Integrations)
 
-| Tool | Purpose |
-|------|---------|
-| Slack | Team communication intelligence |
-| Linear | Issue tracking, engineering velocity |
-| Notion | Documentation, wikis, team pages |
-| Granola | Meeting transcripts and notes |
-| Google Workspace | Calendar and email |
-| Fastmail | Personal email |
+This plugin uses Claude.ai platform integrations rather than bundling its own MCP servers. Connect these through your Claude.ai account settings:
+
+| Integration | Placeholder | Purpose |
+|-------------|-------------|---------|
+| Calendar | `~~calendar` | Schedule awareness, meeting prep |
+| Slack | `~~chat` | Team communication intelligence |
+| Linear | `~~project tracker` | Issue tracking, engineering velocity |
+| Notion | `~~knowledge base` | Documentation, wikis, team pages |
+| Granola | `~~meeting transcripts` | Meeting transcripts and notes |
+
+Optional: Figma, HubSpot, n8n. See [CONNECTORS.md](CONNECTORS.md) for details.
 
 ## Design Influences
 

@@ -50,11 +50,6 @@ The weekly-review agent should gather in parallel:
 - Any tension or conflict signals in team communications
 - Topics that keep coming up (recurring themes)
 
-**Email (~~email) — Communication Patterns:**
-- Key email threads and their status (open/resolved)
-- Response times on critical items
-- Any emails that went unanswered
-
 **Meeting Transcripts (~~meeting transcripts) — Decision Flow:**
 - Decisions made across all meetings this week
 - Action items that came out of meetings — which are done, which aren't?

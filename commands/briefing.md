@@ -36,11 +36,6 @@ Be concise and structured. Lead with what matters most. Use the executive's shor
 - Check DMs for unanswered messages from direct reports or key stakeholders
 - Flag any threads matching CIR criteria (immediate or daily thresholds)
 
-**Email (~~email):**
-- Scan for high-priority emails (from key people, matching CIR criteria)
-- Flag any emails requiring a response or decision
-- Summarise key threads without reproducing full content
-
 **Project Tracker (~~project tracker):**
 - Any blocked or stalled items on active initiatives
 - New issues assigned to the executive
@@ -50,7 +45,7 @@ Be concise and structured. Lead with what matters most. Use the executive's shor
 
 Cross-reference findings. Look for:
 - Connections between meeting topics and open tasks/decisions
-- Topics that appear in multiple channels (email + Slack + Linear = something important)
+- Topics that appear in multiple channels (Slack + Linear + transcripts = something important)
 - Items that match CIR thresholds
 
 ### 4. Present the Briefing
@@ -91,7 +86,6 @@ After presenting the briefing, offer:
 If a data source is unavailable:
 - **No calendar:** Skip schedule section, note it's unavailable
 - **No chat:** Skip signals from chat, note it
-- **No email:** Skip email section, note it
 - **No project tracker:** Skip sprint stats, note it
 - **No transcripts:** Not needed for daily briefing
 

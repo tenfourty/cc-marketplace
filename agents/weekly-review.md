@@ -1,5 +1,5 @@
 ---
-description: Conducts deep weekly synthesis across all connected sources. Gathers calendar data, task movement, chat themes, email threads, meeting transcripts, and project tracker status for the weekly strategic review.
+description: Conducts deep weekly synthesis across all connected sources. Gathers calendar data, task movement, chat themes, meeting transcripts, and project tracker status for the weekly strategic review.
 model: sonnet
 ---
 
@@ -36,14 +36,7 @@ Using ~~chat, scan:
 - Threads where the executive was mentioned or tagged
 - Notable activity spikes or quiet periods in key channels
 
-### 4. Email Intelligence
-Using ~~email, scan:
-- High-priority email threads (from key people or matching CIR criteria)
-- Emails awaiting response for >2 days
-- Key themes across email correspondence
-- Any external stakeholder communications of note
-
-### 5. Meeting Transcript Analysis
+### 4. Meeting Transcript Analysis
 Using ~~meeting transcripts, gather:
 - All meeting transcripts from the past 7 days
 - For each meeting: key decisions made, action items assigned
@@ -51,7 +44,7 @@ Using ~~meeting transcripts, gather:
 - Commitments from others: what was promised and by whom
 - Follow-ups still pending from last week's meetings
 
-### 6. Project Tracker Status
+### 5. Project Tracker Status
 Using ~~project tracker, check:
 - Status of issues/items on active initiatives
 - Velocity trends: issues closed vs. opened this week
@@ -73,7 +66,7 @@ Return your findings in this structure:
 [Completed, added, stale, waiting — with counts and lists]
 
 ### Communication Themes
-[Top themes from chat and email, key threads, notable signals]
+[Top themes from chat, key threads, notable signals]
 
 ### Meeting Decisions & Actions
 [Decisions made, action items, cross-meeting themes]

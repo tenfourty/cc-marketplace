@@ -26,7 +26,6 @@ For each attendee:
 ### 2. Recent Interactions
 For each attendee, search:
 - ~~chat: recent messages from/to them (last 7 days)
-- ~~email: recent email threads with them
 - ~~meeting transcripts: last meeting involving them
 
 ### 3. Open Items
