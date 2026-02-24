@@ -14,7 +14,7 @@ You are extracting structured intelligence from a meeting that just happened. Us
 
 ### 1. Find the Transcript
 
-Use `kbx search "meeting title" --fast --json --limit 5` to find the most recent or specified meeting transcript. Use `kbx view <path>` to read it.
+Use `kbx search "meeting title" --fast --json --limit 5` to find the most recent or specified meeting transcript. Use `kbx view <path> --plain` to read it.
 
 If not found in kbx, fall back to Granola MCP for the transcript.
 

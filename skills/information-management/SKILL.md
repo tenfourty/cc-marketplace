@@ -102,13 +102,13 @@ All indexed content is searchable via `kbx search`:
 - Historical notes
 
 ### Promotion Rules
-- Topic referenced 3+ times in a week → consider pinning a summary note
-- New initiative, new priority → add to pinned initiatives note
+- Topic referenced 3+ times in a week → consider pinning a summary note (`kbx note edit <path> --pin`)
+- New initiative, new priority → add to pinned initiatives note (`kbx note edit <path> --append "..."`)
 - Person becoming central to current work → ensure kbx person profile is current
 
 ### Demotion Rules
-- Initiative completed or deprioritised → remove from pinned initiatives note
-- Information no longer actively referenced → leave in kbx search, unpin if pinned
+- Initiative completed or deprioritised → remove from pinned initiatives note (`kbx note edit <path> --body "..." ` with updated content)
+- Information no longer actively referenced → leave in kbx search, unpin if pinned (`kbx note edit <path> --unpin`)
 - Stale context → update or remove from pinned notes
 
 ## Information Freshness

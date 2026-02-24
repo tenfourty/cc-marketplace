@@ -126,7 +126,8 @@ kbx and gm are the primary tools underpinning the operating rhythm:
 | `gm tasks create` / `gm tasks close` | Task lifecycle from debriefs |
 | `kbx context` | Pinned docs provide CIRs, initiatives, rhythm, meetings |
 | `kbx search` | Transcript analysis for decisions and actions |
-| `kbx memory add` | Decision logging, people context updates |
+| `kbx memory add` | Create new notes (decisions, people context) |
+| `kbx note edit` | Update existing notes (body, tags, pin/unpin) |
 | Slack MCP | Real-time communication signals |
 
 The two systems complement each other. gm handles the "what" (events and tasks). kbx handles the "who" and "why" (people, context, decisions). The CoS plugin provides the "so what" (analysis, patterns, strategic advice).

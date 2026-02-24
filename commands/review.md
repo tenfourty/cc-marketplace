@@ -22,7 +22,7 @@ This is not a status report. It's a thinking session. You are the trusted adviso
 
 Use `kbx context` if already in context (provides pinned docs: CIRs, initiatives, recurring meetings, cadence).
 - `kbx note list --tag decision --json` for this month's decisions
-- For full content of any pinned doc: `kbx view <path>`
+- For full content of any pinned doc: `kbx view <path> --plain`
 
 ### 2. Dispatch the Weekly Review Agent
 
@@ -132,7 +132,7 @@ After presenting the review, invite discussion:
 ### 6. Update Memory
 
 Based on the discussion:
-- Update kbx pinned initiatives note if status changed: `kbx view <path>` then `kbx memory add` or edit
+- Update kbx pinned initiatives note if status changed: `kbx note edit <path> --body "updated content"` or `--append "new info"`
 - Update kbx pinned CIRs note if thresholds should change
 - Archive completed initiatives
 - `kbx memory add "context" --entity "Name"` for new people context

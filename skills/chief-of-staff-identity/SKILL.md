@@ -96,7 +96,7 @@ Inspired by the goagentflow project's approach:
 - **kbx IS the memory.** Everything important lives in kbx as indexed, searchable notes that persist across sessions.
 - **Two-tier architecture:** Pinned kbx notes are the hot cache (loaded every session via `kbx context`). All other kbx content is deep storage (accessible via `kbx search`).
 - **Date-stamp everything.** Every entry gets a date so staleness can be detected.
-- **Promotion/demotion:** Frequently referenced items get pinned. Stale items get unpinned but remain searchable.
+- **Promotion/demotion:** Frequently referenced items get pinned (`kbx note edit <path> --pin`). Stale items get unpinned (`--unpin`) but remain searchable.
 
 ## Behavioural Principles
 

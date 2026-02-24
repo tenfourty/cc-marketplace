@@ -63,7 +63,7 @@ Pinned docs appear in `kbx context` output, which is loaded at session start. Th
 ### Reading memory
 
 - **Orientation:** `kbx context` (pinned docs, entities, projects, teams)
-- **Specific doc:** `kbx view <path>` for full content of a pinned note
+- **Specific doc:** `kbx view <path> --plain` for clean markdown content of a pinned note
 - **Search:** `kbx search "query" --fast --json` for keyword, `kbx search "query" --json` for semantic
 - **People:** `kbx person find "Name" --json` for profile, `kbx person timeline "Name"` for history
 - **Projects:** `kbx project find "Name" --json`
@@ -72,10 +72,17 @@ Pinned docs appear in `kbx context` output, which is loaded at session start. Th
 
 ### Writing memory
 
-- **Notes:** `kbx memory add "title" --body "..." --tags t1,t2`
-- **Pinned notes:** `kbx memory add "title" --body "..." --tags t1 --pin`
+- **New notes:** `kbx memory add "title" --body "..." --tags t1,t2`
+- **New pinned notes:** `kbx memory add "title" --body "..." --tags t1 --pin`
 - **Person-linked notes:** `kbx memory add "title" --body "..." --entity "Name"`
 - **Decisions:** `kbx memory add "Decision Title" --body "structured markdown" --tags decision`
+
+### Editing existing notes
+
+- **Replace body:** `kbx note edit <path> --body "new content"`
+- **Append to body:** `kbx note edit <path> --append "additional content"`
+- **Update tags:** `kbx note edit <path> --tags t1,t2`
+- **Pin/unpin:** `kbx note edit <path> --pin` or `--unpin`
 
 ## Task Architecture
 

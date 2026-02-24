@@ -41,7 +41,7 @@ If the meeting has an agenda or clear topic:
 ### 5. Previous Occurrence
 If this is a recurring meeting:
 - `kbx search "meeting title" --fast --json --limit 3` to find the last transcript
-- `kbx view <path>` to read it
+- `kbx view <path> --plain` to read it
 - Extract: what was discussed, decisions made, action items assigned
 - Cross-reference action items against `gm tasks list` to check which are still open
 

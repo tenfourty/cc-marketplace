@@ -17,7 +17,7 @@ Be concise and structured. Lead with what matters most. Use the executive's shor
 
 Use `kbx context` output if already in context, otherwise run it. This provides pinned docs including CIRs, initiatives, recurring meetings, and operating rhythm.
 
-For full content of a specific pinned doc, use `kbx view <path>`.
+For full content of a specific pinned doc, use `kbx view <path> --plain`.
 
 ### 2. Gather Intelligence
 

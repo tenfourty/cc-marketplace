@@ -8,7 +8,7 @@ Meeting transcripts are accessed primarily via kbx, which indexes content from:
 - **Granola** — meeting transcripts with AI-generated summaries and notes
 - **Notion Meetings** — meeting notes and transcripts stored in Notion
 
-Use `kbx search` to find transcripts and `kbx view <path>` to read them. If kbx returns nothing, fall back to Granola MCP.
+Use `kbx search` to find transcripts and `kbx view <path> --plain` to read them. If kbx returns nothing, fall back to Granola MCP.
 
 ## Working with Transcripts
 
@@ -54,7 +54,7 @@ From every meeting transcript, the Chief of Staff should be able to extract:
 
 Recurring meetings have context in the pinned kbx meetings note. For these:
 1. `kbx search "meeting title" --fast --json --limit 3` to find the last transcript
-2. `kbx view <path>` to read it
+2. `kbx view <path> --plain` to read it
 3. Cross-reference action items against `gm tasks list` to check which are still open
 4. Note any changes to the attendee list
 5. Surface any relevant developments since last time
@@ -81,7 +81,7 @@ For each attendee, build a micro-profile:
 
 After a meeting (via `/debrief`):
 
-1. **Immediate extraction** — Pull action items, decisions, follow-ups from `kbx search` + `kbx view`
+1. **Immediate extraction** — Pull action items, decisions, follow-ups from `kbx search` + `kbx view --plain`
 2. **Cross-reference** — Check against `gm tasks list` and `kbx note list --tag decision`
 3. **Update tasks** — `gm tasks create` for new items, update existing ones
 4. **Log decisions** — `kbx memory add --tags decision` for each decision

@@ -22,7 +22,7 @@ Check for existing task lists:
 - `gm lists list --json` — verify required lists exist (Leadership, People, Ops, Admin, Home, Routines)
 - Suggest creating any missing lists via `gm lists create`
 
-If pinned docs already exist from a previous setup, offer to update them rather than starting from scratch.
+If pinned docs already exist from a previous setup, offer to update them using `kbx note edit <path> --body "..."` rather than creating new notes.
 
 ## Step 2: Learn the Executive
 
