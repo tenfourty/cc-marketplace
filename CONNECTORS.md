@@ -23,12 +23,14 @@ Key capabilities: events, tasks (cross-source), availability, scheduling, task l
 When CLI tools are unavailable, use these Claude.ai integrations:
 - **Granola** — meeting transcripts, if kbx search returns nothing
 - **Notion** — knowledge base, if kbx search returns nothing
+- **Google Calendar** — calendar events, if gm is unavailable
 - **Linear** — issue updates/creation (gm only reads Linear tasks)
 
 ## Always via MCP
 
 These tools are always accessed via Claude.ai MCP (no CLI equivalent):
 - **Slack** — real-time team communication and channel scanning
+- **Gmail** — email scanning for commitments, action items, and people context
 - **Linear** — for write operations (create/update issues)
 
 ## Graceful Degradation

@@ -49,8 +49,14 @@ The weekly-review agent should gather in parallel:
 - Any tension or conflict signals in team communications
 - Topics that keep coming up (recurring themes)
 
+**Email (Gmail MCP) — External Communication Patterns:**
+- Sent mail volume and key recipients this week
+- Unanswered inbound emails from important senders (>48 hours)
+- Email threads with external stakeholders (customers, partners, board)
+- Commitments made via email that aren't tracked in gm tasks
+
 **Missed Commitment Detection (always, lightweight):**
-- Search Slack for the executive's own commitment language in the past week: "I'll", "I will", "let me", "I'll send"
+- Search Slack and sent email for the executive's own commitment language in the past week: "I'll", "I will", "let me", "I'll send"
 - Cross-reference against gm tasks created this week
 - Surface any commitments that don't have a corresponding task
 
@@ -237,7 +243,8 @@ This review is most powerful with all sources. But even with just gm and kbx, it
 
 | Sources Available | Review Quality |
 |---|---|
-| All sources (kbx + gm + Slack + Linear) | Full strategic review |
-| kbx + gm + Slack | Good operational review, limited on project tracking |
+| All sources (kbx + gm + Slack + Gmail + Linear) | Full strategic review |
+| kbx + gm + Slack + Gmail | Good review, limited on project tracking |
+| kbx + gm + Slack | Good operational review, limited on external comms and project tracking |
 | kbx + gm only | Basic time/task analysis, limited pattern detection |
 | gm only | Task and calendar movement analysis only, flag that more data would help |

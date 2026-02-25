@@ -101,6 +101,7 @@ If Option A: guide through sync, wait, then proceed as "Rich".
 
 If Option B: scan MCPs:
 - **Slack**: read key channels, recent DMs, extract people + projects
+- **Gmail**: recent sent/received, extract contacts, recurring correspondents, and terminology
 - **Calendar (gm)**: recent/upcoming events, attendee patterns
 - **Linear**: active projects, team members, labels/terminology
 - **Granola MCP**: recent transcripts if available

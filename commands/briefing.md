@@ -70,6 +70,12 @@ For full content of a specific pinned doc, use `kbx view <path> --plain`.
 - Check DMs for unanswered messages from direct reports or key stakeholders
 - Flag any threads matching CIR criteria (immediate or daily thresholds)
 
+**Email (Gmail MCP):**
+- Scan recent inbox for messages from direct reports, key stakeholders, or external contacts
+- Flag unanswered emails that need a response (>24 hours old from important senders)
+- Surface any emails matching CIR criteria (escalations, urgent requests, executive-level comms)
+- Check sent mail for commitments made via email that aren't tracked in gm tasks
+
 **Project Tracker (gm + Linear):**
 - `gm tasks list --source linear --json` for Linear task status
 - Any blocked or stalled items on active initiatives
@@ -79,7 +85,7 @@ For full content of a specific pinned doc, use `kbx view <path> --plain`.
 
 Cross-reference findings. Look for:
 - Connections between meeting topics and open tasks/decisions
-- Topics that appear in multiple channels (Slack + Linear + kbx transcripts = something important)
+- Topics that appear in multiple channels (Slack + Gmail + Linear + kbx transcripts = something important)
 - Items that match CIR thresholds
 
 ### 4. Present the Briefing
@@ -151,9 +157,10 @@ After presenting the briefing, offer:
 ## Graceful Degradation
 
 If a data source is unavailable:
-- **No gm:** Fall back to Calendar MCP if available, note tasks unavailable
+- **No gm:** Fall back to Google Calendar MCP if available, note tasks unavailable
 - **No kbx:** Note context is limited, skip CIR-based filtering
 - **No Slack:** Skip signals from chat, note it
+- **No Gmail:** Skip email scanning, note it
 - **No Linear:** Skip project tracker stats, note it
 
 Always deliver whatever briefing is possible with available data. Never fail silently -- tell the executive what you couldn't check.

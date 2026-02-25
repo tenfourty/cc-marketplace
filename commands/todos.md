@@ -160,6 +160,12 @@ When the user passes `--deep`, extend the scan beyond kbx meeting transcripts to
 - Search for commitment language: "I'll", "I will", "can you", "action item", "todo", "by Friday", "follow up", "send"
 - Extract: who committed, what, when, which channel/thread
 
+**Email (Gmail MCP):**
+- Search sent mail for commitment language (last 5 business days): "I'll", "I will", "I'll send", "will follow up", "will get back to you"
+- Search inbox for requests directed at the executive: "can you", "please", "could you", "action required"
+- Extract: who committed/requested, what, when, which thread
+- Cross-reference against gm tasks — surface commitments not yet tracked
+
 **Calendar (gm):**
 - `gm this-week --json --response-format concise --no-frames`
 - For each recent meeting, check if there's a corresponding kbx transcript. If not, flag it: "No transcript found for [meeting] — anything come out of that?"
@@ -179,10 +185,14 @@ When the user passes `--deep`, extend the scan beyond kbx meeting transcripts to
 
 ## Caught in the Net
 
-Items from Slack, calendar, and project tracker that aren't tracked anywhere:
+Items from Slack, email, calendar, and project tracker that aren't tracked anywhere:
 
 ### From Slack
 * **#[channel]** ([date]): "[commitment quote]" — not in your tasks
+
+### From Email
+* **To [recipient]** ([date]): "[commitment quote]" — not in your tasks
+* **From [sender]** ([date]): "[request quote]" — not in your tasks
 
 ### Unaccounted Meetings
 * **[Meeting name]** ([date]) — no transcript found, no action items captured

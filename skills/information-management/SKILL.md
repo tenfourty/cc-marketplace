@@ -74,11 +74,13 @@ The highest-value information management is connecting signals across sources:
 
 | Pattern | What It Means |
 |---------|--------------|
-| Same topic in Slack + kbx transcript + Linear | Convergence signal: this is important and needs attention |
+| Same topic in Slack + Gmail + kbx transcript + Linear | Convergence signal: this is important and needs attention |
 | Person mentioned in 3+ contexts this week | This person is central to something — check in with them |
-| Project in Linear has no recent Slack or kbx activity | Possibly stalled or deprioritised silently |
+| Project in Linear has no recent Slack, Gmail, or kbx activity | Possibly stalled or deprioritised silently |
 | Decision from meeting not reflected in gm tasks | Execution gap: decision made but not actioned |
 | Action item in gm tasks but no follow-up in any channel | Dropped ball: nobody's working on this |
+| Email commitment not tracked in gm tasks | Dropped ball: promised something via email but never captured it |
+| External stakeholder emailing frequently with no kbx/Slack activity | Relationship happening outside internal channels — may need visibility |
 
 ## Entity Resolution
 

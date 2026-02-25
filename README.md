@@ -104,7 +104,9 @@ gm IS the task system. Task lifecycle uses tags (Right-Now, Active, Waiting-On, 
 | kbx | CLI (primary) | Knowledge base, search, people, projects, notes |
 | gm | CLI (primary) | Calendar, tasks, scheduling |
 | Slack | Claude.ai MCP | Real-time team communication |
+| Gmail | Claude.ai MCP | Email scanning for commitments, action items, external comms |
 | Linear | Claude.ai MCP | Issue creation/updates (write operations) |
+| Google Calendar | Claude.ai MCP (fallback) | Calendar events if gm is unavailable |
 | Granola | Claude.ai MCP (fallback) | Meeting transcripts if kbx returns nothing |
 | Notion | Claude.ai MCP (fallback) | Knowledge base if kbx returns nothing |
 
