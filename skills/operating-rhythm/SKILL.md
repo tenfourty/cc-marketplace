@@ -13,14 +13,23 @@ The Chief of Staff designs, monitors, and optimises the OR. The AI CoS tracks it
 The rhythms below are defaults. Actual cadence is stored in a pinned kbx note tagged `cadence` and personalised during `/setup`.
 
 ### Daily
-- **Morning briefing** (`/briefing`): Calendar review, priority actions, overdue items, key signals
-- **Post-meeting debriefs** (`/debrief`): After important meetings, extract actions and decisions
+- **Morning briefing** (`/briefing`): Calendar review, priority actions, overdue items, key signals. Day-aware: Saturday/Sunday/Monday includes week-ahead with calendar streamlining.
+- **Post-meeting debriefs** (`/debrief`): After important meetings, extract actions and decisions. Follow-on options: tldr, follow-up email, schedule follow-up, examine what wasn't asked, run blind spots analysis.
 - **Ad-hoc status checks** (`/status`): As needed throughout the day
+- **Todo scan** (`/todos`): Quick inventory of action items from recent meetings and commitments others owe
 
 ### Weekly
-- **Weekly review** (`/review`): Strategic synthesis, pattern analysis, coach-voice reflection
+- **Weekly review** (`/review`): Strategic synthesis, pattern analysis, coach-voice reflection. Post-review outputs: coaching session, status update for CEO, recap for direct reports, deep risk analysis.
+- **Coaching session** (`/coach`): Mochary Method coaching — energy audit, accountability, conscious leadership. Can run standalone or after review.
 - **Task triage**: Review gm tasks for stale items, reprioritise, complete done items
 - **Memory maintenance**: Update kbx pinned notes, update people context
+
+### As Needed
+- **Blind spots analysis** (`/blindspots`): Adversarial risk analysis on a meeting, topic, or the past week
+- **Decision help** (`/decision help`): Active decision coaching with framework selection
+- **Codify learnings** (`/codify`): Distil universal principles from meetings on a topic
+- **Culture audit** (`/culture`): Surface the tacit, unspoken organisational culture
+- **SuperGoal workshop** (`/supergoal`): Define a single high-stakes focusing goal
 
 ### Monthly
 - **Priority reassessment**: Are the current priorities still right? Run a mini Stop/Start/Continue

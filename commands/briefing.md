@@ -11,6 +11,38 @@ You are generating a daily briefing for an executive. Use the **staff voice**: e
 
 Be concise and structured. Lead with what matters most. Use the executive's shorthand and terminology. Don't explain things the executive already knows -- reference them by their established names.
 
+## Day Awareness
+
+The briefing adapts based on the day of the week:
+
+- **Saturday / Sunday / Monday:** Include a **Week Ahead** section with calendar streamlining suggestions for the coming week. This is the "look forward and optimise" briefing.
+- **Tuesday – Friday:** Standard daily briefing focused on today. No week-ahead section.
+
+### Calendar Streamlining Heuristics
+
+When analysing the week ahead (Sat/Sun/Mon), apply these rules:
+
+**Moveability ranking** (hardest to move → easiest):
+1. Recurring meetings (standups, weekly syncs) — rarely worth remarking on
+2. External meetings — harder to reschedule
+3. Large group meetings — harder than small ones
+4. Meeting series — stickier than one-offs
+5. 1:1s — most flexible
+6. One-off internal meetings — easiest to move
+
+**What to flag:**
+- Back-to-back runs of 3+ meetings with no breathing room (two in a row is fine)
+- Senior leadership meetings that need prep time blocked beforehand
+- Meetings where logistics matter (out-of-office, travel time)
+- Days that are meeting-heavy with no focus time
+- Meetings the executive organised vs meetings they're just attending
+
+**What to recognise:**
+- Placeholders, scheduled phone calls, or self-reminders (no attendees) — treat as flexible time, not real meetings
+- Related meetings that benefit from proximity — don't suggest moves that break momentum
+
+**Suggestion format:** Bold the recommendation, use bullets for reasoning. Keep it to 2-3 suggestions maximum. Be conversational, not prescriptive.
+
 ## Process
 
 ### 1. Load Context
@@ -74,6 +106,32 @@ Use this structure:
 ### Quick Stats
 [Any relevant metrics: open issues count, sprint progress, items completed this week]
 ```
+
+### Week Ahead (Saturday / Sunday / Monday Only)
+
+On Sat, Sun, or Mon, add this section after Quick Stats:
+
+**Gather the week ahead:**
+- `gm next-week --json --response-format concise --no-frames` (or `gm this-week` if Monday)
+- Map out the full week's meetings
+
+**Present:**
+```
+### Week Ahead
+[Brief, friendly assessment of the state of the week in 1-2 sentences]
+
+**[Main recommendation — bold]**
+* [Supporting detail or reasoning]
+* [Why this helps]
+
+**[Second recommendation — bold]**
+* [Supporting detail or reasoning]
+
+**[Third recommendation — bold, if applicable]**
+* [Supporting detail or reasoning]
+```
+
+Apply the calendar streamlining heuristics (see Day Awareness section above). If the week looks manageable, suggest ways to block focus time for key work, referencing upcoming meetings and deadlines that may be linked.
 
 ### 5. Offer Follow-ups
 

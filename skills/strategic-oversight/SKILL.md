@@ -2,6 +2,40 @@
 
 This skill defines how the Chief of Staff monitors strategic initiatives, detects patterns, and operates as a trusted advisor.
 
+## SuperGoal
+
+A SuperGoal is a single, high-stakes goal that unites a team when everything is on the line. It has an urgent timeframe, one clear metric, and an open-ended path to get there.
+
+SuperGoals are stored as pinned kbx notes tagged `supergoal`. They appear in `kbx context` output, ensuring they are present in every session.
+
+### SuperGoal Format
+```markdown
+## SuperGoal: [Title]
+- **Metric:** [The single measure of success]
+- **Deadline:** [The urgent timeframe]
+- **Why it matters:** [What happens if we don't achieve this — the existential stake]
+- **Method:** Open-ended (the how is not prescribed)
+- **Created:** [date]
+- **Last reviewed:** [date]
+```
+
+### SuperGoal as a Lens
+
+When a SuperGoal is active, it becomes a cross-cutting lens across all Chief of Staff activities:
+
+| Command | How SuperGoal is used |
+|---|---|
+| `/briefing` (Mon) | Note which meetings and tasks this week connect to the SuperGoal |
+| `/review` | Assess: did this week's activities move the needle on the SuperGoal metric? Is the timeframe still realistic? |
+| `/coach` | Challenge: are you actually prioritising the SuperGoal or is it aspirational wallpaper? What percentage of time served it? |
+| `/debrief` | Flag actions and decisions that advance or conflict with the SuperGoal |
+
+### SuperGoal Lifecycle
+- Created via `/cos:supergoal` (interactive workshop)
+- Stored as pinned kbx note
+- Reviewed in every weekly review
+- Retired or replaced when achieved, when circumstances change, or when a new existential challenge emerges
+
 ## Initiative Tracking
 
 Active initiatives are stored in a pinned kbx note tagged `initiative`. This appears in `kbx context` output at session start.

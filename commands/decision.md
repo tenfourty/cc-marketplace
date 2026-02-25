@@ -11,6 +11,7 @@ You manage the executive's decision log. Use the **staff voice** for logging, **
 **Usage:**
 - `/decision log` — interactively log a decision
 - `/decision recall <topic>` — find past decisions on a topic
+- `/decision help` — active decision coaching with framework selection
 - `/decision` — ask what the user wants to do
 
 ## Logging a Decision
@@ -103,6 +104,72 @@ When showing past decisions, add:
 - **Trajectory:** "This decision reversed one from [date]. What changed?"
 - **Open items:** "The action items from this decision are still in gm tasks — are they done?"
 - **Revisit flag:** "You said to revisit this by [date]. That's [past due / coming up]."
+
+## Helping Decide
+
+When the user runs `/decision help` or `/decision help <topic>`:
+
+### 1. Identify the Decision
+
+**If a topic is provided:** Use it as the decision to work through.
+
+**If no topic is provided:**
+- Search recent meetings for undecided items: `kbx search "decision" --from YYYY-MM-DD --fast --json`
+- Check for deferred decisions: `kbx search "revisit" --from YYYY-MM-DD --fast --json`
+- Check gm tasks for items that imply pending decisions
+- Identify **at least 3 big decisions** discussed recently. Summarise them briefly.
+- From these, define the **largest, most important decision** and explain why.
+- Ask if the executive agrees, or if they want to define the problem differently.
+
+### 2. Frame the Problem
+
+State clearly: **"Problem: [concise framing of the decision to be made]"**
+
+### 3. Select a Framework
+
+Cite three potential decision-making frameworks, each with one sentence describing why it might fit this situation. Choose from (and beyond — select what's most appropriate for the specific problem):
+
+**Structured frameworks:**
+- CSD Matrix (Certainties, Suppositions, Doubts)
+- SWOT Analysis (Strengths, Weaknesses, Opportunities, Threats)
+- Eisenhower Matrix (Urgent vs Important)
+- RAPID (Recommend, Agree, Perform, Input, Decide)
+- Decision Matrix / Weighted scoring
+- Pre-Mortem Analysis (assume failure, work backwards)
+- Golden Circle (Why, How, What)
+- Six Thinking Hats (de Bono)
+
+**Social science theories** (use when relevant):
+- Prospect Theory (loss aversion in decision framing)
+- Diffusion of Innovations (adoption and change management)
+- Organisational Decision Making Theory
+- Social Judgment Theory
+- First Principles Thinking
+
+Pick the **one most appropriate** for this specific situation and explain why.
+
+### 4. Walk Through the Framework
+
+Take the chosen framework and go step by step through it, using short, direct, conversational language. Apply it specifically to the executive's decision — not generic guidance, but concrete analysis using the data you have.
+
+Use the McChrystal framework components (Clarity, Inputs, People, Decision, Outcome) as a cross-check alongside the chosen framework to ensure nothing is missed.
+
+### 5. Deliver a Recommendation
+
+After working through the framework:
+- State a clear recommendation (or present the top 2 options with your lean)
+- Explain the rationale in 2-3 sentences
+- Note what would change your recommendation
+- Suggest a revisit date if the decision has a time horizon
+
+### 6. Further Reading
+
+Cite 2-3 blog posts, articles, books, or resources that could help go deeper on:
+- The specific problem domain
+- The chosen framework
+- Decision-making in similar contexts
+
+Include descriptions but not invented URLs. Reference publications like Harvard Business Review, specific books, or well-known frameworks.
 
 ## Quick Log
 

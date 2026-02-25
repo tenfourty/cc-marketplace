@@ -21,6 +21,18 @@ Use `gm today` output if already in context, otherwise run `gm today --json --re
 - Any agenda or description in the calendar invite
 - Whether this is a recurring meeting
 
+**Classify the meeting type** based on title and attendees:
+- **1:1** — two people, often recurring
+- **Team sync / standup** — regular team meeting, multiple attendees from the same team
+- **Cross-functional** — attendees from different teams or departments
+- **External** — attendees outside the organisation (inferred from email domains)
+- **Interview** — candidate meetings
+- **Board / investor** — board members or investors
+- **Networking / informal** — coffee chats, catch-ups
+- **Unknown** — can't determine; ask the user
+
+The meeting type shapes what kind of preparation and topic suggestions to provide.
+
 ### 2. Load Context
 
 Use `kbx context` if already in context (provides pinned docs including CIRs, initiatives, recurring meetings, cadence).
@@ -54,25 +66,31 @@ For the meeting topic:
 
 ### 4. Present the Brief
 
-Use this structure:
+Use this structure. Write in a conversational, human-sounding tone — avoid jargon. Phrase suggestions as possibilities, not directives.
 
 ```
 ## Meeting Prep — [Meeting Title]
 **Time:** [time and duration]
-**Type:** [recurring/one-off] [if recurring: last held on X]
+**Type:** [meeting type — e.g., 1:1, cross-functional, external]
 
-### Attendees
-[For each attendee:]
-- **[Name]** — [role]. [One line of relevant context: what they own, recent interactions, any open items with them]
+### Who
+[Skip if no external attendees or if all attendees are well-known direct reports.]
+[For external attendees: name, role, company, relevant context]
+[For less-familiar internal attendees: role, what they own, any recent signals]
 
-### Context
-[Why this meeting exists. What's been happening. What's at stake.]
+### Where We Left Off
+[One sentence recap of the last relevant interaction with these attendees or on this topic. If recurring: summary of the previous occurrence. If no history exists, say so.]
+
+### Suggested Topics
+[2-4 scannable bullets shaped by the meeting type:]
+- [For 1:1s: role and responsibility-aware reflections or questions, not just project updates]
+- [For team syncs: items that need group input or visibility]
+- [For external meetings: relationship-building alongside business topics]
+- [For cross-functional: alignment topics and shared blockers]
+[Phrase as possibilities: "You might want to raise..." or "Worth discussing..." — not "You must discuss..."]
 
 ### Open Items
-[Action items from previous meetings with these people. Status of commitments.]
-
-### Key Topics to Raise
-[Suggested agenda items based on open items, recent signals, and CIRs]
+[Action items from previous meetings with these people. Status of commitments. Items others owe that could be followed up on.]
 
 ### Decisions Pending
 [Any decisions that could/should be made in this meeting]
@@ -80,6 +98,8 @@ Use this structure:
 ### Background
 [Relevant recent decisions, project status, or context the exec should have in mind]
 ```
+
+End with a single sentence confirming what context informed the prep, and ask if there's anything else to consider or any specific goals for the meeting.
 
 ### 5. Offer Follow-ups
 
@@ -93,6 +113,19 @@ If this meeting appears in the pinned recurring meetings note (from `kbx context
 - What was discussed last time (via `kbx search`)
 - Which action items from last time are still open
 - Any changes in the attendee list since last time
+
+## Unknown Attendees / No History
+
+If there is no related or recent meeting history that appears relevant to this conversation:
+
+1. Identify it as a meeting with [person] from [company — inferred from their email domain, not gmail/personal domains]
+2. If enough context exists to make useful suggestions, do so based on:
+   - The meeting type
+   - The executive's role and current priorities
+   - Any company context that can be inferred
+3. If not enough context, ask: "I don't have much history with [person]. What's the context for this meeting? Any specific goals?"
+
+For 1:1s with direct reports, add role and responsibility-aware reflections or questions — not just status updates. Think about what a good manager would want to check on with this person specifically.
 
 ## Graceful Degradation
 

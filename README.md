@@ -23,21 +23,40 @@ Then run `/cos:setup` to personalise the Chief of Staff for your role, team, and
 
 ## Commands
 
+### Daily Operations
 | Command | Description |
 |---------|-------------|
 | `/cos:setup` | First-run personalisation — learns your role, team, priorities, CIRs |
-| `/cos:briefing` | Morning briefing — calendar, priorities, overdue items, key signals |
-| `/cos:prep <meeting>` | Meeting preparation — attendee context, open items, history |
-| `/cos:debrief` | Post-meeting — extract actions, decisions, follow-ups from transcript |
-| `/cos:review` | Weekly strategic review — patterns, blind spots, coach questions |
+| `/cos:briefing` | Morning briefing — calendar, priorities, overdue items, key signals. Day-aware: Sat/Sun/Mon includes week-ahead with calendar streamlining |
+| `/cos:prep <meeting>` | Meeting preparation — attendee context, open items, suggested topics, "where we left off" |
+| `/cos:debrief` | Post-meeting — extract actions, decisions, follow-ups. Follow-on: tldr, follow-up email, schedule follow-up, risk analysis |
 | `/cos:status <topic>` | Cross-source status check on any topic, project, or person |
-| `/cos:decision [log\|recall]` | Log a new decision or recall past decisions |
+| `/cos:todos` | Scan recent meetings for your action items and commitments others owe you |
+
+### Weekly Cadence
+| Command | Description |
+|---------|-------------|
+| `/cos:review` | Weekly strategic review — patterns, blind spots, coach questions. Post-review: status update, team recap, coaching |
+| `/cos:coach` | Mochary Method coaching session — energy audit, accountability, conscious leadership. Standalone or after review |
+
+### Decision & Strategy
+| Command | Description |
+|---------|-------------|
+| `/cos:decision [log\|recall\|help]` | Log a decision, recall past decisions, or get active decision coaching with frameworks |
+| `/cos:blindspots [target]` | Adversarial risk analysis — on a meeting, topic, or the past week |
+| `/cos:supergoal` | Interactive workshop to define a single high-stakes focusing goal |
+
+### Knowledge & Culture
+| Command | Description |
+|---------|-------------|
+| `/cos:codify [topic]` | Distil universal principles and best practices from meetings on any topic |
+| `/cos:culture` | Surface the tacit, unspoken culture from recent meetings — an honest field guide |
 
 ## Architecture
 
 ### Two Voices
-- **Staff voice** (daily operations): Efficient, structured, action-oriented
-- **Coach voice** (strategic work): Probing, pattern-aware, challenges assumptions
+- **Staff voice** (daily operations): Efficient, structured, action-oriented — used for briefings, prep, debrief, status, todos, codify
+- **Coach voice** (strategic work): Probing, pattern-aware, challenges assumptions — used for review, coaching, blindspots, culture, supergoal, decision help
 
 ### Skills (Always-On Context)
 | Skill | Purpose |
@@ -67,6 +86,7 @@ kbx IS the memory system. Core reference documents are stored as pinned kbx note
 | Active initiatives | `initiative` | Yes |
 | Operating rhythm / cadence | `cadence` | Yes |
 | Recurring meetings | `meetings` | Yes |
+| SuperGoal | `supergoal` | Yes (if active) |
 | Decisions | `decision` | No |
 | People context | kbx person entities | — |
 | Projects | kbx project entities | — |

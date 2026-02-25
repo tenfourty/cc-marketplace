@@ -86,6 +86,11 @@ This is where you earn your keep. Don't just compile -- think.
 - Where did the "Stop" items from Stop/Start/Continue creep back in?
 - Are the "Start" items actually getting started?
 
+**SuperGoal Check** (if an active SuperGoal exists — pinned kbx note tagged `supergoal`):
+- Did this week's activities move the needle on the SuperGoal's single metric?
+- Is the timeframe still realistic given current trajectory?
+- Is the SuperGoal still the right one, or have circumstances changed?
+
 ### 4. Present the Review
 
 ```
@@ -108,6 +113,7 @@ This is where you earn your keep. Don't just compile -- think.
 
 ### Blind Spots to Consider
 [Things you might be missing, people you haven't connected with, decisions being avoided]
+[Note: for a deeper adversarial analysis, suggest running /cos:blindspots]
 
 ### Questions for Reflection
 [3-5 probing questions based on the week's data]
@@ -129,7 +135,63 @@ After presenting the review, invite discussion:
 - "Any of these blind spots hit home?"
 - "Should we adjust any priorities or CIRs based on this week?"
 
-### 6. Update Memory
+### 6. Post-Review Outputs
+
+After the discussion, offer these follow-on options:
+
+- **"Want me to run a coaching session on how you showed up this week?"** — Triggers `/cos:coach`, which uses the review data already in context to deliver a Mochary Method coaching session. No need to re-gather data.
+
+- **"Want me to draft a status update for the CEO / exec team?"** — Generates an upward-facing status update using the review data. Format:
+
+  ```
+  **1. Blockers I need help with:**
+  * [Blocker: description + WHO can help + WHEN]
+
+  **2. My current priorities:**
+  * [Project/initiative]: [Progress + milestone/deadline]
+
+  **3. On my mind:**
+  * [Forward-looking item: early risk, upcoming issue, or idea]
+  ```
+
+  Rules for the upward update:
+  - Prioritise the most recent 5 business days for blockers and priorities
+  - Include older items only if they remain active or unresolved
+  - Weight internal meetings (1:1s, standups, reviews) more than external calls
+  - Use the executive's own words where possible
+  - Tag uncertain items with `[PLEASE VERIFY: detail]` or `[INFERRED: basis]`
+  - If any tags exist, append a review section at the end
+  - Always highlight new developments since the last update
+  - Output as a Slack message ready to send
+
+- **"Want me to draft a recap for your direct reports?"** — Generates a downward-facing weekly recap. Format:
+
+  ```
+  ## Week of [dates]
+
+  ### What I worked on
+  [Key activities, meetings, and focus areas — what the team should know about]
+
+  ### Decisions made
+  [Decisions that affect the team, with brief context]
+
+  ### Coming up
+  [What's ahead next week that the team should be aware of]
+
+  ### Shout-outs
+  [Recognition for good work observed this week]
+  ```
+
+  Rules for the downward recap:
+  - Focus on a full calendar week (if Sun-Wed, previous week; if Thu-Sat, current week)
+  - Focus on what's relevant to the team, not everything the executive did
+  - Include decisions that affect team direction or priorities
+  - Recognise good work — the team should see the executive notices
+  - Keep it concise and Slack-ready
+
+- **"Want a deeper risk analysis on this week's plans?"** — Triggers `/cos:blindspots` in post-review mode.
+
+### 7. Update Memory
 
 Based on the discussion:
 - Update kbx pinned initiatives note if status changed: `kbx note edit <path> --body "updated content"` or `--append "new info"`

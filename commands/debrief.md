@@ -24,9 +24,20 @@ If no transcript is available from any source, ask the user to provide a summary
 
 From the transcript, extract:
 
-**Action Items:**
+**Action Items (Two-Tier):**
+
+*Explicit (To Do):* Direct commitments with clear ownership:
 - WHO committed to doing WHAT by WHEN
+- "I'll send the draft by Friday" / "Can you review this?" / "[Name] to handle X"
 - Include both the executive's own commitments and others' commitments
+
+*Inferred:* Implicit commitments where the executive is likely responsible:
+- "We should update the docs" (where context suggests executive ownership)
+- Group suggestions the executive implicitly agreed to
+- Tag these as *(inferred)* in the output
+
+An action item is a **future commitment** — not a status update. "I am doing X" (current work) is NOT an action item. "I will do X" (new commitment) IS.
+
 - Flag any items that are vague ("I'll look into it") and ask for clarification
 
 **Decisions Made:**
@@ -102,9 +113,23 @@ Check extracted items against:
 
 ### 6. Offer Next Steps
 
-- "Want me to send follow-up messages to anyone about their action items?"
+Present a follow-on menu based on what's relevant to this meeting:
+
+**Always offer:**
 - "Should I create Linear issues for any of these?" (via Linear MCP)
 - "Any of these items need to be added to a specific initiative?"
+
+**Offer contextually:**
+
+- **Write a tldr** — Offer when the meeting had external attendees or cross-team relevance ("Want a tldr to share with the team?"). Format: Three sentences. First: "Met with [person/company] to discuss [topic]." Then two bullet points with key outcomes. Designed to be pasted into Slack immediately.
+
+- **Draft a follow-up email** — Offer when there are action items involving external parties or when commitments need confirming. Write a short, casual, action-oriented email. If the executive promised something quick (<5 mins like finding a document), assume it's done and use placeholders (e.g., "[Insert link to DPA]"). If others promised something important, nudge them toward a deadline ("When do you think you'll have X ready?"). Use `[Insert X]` for any missing info. Don't quote the transcript.
+
+- **Schedule a follow-up meeting** — Offer when the discussion clearly needs continuation or a check-in was mentioned. Suggest what follow-up makes sense and a rough timeframe. Check free slots via `gm`. Create the event via `gm` if confirmed.
+
+- **Examine what wasn't asked** — Offer for substantive meetings (strategy sessions, planning, decision-making meetings). Ask: "What questions are you surprised weren't covered? What questions should you have been asking? What would have cut deeper into the topic? If you had 15 more minutes, what would be most incisive to tackle?"
+
+- **Run a deeper risk analysis** — Offer for meetings involving plans, proposals, or significant decisions. "Want me to run a blind spots analysis on what was discussed?" This triggers `/cos:blindspots` in post-meeting mode.
 
 ## When No Transcript is Available
 

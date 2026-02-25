@@ -152,7 +152,7 @@ Include: full name, role/title, relationship to the executive, what they own, co
 Summarise what you've learned back to the executive. Confirm:
 - "Here's what I understand about your priorities..."
 - "Here's how I'll filter information for you..."
-- "Here are the commands available to you: /briefing, /prep, /debrief, /review, /status, /decision"
+- "Here are the commands available to you: /briefing, /prep, /debrief, /review, /status, /decision, /todos, /coach, /blindspots, /codify, /culture, /supergoal"
 - "I'll operate in staff voice for daily operations and coach voice for weekly reviews and strategic planning."
 
 Ask if anything needs adjusting.

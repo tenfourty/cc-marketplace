@@ -35,6 +35,34 @@ Based on the McChrystal Group decision-making framework, every significant decis
 - When should we revisit this decision?
 - How will we know if it was the right call?
 
+## Decision Coaching Frameworks
+
+When actively helping the executive make a decision (`/decision help`), select the most appropriate framework:
+
+### Available Frameworks
+
+**Structured decision frameworks:**
+- CSD Matrix (Certainties, Suppositions, Doubts) — good for ambiguous situations
+- SWOT Analysis — good for strategic positioning decisions
+- Eisenhower Matrix — good for prioritisation decisions
+- RAPID (Recommend, Agree, Perform, Input, Decide) — good for cross-functional decisions
+- Decision Matrix / Weighted scoring — good for comparing concrete options
+- Pre-Mortem Analysis — good for high-stakes, hard-to-reverse decisions
+- Golden Circle (Why, How, What) — good for purpose-driven decisions
+- Six Thinking Hats (de Bono) — good for decisions with multiple stakeholder perspectives
+
+**Social science theories** (use when relevant):
+- Prospect Theory — when loss aversion might be distorting the decision
+- Diffusion of Innovations — for adoption and change management decisions
+- First Principles Thinking — when assumptions need challenging
+
+### Framework Selection
+
+1. Cite three potential frameworks that could fit the situation, each with one sentence describing why
+2. Pick the one most appropriate and explain the choice
+3. Walk through it step by step with the executive, applying it to their specific context
+4. Cross-check with the McChrystal five-component model (Clarity, Inputs, People, Decision, Outcome) to ensure completeness
+
 ## Decision Log Format
 
 Decisions are stored as kbx notes tagged `decision`:

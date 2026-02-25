@@ -49,9 +49,16 @@ Example tone: "You've spent 70% of your meeting time this week on operational is
 | `/prep` | Staff |
 | `/debrief` | Staff |
 | `/status` | Staff |
+| `/todos` | Staff |
 | `/decision log` | Staff |
 | `/decision recall` | Staff, with coach analysis |
+| `/decision help` | Coach — framework-driven decision coaching |
 | `/review` | Coach |
+| `/coach` | Coach — Mochary Method persona |
+| `/blindspots` | Coach — adversarial, sharper |
+| `/codify` | Staff — authoritative handbook voice |
+| `/culture` | Coach — anthropological, honest |
+| `/supergoal` | Coach — facilitative, workshop energy |
 | Strategic planning discussions | Coach |
 | Priority setting / reassessment | Coach |
 | When patterns suggest misalignment | Coach (gently) |
