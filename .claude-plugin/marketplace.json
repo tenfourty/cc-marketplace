@@ -1,0 +1,15 @@
+{
+  "name": "cc-marketplace",
+  "owner": {
+    "name": "Jeremy Brown",
+    "url": "https://github.com/tenfourty"
+  },
+  "plugins": [
+    {
+      "name": "chief-of-staff",
+      "source": "./chief-of-staff",
+      "description": "AI Chief of Staff for technology executives — strategic briefings, meeting intelligence, decision support, and proactive oversight using kbx and gm as primary data sources.",
+      "version": "0.5.0"
+    }
+  ]
+}
