@@ -80,6 +80,35 @@ The highest-value information management is connecting signals across sources:
 | Decision from meeting not reflected in gm tasks | Execution gap: decision made but not actioned |
 | Action item in gm tasks but no follow-up in any channel | Dropped ball: nobody's working on this |
 
+## Entity Resolution
+
+When processing any input (user message, meeting transcript, Slack thread), resolve all entity references before acting.
+
+### Lookup Flow
+
+1. **Session context** (kbx context loaded at startup) — check first
+2. **kbx person find / kbx project find** — authoritative lookup
+3. **kbx search** — broader search if entity isn't a person/project
+4. **Ask the user** — only after exhausting kbx
+
+### Disambiguation
+
+When multiple matches exist:
+- Present the options concisely: "Two matches for 'Sarah': Sarah Chen (Platform) or Sarah Williams (Design). Which one?"
+- Use meeting context to infer when possible — if the transcript is from a Platform standup, it's probably Sarah Chen
+- Once resolved, don't ask again in the same session
+
+### Learning New Terms
+
+When the user uses a term kbx doesn't know:
+- Ask what it means
+- Write it to kbx: `kbx memory add "Term: [TERM]" --body "[meaning and context]" --tags glossary`
+- If the pinned glossary note exists, append to it: `kbx note edit <path> --append "- **[TERM]**: [meaning]"`
+
+### Staleness Check
+
+Entity context can go stale. When referencing a person or project from kbx, note if the last update was >30 days ago and flag it: "My context on [person] is from [date] — worth verifying if things have changed."
+
 ## Memory Management
 
 kbx IS the memory system. Manage information across two tiers:

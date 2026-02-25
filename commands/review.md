@@ -49,6 +49,11 @@ The weekly-review agent should gather in parallel:
 - Any tension or conflict signals in team communications
 - Topics that keep coming up (recurring themes)
 
+**Missed Commitment Detection (always, lightweight):**
+- Search Slack for the executive's own commitment language in the past week: "I'll", "I will", "let me", "I'll send"
+- Cross-reference against gm tasks created this week
+- Surface any commitments that don't have a corresponding task
+
 **Meeting Transcripts (kbx) — Decision Flow:**
 - `kbx search "decision" --from YYYY-MM-DD --fast --json` for this week's decisions across meetings
 - `kbx search "action item" --from YYYY-MM-DD --fast --json` for commitments
@@ -106,7 +111,26 @@ This is where you earn your keep. Don't just compile -- think.
 [Tasks completed, decisions made, initiatives advanced]
 
 ### What Didn't Move
-[Stalled items, deferred decisions, stuck initiatives]
+[Don't just list stalled items — challenge them with coach voice.
+For each stalled task or initiative, present as an interactive
+discussion: how long has it been stuck? Is it still a priority
+or are you avoiding it? What would unblock it — a smaller first
+step, delegation, deferral, or dropping it entirely?
+
+Example: "**[Task/initiative]** has been sitting for [X weeks].
+Last activity was [context]. Three possibilities: it's blocked
+and needs intervention, it's been silently deprioritised, or
+it's done and nobody closed it. Which is it?"
+
+After the discussion, execute whatever the user decides via
+gm tasks commands.]
+
+### Commitments Not Yet Tracked
+[Items the executive said they'd do in Slack/meetings this week
+that aren't in gm tasks. Only show if any are found — skip the
+section entirely if clean.]
+
+* **[Channel/meeting]** ([date]): "[quote]" — no matching task
 
 ### Patterns I'm Noticing
 [Cross-source themes, recurring topics, trajectory shifts]

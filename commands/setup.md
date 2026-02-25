@@ -58,6 +58,72 @@ Based on the McChrystal Group framework, establish what information the executiv
 - When do you prefer to receive briefings? (morning, evening, ad-hoc)
 - What tools do you use most? (helps prioritise which integrations to lean on)
 
+## Step 2.5: Learn Your World
+
+After the interactive conversation, probe available data sources to learn the executive's working language — people, projects, acronyms, and shorthand.
+
+### 1. Probe kbx Richness
+
+Run:
+- `kbx context` (if not already loaded)
+- `kbx person find "" --json --limit 20` — how many people exist?
+- `kbx project find "" --json --limit 20` — how many projects?
+- `kbx note list --limit 10 --json` — how many notes/transcripts?
+
+Classify:
+- **Rich** (20+ people, 10+ meetings/notes): scan kbx directly
+- **Sparse** (some data but gaps): scan kbx + supplement from MCPs
+- **Empty** (no people, no notes): guide sync or scan MCPs
+
+### 2a. If Rich — Scan kbx
+
+Search for patterns in existing data:
+- People who appear frequently across meetings
+- Projects and codenames mentioned repeatedly
+- Acronyms and internal terminology
+- Recurring meeting names and rhythms
+
+Cross-reference against what the executive told you in Step 2. Flag gaps: "You mentioned Sarah but I don't see her in any transcripts — is she new?"
+
+### 2b. If Sparse/Empty — Guide or Scan
+
+Present the choice:
+
+> Your knowledge base doesn't have much data yet. Two options:
+>
+> **Option A — Populate first (recommended):**
+> If you have Granola meeting transcripts, let's sync them now. Run: `kb sync granola --since 30d` then `kb index run`. I'll wait, then scan what comes in.
+>
+> **Option B — Quick scan from connected tools:**
+> I'll scan your Slack channels, calendar, and Linear directly to learn your world now. Anything I learn gets written back to kbx so it's there for next time.
+
+If Option A: guide through sync, wait, then proceed as "Rich".
+
+If Option B: scan MCPs:
+- **Slack**: read key channels, recent DMs, extract people + projects
+- **Calendar (gm)**: recent/upcoming events, attendee patterns
+- **Linear**: active projects, team members, labels/terminology
+- **Granola MCP**: recent transcripts if available
+
+### 3. Decode Shorthand
+
+From whatever data source, extract:
+- **People**: full names, nicknames, roles. Flag ambiguities ("I found two Sarahs — Sarah Chen in Platform and Sarah Williams in Design. Want to clarify?")
+- **Projects**: names, codenames, current status
+- **Acronyms/terms**: internal jargon, abbreviations
+
+Present findings grouped by confidence:
+- **Confirmed** (appeared in multiple sources) → write to kbx
+- **Likely** (single source, clear context) → confirm with user
+- **Unclear** (ambiguous or low-frequency) → ask user
+
+### 4. Write Learned Context to kbx
+
+For each confirmed/approved item:
+- People: `kbx memory add "[Name] context" --entity "Name"`
+- Terms/acronyms: include in a pinned "Workplace Glossary" note (`--tags glossary --pin`)
+- Projects: `kbx memory add "[Project] context" --entity "Project"`
+
 ## Step 3: Write to kbx
 
 Based on the conversation, create or update pinned kbx notes:

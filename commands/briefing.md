@@ -63,6 +63,7 @@ For full content of a specific pinned doc, use `kbx view <path> --plain`.
 - `gm tasks list --tag Right-Now --json` for today's focus items
 - `gm tasks list --overdue --json` for overdue items
 - `gm tasks list --tag Waiting-On --json` for items pending from others that have been waiting too long (>3 business days)
+- `gm tasks list --tag Active --json` for stale item detection (items older than 30 days)
 
 **Chat (Slack MCP):**
 - Scan key channels for messages requiring executive attention
@@ -105,7 +106,14 @@ Use this structure:
 
 ### Quick Stats
 [Any relevant metrics: open issues count, sprint progress, items completed this week]
+
+### Housekeeping
+[Only if stale items exist. Skip entirely if task list is clean.]
+You have X overdue tasks and Y items tagged Active for 30+ days.
+Want to do a quick triage before your day starts?
 ```
+
+If the user says yes, run an inline mini-triage: present each stale item and offer mark done / reschedule / move to Someday / delete. Staff voice, fast. Process choices via `gm tasks` commands.
 
 ### Week Ahead (Saturday / Sunday / Monday Only)
 

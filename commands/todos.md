@@ -1,6 +1,7 @@
 ---
 description: List your outstanding action items and commitments others owe you from recent meetings. Creates gm tasks for tracking.
 user_invocable: true
+args: "[--deep]"
 ---
 
 # Todos
@@ -59,7 +60,18 @@ Check each item against existing gm tasks:
 - Updates an existing task? → Note the update needed
 - Entirely new? → Flag for creation
 
-### 4. Present
+### 4. Stale Task Audit
+
+After cross-referencing extracted items against gm, scan for stale tasks:
+
+Query:
+- `gm tasks list --overdue --json`
+- `gm tasks list --tag Active --json` (filter to items older than 30 days by created/updated date)
+- `gm tasks list --tag Waiting-On --json` (filter to items waiting >5 business days)
+
+These are presented after the main action items output (see Step 5).
+
+### 5. Present
 
 Add a short intro line: *"Here are your recent action items and commitments, organised by meeting:"*
 
@@ -101,7 +113,35 @@ Group by day, most recent first.
 - Never output `* -` or empty bullets
 - If a meeting has no title, use **Unnamed Meeting**
 
-### 5. Pagination
+### 6. Stale Items Output
+
+After the main action items, present stale task findings from Step 4 (skip entirely if no stale items found):
+
+```
+---
+
+## Stale Items
+
+### Overdue
+* **[Task title]** — due [date], [X days ago]
+
+### Stuck (Active 30+ days)
+* **[Task title]** — created [date], no recent activity
+
+### Waiting Too Long (>5 business days)
+* **[Person]: [Task]** — waiting since [date]
+```
+
+For each item, offer:
+- ✓ Mark done (already handled)
+- → Reschedule (set new due date)
+- ↓ Move to Someday (deprioritise)
+- ✕ Delete (no longer relevant)
+- ⏭ Skip (leave as-is for now)
+
+Process the user's choices via gm tasks commands.
+
+### 7. Pagination
 
 Show the most recent calendar day of meetings first. If that's fewer than 5 meetings, include earlier days until at least 5 meetings are shown.
 
@@ -110,7 +150,50 @@ Show the most recent calendar day of meetings first. If that's fewer than 5 meet
 - When continuing, deliver meetings in complete day chunks.
 - Keep track of which meetings have already been displayed — never repeat them.
 
-### 6. Create Tasks
+### 8. Deep Scan (--deep flag only)
+
+When the user passes `--deep`, extend the scan beyond kbx meeting transcripts to all available MCP sources.
+
+**Slack:**
+- Read recent messages in key channels (last 5 business days)
+- Read recent DMs
+- Search for commitment language: "I'll", "I will", "can you", "action item", "todo", "by Friday", "follow up", "send"
+- Extract: who committed, what, when, which channel/thread
+
+**Calendar (gm):**
+- `gm this-week --json --response-format concise --no-frames`
+- For each recent meeting, check if there's a corresponding kbx transcript. If not, flag it: "No transcript found for [meeting] — anything come out of that?"
+
+**Linear (MCP):**
+- Check for issues assigned to the executive that aren't reflected in gm tasks
+- Check for issues where the executive is mentioned in comments but not assigned
+
+**Granola (MCP, fallback):**
+- If kbx didn't have transcripts for recent meetings, check Granola for them
+- Apply the same extraction logic as Step 2
+
+**Present deep-scan findings separately:**
+
+```
+---
+
+## Caught in the Net
+
+Items from Slack, calendar, and project tracker that aren't tracked anywhere:
+
+### From Slack
+* **#[channel]** ([date]): "[commitment quote]" — not in your tasks
+
+### Unaccounted Meetings
+* **[Meeting name]** ([date]) — no transcript found, no action items captured
+
+### Linear Gaps
+* **[Issue title]** — assigned to you, not in gm tasks
+```
+
+Ask: "Want me to create tasks for any of these, or were they already handled?"
+
+### 9. Create Tasks
 
 After presenting, ask:
 
