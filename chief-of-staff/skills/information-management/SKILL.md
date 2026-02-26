@@ -107,9 +107,13 @@ When the user uses a term kbx doesn't know:
 - Write it to kbx: `kbx memory add "Term: [TERM]" --body "[meaning and context]" --tags glossary`
 - If the pinned glossary note exists, append to it: `kbx note edit <path> --append "- **[TERM]**: [meaning]"`
 
-### Staleness Check
+### Staleness Check (ENFORCED)
 
-Entity context can go stale. When referencing a person or project from kbx, note if the last update was >30 days ago and flag it: "My context on [person] is from [date] — worth verifying if things have changed."
+Entity context goes stale. When referencing a person or project from kbx:
+- **ALWAYS** check the `updated_at` and `last_mentioned_at` fields
+- If the most recent timestamp is >30 days ago: add an inline note — "Context on [person] is from [date] — may be stale"
+- If >90 days ago: explicitly caveat any analysis — "This data may be outdated — consider verifying before acting on it"
+- After `/debrief`, check if any attendees' profiles were updated. If they weren't and should have been, flag it.
 
 ## Memory Management
 
@@ -154,3 +158,5 @@ All information has a shelf life. Track and manage it:
 | Decision | 3 months | Flag for revisit |
 | CIRs | 1 month | Suggest reassessment |
 | Priorities | 2 weeks | Suggest check-in |
+
+These windows are NOT guidelines — they are thresholds. When presenting information older than the freshness window, you MUST flag it. Do not silently present stale data as current.
