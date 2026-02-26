@@ -146,6 +146,18 @@ All indexed content is searchable via `kbx search`:
 - Information no longer actively referenced → leave in kbx search, unpin if pinned (`kbx note edit <path> --unpin`)
 - Stale context → update or remove from pinned notes
 
+## Session Startup Freshness Check
+
+When `kbx context` is loaded at session start, also check for stale entity profiles:
+
+1. Run `kbx entity stale --days 30 --type person --json`
+2. If results come back non-empty, inject a summary line into the session context:
+   ```
+   [Freshness] N pinned people have stale profiles — consider reviewing before meetings.
+   ```
+3. If any stale entities are pinned, list them by name so the executive is immediately aware
+4. This check is lightweight and should NOT block the session — surface and move on
+
 ## Information Freshness
 
 All information has a shelf life. Track and manage it:
