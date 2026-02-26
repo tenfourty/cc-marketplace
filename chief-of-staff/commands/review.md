@@ -73,6 +73,11 @@ The weekly-review agent should gather in parallel:
 - Any initiatives that are drifting without attention
 - New blockers or dependencies that emerged
 
+**Entity Freshness (kbx):**
+- `kbx entity stale --days 30 --json` for stale entities
+- Flag any pinned entities that have gone stale since last review
+- If a direct report hasn't been mentioned in any meeting this week, flag as a potential blind spot
+
 ### 3. Synthesise with Coach Voice
 
 This is where you earn your keep. Don't just compile -- think.
@@ -150,6 +155,13 @@ section entirely if clean.]
 - [Question 1 — e.g., "You spent 60% of your time in reactive meetings this week. Is that where you need to be?"]
 - [Question 2 — e.g., "Initiative X hasn't had a status update in 3 weeks. Is it still a priority?"]
 - [Question 3 — e.g., "Three people mentioned concerns about Y in different contexts. Are you seeing this?"]
+
+### Entity Freshness
+[Only if stale entities exist.]
+N profiles haven't been updated in 30+ days. Stalest:
+- [Name] ([role]) — [N]d since last update
+- ...
+Consider running /debrief on recent meetings with these people.
 
 ### Recommended Focus for Next Week
 [Based on the analysis, suggest 3-5 focus areas]
