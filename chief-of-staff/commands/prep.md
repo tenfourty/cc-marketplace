@@ -41,7 +41,12 @@ For each attendee:
 - `kbx person find "Name" --json` for their profile
 - Check if they relate to any known projects via `kbx project find "Name"`
 
-**Freshness check:** For each attendee looked up via kbx, check the `updated_at` and `last_mentioned_at` fields. If profile data is >30 days old with no recent mentions, add an inline note in the brief: "Note: [Name]'s profile was last updated [N] days ago — data may be stale". If >90 days old, explicitly caveat any analysis based on that person's role, team, or reporting data.
+### Freshness Awareness
+
+For each attendee looked up via kbx:
+- Check the `updated_at` and `last_mentioned_at` fields from `kbx person find "Name" --json`
+- If profile data is >30 days old with no recent mentions, add an inline note: "Note: [Name]'s profile was last updated [N] days ago — data may be stale"
+- If >90 days old, explicitly caveat any analysis based on that person's role, team, or reporting data
 
 For the meeting topic:
 - Check if it relates to an active initiative (from kbx context pinned docs)
