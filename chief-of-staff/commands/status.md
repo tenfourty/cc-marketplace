@@ -25,6 +25,13 @@ Parse what the user is asking about. It could be:
 - A **task** — search `gm tasks list --json --response-format concise`
 - Something not yet tracked
 
+### Freshness Awareness
+
+For each person or project resolved in this command:
+- Note the freshness indicator from `kbx person find "Name" --json` or `kbx project find "Name" --json` (check `updated_at` and `last_mentioned_at` fields)
+- If profile data is >30 days old with no recent mentions, add an inline note: "Note: [Name]'s profile was last updated [N] days ago — data may be stale"
+- If >90 days old, explicitly caveat any analysis based on that person's role, team, or reporting data
+
 ### 2. Dispatch Cross-Source Search Agent
 
 Search in parallel across all available sources:
