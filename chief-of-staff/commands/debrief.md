@@ -95,7 +95,23 @@ Check extracted items against:
 [New information worth remembering — will be added to kbx]
 ```
 
-### 5. Update Systems
+### 5. Entity Change Detection
+
+For each meeting attendee, check if their profile needs updating:
+
+1. Look up their current profile: `kbx person find "Name" --json`
+2. Scan the transcript for signals that someone's profile may have changed:
+   - Role/title changes ("is now leading...", "moved to the X team", "promoted to...")
+   - Reporting line changes ("reports to Y now", "joining Z's team")
+   - Responsibility shifts ("taking over...", "handing off...", "no longer owns...")
+   - Departures/arrivals ("last day is...", "new hire starting...", "leaving the company")
+3. If a change is detected and you're confident:
+   - Edit directly: `kbx person edit "Name" --role "New Role"` (or `--team`, `--meta "key=value"`)
+   - Add a dated fact: `kbx memory add "change description" --entity "Name"`
+   - Report what you changed in the debrief output under "Notable Context"
+4. If ambiguous, note it in the debrief output for the user to verify
+
+### 6. Update Systems
 
 **Ask permission before updating**, then:
 
@@ -111,7 +127,7 @@ Check extracted items against:
 **People context (kbx):**
 - `kbx memory add "context" --entity "Name"` for new context about attendees
 
-### 6. Offer Next Steps
+### 7. Offer Next Steps
 
 Present a follow-on menu based on what's relevant to this meeting:
 
