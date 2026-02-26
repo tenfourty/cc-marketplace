@@ -156,7 +156,7 @@ section entirely if clean.]
 - [Question 2 — e.g., "Initiative X hasn't had a status update in 3 weeks. Is it still a priority?"]
 - [Question 3 — e.g., "Three people mentioned concerns about Y in different contexts. Are you seeing this?"]
 
-### Entity Freshness
+### Profile Freshness
 [Only if stale entities exist.]
 N profiles haven't been updated in 30+ days. Stalest:
 - [Name] ([role]) — [N]d since last update
