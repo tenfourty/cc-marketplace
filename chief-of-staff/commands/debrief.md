@@ -116,8 +116,9 @@ For each meeting attendee, check if their profile needs updating:
 **Ask permission before updating**, then:
 
 **Tasks (gm):**
-- Executive's action items: `gm tasks create --title "..." --tag Active --list LIST --due ISO`
-- Others' commitments: `gm tasks create --title "..." --tag Waiting-On --list LIST`
+- Executive's action items: `gm tasks create --title "..." --tag Active --list LIST --due ISO --description "..."`
+- Others' commitments: `gm tasks create --title "..." --tag Waiting-On --list LIST --description "..."`
+- **Project linking:** If the action item relates to a known kbx project, include `project: <ProjectName>` on a line in the `--description` (e.g., `--description "project: CoreLogic Migration\nFollow up on migration timeline"`). Multiple `project:` lines supported.
 - Update any existing tasks that were discussed
 
 **Decisions (kbx):**

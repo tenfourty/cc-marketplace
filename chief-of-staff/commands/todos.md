@@ -210,10 +210,11 @@ After presenting, ask:
 > "Want me to create gm tasks for these? Your items will be tagged Active, others' commitments will be tagged Waiting-On."
 
 If yes:
-- Executive's items: `gm tasks create --title "..." --tag Active --list LIST --due ISO`
-- Others' commitments: `gm tasks create --title "[Person]: [Action]" --tag Waiting-On --list LIST --due ISO`
+- Executive's items: `gm tasks create --title "..." --tag Active --list LIST --due ISO --description "..."`
+- Others' commitments: `gm tasks create --title "[Person]: [Action]" --tag Waiting-On --list LIST --due ISO --description "..."`
 - Skip items that are already tracked in gm
 - Choose the appropriate list (Leadership, People, Ops, Admin) based on the item's context
+- **Project linking:** If the action item relates to a known kbx project (check `kbx project list --json`), include `project: <ProjectName>` on a line in the `--description`. This links the task to the project board in brief-deck. Use multiple `project:` lines if a task spans multiple projects.
 
 ## Date Handling
 
