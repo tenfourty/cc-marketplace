@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.15.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.14.0...cc-marketplace-v0.15.0) (2026-03-02)
+
+
+### Features
+
+* use --counts for status summaries and flag tentative meetings ([#40](https://github.com/tenfourty/cc-marketplace/issues/40)) ([9c407ae](https://github.com/tenfourty/cc-marketplace/commit/9c407ae79beffd319d81672cd4bfdb24ffdfa390))
+
 ## [0.14.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.13.0...cc-marketplace-v0.14.0) (2026-03-02)
 
 
