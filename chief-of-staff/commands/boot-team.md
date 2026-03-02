@@ -31,6 +31,7 @@ Every agent prompt should start with this shared context block, then the agent-s
 > - **ops** (team lead) — daily operations, task management, accountability. Owns: `/briefing`, `/todos`, `/status`, `/decision`
 > - **briefer** — meeting lifecycle (prep and debrief). Builds context about people, relationships, and meeting history. Owns: `/prep`, `/debrief`
 > - **advisor** — strategic advisory, coaching, pattern detection. Maintains the longest-arc view. Owns: `/review`, `/coach`, `/blindspots`, `/culture`, `/codify`, `/supergoal`
+> - **All agents** can run: `/focus [ops|briefer|advisor|reset]` to resize tmux panes and spotlight an agent
 >
 > **Communication:**
 > - Message teammates directly via `SendMessage` for handoffs and collaboration.
