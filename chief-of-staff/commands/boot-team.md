@@ -15,7 +15,7 @@ You are booting a persistent 3-agent Chief of Staff team. This session becomes *
 
 ### 2. Spawn briefer and advisor
 
-Use the `Agent` tool with `team_name: "cos-team"` for each. Both in a single message. Use `model: "opus"` and `mode: "bypassPermissions"` for both. Use descriptive names: `name: "briefer - prep, debrief"` and `name: "advisor - coach, review, blindspots"`.
+Use the `Agent` tool with `team_name: "cos-team"` for each. Both in a single message. Use `model: "opus"` and `mode: "bypassPermissions"` for both. Use `name: "briefer"` and `name: "advisor"`.
 
 **You (this session) ARE ops.** Do not spawn a separate ops agent. After spawning briefer and advisor, you will adopt the ops identity (step 3).
 
@@ -92,21 +92,25 @@ This session IS ops. After spawning briefer and advisor:
 1. Read your ops agent prompt: `/Users/jeremy.brown/dev/cc-marketplace/chief-of-staff/agents/ops.md`
 2. Read the chief-of-staff-identity skill: `/Users/jeremy.brown/dev/cc-marketplace/chief-of-staff/skills/chief-of-staff-identity/SKILL.md`
 3. Adopt the ops identity, voice, and behaviour described in the agent prompt
-4. Rename this session: `/rename ops - tasks, status, briefing`
+4. **Rename this session now.** Run the `/rename` slash command with the argument `ops - tasks, status, briefing`. This is a Claude Code built-in command — type it as a user message to yourself: `/rename ops - tasks, status, briefing`. Do this BEFORE continuing to the next step.
 5. Run the ops boot-up routine (from the agent prompt)
 
 You are now ops for the rest of this session. Follow the ops agent prompt for all subsequent interactions.
 
-### 4. Arrange tmux panes
+### 4. Arrange tmux panes (MANDATORY)
 
-After spawning agents, arrange the tmux panes so ops/main gets the left half and briefer/advisor stack on the right:
+**You MUST complete this step before presenting the team summary. Do not skip this step.**
+
+Arrange the tmux panes so ops gets the left column (~45% width) and briefer/advisor stack on the right (~55% width). Also set descriptive pane titles for each agent.
 
 ```
-┌──────────────┬──────────────┐
-│              │   briefer    │
-│  ops (main)  ├──────────────┤
-│              │   advisor    │
-└──────────────┴──────────────┘
+┌──────────────────┬──────────────────────┐
+│                  │  briefer - prep,     │
+│  ops - tasks,    │  debrief             │
+│  status,         ├──────────────────────┤
+│  briefing        │  advisor - coach,    │
+│                  │  review, blindspots  │
+└──────────────────┴──────────────────────┘
 ```
 
 Steps:
@@ -127,7 +131,15 @@ Steps:
 
 4. **Swap panes if needed** so the vertical order (top→bottom on the right side) is: briefer, advisor.
 
-5. **Compute and apply a custom tmux layout string.** The layout gives ops ~45% width (left), with briefer and advisor splitting the wider right column evenly (top/bottom):
+5. **Set descriptive pane titles** so each pane shows its role:
+   ```bash
+   tmux select-pane -t %OPS_PANE_ID -T 'ops - tasks, status, briefing'
+   tmux select-pane -t %BRIEFER_PANE_ID -T 'briefer - prep, debrief'
+   tmux select-pane -t %ADVISOR_PANE_ID -T 'advisor - coach, review, blindspots'
+   ```
+   Replace `%OPS_PANE_ID`, `%BRIEFER_PANE_ID`, `%ADVISOR_PANE_ID` with actual pane IDs from step 2.
+
+6. **Compute and apply a custom tmux layout string.** The layout gives ops ~45% width (left), with briefer and advisor splitting the wider right column evenly (top/bottom):
    ```bash
    python3 -c "
    layout = '256x70,0,0{114x70,0,0,OPS,141x70,115,0[141x34,115,0,BRIEFER,141x35,115,35,ADVISOR]}'
@@ -142,11 +154,11 @@ Steps:
    "
    ```
 
-6. **Apply the layout:**
+7. **Apply the layout:**
    ```bash
    tmux select-layout -t SESSION:WINDOW '<checksum>,<layout>'
    ```
-   Where `<checksum>,<layout>` is the full output from the Python script in step 5.
+   Where `<checksum>,<layout>` is the full output from the Python script in step 6.
 
 ### 5. Collect reports and summarise
 
