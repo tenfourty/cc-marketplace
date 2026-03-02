@@ -125,10 +125,11 @@ cat > /tmp/prep-notes.md << 'PREP'
 PREP
 
 # Push using calendar_uid from gm event
-kbx granola push CALENDAR_UID --notes-file /tmp/prep-notes.md
+kbx granola push CALENDAR_UID --notes-file /tmp/prep-notes.md --title "Meeting Title"
 ```
 
-- Get the `calendar_uid` from the event identified in step 1 (available as a field on `gm today` events)
+- Get the `calendar_uid` and meeting title from the event identified in step 1 (available as fields on `gm today` events)
+- Pass `--title` so the doc gets a proper name — Granola does not auto-populate the title from the calendar event
 
 **If the user declines or doesn't respond**, skip the push and continue to follow-ups.
 
