@@ -124,7 +124,7 @@ Steps:
 
 2. **Identify pane IDs and positions:**
    ```bash
-   tmux list-panes -t SESSION:WINDOW -F '#{pane_id} #{pane_index} #{pane_top} #{pane_left}'
+   tmux list-panes -t SESSION:WINDOW -F '#{pane_id} #{pane_index}'
    ```
    There should be 3 panes. The ops/main pane is the one that existed before spawning — typically the first pane (lowest index). Briefer and advisor are the two spawned panes.
 
@@ -140,26 +140,18 @@ Steps:
    ```
    Replace `%OPS_PANE_ID`, `%BRIEFER_PANE_ID`, `%ADVISOR_PANE_ID` with actual pane IDs from step 2.
 
-6. **Compute and apply a custom tmux layout string.** The layout gives ops ~45% width (left), with briefer and advisor splitting the wider right column evenly (top/bottom):
+6. **Resize panes to the default 45/55 layout.** Get the window dimensions, then use `resize-pane` to set ops to ~45% width and briefer to ~50% height (even split):
    ```bash
-   python3 -c "
-   layout = '256x70,0,0{114x70,0,0,OPS,141x70,115,0[141x34,115,0,BRIEFER,141x35,115,35,ADVISOR]}'
-   # Replace OPS, BRIEFER, ADVISOR with actual pane indices from step 2
-   # Example: if ops=0, briefer=1, advisor=2:
-   #   layout = layout.replace('OPS','0').replace('BRIEFER','1').replace('ADVISOR','2')
-   csum = 0
-   for c in layout:
-       csum = (csum >> 1) + ((csum & 1) << 15)
-       csum += ord(c)
-   print(f'{csum & 0xffff:04x},{layout}')
-   "
-   ```
+   # Get window dimensions
+   tmux display-message -p '#{window_width} #{window_height}'
 
-7. **Apply the layout:**
-   ```bash
-   tmux select-layout -t SESSION:WINDOW '<checksum>,<layout>'
+   # Set ops width to 45% of window_width
+   tmux resize-pane -t %OPS_PANE_ID -x OPS_WIDTH
+
+   # Set briefer height to 50% of window_height (even top/bottom split)
+   tmux resize-pane -t %BRIEFER_PANE_ID -y BRIEFER_HEIGHT
    ```
-   Where `<checksum>,<layout>` is the full output from the Python script in step 6.
+   Replace pane IDs and computed pixel values accordingly.
 
 ### 5. Collect reports and summarise
 

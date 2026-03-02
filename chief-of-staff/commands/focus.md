@@ -20,7 +20,7 @@ Adjust the tmux layout to spotlight a specific agent's pane. Works from any agen
 │                            │ advisor   │
 └────────────────────────────┴───────────┘
 ```
-Layout string: `256x70,0,0{178x70,0,0,OPS,77x70,179,0[77x34,179,0,BRIEFER,77x35,179,35,ADVISOR]}`
+ops_width = 70%, briefer_height = 50%
 
 ### `/focus briefer` — Spotlight briefer (30/70, briefer 70% height)
 ```
@@ -32,7 +32,7 @@ Layout string: `256x70,0,0{178x70,0,0,OPS,77x70,179,0[77x34,179,0,BRIEFER,77x35,
 │           │     advisor (30%)          │
 └───────────┴────────────────────────────┘
 ```
-Layout string: `256x70,0,0{77x70,0,0,OPS,178x70,78,0[178x48,78,0,BRIEFER,178x21,78,49,ADVISOR]}`
+ops_width = 30%, briefer_height = 70%
 
 ### `/focus advisor` — Spotlight advisor (30/70, advisor 70% height)
 ```
@@ -44,7 +44,7 @@ Layout string: `256x70,0,0{77x70,0,0,OPS,178x70,78,0[178x48,78,0,BRIEFER,178x21,
 │           │                            │
 └───────────┴────────────────────────────┘
 ```
-Layout string: `256x70,0,0{77x70,0,0,OPS,178x70,78,0[178x21,78,0,BRIEFER,178x48,78,22,ADVISOR]}`
+ops_width = 30%, briefer_height = 30%
 
 ### `/focus reset` — Default layout (45/55)
 ```
@@ -54,7 +54,7 @@ Layout string: `256x70,0,0{77x70,0,0,OPS,178x70,78,0[178x21,78,0,BRIEFER,178x48,
 │                  │  advisor             │
 └──────────────────┴──────────────────────┘
 ```
-Layout string: `256x70,0,0{114x70,0,0,OPS,141x70,115,0[141x34,115,0,BRIEFER,141x35,115,35,ADVISOR]}`
+ops_width = 45%, briefer_height = 50%
 
 ## Process
 
@@ -68,8 +68,8 @@ Parse the argument. If missing or unrecognised, ask: "Focus on which agent? (ops
 # Get current session and window
 tmux display-message -p '#{session_name}:#{window_index}'
 
-# List panes with IDs and indices
-tmux list-panes -t SESSION:WINDOW -F '#{pane_id} #{pane_index} #{pane_top} #{pane_left}'
+# List panes with IDs
+tmux list-panes -t SESSION:WINDOW -F '#{pane_id}'
 ```
 
 There should be 3 panes. Identify which is ops, briefer, and advisor by checking `pane-border-format`:
@@ -78,29 +78,34 @@ tmux display-message -t %PANE_ID -p '#{pane-border-format}'
 ```
 Match the pane to its agent by looking for "ops", "briefer", or "advisor" in the border format string.
 
-### 3. Select the layout string
-
-Pick the layout string from the Layouts section above based on the target. Replace `OPS`, `BRIEFER`, `ADVISOR` with the actual pane indices from step 2.
-
-### 4. Compute checksum and apply
+### 3. Get window dimensions and compute target sizes
 
 ```bash
-python3 -c "
-layout = 'LAYOUT_STRING_HERE'
-# Replace OPS, BRIEFER, ADVISOR with actual pane indices
-# layout = layout.replace('OPS','0').replace('BRIEFER','1').replace('ADVISOR','2')
-csum = 0
-for c in layout:
-    csum = (csum >> 1) + ((csum & 1) << 15)
-    csum += ord(c)
-print(f'{csum & 0xffff:04x},{layout}')
-"
+tmux display-message -p '#{window_width} #{window_height}'
 ```
 
-Apply:
+Use the proportions from the Layouts section to compute pixel sizes:
+
+| Layout | ops_width | briefer_height |
+|--------|-----------|----------------|
+| ops | 70% of window_width | 50% of window_height |
+| briefer | 30% of window_width | 70% of window_height |
+| advisor | 30% of window_width | 30% of window_height |
+| reset | 45% of window_width | 50% of window_height |
+
+### 4. Resize panes
+
+Two `resize-pane` commands are all that's needed:
+
 ```bash
-tmux select-layout -t SESSION:WINDOW '<checksum>,<layout>'
+# Set ops width (adjusts the left/right column boundary)
+tmux resize-pane -t %OPS_PANE_ID -x OPS_WIDTH
+
+# Set briefer height (adjusts the top/bottom split in the right column)
+tmux resize-pane -t %BRIEFER_PANE_ID -y BRIEFER_HEIGHT
 ```
+
+Replace `%OPS_PANE_ID` and `%BRIEFER_PANE_ID` with the actual pane IDs from step 2. Replace `OPS_WIDTH` and `BRIEFER_HEIGHT` with the computed pixel values from step 3.
 
 ### 5. Confirm
 
