@@ -109,9 +109,43 @@ After spawning agents, arrange the tmux panes so ops/main gets the left half and
 ```
 
 Steps:
-1. Run `tmux list-panes -F '#{pane_id} #{pane_title}'` to identify pane IDs.
-2. Compute and apply a custom tmux layout string that gives ops/main ~50% width and splits the right column evenly between briefer (top) and advisor (bottom).
-3. Use `tmux swap-pane` and `tmux select-layout` commands to achieve the layout if needed.
+
+1. **Discover the current tmux session and window dynamically:**
+   ```bash
+   tmux display-message -p '#{session_name}:#{window_index}'
+   ```
+   Use this `SESSION:WINDOW` value in all subsequent tmux commands (do NOT hardcode a session name).
+
+2. **Identify pane IDs and positions:**
+   ```bash
+   tmux list-panes -t SESSION:WINDOW -F '#{pane_id} #{pane_index} #{pane_top} #{pane_left}'
+   ```
+   There should be 3 panes. The ops/main pane is the one that existed before spawning — typically the first pane (lowest index). Briefer and advisor are the two spawned panes.
+
+3. **Identify which spawned pane is briefer vs advisor** by checking pane content or titles. If unclear from position alone, the pane order typically matches the spawn order from step 2.
+
+4. **Swap panes if needed** so the vertical order (top→bottom on the right side) is: briefer, advisor.
+
+5. **Compute and apply a custom tmux layout string.** The layout gives ops ~50% width (left), with briefer and advisor splitting the right column evenly (top/bottom):
+   ```bash
+   python3 -c "
+   layout = '256x70,0,0{127x70,0,0,OPS,128x70,128,0[128x34,128,0,BRIEFER,128x35,128,35,ADVISOR]}'
+   # Replace OPS, BRIEFER, ADVISOR with actual pane indices from step 2
+   # Example: if ops=0, briefer=1, advisor=2:
+   #   layout = layout.replace('OPS','0').replace('BRIEFER','1').replace('ADVISOR','2')
+   csum = 0
+   for c in layout:
+       csum = (csum >> 1) + ((csum & 1) << 15)
+       csum += ord(c)
+   print(f'{csum & 0xffff:04x},{layout}')
+   "
+   ```
+
+6. **Apply the layout:**
+   ```bash
+   tmux select-layout -t SESSION:WINDOW '<checksum>,<layout>'
+   ```
+   Where `<checksum>,<layout>` is the full output from the Python script in step 5.
 
 ### 5. Collect reports and summarise
 
