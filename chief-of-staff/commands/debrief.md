@@ -14,11 +14,14 @@ You are extracting structured intelligence from a meeting that just happened. Us
 
 ### 1. Find the Transcript
 
-Use `kbx search "meeting title" --fast --json --limit 5` to find the most recent or specified meeting transcript. Use `kbx view <path> --plain` to read it.
+Use `kbx search "meeting title" --fast --json --limit 5` to find the most recent or specified meeting. Use `kbx view <path> --plain` to read each file.
 
-**Source preference:** Prefer `.transcript.md` files — they are the ground truth for extracting action items and decisions. If no transcript exists, fall back to `.notes.md`, then `.ai-summary.md`. Do not extract action items or decisions solely from AI summaries — they may miss or misattribute commitments.
+**Read all available sources for the meeting:**
+- **Transcript** (`.transcript.md`) — **always read this.** It is the ground truth for action items, decisions, and exact quotes. If no transcript exists in kbx, fall back to Granola MCP.
+- **Notes** (`.notes.md`) — read when available. Shows what the user flagged as important during the meeting. May surface items the user was already tracking mentally.
+- **AI Summary** (`.ai-summary.md`) — read when available. Useful as a cross-check, but do not extract action items or decisions solely from AI summaries — they may miss or misattribute commitments.
 
-If not found in kbx, fall back to Granola MCP for the transcript.
+Use all three to build the fullest picture: the transcript is the primary extraction source, notes highlight user intent, and the AI summary can catch things you might skim past in a long transcript.
 
 If no transcript is available from any source, ask the user to provide a summary of what happened (they can paste notes, or just talk through it).
 
