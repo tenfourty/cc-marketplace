@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.15.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.15.0...cc-marketplace-v0.15.1) (2026-03-02)
+
+
+### Bug Fixes
+
+* warn about using full calendar_uid for recurring events in /prep ([#42](https://github.com/tenfourty/cc-marketplace/issues/42)) ([6d0d59e](https://github.com/tenfourty/cc-marketplace/commit/6d0d59e741158c10c189356b4581cdb61f31c88b))
+
 ## [0.15.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.14.0...cc-marketplace-v0.15.0) (2026-03-02)
 
 
