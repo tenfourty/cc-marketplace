@@ -118,17 +118,30 @@ After presenting the brief, offer to push the prep notes to the meeting's Granol
 
 > "Want me to push these prep notes to Granola so they're ready when the meeting starts?"
 
-**If the user confirms**, write the prep brief to a temp file and push:
+**If the user confirms:**
 
-```bash
-# Write prep markdown to temp file
-cat > /tmp/prep-notes.md << 'PREP'
-[full prep brief markdown from step 4]
-PREP
+1. **Pre-check** — see if notes already exist on the Granola doc:
+   ```bash
+   kbx granola view CALENDAR_UID
+   ```
+   If the doc already has notes, tell the user: "This meeting already has notes in Granola. Push will prepend your prep — want to continue?" Only proceed if they confirm.
 
-# Push using calendar_uid from gm event
-kbx granola push CALENDAR_UID --notes-file /tmp/prep-notes.md --title "Meeting Title"
-```
+2. **Push** the prep brief:
+   ```bash
+   # Write prep markdown to temp file
+   cat > /tmp/prep-notes.md << 'PREP'
+   [full prep brief markdown from step 4]
+   PREP
+
+   # Push using calendar_uid from gm event
+   kbx granola push CALENDAR_UID --notes-file /tmp/prep-notes.md --title "Meeting Title"
+   ```
+
+3. **Verify** the push landed:
+   ```bash
+   kbx granola view CALENDAR_UID
+   ```
+   Confirm to the user: "Prep notes synced to Granola." If the notes aren't there, report the issue.
 
 - Get the `calendar_uid` and meeting title from the event identified in step 1 (available as fields on `gm today` events)
 - **Always use the full `calendar_uid` from gm output.** Recurring events have instance-specific UIDs (e.g., `base_id_20260303T143000Z`) — using only the base ID could match the wrong week's occurrence.
