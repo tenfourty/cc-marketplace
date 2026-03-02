@@ -131,9 +131,9 @@ Steps:
 
 4. **Swap panes if needed** so the vertical order (top→bottom on the right side) is: briefer, advisor.
 
-5. **Set descriptive pane titles** so each pane shows its role:
+5. **Set descriptive pane titles** so each pane shows its role. For the ops/main pane, use `pane-border-format` (Claude Code overwrites `pane_title` on the main pane, but not `pane-border-format`). For briefer and advisor, `select-pane -T` works fine:
    ```bash
-   tmux select-pane -t %OPS_PANE_ID -T 'ops - tasks, status, briefing'
+   tmux set-option -p -t %OPS_PANE_ID pane-border-format '#{?pane_active,#[reverse],}#{pane_index}#[default] "ops - briefing, todos, status, decision"'
    tmux select-pane -t %BRIEFER_PANE_ID -T 'briefer - prep, debrief'
    tmux select-pane -t %ADVISOR_PANE_ID -T 'advisor - coach, review, blindspots'
    ```
