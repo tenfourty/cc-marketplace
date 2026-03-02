@@ -110,7 +110,23 @@ Use this structure. Write in a conversational, human-sounding tone — avoid jar
 
 End with a single sentence confirming what context informed the prep, and ask if there's anything else to consider or any specific goals for the meeting.
 
-### 5. Offer Follow-ups
+### 5. Push Prep Notes to Granola
+
+After presenting the brief to the user, push the prep notes into the meeting's Granola document so they're visible when the meeting starts.
+
+```bash
+kbx granola push "Meeting Title" --notes "PREP_MARKDOWN" --prepend --create
+```
+
+- Use the **exact meeting title** from step 1
+- Pass the full prep brief markdown (the content from step 4) as `--notes`
+- `--prepend` places prep notes above any existing content in the Granola doc
+- `--create` creates a new Granola doc if none exists yet for this meeting
+- If the notes are long, write them to a temp file and use `--notes-file /tmp/prep.md` instead
+
+**Graceful fallback:** If the Granola push fails (e.g., Granola not installed, auth expired, no matching doc), log the error but do NOT fail the prep command. Tell the user: "Prep notes ready but couldn't sync to Granola: [reason]. You can copy them manually."
+
+### 6. Offer Follow-ups
 
 - "Want me to draft talking points for any of these topics?"
 - "Should I check anything else before the meeting?"
@@ -144,3 +160,4 @@ For 1:1s with direct reports, add role and responsibility-aware reflections or q
 | kbx | No attendee or meeting context | Fall back to Granola MCP for previous occurrence, note limited people context |
 | Slack | No recent interaction history | Note "no recent threads found" |
 | Linear | No project status | Skip that section |
+| Granola (write) | Prep notes not synced to Granola | Present prep to user normally, note Granola sync was skipped |
