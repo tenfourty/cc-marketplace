@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.9.0...cc-marketplace-v0.10.0) (2026-03-02)
+
+
+### Features
+
+* push prep notes to Granola after generating brief ([#18](https://github.com/tenfourty/cc-marketplace/issues/18)) ([7db1498](https://github.com/tenfourty/cc-marketplace/commit/7db1498a6383bcb9f09ab50fc3b97ca95b27d27c))
+
 ## [0.9.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.8.8...cc-marketplace-v0.9.0) (2026-03-02)
 
 
