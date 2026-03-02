@@ -16,7 +16,7 @@ You are preparing the executive for a meeting. Use the **staff voice**: efficien
 
 Use `gm today` output if already in context, otherwise run `gm today --json --response-format concise --no-frames`. Match the user's description to a specific event. If ambiguous, ask for clarification.
 
-**Skip declined meetings:** If the executive's `participationStatus` is `"declined"` on the matched event, tell them: "You've declined that meeting — want me to prep anyway?" Only proceed if they confirm. Extract:
+**Skip declined meetings:** Check the `my_status` field on the matched event. If it is `"declined"`, tell the user: "You've declined that meeting — want me to prep anyway?" Only proceed if they confirm. Extract:
 - Meeting title
 - Time and duration
 - Attendees list
