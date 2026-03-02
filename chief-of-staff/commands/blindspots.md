@@ -22,6 +22,7 @@ Analyse a specific meeting's plans, decisions, or proposals.
 Find the transcript:
 - `kbx search "meeting title" --fast --json --limit 5` for the specified or most recent meeting
 - `kbx view <path> --plain` to read it
+- **Source preference:** Prefer `.transcript.md` files for accurate risk analysis. Fall back to `.notes.md`, then `.ai-summary.md`. AI summaries may omit nuances critical for identifying blind spots.
 - If not found in kbx, fall back to Granola MCP
 - If still not found, ask the user to describe what was discussed
 

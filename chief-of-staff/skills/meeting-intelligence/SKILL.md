@@ -2,13 +2,29 @@
 
 This skill defines how the Chief of Staff works with meeting transcripts, meeting preparation, and meeting follow-up.
 
-## Transcript Sources
+## Meeting Data Sources
 
-Meeting transcripts are accessed primarily via kbx, which indexes content from:
-- **Granola** — meeting transcripts with AI-generated summaries and notes
-- **Notion Meetings** — meeting notes and transcripts stored in Notion
+Meeting data is accessed primarily via kbx, which indexes content from Granola and Notion. Each meeting can have up to three file types:
 
-Use `kbx search` to find transcripts and `kbx view <path> --plain` to read them. If kbx returns nothing, fall back to Granola MCP.
+| File Type | Extension | What It Is | When to Use |
+|-----------|-----------|------------|-------------|
+| **Transcript** | `.transcript.md` | Raw speaker-attributed transcript | Ground truth. Use for: action extraction, exact quotes, decision capture, deep analysis. Longest but most reliable. |
+| **Notes** | `.notes.md` | User-curated highlights and edits | Quick context. Use for: what the user considered important, prep for follow-ups. May omit details the user didn't highlight. |
+| **AI Summary** | `.ai-summary.md` | Granola's AI-generated digest | Quick orientation when transcript is too long, scanning for themes. **Treat as lossy** — always verify key claims against transcript before acting on them. |
+
+### Source Priority
+
+When reading meeting data for extraction or analysis, prefer sources in this order:
+
+1. **Transcript** — always the primary source for action items, decisions, and quotes
+2. **Notes** — useful supplement, especially for what the user flagged as important
+3. **AI Summary** — orientation only; never treat as ground truth for commitments or decisions
+
+**Important:** Do not extract action items or decisions solely from AI summaries. They may miss, misattribute, or hallucinate commitments. Always verify against the transcript when available.
+
+### Discovery
+
+Use `kbx search` to find meeting data and `kbx view <path> --plain` to read it. kbx indexes all three file types. If kbx returns nothing, fall back to Granola MCP.
 
 ## Working with Transcripts
 
