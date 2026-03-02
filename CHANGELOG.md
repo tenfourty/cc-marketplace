@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.8.2](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.8.1...cc-marketplace-v0.8.2) (2026-03-02)
+
+
+### Bug Fixes
+
+* 45/55 layout ratio, descriptive agent names, ops session rename ([#9](https://github.com/tenfourty/cc-marketplace/issues/9)) ([8b06eb8](https://github.com/tenfourty/cc-marketplace/commit/8b06eb82faab97f93bc7cbea248909f0e54181bd))
+* add culture to advisor pane title ([#14](https://github.com/tenfourty/cc-marketplace/issues/14)) ([148820f](https://github.com/tenfourty/cc-marketplace/commit/148820fbd2a1eb386abbce8792d01632fe923644))
+* enforce run_in_background for all worker agent spawning ([#12](https://github.com/tenfourty/cc-marketplace/issues/12)) ([fafc6a4](https://github.com/tenfourty/cc-marketplace/commit/fafc6a4e9e47a04a4c3152e7aaebdeae6bf81467))
+* mandatory tmux layout, pane titles, explicit rename ([#11](https://github.com/tenfourty/cc-marketplace/issues/11)) ([035baf9](https://github.com/tenfourty/cc-marketplace/commit/035baf956f3fe5f633cd12dcddfb43584bcda047))
+* use pane-border-format for ops pane title ([#13](https://github.com/tenfourty/cc-marketplace/issues/13)) ([6cc3397](https://github.com/tenfourty/cc-marketplace/commit/6cc3397f018ffa48ce92e3c34f75f9aa13d07dcc))
+
 ## [0.8.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.8.0...cc-marketplace-v0.8.1) (2026-03-02)
 
 
