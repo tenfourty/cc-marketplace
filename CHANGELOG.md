@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.12.0...cc-marketplace-v0.13.0) (2026-03-02)
+
+
+### Features
+
+* use gm my_status field and --hide-declined flag ([#36](https://github.com/tenfourty/cc-marketplace/issues/36)) ([1df45b2](https://github.com/tenfourty/cc-marketplace/commit/1df45b259e7458c962584f8511ebea164d60164f))
+
 ## [0.12.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.11.3...cc-marketplace-v0.12.0) (2026-03-02)
 
 
