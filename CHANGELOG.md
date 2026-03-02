@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.11.0...cc-marketplace-v0.11.1) (2026-03-02)
+
+
+### Bug Fixes
+
+* debrief reads all meeting sources, not just transcript fallback ([#28](https://github.com/tenfourty/cc-marketplace/issues/28)) ([eaad77c](https://github.com/tenfourty/cc-marketplace/commit/eaad77c0e8f5f218125bd101af6e53d589292205))
+
 ## [0.11.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.10.3...cc-marketplace-v0.11.0) (2026-03-02)
 
 
