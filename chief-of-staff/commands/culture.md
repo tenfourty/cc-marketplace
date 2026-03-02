@@ -28,6 +28,8 @@ Search broadly across the last 2-4 weeks of meetings to get a representative sam
 
 Read the most relevant transcripts: `kbx view <path> --plain`
 
+**Source preference:** Prefer `.transcript.md` files — they capture tone, dynamics, and who-said-what, which are essential for culture analysis. `.notes.md` and `.ai-summary.md` strip out the interpersonal signals this command depends on.
+
 Also check:
 - Slack MCP for communication patterns, tone, and norms across channels
 - `gm this-week --json --response-format concise --no-frames` for meeting cadence patterns

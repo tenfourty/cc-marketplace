@@ -21,6 +21,8 @@ Search recent meetings in reverse chronological order:
 
 For each relevant meeting found, read the transcript: `kbx view <path> --plain`
 
+**Source preference:** Always prefer `.transcript.md` files for action item extraction — they are the ground truth. Fall back to `.notes.md` if no transcript exists. Do not extract commitments from `.ai-summary.md` files alone — they may miss or misattribute action items.
+
 Also check:
 - `gm tasks list --json --response-format concise` to cross-reference against already-tracked items
 

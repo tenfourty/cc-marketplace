@@ -46,6 +46,7 @@ This is a knowledge extraction task — cast the widest possible net.
 
 **Read the most relevant results:**
 - `kbx view <path> --plain` for the top 10-15 most relevant entries
+- **Source preference:** When search results include multiple file types for the same meeting, prefer `.transcript.md` (richest detail) over `.notes.md` or `.ai-summary.md`
 - Look for meetings where this topic was discussed substantively, not just mentioned in passing
 - Pay attention to meetings with different people — the same topic discussed in different contexts yields richer principles
 
