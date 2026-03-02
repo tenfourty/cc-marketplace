@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.8.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.7.0...cc-marketplace-v0.8.0) (2026-03-02)
+
+
+### Features
+
+* **cos:** add /boot-team command with 3 persistent agents ([#4](https://github.com/tenfourty/cc-marketplace/issues/4)) ([a4a7656](https://github.com/tenfourty/cc-marketplace/commit/a4a7656d05d94df5b2d183e6ccc87d22d68dee23))
+
+
+### Bug Fixes
+
+* **cos:** main session becomes ops instead of spawning separate agent ([#6](https://github.com/tenfourty/cc-marketplace/issues/6)) ([f123f99](https://github.com/tenfourty/cc-marketplace/commit/f123f99f1e3f3d20f5b549717ab6ad8d43f11441))
+
 ## [0.7.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.6.0...cc-marketplace-v0.7.0) (2026-03-02)
 
 
