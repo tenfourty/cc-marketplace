@@ -116,7 +116,7 @@ After presenting the brief, offer to push the prep notes to the meeting's Granol
 
 > "Want me to push these prep notes to Granola so they're ready when the meeting starts?"
 
-**If the user confirms**, write the prep brief to a temp file and push via the calendar UID (preferred) or title (fallback):
+**If the user confirms**, write the prep brief to a temp file and push:
 
 ```bash
 # Write prep markdown to temp file
@@ -124,20 +124,17 @@ cat > /tmp/prep-notes.md << 'PREP'
 [full prep brief markdown from step 4]
 PREP
 
-# Push using calendar_uid (preferred — exact match)
-kbx granola push --calendar-uid "CALENDAR_UID" --notes-file /tmp/prep-notes.md --prepend
-
-# If --calendar-uid not available, fall back to title match
-kbx granola push "Meeting Title" --notes-file /tmp/prep-notes.md --prepend
+# Push using calendar_uid from gm event — auto-creates doc if needed
+kbx granola push CALENDAR_UID --notes-file /tmp/prep-notes.md --title "Meeting Title"
 ```
 
-- Get the `calendar_uid` from the event identified in step 1 (available as a field on `gm today` events). Prefer this over title matching — it's an exact match.
-- `--prepend` places prep notes above any existing content in the Granola doc
-- If the push fails because no Granola doc exists yet, tell the user: "No Granola doc exists for this meeting yet. Open the meeting in Granola first, then I can push the notes." Do NOT attempt to create the doc automatically.
+- Get the `calendar_uid` from the event identified in step 1 (available as a field on `gm today` events)
+- Pass `--title` so the doc gets a proper name if auto-created
+- The command auto-creates the Granola doc if one doesn't exist yet
 
 **If the user declines or doesn't respond**, skip the push and continue to follow-ups.
 
-**Graceful fallback:** If the push fails for other reasons (Granola not installed, auth expired), tell the user: "Prep notes ready but couldn't sync to Granola: [reason]. You can copy them manually."
+**Graceful fallback:** If the push fails for any reason, tell the user: "Prep notes ready but couldn't sync to Granola: [reason]. You can copy them manually."
 
 ### 6. Offer Follow-ups
 
