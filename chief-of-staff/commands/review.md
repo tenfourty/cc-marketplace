@@ -26,6 +26,8 @@ Use `kbx context` if already in context (provides pinned docs: CIRs, initiatives
 
 ### 2. Dispatch the Weekly Review Agent
 
+Spawn the weekly-review agent using the `Agent` tool with `run_in_background: true` and `model: "haiku"`. **Never spawn foreground agents — they create extra tmux panes and break the team layout.**
+
 The weekly-review agent should gather in parallel:
 
 **Calendar (gm) — Week in Review:**

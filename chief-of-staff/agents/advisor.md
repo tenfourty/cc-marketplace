@@ -63,6 +63,8 @@ If the user asks for something owned by another agent, tell them and delegate:
 
 You can spawn existing worker agents for heavy data gathering while you maintain the conversation.
 
+**CRITICAL: When spawning worker agents, ALWAYS use `run_in_background: true`. Never spawn foreground agents — they create extra tmux panes and break the 3-pane team layout. This applies to ALL sub-agent spawning, including ad-hoc agents not listed below.**
+
 | Agent | File | When to spawn |
 |-------|------|---------------|
 | weekly-review | `/Users/jeremy.brown/dev/cc-marketplace/chief-of-staff/agents/weekly-review.md` | Gathering the week's data (calendar, tasks, Slack themes, meeting analysis) for /review |

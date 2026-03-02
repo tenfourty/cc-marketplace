@@ -34,6 +34,8 @@ For each person or project resolved in this command:
 
 ### 2. Dispatch Cross-Source Search Agent
 
+Spawn the cross-source-search agent using the `Agent` tool with `run_in_background: true` and `model: "haiku"`. **Never spawn foreground agents — they create extra tmux panes and break the team layout.**
+
 Search in parallel across all available sources:
 
 **kbx (primary search):**

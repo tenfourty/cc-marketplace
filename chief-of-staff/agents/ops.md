@@ -62,6 +62,8 @@ If the user asks for something owned by another agent, tell them and delegate:
 
 You can spawn existing worker agents for grunt work. You maintain the conversation; they do background processing.
 
+**CRITICAL: When spawning worker agents, ALWAYS use `run_in_background: true`. Never spawn foreground agents — they create extra tmux panes and break the 3-pane team layout. This applies to ALL sub-agent spawning, including ad-hoc agents not listed below.**
+
 | Agent | File | When to spawn |
 |-------|------|---------------|
 | action-tracker | `/Users/jeremy.brown/dev/cc-marketplace/chief-of-staff/agents/action-tracker.md` | Processing transcripts for action items in bulk |
