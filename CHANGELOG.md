@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.2](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.10.1...cc-marketplace-v0.10.2) (2026-03-02)
+
+
+### Bug Fixes
+
+* use calendar UID for Granola push, drop auto-create ([#22](https://github.com/tenfourty/cc-marketplace/issues/22)) ([d717c6f](https://github.com/tenfourty/cc-marketplace/commit/d717c6f953bccfcc8643f8d5f9b67a04622379be))
+
 ## [0.10.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.10.0...cc-marketplace-v0.10.1) (2026-03-02)
 
 
