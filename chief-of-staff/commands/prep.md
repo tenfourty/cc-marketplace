@@ -131,6 +131,7 @@ kbx granola push CALENDAR_UID --notes-file /tmp/prep-notes.md --title "Meeting T
 ```
 
 - Get the `calendar_uid` and meeting title from the event identified in step 1 (available as fields on `gm today` events)
+- **Always use the full `calendar_uid` from gm output.** Recurring events have instance-specific UIDs (e.g., `base_id_20260303T143000Z`) — using only the base ID could match the wrong week's occurrence.
 - Pass `--title` so the doc gets a proper name — Granola does not auto-populate the title from the calendar event
 
 **If the user declines or doesn't respond**, skip the push and continue to follow-ups.
