@@ -14,13 +14,13 @@ Meeting data is accessed primarily via kbx, which indexes content from Granola a
 
 ### Source Priority
 
-When reading meeting data for extraction or analysis, prefer sources in this order:
+The transcript is always the primary source for action items, decisions, and quotes. Notes and AI summaries are supplementary — they add context but should not replace the transcript.
 
-1. **Transcript** — always the primary source for action items, decisions, and quotes
-2. **Notes** — useful supplement, especially for what the user flagged as important
-3. **AI Summary** — orientation only; never treat as ground truth for commitments or decisions
+**For debrief and deep extraction:** Read all available sources for the meeting. The transcript is mandatory; notes show what the user flagged as important; the AI summary is a useful cross-check.
 
-**Important:** Do not extract action items or decisions solely from AI summaries. They may miss, misattribute, or hallucinate commitments. Always verify against the transcript when available.
+**For search and scanning:** `kbx search` indexes all three types. When results include multiple files for the same meeting, prefer the transcript for detailed reading.
+
+**Important:** Do not extract action items or decisions solely from AI summaries. They may miss, misattribute, or hallucinate commitments.
 
 ### Discovery
 
