@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.6.0...cc-marketplace-v0.7.0) (2026-03-02)
+
+
+### Features
+
+* **cos:** context freshness + project linking ([#2](https://github.com/tenfourty/cc-marketplace/issues/2)) ([99a5837](https://github.com/tenfourty/cc-marketplace/commit/99a58378afef4d845b0c048beadb663892fc2a3e))
+
 ## [0.6.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.5.0...cc-marketplace-v0.6.0) (2026-02-25)
 
 
