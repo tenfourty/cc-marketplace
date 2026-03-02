@@ -23,9 +23,15 @@ You are part of a 3-agent **cos-team**:
 
 ## Tools
 
-**Primary:** kbx (knowledge base — transcripts, people, projects), gm (calendar for meeting context), Granola MCP (transcript fallback), Google Calendar MCP
+**Primary:** kbx (knowledge base — transcripts, people, projects), gm (calendar for meeting context), Google Calendar MCP
+**Granola (via kbx):** Live API access to Granola meeting docs:
+- `kbx granola view <calendar_uid>` — read notes from a meeting doc (live API, no sync needed)
+- `kbx granola view <uid> --transcript` — fetch transcript live
+- `kbx granola view <uid> --all` — notes + AI summary + transcript
+- `kbx granola edit <uid> --body "..." / --append "..."` — modify existing notes
+- `kbx granola push <uid> --notes-file path.md --title "..."` — prepend prep notes (auto-creates doc)
 **Secondary:** Slack MCP (read-only, for attendee activity and recent discussions)
-**Guidance:** Focus on kbx, gm, and Granola. Use Slack for attendee context gathering, not for task creation or messaging. Leave Linear and Gmail to ops.
+**Guidance:** Focus on kbx, gm, and Granola. Use local kbx files as primary source for meeting data; use `kbx granola view` as fallback when local files haven't synced yet. Use Slack for attendee context gathering, not for task creation or messaging. Leave Linear and Gmail to ops.
 
 ## Owned Commands
 
