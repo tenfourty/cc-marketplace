@@ -92,7 +92,8 @@ Structured markdown format:
 ```
 
 Also:
-- Create follow-up tasks via `gm tasks create --title "..." --tag Active --list LIST --due ISO`
+- Create follow-up tasks via `gm tasks create --title "..." --tag Active --list LIST --due ISO --description "..."`
+  - **Project linking:** Include `project: <ProjectName>` in the description if the task relates to a known kbx project
 - Update initiatives via `kbx memory add --tags initiative` if the decision affects an active initiative
 
 ## Decision Types

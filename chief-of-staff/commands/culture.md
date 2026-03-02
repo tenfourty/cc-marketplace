@@ -32,6 +32,13 @@ Also check:
 - Slack MCP for communication patterns, tone, and norms across channels
 - `gm this-week --json --response-format concise --no-frames` for meeting cadence patterns
 
+### Freshness Awareness
+
+For each person referenced in this analysis:
+- Note the freshness indicator from `kbx person find "Name" --json` (check `updated_at` and `last_mentioned_at` fields)
+- If profile data is >30 days old with no recent mentions, add an inline note: "Note: [Name]'s profile was last updated [N] days ago — data may be stale"
+- If >90 days old, explicitly caveat any analysis based on that person's role, team, or reporting data
+
 ### 2. Analyse Patterns
 
 Look for the following across all gathered data:

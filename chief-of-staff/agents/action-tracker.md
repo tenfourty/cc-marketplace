@@ -35,9 +35,10 @@ For each item, extract:
 
 ### 3. Categorise
 
-- **Executive's own items** → Will be created via `gm tasks create --tag Active --list LIST`
-- **Others' commitments** → Will be created via `gm tasks create --tag Waiting-On --list LIST`
+- **Executive's own items** → Will be created via `gm tasks create --tag Active --list LIST --description "..."`
+- **Others' commitments** → Will be created via `gm tasks create --tag Waiting-On --list LIST --description "..."`
 - **Follow-ups (no clear owner)** → Flag for the executive to assign
+- **Project linking:** If the action item relates to a known kbx project, include `project: <ProjectName>` on a line in the `--description`. This links the task to the project board in brief-deck. Multiple `project:` lines supported for cross-project items.
 
 ### 4. Cross-Reference
 

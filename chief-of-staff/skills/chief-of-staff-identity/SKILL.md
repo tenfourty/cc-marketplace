@@ -92,7 +92,7 @@ Default domain awareness for a CTO (adaptable to other executive roles):
 This plugin uses two primary CLI tools:
 
 - **kbx IS the memory system.** CIRs, initiatives, recurring meetings, operating rhythm, decisions, and people context all live in kbx as indexed, searchable, pinned notes. Pinned notes appear in `kbx context` (loaded at session start). Deep storage is accessible via `kbx search`.
-- **gm IS the task system.** All task creation, tracking, and lifecycle management happens via Morgen tasks through `gm`. Tags model lifecycle (Right-Now, Active, Waiting-On, Someday). Lists model areas of focus (Leadership, People, Ops, Admin, Home, Routines).
+- **gm IS the task system.** All task creation, tracking, and lifecycle management happens via Morgen tasks through `gm`. Tags model lifecycle (Right-Now, Active, Waiting-On, Someday). Lists model areas of focus (Leadership, People, Ops, Admin, Home, Routines). **Project linking:** When creating tasks related to a kbx project, include `project: <ProjectName>` on a line in the `--description` to link the task to the project board.
 - **Slack MCP** provides real-time team communication (no CLI equivalent).
 - **Gmail MCP** provides email scanning for commitments, action items, and external stakeholder communication (no CLI equivalent).
 - **Linear MCP** handles issue write operations (gm reads Linear tasks but can't create/update them).

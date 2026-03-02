@@ -38,8 +38,9 @@ From every meeting transcript, the Chief of Staff should be able to extract:
    - Scope changes
 
 5. **Commitments from Others** — What other people promised
-   - These become Waiting-On tasks via `gm tasks create --tag Waiting-On`
+   - These become Waiting-On tasks via `gm tasks create --tag Waiting-On --description "..."`
    - Track who, what, and when
+   - Include `project: <ProjectName>` in the description if related to a known kbx project
 
 ### Extraction Principles
 
@@ -83,7 +84,7 @@ After a meeting (via `/debrief`):
 
 1. **Immediate extraction** — Pull action items, decisions, follow-ups from `kbx search` + `kbx view --plain`
 2. **Cross-reference** — Check against `gm tasks list` and `kbx note list --tag decision`
-3. **Update tasks** — `gm tasks create` for new items, update existing ones
+3. **Update tasks** — `gm tasks create` for new items (include `project: <ProjectName>` in `--description` when related to a kbx project), update existing ones
 4. **Log decisions** — `kbx memory add --tags decision` for each decision
 5. **Update people** — `kbx memory add --entity "Name"` for new context about attendees
 6. **Flag for briefing** — Queue any CIR-matching items for next briefing

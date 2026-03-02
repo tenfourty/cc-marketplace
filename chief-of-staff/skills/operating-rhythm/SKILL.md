@@ -132,7 +132,7 @@ kbx and gm are the primary tools underpinning the operating rhythm:
 |------|-----------|
 | `gm today` / `gm this-week` | Calendar awareness for briefings and reviews |
 | `gm tasks list` variants | Task movement tracking, overdue detection |
-| `gm tasks create` / `gm tasks close` | Task lifecycle from debriefs |
+| `gm tasks create` / `gm tasks close` | Task lifecycle from debriefs. Include `project: <Name>` in `--description` to link to kbx projects. |
 | `kbx context` | Pinned docs provide CIRs, initiatives, rhythm, meetings |
 | `kbx search` | Transcript analysis for decisions and actions |
 | `kbx memory add` | Create new notes (decisions, people context) |

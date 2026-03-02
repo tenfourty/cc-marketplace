@@ -76,6 +76,10 @@ For full content of a specific pinned doc, use `kbx view <path> --plain`.
 - Surface any emails matching CIR criteria (escalations, urgent requests, executive-level comms)
 - Check sent mail for commitments made via email that aren't tracked in gm tasks
 
+**Entity Freshness (kbx):**
+- `kbx entity stale --days 30 --type person --json` for stale people profiles
+- If stale entities exist, note them for the briefing output
+
 **Project Tracker (gm + Linear):**
 - `gm tasks list --source linear --json` for Linear task status
 - Any blocked or stalled items on active initiatives
@@ -117,6 +121,12 @@ Use this structure:
 [Only if stale items exist. Skip entirely if task list is clean.]
 You have X overdue tasks and Y items tagged Active for 30+ days.
 Want to do a quick triage before your day starts?
+
+### Profile Freshness
+[Only if stale entities exist. Skip entirely if all profiles are current.]
+N people profiles haven't been updated in 30+ days:
+- [Name] ([role]) — last updated [N]d ago
+Consider reviewing these before today's meetings, or run a debrief on recent meetings involving them.
 ```
 
 If the user says yes, run an inline mini-triage: present each stale item and offer mark done / reschedule / move to Someday / delete. Staff voice, fast. Process choices via `gm tasks` commands.

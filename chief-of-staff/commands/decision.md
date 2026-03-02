@@ -70,7 +70,8 @@ The structured markdown body should follow this format:
 ```
 
 Also:
-- Create follow-up tasks: `gm tasks create --title "..." --tag Active --list LIST --due ISO`
+- Create follow-up tasks: `gm tasks create --title "..." --tag Active --list LIST --due ISO --description "..."`
+  - **Project linking:** Include `project: <ProjectName>` in the description if the task relates to a known kbx project
 - Update initiatives: `kbx memory add "Initiative update" --entity "Project Name" --tags initiative` if applicable
 
 ## Recalling Decisions
