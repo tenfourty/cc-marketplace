@@ -124,13 +124,11 @@ cat > /tmp/prep-notes.md << 'PREP'
 [full prep brief markdown from step 4]
 PREP
 
-# Push using calendar_uid from gm event — auto-creates doc if needed
-kbx granola push CALENDAR_UID --notes-file /tmp/prep-notes.md --title "Meeting Title"
+# Push using calendar_uid from gm event
+kbx granola push CALENDAR_UID --notes-file /tmp/prep-notes.md
 ```
 
 - Get the `calendar_uid` from the event identified in step 1 (available as a field on `gm today` events)
-- Pass `--title` so the doc gets a proper name if auto-created
-- The command auto-creates the Granola doc if one doesn't exist yet
 
 **If the user declines or doesn't respond**, skip the push and continue to follow-ups.
 
