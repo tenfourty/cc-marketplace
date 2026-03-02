@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.17.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.16.1...cc-marketplace-v0.17.0) (2026-03-02)
+
+
+### Features
+
+* integrate kbx granola view/edit into debrief, prep, and briefer ([#48](https://github.com/tenfourty/cc-marketplace/issues/48)) ([92e60b9](https://github.com/tenfourty/cc-marketplace/commit/92e60b9a8709c7245f30f7ad131d03eafee307f3))
+
 ## [0.16.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.16.0...cc-marketplace-v0.16.1) (2026-03-02)
 
 
