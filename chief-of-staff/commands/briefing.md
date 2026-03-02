@@ -55,6 +55,7 @@ For full content of a specific pinned doc, use `kbx view <path> --plain`.
 
 **Calendar (gm):**
 - Use `gm today` output if already in context, otherwise run `gm today --json --response-format concise --no-frames`
+- **Skip declined meetings:** Exclude any events where the executive's `participationStatus` is `"declined"`. Do not list them in the schedule or count them for back-to-back analysis.
 - Today's meetings with times, attendees, and purpose
 - Flag any meetings that need prep (check recurring meetings from kbx context)
 - Flag any scheduling conflicts or back-to-back stretches with no buffer
@@ -137,6 +138,7 @@ On Sat, Sun, or Mon, add this section after Quick Stats:
 
 **Gather the week ahead:**
 - `gm next-week --json --response-format concise --no-frames` (or `gm this-week` if Monday)
+- Exclude declined meetings (`participationStatus: "declined"`) from the week view
 - Map out the full week's meetings
 
 **Present:**
