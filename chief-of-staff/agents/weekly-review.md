@@ -15,7 +15,7 @@ Gather the following information for the past 7 days. Be thorough but structured
 
 ### 1. Calendar Analysis
 Using gm, gather:
-- `gm this-week --json --response-format concise --no-frames` for the week's events and tasks
+- `gm this-week --hide-declined --json --response-format concise --no-frames` for the week's events and tasks
 - Calculate: total meeting hours, focus time hours, meeting-to-focus ratio
 - Categorise meetings: 1:1, team, cross-functional, external, recurring vs. one-off
 - Flag: any meetings that ran over, were cancelled, or had notable attendee changes

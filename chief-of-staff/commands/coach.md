@@ -73,7 +73,7 @@ Apply these lenses to the executive's week. Not all will be relevant every sessi
 
 **If running standalone:** Gather the past week's data:
 - `kbx context` for pinned docs (CIRs, initiatives, cadence, SuperGoal if exists)
-- `gm this-week --json --response-format concise --no-frames` for calendar and tasks
+- `gm this-week --hide-declined --json --response-format concise --no-frames` for calendar and tasks
 - `gm tasks list --status completed --updated-after YYYY-MM-DD --json` for what moved
 - `gm tasks list --overdue --json` for what didn't
 - `gm tasks list --tag Waiting-On --json` for what others owe
