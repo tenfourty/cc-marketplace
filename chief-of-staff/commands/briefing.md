@@ -54,9 +54,10 @@ For full content of a specific pinned doc, use `kbx view <path> --plain`.
 ### 2. Gather Intelligence
 
 **Calendar (gm):**
-- Use `gm today` output if already in context, otherwise run `gm today --hide-declined --json --response-format concise --no-frames`
-- The `--hide-declined` flag excludes events where `my_status` is `"declined"`. These won't appear in the schedule or count for back-to-back analysis.
-- Today's meetings with times, attendees, and purpose
+- Use `gm today` output if already in context, otherwise run `gm today --hide-declined --counts --json --response-format concise --no-frames`
+- `--hide-declined` excludes declined events. `--counts` adds `meta.status_counts` to the response.
+- Check `meta.status_counts.tentative` — if > 0, flag in the schedule: "You have N tentative meetings to confirm."
+- Today's meetings with times, attendees, and purpose. Mark tentative meetings with `[tentative]` in the schedule.
 - Flag any meetings that need prep (check recurring meetings from kbx context)
 - Flag any scheduling conflicts or back-to-back stretches with no buffer
 
@@ -104,7 +105,7 @@ Use this structure:
 [Only if CIR "immediate" thresholds are triggered. Skip if nothing.]
 
 ### Today's Schedule
-[Timeline view of meetings. Flag which need prep.]
+[Timeline view of meetings. Flag which need prep. Mark tentative meetings with [tentative].]
 
 ### Priority Actions
 [Top 3-5 things that need attention today, ranked by urgency and impact]
@@ -137,7 +138,8 @@ If the user says yes, run an inline mini-triage: present each stale item and off
 On Sat, Sun, or Mon, add this section after Quick Stats:
 
 **Gather the week ahead:**
-- `gm next-week --hide-declined --json --response-format concise --no-frames` (or `gm this-week --hide-declined` if Monday)
+- `gm next-week --hide-declined --counts --json --response-format concise --no-frames` (or `gm this-week --hide-declined --counts` if Monday)
+- Check `meta.status_counts.tentative` — if tentative meetings exist in the week, note them in the assessment
 - Map out the full week's meetings
 
 **Present:**
