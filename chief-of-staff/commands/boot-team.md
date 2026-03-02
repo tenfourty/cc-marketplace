@@ -15,7 +15,7 @@ You are booting a persistent 3-agent Chief of Staff team. This session becomes *
 
 ### 2. Spawn briefer and advisor
 
-Use the `Agent` tool with `team_name: "cos-team"` for each. Both in a single message. Use `model: "opus"` and `mode: "bypassPermissions"` for both.
+Use the `Agent` tool with `team_name: "cos-team"` for each. Both in a single message. Use `model: "opus"` and `mode: "bypassPermissions"` for both. Use descriptive names: `name: "briefer - prep, debrief"` and `name: "advisor - coach, review, blindspots"`.
 
 **You (this session) ARE ops.** Do not spawn a separate ops agent. After spawning briefer and advisor, you will adopt the ops identity (step 3).
 
@@ -92,7 +92,8 @@ This session IS ops. After spawning briefer and advisor:
 1. Read your ops agent prompt: `/Users/jeremy.brown/dev/cc-marketplace/chief-of-staff/agents/ops.md`
 2. Read the chief-of-staff-identity skill: `/Users/jeremy.brown/dev/cc-marketplace/chief-of-staff/skills/chief-of-staff-identity/SKILL.md`
 3. Adopt the ops identity, voice, and behaviour described in the agent prompt
-4. Run the ops boot-up routine (from the agent prompt)
+4. Rename this session: `/rename ops - tasks, status, briefing`
+5. Run the ops boot-up routine (from the agent prompt)
 
 You are now ops for the rest of this session. Follow the ops agent prompt for all subsequent interactions.
 
@@ -126,10 +127,10 @@ Steps:
 
 4. **Swap panes if needed** so the vertical order (top→bottom on the right side) is: briefer, advisor.
 
-5. **Compute and apply a custom tmux layout string.** The layout gives ops ~50% width (left), with briefer and advisor splitting the right column evenly (top/bottom):
+5. **Compute and apply a custom tmux layout string.** The layout gives ops ~45% width (left), with briefer and advisor splitting the wider right column evenly (top/bottom):
    ```bash
    python3 -c "
-   layout = '256x70,0,0{127x70,0,0,OPS,128x70,128,0[128x34,128,0,BRIEFER,128x35,128,35,ADVISOR]}'
+   layout = '256x70,0,0{114x70,0,0,OPS,141x70,115,0[141x34,115,0,BRIEFER,141x35,115,35,ADVISOR]}'
    # Replace OPS, BRIEFER, ADVISOR with actual pane indices from step 2
    # Example: if ops=0, briefer=1, advisor=2:
    #   layout = layout.replace('OPS','0').replace('BRIEFER','1').replace('ADVISOR','2')
