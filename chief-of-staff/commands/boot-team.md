@@ -135,7 +135,7 @@ Steps:
    ```bash
    tmux set-option -p -t %OPS_PANE_ID pane-border-format '#{?pane_active,#[reverse],}#{pane_index}#[default] "ops - briefing, todos, status, decision"'
    tmux select-pane -t %BRIEFER_PANE_ID -T 'briefer - prep, debrief'
-   tmux select-pane -t %ADVISOR_PANE_ID -T 'advisor - coach, review, blindspots'
+   tmux select-pane -t %ADVISOR_PANE_ID -T 'advisor - review, coach, blindspots, culture'
    ```
    Replace `%OPS_PANE_ID`, `%BRIEFER_PANE_ID`, `%ADVISOR_PANE_ID` with actual pane IDs from step 2.
 
