@@ -31,7 +31,7 @@ Spawn the weekly-review agent using the `Agent` tool with `run_in_background: tr
 The weekly-review agent should gather in parallel:
 
 **Calendar (gm) — Week in Review:**
-- `gm this-week --json --response-format concise --no-frames` for the week's events and tasks
+- `gm this-week --hide-declined --json --response-format concise --no-frames` for the week's events and tasks
 - Where did the executive actually spend time this week?
 - How does actual time allocation compare to stated priorities?
 - What percentage was meetings vs. focus time?

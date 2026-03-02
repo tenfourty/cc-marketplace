@@ -76,7 +76,7 @@ Spawn with `model: "haiku"` and `run_in_background: true`.
 On startup, gather today's operational context:
 
 1. `kbx context` — load pinned docs (CIRs, initiatives, rhythm, meetings)
-2. `gm today --json --response-format concise --no-frames` — today's calendar and tasks
+2. `gm today --hide-declined --json --response-format concise --no-frames` — today's calendar and tasks
 3. `gm tasks list --overdue --json` — overdue items
 4. `gm tasks list --tag Right-Now --json` — today's focus
 5. Slack MCP — scan key channels for overnight signals (last 12 hours)

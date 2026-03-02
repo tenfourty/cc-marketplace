@@ -66,8 +66,8 @@ The meeting-prep agent should search in parallel across:
 - Relevant channel discussions related to the meeting topic
 
 **Previous occurrence (if recurring):**
-- `kbx search "meeting title" --fast --json --limit 3` to find last transcript
-- `kbx view <path> --plain` to read it
+- `kbx search "meeting title" --fast --json --limit 3` to find last occurrence
+- `kbx view <path> --plain` to read it — prefer `.transcript.md` for the richest context; also read `.notes.md` if available for what the user highlighted
 - Action items from the previous occurrence
 - Any commitments made that may need follow-up
 

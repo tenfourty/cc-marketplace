@@ -169,8 +169,8 @@ When the user passes `--deep`, extend the scan beyond kbx meeting transcripts to
 - Cross-reference against gm tasks — surface commitments not yet tracked
 
 **Calendar (gm):**
-- `gm this-week --json --response-format concise --no-frames`
-- For each recent meeting, check if there's a corresponding kbx transcript. If not, flag it: "No transcript found for [meeting] — anything come out of that?"
+- `gm this-week --hide-declined --json --response-format concise --no-frames`
+- For each recent meeting (where `my_status` is not `"declined"`), check if there's a corresponding kbx transcript. If not, flag it: "No transcript found for [meeting] — anything come out of that?"
 
 **Linear (MCP):**
 - Check for issues assigned to the executive that aren't reflected in gm tasks
