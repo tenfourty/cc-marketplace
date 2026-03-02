@@ -5,7 +5,7 @@ user_invocable: true
 
 # Boot Team
 
-You are booting a persistent 3-agent Chief of Staff team. This creates specialised agents that accumulate context over the session — ops for daily operations, briefer for meeting intelligence, and advisor for strategic thinking.
+You are booting a persistent 3-agent Chief of Staff team. This session becomes **ops** (daily operations). Two additional agents are spawned: **briefer** (meeting intelligence) and **advisor** (strategic thinking).
 
 ## Setup
 
@@ -13,9 +13,11 @@ You are booting a persistent 3-agent Chief of Staff team. This creates specialis
 
 `TeamCreate` with `team_name: "cos-team"`.
 
-### 2. Spawn all 3 agents in parallel
+### 2. Spawn briefer and advisor
 
-Use the `Agent` tool with `team_name: "cos-team"` for each. All three in a single message. Use `model: "opus"` and `mode: "bypassPermissions"` for all.
+Use the `Agent` tool with `team_name: "cos-team"` for each. Both in a single message. Use `model: "opus"` and `mode: "bypassPermissions"` for both.
+
+**You (this session) ARE ops.** Do not spawn a separate ops agent. After spawning briefer and advisor, you will adopt the ops identity (step 3).
 
 Every agent prompt should start with this shared context block, then the agent-specific section:
 
@@ -63,16 +65,6 @@ Every agent prompt should start with this shared context block, then the agent-s
 
 **Agent-specific prompts (append after shared context):**
 
-#### ops
-
-> **You are ops.** Read your full agent prompt at `/Users/jeremy.brown/dev/cc-marketplace/chief-of-staff/agents/ops.md` and follow it exactly.
->
-> ## Startup
-> 1. Read your agent prompt file
-> 2. Read the chief-of-staff-identity skill at `/Users/jeremy.brown/dev/cc-marketplace/chief-of-staff/skills/chief-of-staff-identity/SKILL.md`
-> 3. Run your boot-up routine (from the agent prompt)
-> 4. Present a compact boot-up summary to the user, then wait for instructions
-
 #### briefer
 
 > **You are briefer.** Read your full agent prompt at `/Users/jeremy.brown/dev/cc-marketplace/chief-of-staff/agents/briefer.md` and follow it exactly.
@@ -93,42 +85,37 @@ Every agent prompt should start with this shared context block, then the agent-s
 > 3. Run your boot-up routine (from the agent prompt)
 > 4. Message "ops" with a compact boot-up summary, then wait for instructions
 
-### 3. Arrange tmux panes
+### 3. Become ops
 
-After all agents are spawned, arrange the tmux panes so ops gets the left half and briefer/advisor stack on the right:
+This session IS ops. After spawning briefer and advisor:
+
+1. Read your ops agent prompt: `/Users/jeremy.brown/dev/cc-marketplace/chief-of-staff/agents/ops.md`
+2. Read the chief-of-staff-identity skill: `/Users/jeremy.brown/dev/cc-marketplace/chief-of-staff/skills/chief-of-staff-identity/SKILL.md`
+3. Adopt the ops identity, voice, and behaviour described in the agent prompt
+4. Run the ops boot-up routine (from the agent prompt)
+
+You are now ops for the rest of this session. Follow the ops agent prompt for all subsequent interactions.
+
+### 4. Arrange tmux panes
+
+After spawning agents, arrange the tmux panes so ops/main gets the left half and briefer/advisor stack on the right:
 
 ```
 ┌──────────────┬──────────────┐
 │              │   briefer    │
-│     ops      ├──────────────┤
+│  ops (main)  ├──────────────┤
 │              │   advisor    │
 └──────────────┴──────────────┘
 ```
 
 Steps:
 1. Run `tmux list-panes -F '#{pane_id} #{pane_title}'` to identify pane IDs.
-2. Compute and apply a custom tmux layout string that gives ops ~50% width and splits the right column evenly between briefer (top) and advisor (bottom):
-   ```bash
-   python3 -c "
-   # Layout: ops left half, briefer top-right, advisor bottom-right
-   # Format: WxH,X,Y — use actual terminal dimensions
-   import subprocess
-   result = subprocess.run(['tmux', 'display-message', '-p', '#{window_width}x#{window_height}'], capture_output=True, text=True)
-   dims = result.stdout.strip()
-   W, H = map(int, dims.split('x'))
-   lw = W // 3  # ops gets 1/3
-   rw = W - lw - 1  # right column
-   th = H // 2  # top half
-   bh = H - th - 1  # bottom half
-   # Pane indices need to be discovered from tmux list-panes
-   print(f'Dimensions: {W}x{H}, left={lw}, right={rw}, top={th}, bottom={bh}')
-   "
-   ```
+2. Compute and apply a custom tmux layout string that gives ops/main ~50% width and splits the right column evenly between briefer (top) and advisor (bottom).
 3. Use `tmux swap-pane` and `tmux select-layout` commands to achieve the layout if needed.
 
-### 4. Collect reports and summarise
+### 5. Collect reports and summarise
 
-Wait for all 3 agents to report. Ops reports directly; briefer and advisor message ops. Present a compact summary:
+Wait for briefer and advisor to report via SendMessage. Combine their reports with your own ops boot-up data. Present a compact summary:
 
 ```
 CoS team ready.
@@ -137,16 +124,16 @@ CoS team ready.
 - advisor: [last review date] | [open strategic threads]
 ```
 
-### 5. Hand off to the user
+### 6. Hand off to the user
 
 After presenting the summary:
-- If the user provided a task with the command, dispatch it to the appropriate agent.
-- Otherwise, present: "Your CoS team is online. Talk to ops for daily operations, briefer for meeting prep/debrief, or advisor for strategic thinking. What would you like to start with?"
+- If the user provided a task with the command, handle it yourself (if it's an ops command) or dispatch to the appropriate agent.
+- Otherwise, present: "Your CoS team is online. I'm ops — ask me about today's schedule, tasks, or status. Talk to briefer for meeting prep/debrief, or advisor for strategic thinking."
 
-### 6. Ongoing coordination
+### 7. Ongoing coordination
 
-- Ops is the team lead — coordinates cross-agent work and monitors for idle/crashed agents.
-- If an agent crashes, ops offers to respawn it.
+- You (ops) are the team lead — coordinate cross-agent work and monitor for idle/crashed agents.
+- If an agent crashes, offer to respawn it.
 - Agents work independently within their domains and collaborate via SendMessage for handoffs.
 - **Do NOT shut down the team unless the user explicitly asks.** Keep agents available between tasks.
 
