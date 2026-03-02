@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.10.3...cc-marketplace-v0.11.0) (2026-03-02)
+
+
+### Features
+
+* add meeting data source-type guidance (transcript &gt; notes &gt; ai-summary) ([#26](https://github.com/tenfourty/cc-marketplace/issues/26)) ([7d468cc](https://github.com/tenfourty/cc-marketplace/commit/7d468ccbf2bffbcfc139f93f798be7e7872d6294))
+
 ## [0.10.3](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.10.2...cc-marketplace-v0.10.3) (2026-03-02)
 
 
