@@ -54,7 +54,9 @@ For the meeting topic:
 
 ### 3. Gather Recent Intelligence
 
-**Dispatch the meeting-prep agent** to search in parallel across:
+Spawn the meeting-prep agent using the `Agent` tool with `run_in_background: true` and `model: "haiku"`. **Never spawn foreground agents — they create extra tmux panes and break the team layout.**
+
+The meeting-prep agent should search in parallel across:
 
 **Recent interactions:**
 - `kbx person timeline "Name" --from YYYY-MM-DD --json` for each attendee (last 7 days)

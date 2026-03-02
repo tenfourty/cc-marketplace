@@ -49,7 +49,7 @@ Every agent prompt should start with this shared context block, then the agent-s
 > - **advisor → ops:** When patterns require action (blind spots, overdue commitments, decision debt).
 > - **briefer → advisor:** After debriefs that surface strategic themes.
 >
-> **Background workers:** Each agent can spawn existing worker agents (haiku, background) for grunt work:
+> **Background workers:** Each agent can spawn worker agents for grunt work. **ALWAYS use `run_in_background: true` when spawning ANY sub-agent — never spawn foreground agents, as they create extra tmux panes and break the 3-pane team layout.**
 > - ops: `action-tracker`, `cross-source-search`
 > - briefer: `meeting-prep`
 > - advisor: `weekly-review`
