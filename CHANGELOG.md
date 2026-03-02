@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.15.1...cc-marketplace-v0.16.0) (2026-03-02)
+
+
+### Features
+
+* add /focus command for tmux pane spotlight ([#44](https://github.com/tenfourty/cc-marketplace/issues/44)) ([d14593b](https://github.com/tenfourty/cc-marketplace/commit/d14593bfa931395e21502ed50c798cadd517ae33))
+
 ## [0.15.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.15.0...cc-marketplace-v0.15.1) (2026-03-02)
 
 
