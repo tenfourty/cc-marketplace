@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.16.0...cc-marketplace-v0.16.1) (2026-03-02)
+
+
+### Bug Fixes
+
+* replace fragile checksum layout with resize-pane in /focus and boot-team ([#46](https://github.com/tenfourty/cc-marketplace/issues/46)) ([d6f7cb7](https://github.com/tenfourty/cc-marketplace/commit/d6f7cb734cd4af04ff12affd4bc66bf3d4b6de3d))
+
 ## [0.16.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.15.1...cc-marketplace-v0.16.0) (2026-03-02)
 
 
