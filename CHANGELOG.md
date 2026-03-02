@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.3](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.8.2...cc-marketplace-v0.8.3) (2026-03-02)
+
+
+### Bug Fixes
+
+* use pane-border-format for all three pane titles ([#15](https://github.com/tenfourty/cc-marketplace/issues/15)) ([6d2dec2](https://github.com/tenfourty/cc-marketplace/commit/6d2dec2058de26485d096c11cdd61f94d6461cc3))
+
 ## [0.8.2](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.8.1...cc-marketplace-v0.8.2) (2026-03-02)
 
 

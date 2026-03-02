@@ -1,6 +1,6 @@
 {
   "name": "chief-of-staff",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "AI Chief of Staff for technology executives. Uses kbx (knowledge base) and gm (calendar/tasks) as primary data sources to provide strategic briefings, meeting intelligence, decision support, and proactive oversight. CTO-flavoured but adaptable to any executive role.",
   "author": {
     "name": "Jeremy Brown"
