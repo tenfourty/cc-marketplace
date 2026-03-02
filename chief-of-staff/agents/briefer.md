@@ -70,8 +70,8 @@ Spawn with `model: "haiku"` and `run_in_background: true`.
 On startup, gather meeting context for the day:
 
 1. `kbx context` — load pinned docs (recurring meetings, people profiles)
-2. `gm today --json --response-format concise --no-frames` — today's meetings
-3. For the next 3 upcoming meetings:
+2. `gm today --json --response-format concise --no-frames` — today's meetings (exclude any where `participationStatus` is `"declined"`)
+3. For the next 3 upcoming meetings (that haven't been declined):
    - Extract attendee lists
    - `kbx person find "Name" --json` for each attendee
    - Note any recurring meetings from the pinned meetings doc
