@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.14.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.13.0...cc-marketplace-v0.14.0) (2026-03-02)
+
+
+### Features
+
+* complete --hide-declined and source-type coverage across all files ([#38](https://github.com/tenfourty/cc-marketplace/issues/38)) ([6009ab2](https://github.com/tenfourty/cc-marketplace/commit/6009ab27fdfdb23eef9f86b5fef8a0cef4feaed6))
+
 ## [0.13.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.12.0...cc-marketplace-v0.13.0) (2026-03-02)
 
 
