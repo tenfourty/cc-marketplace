@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.8.0...cc-marketplace-v0.8.1) (2026-03-02)
+
+
+### Bug Fixes
+
+* **cos:** add explicit tmux layout steps to /boot-team ([#7](https://github.com/tenfourty/cc-marketplace/issues/7)) ([97f9e56](https://github.com/tenfourty/cc-marketplace/commit/97f9e56f6bc8de6d851dde837501ca193edc81ce))
+
 ## [0.8.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.7.0...cc-marketplace-v0.8.0) (2026-03-02)
 
 
