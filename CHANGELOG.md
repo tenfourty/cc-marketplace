@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.3](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.11.2...cc-marketplace-v0.11.3) (2026-03-02)
+
+
+### Bug Fixes
+
+* restore --title in /prep Granola push ([#32](https://github.com/tenfourty/cc-marketplace/issues/32)) ([e9ce6c0](https://github.com/tenfourty/cc-marketplace/commit/e9ce6c069450d77b2a1b0ed42c5bf79624f5fcc5))
+
 ## [0.11.2](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.11.1...cc-marketplace-v0.11.2) (2026-03-02)
 
 
