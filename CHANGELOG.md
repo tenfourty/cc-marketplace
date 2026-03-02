@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.12.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.11.3...cc-marketplace-v0.12.0) (2026-03-02)
+
+
+### Features
+
+* skip declined meetings in /prep, /briefing, and briefer boot-up ([#34](https://github.com/tenfourty/cc-marketplace/issues/34)) ([53263a9](https://github.com/tenfourty/cc-marketplace/commit/53263a9313bf07470e6dbb7f007aea1241c572f9))
+
 ## [0.11.3](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.11.2...cc-marketplace-v0.11.3) (2026-03-02)
 
 
