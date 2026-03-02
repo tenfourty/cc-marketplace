@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.10.0...cc-marketplace-v0.10.1) (2026-03-02)
+
+
+### Bug Fixes
+
+* make Granola push optional in /prep (ask user first) ([#20](https://github.com/tenfourty/cc-marketplace/issues/20)) ([1cf8700](https://github.com/tenfourty/cc-marketplace/commit/1cf8700b1bdf3ce0352f6631d39706429f469ce6))
+
 ## [0.10.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.9.0...cc-marketplace-v0.10.0) (2026-03-02)
 
 
