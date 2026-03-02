@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.3](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.10.2...cc-marketplace-v0.10.3) (2026-03-02)
+
+
+### Bug Fixes
+
+* simplify Granola push — auto-create removes doc-not-found case ([#24](https://github.com/tenfourty/cc-marketplace/issues/24)) ([a07725c](https://github.com/tenfourty/cc-marketplace/commit/a07725c7e89a762399610217b408683d6e314c65))
+
 ## [0.10.2](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.10.1...cc-marketplace-v0.10.2) (2026-03-02)
 
 
