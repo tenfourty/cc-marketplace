@@ -39,11 +39,19 @@ Deep search for everything related to the topic, then analyse the aggregate pict
 **Search broadly:**
 - `kbx search "term" --json --limit 10` for each variant (semantic / embeddings)
 - `kbx search "term" --fast --json` for keyword matches
-- Read the most relevant results: `kbx view <path> --plain`
 - If early results surface sub-themes, generate additional search terms and search deeper
 - Slack MCP for related discussions and concerns raised informally
 - `gm tasks list --json --response-format concise` for related tasks and their status
 - `kbx note list --tag decision --json` for related decisions already made
+
+**Read results in parallel:** From the search results, identify the 10-15 most relevant documents. Spawn background sub-agents to read and extract risk-relevant content in parallel — one agent per 3-4 documents.
+
+- `model: "haiku"` and `run_in_background: true`
+- Do NOT pass `team_name` — these are anonymous workers, not team members
+- Prompt each agent with: the document paths to read (`kbx view <path> --plain`), the topic being analysed, and the adversarial perspectives from the Analysis Framework section
+- Ask each agent to return: key facts, decisions, assumptions, risks, and any gaps or contradictions they notice
+
+Collect results from all background agents before proceeding to the Analysis Framework.
 
 ### Mode 3: Post-Review
 After a `/cos:review` has been run in this session, analyse the week's patterns and decisions for risks.

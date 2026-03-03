@@ -44,11 +44,16 @@ This is a knowledge extraction task — cast the widest possible net.
 - If early results surface specific sub-themes or terminology not in the initial list, generate additional search terms and search for those too
 - Iterate until coverage feels thorough — don't stop at the first round
 
-**Read the most relevant results:**
-- `kbx view <path> --plain` for the top 10-15 most relevant entries
+**Read results in parallel:** From the search results, identify the 10-15 most relevant entries. Spawn background sub-agents to read and extract knowledge in parallel — one agent per 3-4 documents.
+
+- `model: "haiku"` and `run_in_background: true`
+- Do NOT pass `team_name` — these are anonymous workers, not team members
 - **Source preference:** When search results include multiple file types for the same meeting, prefer `.transcript.md` (richest detail) over `.notes.md` or `.ai-summary.md`
+- Prompt each agent with: the document paths to read (`kbx view <path> --plain`), the topic being codified, and the extraction targets (principles, strategies, anti-patterns, decision frameworks)
+- Ask each agent to return: extracted principles, actionable insights, notable quotes, and which meetings/contexts they came from
 - Look for meetings where this topic was discussed substantively, not just mentioned in passing
-- Pay attention to meetings with different people — the same topic discussed in different contexts yields richer principles
+
+Collect results from all background agents before proceeding to Step 3. Pay attention to insights from different people — the same topic discussed in different contexts yields richer principles.
 
 **Supplementary sources:**
 - Slack MCP for related discussions and informal takes
