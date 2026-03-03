@@ -37,8 +37,8 @@ Deep search for everything related to the topic, then analyse the aggregate pict
 - "rollback plan", "downtime", "parallel running"
 
 **Search broadly:**
-- `kbx search "term" --json --full-chunks --limit 10` for each variant (semantic / embeddings)
-- `kbx search "term" --fast --json --full-chunks` for keyword matches
+- `kbx search "term" --json --full-chunks --dedupe --limit 10` for each variant (semantic / embeddings)
+- `kbx search "term" --fast --json --full-chunks --dedupe` for keyword matches
 - If early results surface sub-themes, generate additional search terms and search deeper
 - Slack MCP for related discussions and concerns raised informally
 - `gm tasks list --json --response-format concise` for related tasks and their status
