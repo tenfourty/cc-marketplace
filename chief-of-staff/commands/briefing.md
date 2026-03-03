@@ -140,7 +140,7 @@ If the user says yes, run an inline mini-triage: present each stale item and off
 On Sat, Sun, or Mon, add this section after Quick Stats:
 
 **Gather the week ahead:**
-- `gm next-week --hide-declined --counts --json --response-format concise --no-frames` (or `gm this-week --hide-declined --counts` if Monday)
+- `gm next-week --hide-declined --counts --json --response-format concise --no-frames` (or `gm this-week --hide-declined --counts --json --response-format concise --no-frames` if Monday)
 - Check `meta.status_counts.tentative` — if tentative meetings exist in the week, note them in the assessment
 - Map out the full week's meetings
 

@@ -24,7 +24,7 @@ The transcript is always the primary source for action items, decisions, and quo
 
 ### Discovery
 
-Use `kbx search` to find meeting data and `kbx view <path> --plain` to read it. kbx indexes all three file types. If kbx returns nothing, fall back to Granola MCP.
+Use `kbx search` to find meeting data and `kbx view <path> --plain` to read it. kbx indexes all three file types. If kbx returns nothing, fall back to `kbx granola view <calendar_uid> --all` to fetch live from the Granola API.
 
 ## Working with Transcripts
 

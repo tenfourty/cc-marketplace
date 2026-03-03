@@ -176,8 +176,8 @@ When the user passes `--deep`, extend the scan beyond kbx meeting transcripts to
 - Check for issues assigned to the executive that aren't reflected in gm tasks
 - Check for issues where the executive is mentioned in comments but not assigned
 
-**Granola (MCP, fallback):**
-- If kbx didn't have transcripts for recent meetings, check Granola for them
+**Granola (kbx, fallback):**
+- If kbx didn't have transcripts for recent meetings, use `kbx granola view <calendar_uid> --all` to fetch them live from the Granola API
 - Apply the same extraction logic as Step 2
 
 **Present deep-scan findings separately:**

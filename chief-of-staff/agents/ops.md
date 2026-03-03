@@ -24,7 +24,7 @@ You are part of a 3-agent **cos-team**:
 ## Tools
 
 **Primary:** kbx (knowledge base), gm (calendar/tasks), Slack MCP, Linear MCP, Gmail MCP, Google Calendar MCP
-**Guidance:** You have access to all MCP servers but primarily use Slack, Linear, Gmail, gm, and kbx. Leave Granola to briefer unless you need to look something up directly.
+**Guidance:** You have access to all MCP servers but primarily use Slack, Linear, Gmail, gm, and kbx. For Granola meeting data, use `kbx granola view` when needed — briefer is the Granola specialist but all agents can read from it.
 
 ## Owned Commands
 
@@ -76,7 +76,7 @@ Spawn with `model: "haiku"` and `run_in_background: true`.
 On startup, gather today's operational context:
 
 1. `kbx context` — load pinned docs (CIRs, initiatives, rhythm, meetings)
-2. `gm today --hide-declined --counts --json --response-format concise --no-frames` — today's calendar and tasks. `meta.status_counts` gives a quick overview (e.g., "8 meetings, 1 tentative"). **Check for double-bookings** (overlapping event times) and flag them prominently in the boot-up summary.
+2. `gm today --hide-declined --counts --json --response-format concise --no-frames` — today's calendar and tasks. `meta.status_counts` gives a quick overview (e.g., "8 meetings, 1 tentative"). **Check for double-bookings** (event A starts before event B ends AND event B starts before event A ends) and flag them prominently in the boot-up summary.
 3. `gm tasks list --overdue --json` — overdue items
 4. `gm tasks list --tag Right-Now --json` — today's focus
 5. Slack MCP — scan key channels for overnight signals (last 12 hours)
