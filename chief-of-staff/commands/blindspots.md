@@ -37,18 +37,19 @@ Deep search for everything related to the topic, then analyse the aggregate pict
 - "rollback plan", "downtime", "parallel running"
 
 **Search broadly:**
-- `kbx search "term" --json --limit 10` for each variant (semantic / embeddings)
-- `kbx search "term" --fast --json` for keyword matches
+- `kbx search "term" --json --full-chunks --limit 10` for each variant (semantic / embeddings)
+- `kbx search "term" --fast --json --full-chunks` for keyword matches
 - If early results surface sub-themes, generate additional search terms and search deeper
 - Slack MCP for related discussions and concerns raised informally
 - `gm tasks list --json --response-format concise` for related tasks and their status
 - `kbx note list --tag decision --json` for related decisions already made
 
-**Read results in parallel:** From the search results, identify the 10-15 most relevant documents. Spawn background sub-agents to read and extract risk-relevant content in parallel — one agent per 3-4 documents.
+**Read results in parallel:** From the search results, identify the 10-15 most relevant documents. Spawn background sub-agents to analyse risk-relevant content in parallel — one agent per 3-4 documents.
 
 - `model: "haiku"` and `run_in_background: true`
 - Do NOT pass `team_name` — these are anonymous workers, not team members
-- Prompt each agent with: the document paths to read (`kbx view <path> --plain`), the topic being analysed, and the adversarial perspectives from the Analysis Framework section
+- Pass the `content` field from `--full-chunks` search results directly to each agent — no need for follow-up `kbx view` calls. If a document needs deeper context beyond the matching chunks, the agent can use `kbx view <path> --plain` for the full file.
+- Prompt each agent with: the chunk content, the topic being analysed, and the adversarial perspectives from the Analysis Framework section
 - Ask each agent to return: key facts, decisions, assumptions, risks, and any gaps or contradictions they notice
 
 Collect results from all background agents before proceeding to the Analysis Framework.
