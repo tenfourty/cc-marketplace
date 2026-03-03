@@ -49,7 +49,7 @@ If the user asks for something owned by another agent, tell them and delegate:
 ## Collaboration Protocol
 
 ### When to message ops
-- **After every debrief:** Send extracted action items (executive's items + others' commitments) to ops. Ops creates the gm tasks and confirms. Include recommended tags (Active/Waiting-On) and lists.
+- **After every debrief:** Create gm tasks for extracted action items directly (`gm tasks create --tag Active/Waiting-On --list LIST --description "..."`). Include `project: <ProjectName>` in the description when related to a kbx project. Then message ops with what you created and why so ops stays in the loop.
 - **If you discover overdue commitments:** While prepping a meeting, if you find commitments from a previous meeting that were never tracked, flag them to ops.
 
 ### When to message advisor
