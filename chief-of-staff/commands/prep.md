@@ -150,14 +150,11 @@ Write the prep brief to a markdown file alongside the meeting's other artifacts 
 **Frontmatter:**
 ```yaml
 ---
-title: 'Meeting Prep — [Meeting Title]'
+title: 'Prep: [Meeting Title]'
 date: '[meeting date YYYY-MM-DD]'
 type: prep
 source: cos-agent
 calendar_uid: '[full calendar_uid from gm event]'
-created_at: '[current ISO timestamp YYYY-MM-DDTHH:MM:SS]'
-tags:
-- prep
 attendees:
 - name: [Attendee Name]
   email: [attendee@example.com]

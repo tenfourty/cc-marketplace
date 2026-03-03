@@ -136,14 +136,11 @@ Write the debrief to a markdown file alongside the meeting's other artifacts (tr
 **Frontmatter:**
 ```yaml
 ---
-title: 'Meeting Debrief — [Meeting Title]'
+title: 'Debrief: [Meeting Title]'
 date: '[meeting date YYYY-MM-DD]'
 type: debrief
 source: cos-agent
 calendar_uid: '[full calendar_uid from gm event or transcript frontmatter]'
-created_at: '[current ISO timestamp YYYY-MM-DDTHH:MM:SS]'
-tags:
-- debrief
 attendees:
 - name: [Attendee Name]
   email: [attendee@example.com]
