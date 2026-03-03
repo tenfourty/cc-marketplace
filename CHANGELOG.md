@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.24.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.23.1...cc-marketplace-v0.24.0) (2026-03-03)
+
+
+### Features
+
+* **inner-game:** add 4 assessment resource files ([34bda37](https://github.com/tenfourty/cc-marketplace/commit/34bda37e417de72d5481a93d1fda3e2bcb021d46))
+* **inner-game:** add 7 journaling technique resource files ([f62036f](https://github.com/tenfourty/cc-marketplace/commit/f62036fbfd221bc623c2248703dce207659300c7))
+* **inner-game:** add 7 life domain resource files ([313d74e](https://github.com/tenfourty/cc-marketplace/commit/313d74e79ce74e926f9b2d179fd9465460b82f8a))
+* **inner-game:** add 8 coach + 5 Document resource files ([1186864](https://github.com/tenfourty/cc-marketplace/commit/1186864c179e25cc2ca53d6df60c03b34eff1705))
+* **inner-game:** add 8 coaching framework resource files ([60dea06](https://github.com/tenfourty/cc-marketplace/commit/60dea06d2a6b6b73b6ae36c04217ceefa7935e95))
+* **inner-game:** add assessment commands (review, wheel) ([c247026](https://github.com/tenfourty/cc-marketplace/commit/c24702619fe4c98d9d9e518f8df1ebeb41bb9568))
+* **inner-game:** add coach agent definition ([8294864](https://github.com/tenfourty/cc-marketplace/commit/8294864a1e4ef13c464d481b13250a243f6c518a))
+* **inner-game:** add coaching commands (setup, session, document, focus) ([a7f31ef](https://github.com/tenfourty/cc-marketplace/commit/a7f31ef5180884b56252d41ef4a0922412b7244c))
+* **inner-game:** add coaching-identity skill with compressed resource index ([33fd7c3](https://github.com/tenfourty/cc-marketplace/commit/33fd7c3b91c69ea91822b380ec166291b8420674))
+* **inner-game:** add daily rhythm commands (boot, morning, evening, checkin) ([e909520](https://github.com/tenfourty/cc-marketplace/commit/e909520fd7909f2bcb85c1a62bfe7c051cef36fd))
+* **inner-game:** add journaling-practice skill with Obsidian-compatible format ([b01203e](https://github.com/tenfourty/cc-marketplace/commit/b01203e9424183019613317404af4a39781ffe3f))
+* **inner-game:** add life-domains skill with Wheel of Life and focus areas ([1159e41](https://github.com/tenfourty/cc-marketplace/commit/1159e4122fc9725fd8f33d9019113e36de2b6ee3))
+* **inner-game:** add prompt library + Document phase 5 integration ([a8dbae2](https://github.com/tenfourty/cc-marketplace/commit/a8dbae22d40a09fd27c18184a358b1a6ab50ea1e))
+* **inner-game:** add revision guide + finalize resource library (43/43) ([c18c1d8](https://github.com/tenfourty/cc-marketplace/commit/c18c1d8d29426b6eb353e9901b9d5f4aa92b108c))
+* **inner-game:** add the-document skill with 5-phase methodology ([f5f0c71](https://github.com/tenfourty/cc-marketplace/commit/f5f0c716a1dd3026787d5f5c75b149fe266d264c))
+* **inner-game:** enrich domain resource files with deeper coaching content ([06e1b34](https://github.com/tenfourty/cc-marketplace/commit/06e1b34b5f00f2e3fca07d9b6c141d25e9eeebb7))
+* **inner-game:** register plugin in marketplace and release-please ([3810403](https://github.com/tenfourty/cc-marketplace/commit/3810403e8c5b44371903378cefaba04497c8f1b8))
+* **inner-game:** scaffold plugin directory structure and manifest ([324b333](https://github.com/tenfourty/cc-marketplace/commit/324b333811bae1e6cc006cdae0808613550e2623))
+
 ## [0.23.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.23.0...cc-marketplace-v0.23.1) (2026-03-03)
 
 
