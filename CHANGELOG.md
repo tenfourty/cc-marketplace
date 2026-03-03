@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.18.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.18.0...cc-marketplace-v0.18.1) (2026-03-03)
+
+
+### Bug Fixes
+
+* address code review findings across 11 files ([#52](https://github.com/tenfourty/cc-marketplace/issues/52)) ([d2288b9](https://github.com/tenfourty/cc-marketplace/commit/d2288b9056ba31fb1d238229d045059914012f38))
+
 ## [0.18.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.17.0...cc-marketplace-v0.18.0) (2026-03-03)
 
 
