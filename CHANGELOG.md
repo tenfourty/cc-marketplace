@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.21.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.21.0...cc-marketplace-v0.21.1) (2026-03-03)
+
+
+### Bug Fixes
+
+* add --dedupe to --full-chunks searches in blindspots and codify ([#60](https://github.com/tenfourty/cc-marketplace/issues/60)) ([6f655a2](https://github.com/tenfourty/cc-marketplace/commit/6f655a2e9218c9dcd778c6da0f74a80c4495b230))
+
 ## [0.21.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.20.0...cc-marketplace-v0.21.0) (2026-03-03)
 
 
