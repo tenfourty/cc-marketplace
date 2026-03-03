@@ -7,7 +7,7 @@ source: "Julia Cameron, 'The Artist's Way' (1992)"
 ---
 
 ## Overview
-Morning Pages is a daily practice of writing three pages of longhand stream-of-consciousness text first thing in the morning, before any other input (phone, email, news, conversation). Developed by Julia Cameron as a tool for creative recovery and artistic unblocking. The practice acts as a drain for mental noise — externalizing the constant internal chatter so the creative, intuitive mind can operate more freely throughout the day.
+Morning Pages is a daily practice of writing three pages of longhand stream-of-consciousness text first thing in the morning, before any other input (phone, email, news, conversation). Developed by Julia Cameron as a tool for creative recovery and artistic unblocking, it has been used by artists, executives, and anyone struggling with mental clutter since "The Artist's Way" was published in 1992. The practice acts as a drain for mental noise — externalizing the constant internal chatter so the creative, intuitive mind can operate more freely throughout the day. Cameron describes the pages as a form of "brain drain": not a meditation, not a diary, not therapy, but a daily clearing of the mental inbox before anything else fills it.
 
 ## When to Use
 - Creative blocks: writing, design, music, problem-solving — any domain where inspiration feels absent
@@ -44,6 +44,12 @@ Morning Pages is a daily practice of writing three pages of longhand stream-of-c
 
 **The rule on re-reading:** Cameron recommends not re-reading for the first 8 weeks. After that, monthly review is optional. The writing is for the act of writing, not for the artifact.
 
+**What to expect over time:**
+- Weeks 1-2: Resistant, self-conscious, filled with complaint and trivia. Normal.
+- Weeks 3-4: The censor fights back. This is the hardest period. Do not quit.
+- Weeks 5-8: Entries deepen. Surprise material surfaces. The practice starts feeling necessary.
+- Beyond 8 weeks: Most practitioners report a persistent shift in clarity, creativity, and self-knowledge.
+
 ## Key Prompts
 Morning Pages is designed to be prompt-free — you begin writing without a question. However, if you are truly stuck in the first week, these are acceptable launching pads:
 
@@ -54,6 +60,12 @@ Morning Pages is designed to be prompt-free — you begin writing without a ques
 - "Something I've been avoiding thinking about is..."
 
 Use prompts only to get moving. Let them go as soon as the words start flowing.
+
+Additional launching pads for resistance or emotional difficulty:
+- "I am worried about..."
+- "Something I've been meaning to do but keep deferring is..."
+- "Right now, what I most need is..."
+- "If I'm honest with myself about [situation/relationship/decision]..."
 
 ## Pitfalls
 

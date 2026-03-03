@@ -51,6 +51,12 @@ BEing is the cause; results are the effect. Most coaching works at the level of 
 - Low-stakes environments produce low-stakes change
 - The structure of commitment is itself a transformation
 
+**The BEing-DOing-Having Distinction**
+- Most people work the chain backwards: "When I have more time/money/success, I'll do the things that let me be the person I want to be"
+- Hardison reverses it: BE first → DO flows naturally → HAVE follows
+- The question is never "what do I need to do?" before "who am I being?"
+- Applied: if someone is procrastinating, the question is not "how do I get motivated?" but "who is the person who does not procrastinate — who are they being?"
+
 ## Key Questions
 - "Who are you being right now — not what are you doing, but who are you being?"
 - "If the results in your life are a perfect reflection of who you are being, what does that tell you?"
@@ -59,6 +65,15 @@ BEing is the cause; results are the effect. Most coaching works at the level of 
 - "Are you committed, or are you interested? Interested people do what's convenient. Committed people do what it takes."
 - "What would you put in your Document — who are you, at your best, as a statement of identity?"
 - "Is the story you're telling yourself about this situation true, or is it a story?"
+- "What are you being that is producing the results you don't want?"
+- "If you were fully the person your Document describes, what would you do in this situation?"
+
+## Applying with a Coachee
+1. Begin by surfacing the BEing-DOing confusion: "You keep talking about what to do. Let's look at who you are being first."
+2. Ask who they are being when they're at their best — draw out a living example, not an abstract ideal.
+3. Draft a first version of The Document together: 5-10 declarative "I am..." statements. Read them aloud. Notice which ones land and which feel hollow.
+4. Assign daily reading aloud as the first commitment. Review after one week: which statements have they grown into? Which still feel aspirational?
+5. Return to BEing when strategy conversations stall: the conversation about what to do is a symptom; trace it back to BEing.
 
 ## Pitfalls
 - **Affirmations vs declarations:** Affirmations are wishes; declarations are commitments. Don't let the person treat The Document as a wish list.
