@@ -32,7 +32,7 @@ Read the most relevant transcripts: `kbx view <path> --plain`
 
 Also check:
 - Slack MCP for communication patterns, tone, and norms across channels
-- `gm this-week --json --response-format concise --no-frames` for meeting cadence patterns
+- `gm this-week --hide-declined --json --response-format concise --no-frames` for meeting cadence patterns
 
 ### Freshness Awareness
 

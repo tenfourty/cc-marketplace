@@ -17,6 +17,8 @@ You will be given either:
 
 When given a transcript:
 
+**Source priority:** Prefer `.transcript.md` files — they are the ground truth for commitments. `.notes.md` can supplement with user-flagged items. Do not extract action items solely from `.ai-summary.md` files — they may miss, misattribute, or hallucinate commitments.
+
 ### 1. Identify Commitments
 Scan the transcript for:
 - **Explicit commitments:** "I'll do X by Y" / "Can you handle X?" / "Let's aim to have X done by Y"

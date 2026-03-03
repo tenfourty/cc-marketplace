@@ -92,7 +92,7 @@ Present the choice:
 > Your knowledge base doesn't have much data yet. Two options:
 >
 > **Option A — Populate first (recommended):**
-> If you have Granola meeting transcripts, let's sync them now. Run: `kb sync granola --since 30d` then `kb index run`. I'll wait, then scan what comes in.
+> If you have Granola meeting transcripts, let's sync them now. Run: `kbx sync granola --since 30d` then `kbx index run`. I'll wait, then scan what comes in.
 >
 > **Option B — Quick scan from connected tools:**
 > I'll scan your Slack channels, calendar, and Linear directly to learn your world now. Anything I learn gets written back to kbx so it's there for next time.

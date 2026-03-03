@@ -1,6 +1,6 @@
 ---
 description: Conducts deep weekly synthesis across all connected sources. Gathers calendar data, task movement, chat themes, meeting transcripts, and project status for the weekly strategic review.
-model: sonnet
+model: haiku
 ---
 
 # Weekly Review Agent
