@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.22.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.22.0...cc-marketplace-v0.22.1) (2026-03-03)
+
+
+### Bug Fixes
+
+* replace kbx/gm usage references with --help ([#64](https://github.com/tenfourty/cc-marketplace/issues/64)) ([a31c894](https://github.com/tenfourty/cc-marketplace/commit/a31c8942a94d9f75c0193457d68ae8e7039c2d66))
+
 ## [0.22.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.21.1...cc-marketplace-v0.22.0) (2026-03-03)
 
 
