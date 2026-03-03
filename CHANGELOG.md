@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.22.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.21.1...cc-marketplace-v0.22.0) (2026-03-03)
+
+
+### Features
+
+* adopt --merge-chunks for richer sub-agent context ([#62](https://github.com/tenfourty/cc-marketplace/issues/62)) ([efd3a14](https://github.com/tenfourty/cc-marketplace/commit/efd3a1471a1a75eb930e96408c182b2ffaff14d1))
+
 ## [0.21.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.21.0...cc-marketplace-v0.21.1) (2026-03-03)
 
 
