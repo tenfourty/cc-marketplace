@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.18.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.17.0...cc-marketplace-v0.18.0) (2026-03-03)
+
+
+### Features
+
+* add double-booking detection to calendar-reading commands ([#50](https://github.com/tenfourty/cc-marketplace/issues/50)) ([2b0558b](https://github.com/tenfourty/cc-marketplace/commit/2b0558b3bf647577fa94cd2b5f7bbe23f5707e8c))
+
 ## [0.17.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.16.1...cc-marketplace-v0.17.0) (2026-03-02)
 
 
