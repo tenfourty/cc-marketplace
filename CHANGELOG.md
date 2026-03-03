@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.23.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.23.0...cc-marketplace-v0.23.1) (2026-03-03)
+
+
+### Bug Fixes
+
+* align prep/debrief frontmatter with agreed schema ([#68](https://github.com/tenfourty/cc-marketplace/issues/68)) ([9194ece](https://github.com/tenfourty/cc-marketplace/commit/9194ece60268b871485df67c4435d64363c7dced))
+
 ## [0.23.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.22.1...cc-marketplace-v0.23.0) (2026-03-03)
 
 
