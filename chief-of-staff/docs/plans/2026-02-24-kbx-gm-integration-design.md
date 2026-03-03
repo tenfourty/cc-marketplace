@@ -13,21 +13,21 @@ Integrate `kbx` (knowledge base CLI) and `gm` (calendar/task CLI) as the primary
 2. **gm IS the task system.** No TASKS.md. All task creation, tracking, and lifecycle management happens via Morgen tasks through `gm`.
 3. **CLI-first, MCP-fallback.** Commands reference `kbx` and `gm` directly. MCPs are mentioned only as graceful degradation when CLIs are unavailable.
 4. **No `~~` placeholders.** The indirection layer is removed. Commands say "use `kbx` to search" not "use `~~meeting transcripts`".
-5. **Avoid redundant calls.** If `kbx context`, `gm today`, or `gm usage`/`kbx usage` output is already in context (from startup hooks), use it. Only run commands if the data isn't already present.
+5. **Avoid redundant calls.** If `kbx context`, `gm today`, or `gm --help`/`kbx --help` output is already in context (from startup hooks), use it. Only run commands if the data isn't already present.
 
 ## Tool Reference
 
 ### kbx — Knowledge Base
 
 Local knowledge base with hybrid search across meetings, people, projects, notes.
-The `kbx usage` output should be in context from session startup hooks. If not, run `kbx usage` to load the command reference.
+The `kbx --help` output should be in context from session startup hooks. If not, run `kbx --help` to load the command reference.
 
 Key capabilities: search (keyword + semantic), people/project profiles, notes with tags, agent context orientation.
 
 ### gm — Calendar & Tasks
 
 Calendar events (Google/Fastmail) + cross-source tasks (Morgen, Linear, Notion).
-The `gm usage` output should be in context from session startup hooks. If not, run `gm usage` to load the command reference.
+The `gm --help` output should be in context from session startup hooks. If not, run `gm --help` to load the command reference.
 
 Key capabilities: events, tasks (cross-source), availability, scheduling, task lifecycle via tags (Right-Now, Active, Waiting-On, Someday) and lists (Leadership, People, Ops, Admin, Home, Routines).
 

@@ -31,14 +31,14 @@ This plugin uses local CLI tools as primary data sources, with Claude.ai integra
 ### kbx — Knowledge Base
 
 Local knowledge base with hybrid search across meetings, people, projects, notes.
-The `kbx usage` output should be in context from session startup hooks. If not, run `kbx usage` to load the command reference.
+The `kbx --help` output should be in context from session startup hooks. If not, run `kbx --help` to load the command reference.
 
 Key capabilities: search (keyword + semantic), people/project profiles, notes with tags, agent context orientation.
 
 ### gm — Calendar & Tasks
 
 Calendar events (Google/Fastmail) + cross-source tasks (Morgen, Linear, Notion).
-The `gm usage` output should be in context from session startup hooks. If not, run `gm usage` to load the command reference.
+The `gm --help` output should be in context from session startup hooks. If not, run `gm --help` to load the command reference.
 
 Key capabilities: events, tasks (cross-source), availability, scheduling, task lifecycle via tags (Right-Now, Active, Waiting-On, Someday) and lists (Leadership, People, Ops, Admin, Home, Routines).
 
@@ -397,7 +397,7 @@ git commit -m "refactor(decision): use kbx/gm for decision management command"
 **Step 1: Rewrite commands/setup.md**
 
 - Remove "Prerequisites" about productivity plugin and TASKS.md/memory/ checks
-- Step 1 "Check What Exists": Replace with checking kbx and gm availability (`kbx usage`, `gm usage`). Check for existing pinned notes (`kbx context`). Check for existing task lists (`gm lists list --json`).
+- Step 1 "Check What Exists": Replace with checking kbx and gm availability (`kbx --help`, `gm --help`). Check for existing pinned notes (`kbx context`). Check for existing task lists (`gm lists list --json`).
 - Step 2 "Learn the Executive": Keep interactive conversation unchanged
 - Step 3 "Write Memory Files": Replace all `memory/` file writes with kbx calls:
   - CIRs: `kbx memory add "Critical Information Requirements" --body "..." --tags cir --pin`

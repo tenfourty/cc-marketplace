@@ -10,8 +10,8 @@ You are running the initial setup for the Chief of Staff plugin. Your goal is to
 ## Step 1: Check Tool Availability
 
 Verify the required CLI tools are available:
-- Run `kbx usage` if not already in context — confirms kbx is installed and shows commands
-- Run `gm usage` if not already in context — confirms gm is installed and shows commands
+- Run `kbx --help` if not already in context — confirms kbx is installed and shows commands
+- Run `gm --help` if not already in context — confirms gm is installed and shows commands
 
 If either tool is missing, tell the user which tool is needed and how to set it up.
 
