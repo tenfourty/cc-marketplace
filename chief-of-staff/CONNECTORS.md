@@ -7,14 +7,14 @@ This plugin uses local CLI tools as primary data sources, with Claude.ai integra
 ### kbx — Knowledge Base
 
 Local knowledge base with hybrid search across meetings, people, projects, notes.
-The `kbx usage` output should be in context from session startup hooks. If not, run `kbx usage` to load the command reference.
+The `kbx --help` output should be in context from session startup hooks. If not, run `kbx --help` to load the command reference.
 
 Key capabilities: search (keyword + semantic), people/project profiles, notes with tags, agent context orientation. Use `--plain` flag with `kbx view` for clean markdown output. Use `kbx note edit` to update existing notes (body, tags, pin status).
 
 ### gm — Calendar & Tasks
 
 Calendar events (Google/Fastmail) + cross-source tasks (Morgen, Linear, Notion).
-The `gm usage` output should be in context from session startup hooks. If not, run `gm usage` to load the command reference.
+The `gm --help` output should be in context from session startup hooks. If not, run `gm --help` to load the command reference.
 
 Key capabilities: events, tasks (cross-source), availability, scheduling, task lifecycle via tags (Right-Now, Active, Waiting-On, Someday) and lists (Leadership, People, Ops, Admin, Home, Routines).
 
