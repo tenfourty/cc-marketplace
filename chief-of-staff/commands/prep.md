@@ -39,6 +39,33 @@ Extract:
 
 The meeting type shapes what kind of preparation and topic suggestions to provide.
 
+### 1b. Check for Existing Prep
+
+Construct the prep file path from the identified meeting:
+
+1. Get `calendar_uid` and `start` date from the gm event
+2. `uid_prefix` = first 8 characters of `calendar_uid`
+3. Date directory: `memory/meetings/YYYY/MM/DD/` (from event start date)
+4. Look for existing meeting files to reuse the established naming prefix:
+   ```bash
+   ls memory/meetings/YYYY/MM/DD/{uid_prefix}_* 2>/dev/null
+   ```
+5. If existing files found, extract the base name (everything before the first `.`) from any file — this gives the established `{uid_prefix}_{Title}` prefix
+6. If no existing files, sanitise the meeting title for a filename (replace spaces/special chars with hyphens, lowercase)
+7. Prep file path: `memory/meetings/YYYY/MM/DD/{base_name}.prep.md`
+
+**If a prep file already exists:**
+
+1. Read it with `kbx view <path> --plain`
+2. Display to the user: "Found existing prep for this meeting:"
+3. Present the existing content
+4. Ask: "Want to **(a) use this as-is**, **(b) refresh with latest context**, or **(c) start from scratch**?"
+   - **(a)** — Skip to Step 5 (Granola sync)
+   - **(b)** — Continue the normal prep process (Steps 2–4) using the existing prep as reference context. Save the updated version, overwriting the file
+   - **(c)** — Continue the normal prep process (Steps 2–4) from scratch. Save, overwriting the file
+
+**If no prep file exists:** Continue to Step 2.
+
 ### 2. Load Context
 
 Use `kbx context` if already in context (provides pinned docs including CIRs, initiatives, recurring meetings, cadence).
@@ -115,6 +142,33 @@ Use this structure. Write in a conversational, human-sounding tone — avoid jar
 ```
 
 End with a single sentence confirming what context informed the prep, and ask if there's anything else to consider or any specific goals for the meeting.
+
+### 4b. Save Prep File
+
+Write the prep brief to a markdown file alongside the meeting's other artifacts (transcripts, notes). Use the file path constructed in Step 1b.
+
+**Frontmatter:**
+```yaml
+---
+title: 'Meeting Prep — [Meeting Title]'
+date: '[meeting date YYYY-MM-DD]'
+type: prep
+source: cos-agent
+calendar_uid: '[full calendar_uid from gm event]'
+created_at: '[current ISO timestamp YYYY-MM-DDTHH:MM:SS]'
+tags:
+- prep
+attendees:
+- name: [Attendee Name]
+  email: [attendee@example.com]
+---
+```
+
+**Body:** The full prep brief from Step 4 (starting from `## Meeting Prep — [Title]`).
+
+**Write the file** using the Write tool or bash heredoc. Create the date directory if it doesn't exist (`mkdir -p`).
+
+Confirm to the user: "Prep saved to `[file path]` — it'll be indexed by kbx on next search."
 
 ### 5. Offer Granola Sync
 
