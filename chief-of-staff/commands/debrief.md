@@ -27,6 +27,33 @@ Use all three to build the fullest picture: the transcript is the primary extrac
 
 If no transcript is available from any source, ask the user to provide a summary of what happened (they can paste notes, or just talk through it).
 
+### 1b. Check for Existing Debrief
+
+Construct the debrief file path from the identified meeting:
+
+1. Get `calendar_uid` and meeting date — either from `gm today` output or from the transcript's frontmatter
+2. `uid_prefix` = first 8 characters of `calendar_uid`
+3. Date directory: `memory/meetings/YYYY/MM/DD/` (from meeting date)
+4. Look for existing meeting files to reuse the established naming prefix:
+   ```bash
+   ls memory/meetings/YYYY/MM/DD/{uid_prefix}_* 2>/dev/null
+   ```
+5. If existing files found (transcripts, notes), extract the base name (everything before the first `.`) — this gives the established `{uid_prefix}_{Title}` prefix
+6. If no existing files, sanitise the meeting title for a filename (replace spaces/special chars with hyphens, lowercase)
+7. Debrief file path: `memory/meetings/YYYY/MM/DD/{base_name}.debrief.md`
+
+**If a debrief file already exists:**
+
+1. Read it with `kbx view <path> --plain`
+2. Display to the user: "Found existing debrief for this meeting:"
+3. Present the existing content
+4. Ask: "Want to **(a) review this as-is**, **(b) update with new information**, or **(c) regenerate from scratch**?"
+   - **(a)** — Skip to Step 7 (next steps)
+   - **(b)** — Continue the normal debrief process (Steps 2–4) using the existing debrief as reference. Save the updated version, overwriting the file
+   - **(c)** — Continue the normal debrief process (Steps 2–4) from scratch. Save, overwriting the file
+
+**If no debrief file exists:** Continue to Step 2.
+
 ### 2. Extract Structured Data
 
 From the transcript, extract:
@@ -101,6 +128,33 @@ Check extracted items against:
 ### Notable Context
 [New information worth remembering — will be added to kbx]
 ```
+
+### 4b. Save Debrief File
+
+Write the debrief to a markdown file alongside the meeting's other artifacts (transcripts, notes). Use the file path constructed in Step 1b.
+
+**Frontmatter:**
+```yaml
+---
+title: 'Meeting Debrief — [Meeting Title]'
+date: '[meeting date YYYY-MM-DD]'
+type: debrief
+source: cos-agent
+calendar_uid: '[full calendar_uid from gm event or transcript frontmatter]'
+created_at: '[current ISO timestamp YYYY-MM-DDTHH:MM:SS]'
+tags:
+- debrief
+attendees:
+- name: [Attendee Name]
+  email: [attendee@example.com]
+---
+```
+
+**Body:** The full debrief from Step 4 (starting from `## Meeting Debrief — [Title]`).
+
+**Write the file** using the Write tool or bash heredoc. Create the date directory if it doesn't exist (`mkdir -p`).
+
+Confirm to the user: "Debrief saved to `[file path]` — it'll be indexed by kbx on next search."
 
 ### 5. Entity Change Detection
 
