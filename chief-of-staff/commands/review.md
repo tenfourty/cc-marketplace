@@ -36,6 +36,7 @@ The weekly-review agent should gather in parallel:
 - How does actual time allocation compare to stated priorities?
 - What percentage was meetings vs. focus time?
 - Any meetings that happened that weren't in the rhythm?
+- Any double-bookings that occurred? (overlapping events = a scheduling process issue worth noting)
 
 **Tasks (gm) — Movement Analysis:**
 - `gm tasks list --status completed --updated-after YYYY-MM-DD --json` for tasks completed this week
