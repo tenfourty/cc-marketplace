@@ -17,13 +17,13 @@ Be insightful and direct. This isn't a PR exercise — it's an honest field guid
 
 Search broadly across the last 2-4 weeks of meetings to get a representative sample:
 
-- `kbx search "team" --from YYYY-MM-DD --json --limit 20`
-- `kbx search "decision" --from YYYY-MM-DD --json --limit 20`
-- `kbx search "disagree" --from YYYY-MM-DD --fast --json`
-- `kbx search "feedback" --from YYYY-MM-DD --fast --json`
-- `kbx search "priority" --from YYYY-MM-DD --fast --json`
-- `kbx search "concern" --from YYYY-MM-DD --fast --json`
-- `kbx search "align" --from YYYY-MM-DD --fast --json`
+- `kbx search "team" --from YYYY-MM-DD --json --snippet-chars 500 --limit 20`
+- `kbx search "decision" --from YYYY-MM-DD --json --snippet-chars 500 --limit 20`
+- `kbx search "disagree" --from YYYY-MM-DD --fast --json --snippet-chars 500`
+- `kbx search "feedback" --from YYYY-MM-DD --fast --json --snippet-chars 500`
+- `kbx search "priority" --from YYYY-MM-DD --fast --json --snippet-chars 500`
+- `kbx search "concern" --from YYYY-MM-DD --fast --json --snippet-chars 500`
+- `kbx search "align" --from YYYY-MM-DD --fast --json --snippet-chars 500`
 - Broader `kbx search` queries to sample a range of meeting types and attendees
 
 **Source preference:** Prefer `.transcript.md` files — they capture tone, dynamics, and who-said-what, which are essential for culture analysis. `.notes.md` and `.ai-summary.md` strip out the interpersonal signals this command depends on.
@@ -34,12 +34,12 @@ Also check:
 
 ### 1b. Parse Transcripts in Parallel
 
-From the search results, identify the 8-12 most relevant transcripts (prefer `.transcript.md` files). Spawn background sub-agents to read and extract culture signals in parallel — one agent per 2-3 transcripts.
+Use the `snippet` field (expanded to 500 chars via `--snippet-chars`) to triage search results. Identify the 8-12 most relevant transcripts (prefer `.transcript.md` files). Spawn background sub-agents to read and extract culture signals in parallel — one agent per 2-3 transcripts.
 
 **Spawn each agent with:**
 - `model: "haiku"` and `run_in_background: true`
 - Do NOT pass `team_name` — these are anonymous workers, not team members
-- Prompt each agent with: the transcript paths to read (`kbx view <path> --plain`), and the culture analysis dimensions (power dynamics, communication norms, decision-making patterns, meeting energy, roles people play)
+- Prompt each agent with: the transcript paths to read (`kbx view <path> --plain`), and the culture analysis dimensions (power dynamics, communication norms, decision-making patterns, meeting energy, roles people play). Culture analysis requires full transcript context for tone and dynamics — matching chunks alone miss surrounding interactions, so sub-agents should read the full file.
 - Ask each agent to return: notable quotes, observed patterns, and which analysis dimensions they inform
 
 **Collect results** from all background agents before proceeding to Step 2. Merge overlapping observations and note which patterns appear across multiple transcripts (stronger signal).
