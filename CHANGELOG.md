@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.21.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.20.0...cc-marketplace-v0.21.0) (2026-03-03)
+
+
+### Features
+
+* integrate --full-chunks and --snippet-chars into search commands ([#58](https://github.com/tenfourty/cc-marketplace/issues/58)) ([c162d45](https://github.com/tenfourty/cc-marketplace/commit/c162d45df8b25329379d4855844714857f8b0224))
+
 ## [0.20.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.19.0...cc-marketplace-v0.20.0) (2026-03-03)
 
 
