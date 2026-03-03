@@ -76,7 +76,7 @@ Spawn with `model: "haiku"` and `run_in_background: true`.
 On startup, gather meeting context for the day:
 
 1. `kbx context` — load pinned docs (recurring meetings, people profiles)
-2. `gm today --hide-declined --counts --json --response-format concise --no-frames` — today's meetings. `--counts` adds `meta.status_counts` for a quick overview. Note any tentative meetings.
+2. `gm today --hide-declined --counts --json --response-format concise --no-frames` — today's meetings. `--counts` adds `meta.status_counts` for a quick overview. Note any tentative meetings. **Check for double-bookings** (overlapping event times) and flag them in the boot-up summary.
 3. For the next 3 upcoming meetings:
    - Extract attendee lists
    - `kbx person find "Name" --json` for each attendee

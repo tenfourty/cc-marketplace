@@ -16,7 +16,11 @@ You are preparing the executive for a meeting. Use the **staff voice**: efficien
 
 Use `gm today` output if already in context, otherwise run `gm today --json --response-format concise --no-frames`. Match the user's description to a specific event. If ambiguous, ask for clarification.
 
-**Skip declined meetings:** Check the `my_status` field on the matched event. If it is `"declined"`, tell the user: "You've declined that meeting — want me to prep anyway?" Only proceed if they confirm. Extract:
+**Skip declined meetings:** Check the `my_status` field on the matched event. If it is `"declined"`, tell the user: "You've declined that meeting — want me to prep anyway?" Only proceed if they confirm.
+
+**Check for double-bookings:** Compare the matched event's time slot against all other non-declined events from `gm today`. If another event overlaps (starts before this one ends AND this one starts before the other ends), warn the user: "Heads up — you're double-booked at [time]: [this meeting] overlaps with [other meeting]." Continue with the prep regardless.
+
+Extract:
 - Meeting title
 - Time and duration
 - Attendees list

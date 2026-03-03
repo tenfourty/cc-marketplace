@@ -31,6 +31,7 @@ When analysing the week ahead (Sat/Sun/Mon), apply these rules:
 6. One-off internal meetings — easiest to move
 
 **What to flag:**
+- **Double-bookings** — two or more meetings overlapping in time. Flag these first; they need immediate resolution.
 - Back-to-back runs of 3+ meetings with no breathing room (two in a row is fine)
 - Senior leadership meetings that need prep time blocked beforehand
 - Meetings where logistics matter (out-of-office, travel time)
@@ -59,7 +60,8 @@ For full content of a specific pinned doc, use `kbx view <path> --plain`.
 - Check `meta.status_counts.tentative` — if > 0, flag in the schedule: "You have N tentative meetings to confirm."
 - Today's meetings with times, attendees, and purpose. Mark tentative meetings with `[tentative]` in the schedule.
 - Flag any meetings that need prep (check recurring meetings from kbx context)
-- Flag any scheduling conflicts or back-to-back stretches with no buffer
+- **Check for double-bookings:** Scan all non-declined events for time overlaps (event A starts before event B ends AND event B starts before event A ends). Flag any conflicts prominently with `[CONFLICT]` in the schedule.
+- Flag back-to-back runs of 3+ meetings with no breathing room
 
 **Tasks (gm):**
 - `gm tasks list --tag Right-Now --json` for today's focus items
@@ -105,7 +107,7 @@ Use this structure:
 [Only if CIR "immediate" thresholds are triggered. Skip if nothing.]
 
 ### Today's Schedule
-[Timeline view of meetings. Flag which need prep. Mark tentative meetings with [tentative].]
+[Timeline view of meetings. Flag which need prep. Mark tentative meetings with [tentative]. Mark double-bookings with [CONFLICT] and list the overlapping meetings.]
 
 ### Priority Actions
 [Top 3-5 things that need attention today, ranked by urgency and impact]
