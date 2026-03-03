@@ -39,8 +39,8 @@ This is a knowledge extraction task — cast the widest possible net.
 - "first 10 customers"
 
 **Search kbx with all terms:**
-- `kbx search "term" --json --full-chunks --limit 10` for each semantic variant (embeddings / semantic search)
-- `kbx search "term" --fast --json --full-chunks` for keyword matches
+- `kbx search "term" --json --full-chunks --dedupe --limit 10` for each semantic variant (embeddings / semantic search)
+- `kbx search "term" --fast --json --full-chunks --dedupe` for keyword matches
 - If early results surface specific sub-themes or terminology not in the initial list, generate additional search terms and search for those too
 - Iterate until coverage feels thorough — don't stop at the first round
 
