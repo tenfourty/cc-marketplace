@@ -1,0 +1,8 @@
+{
+  "name": "inner-game",
+  "version": "0.1.0",
+  "description": "Personal life coach plugin inspired by Tim Gallwey's Inner Game. Reduces self-interference through coaching conversations, identity work (The Document), daily journaling, and life assessment. Uses kbx for memory and gm for calendar/tasks.",
+  "author": {
+    "name": "Jeremy Brown"
+  }
+}
