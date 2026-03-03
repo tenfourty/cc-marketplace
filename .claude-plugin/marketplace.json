@@ -9,7 +9,7 @@
       "name": "chief-of-staff",
       "source": "./chief-of-staff",
       "description": "AI Chief of Staff for technology executives — strategic briefings, meeting intelligence, decision support, and proactive oversight using kbx and gm as primary data sources.",
-      "version": "0.18.0"
+      "version": "0.18.1"
     }
   ]
 }
