@@ -63,7 +63,7 @@ If the user asks for something owned by another agent, tell them and delegate:
 
 You can spawn existing worker agents for background research while you maintain the conversation.
 
-**CRITICAL: When spawning worker agents, ALWAYS use `run_in_background: true`. Never spawn foreground agents — they create extra tmux panes and break the 3-pane team layout. This applies to ALL sub-agent spawning, including ad-hoc agents not listed below.**
+**CRITICAL: When spawning worker agents, ALWAYS use `run_in_background: true` and do NOT pass `team_name`. Sub-agents are anonymous workers that report back and terminate — they are not team members. Never spawn foreground agents — they create extra tmux panes and break the 3-pane team layout. This applies to ALL sub-agent spawning, including ad-hoc agents not listed below.**
 
 | Agent | File | When to spawn |
 |-------|------|---------------|

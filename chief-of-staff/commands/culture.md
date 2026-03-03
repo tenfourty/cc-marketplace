@@ -26,13 +26,23 @@ Search broadly across the last 2-4 weeks of meetings to get a representative sam
 - `kbx search "align" --from YYYY-MM-DD --fast --json`
 - Broader `kbx search` queries to sample a range of meeting types and attendees
 
-Read the most relevant transcripts: `kbx view <path> --plain`
-
 **Source preference:** Prefer `.transcript.md` files — they capture tone, dynamics, and who-said-what, which are essential for culture analysis. `.notes.md` and `.ai-summary.md` strip out the interpersonal signals this command depends on.
 
 Also check:
 - Slack MCP for communication patterns, tone, and norms across channels
 - `gm this-week --hide-declined --json --response-format concise --no-frames` for meeting cadence patterns
+
+### 1b. Parse Transcripts in Parallel
+
+From the search results, identify the 8-12 most relevant transcripts (prefer `.transcript.md` files). Spawn background sub-agents to read and extract culture signals in parallel — one agent per 2-3 transcripts.
+
+**Spawn each agent with:**
+- `model: "haiku"` and `run_in_background: true`
+- Do NOT pass `team_name` — these are anonymous workers, not team members
+- Prompt each agent with: the transcript paths to read (`kbx view <path> --plain`), and the culture analysis dimensions (power dynamics, communication norms, decision-making patterns, meeting energy, roles people play)
+- Ask each agent to return: notable quotes, observed patterns, and which analysis dimensions they inform
+
+**Collect results** from all background agents before proceeding to Step 2. Merge overlapping observations and note which patterns appear across multiple transcripts (stronger signal).
 
 ### Freshness Awareness
 
