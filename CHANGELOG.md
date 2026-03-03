@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.20.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.19.0...cc-marketplace-v0.20.0) (2026-03-03)
+
+
+### Features
+
+* add background sub-agents for parallel transcript/search processing ([#56](https://github.com/tenfourty/cc-marketplace/issues/56)) ([946c750](https://github.com/tenfourty/cc-marketplace/commit/946c750ea1e20c3288ee61be0214c1b6cd260e4b))
+
 ## [0.19.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.18.1...cc-marketplace-v0.19.0) (2026-03-03)
 
 
