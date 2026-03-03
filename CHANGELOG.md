@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.23.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.22.1...cc-marketplace-v0.23.0) (2026-03-03)
+
+
+### Features
+
+* persist prep and debrief output as meeting files ([#66](https://github.com/tenfourty/cc-marketplace/issues/66)) ([205a053](https://github.com/tenfourty/cc-marketplace/commit/205a05316d8d181c28510f5261785ea3047fa8ee))
+
 ## [0.22.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.22.0...cc-marketplace-v0.22.1) (2026-03-03)
 
 
