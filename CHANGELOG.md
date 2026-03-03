@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.19.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.18.1...cc-marketplace-v0.19.0) (2026-03-03)
+
+
+### Features
+
+* allow all CoS agents to create Morgen tasks ([#54](https://github.com/tenfourty/cc-marketplace/issues/54)) ([7e6a46a](https://github.com/tenfourty/cc-marketplace/commit/7e6a46a110a2e2bff6c4edb395e0b25d111f19e5))
+
 ## [0.18.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.18.0...cc-marketplace-v0.18.1) (2026-03-03)
 
 
