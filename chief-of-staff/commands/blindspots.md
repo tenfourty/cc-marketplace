@@ -37,8 +37,8 @@ Deep search for everything related to the topic, then analyse the aggregate pict
 - "rollback plan", "downtime", "parallel running"
 
 **Search broadly:**
-- `kbx search "term" --json --full-chunks --dedupe --limit 10` for each variant (semantic / embeddings)
-- `kbx search "term" --fast --json --full-chunks --dedupe` for keyword matches
+- `kbx search "term" --json --full-chunks --dedupe --merge-chunks --limit 10` for each variant (semantic / embeddings)
+- `kbx search "term" --fast --json --full-chunks --dedupe --merge-chunks` for keyword matches
 - If early results surface sub-themes, generate additional search terms and search deeper
 - Slack MCP for related discussions and concerns raised informally
 - `gm tasks list --json --response-format concise` for related tasks and their status
@@ -48,7 +48,7 @@ Deep search for everything related to the topic, then analyse the aggregate pict
 
 - `model: "haiku"` and `run_in_background: true`
 - Do NOT pass `team_name` — these are anonymous workers, not team members
-- Pass the `content` field from `--full-chunks` search results directly to each agent — no need for follow-up `kbx view` calls. If a document needs deeper context beyond the matching chunks, the agent can use `kbx view <path> --plain` for the full file.
+- Pass the `content` field from search results directly to each agent — `--merge-chunks` concatenates all matching chunks per document in order, so sub-agents get comprehensive coverage without follow-up `kbx view` calls. If a document needs even more context beyond the matching chunks, the agent can use `kbx view <path> --plain` for the full file.
 - Prompt each agent with: the chunk content, the topic being analysed, and the adversarial perspectives from the Analysis Framework section
 - Ask each agent to return: key facts, decisions, assumptions, risks, and any gaps or contradictions they notice
 
