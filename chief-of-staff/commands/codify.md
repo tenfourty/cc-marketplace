@@ -39,8 +39,8 @@ This is a knowledge extraction task — cast the widest possible net.
 - "first 10 customers"
 
 **Search kbx with all terms:**
-- `kbx search "term" --json --full-chunks --dedupe --limit 10` for each semantic variant (embeddings / semantic search)
-- `kbx search "term" --fast --json --full-chunks --dedupe` for keyword matches
+- `kbx search "term" --json --full-chunks --dedupe --merge-chunks --limit 10` for each semantic variant (embeddings / semantic search)
+- `kbx search "term" --fast --json --full-chunks --dedupe --merge-chunks` for keyword matches
 - If early results surface specific sub-themes or terminology not in the initial list, generate additional search terms and search for those too
 - Iterate until coverage feels thorough — don't stop at the first round
 
@@ -49,7 +49,7 @@ This is a knowledge extraction task — cast the widest possible net.
 - `model: "haiku"` and `run_in_background: true`
 - Do NOT pass `team_name` — these are anonymous workers, not team members
 - **Source preference:** When search results include multiple file types for the same meeting, prefer `.transcript.md` (richest detail) over `.notes.md` or `.ai-summary.md`
-- Pass the `content` field from `--full-chunks` search results directly to each agent — no need for follow-up `kbx view` calls. If a document needs deeper context beyond the matching chunks, the agent can use `kbx view <path> --plain` for the full file.
+- Pass the `content` field from search results directly to each agent — `--merge-chunks` concatenates all matching chunks per document in order, so sub-agents get comprehensive coverage without follow-up `kbx view` calls. If a document needs even more context beyond the matching chunks, the agent can use `kbx view <path> --plain` for the full file.
 - Prompt each agent with: the chunk content, the topic being codified, and the extraction targets (principles, strategies, anti-patterns, decision frameworks)
 - Ask each agent to return: extracted principles, actionable insights, notable quotes, and which meetings/contexts they came from
 - Look for meetings where this topic was discussed substantively, not just mentioned in passing
