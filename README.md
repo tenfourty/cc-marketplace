@@ -7,6 +7,8 @@ A Claude Code plugin marketplace for personal productivity tools.
 | Plugin | Description |
 |--------|-------------|
 | [chief-of-staff](./chief-of-staff/) | AI Chief of Staff for technology executives — strategic briefings, meeting intelligence, decision support, and proactive oversight |
+| [inner-game](./inner-game/) | Personal life coach — coaching conversations, identity work, daily journaling, and life assessment |
+| [draft](./draft/) | Drafts Slack/email messages in your authentic voice — 8 styles, PCM-aware audience adaptation |
 
 ## Installation
 
