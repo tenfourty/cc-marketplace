@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.25.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.24.0...cc-marketplace-v0.25.0) (2026-03-04)
+
+
+### Features
+
+* **chief-of-staff:** follow recurring meeting instructions during prep and debrief ([ce75cc5](https://github.com/tenfourty/cc-marketplace/commit/ce75cc511fbe27c9392be269b689b48446734543))
+* **draft:** add communications drafting plugin ([0e384e9](https://github.com/tenfourty/cc-marketplace/commit/0e384e926cbab59e5a296a402fb6d7ecacc6d1df))
+
 ## [0.24.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.23.1...cc-marketplace-v0.24.0) (2026-03-03)
 
 
