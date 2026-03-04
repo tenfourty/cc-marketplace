@@ -130,6 +130,7 @@ Stored in the pinned kbx meetings note:
 - **Key outputs:** [decisions, status updates, action items]
 - **Last held:** [date]
 - **Notes:** [any context about dynamics, effectiveness, concerns]
+- **[Any additional fields]:** Special instructions for prep/debrief — e.g., a Notion DB to check for shared meeting notes, a Slack channel to scan, a Google Doc with standing agenda. The prep and debrief commands read every field and follow any instructions they find here.
 ```
 
 ## When Transcripts Aren't Available

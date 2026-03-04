@@ -183,7 +183,10 @@ Content format:
 - **Attendees:** [who]
 - **Purpose:** [what gets discussed]
 - **Prep needed:** [what to prepare]
+- **[Any additional fields]:** Special instructions for prep/debrief — e.g., a Notion DB to check for shared meeting notes, a Slack channel to scan, a Google Doc with standing agenda. The prep and debrief commands read every field in this entry and follow any instructions they find.
 ```
+
+Ask the user if any of their recurring meetings have shared notes or agendas in external tools (Notion, Google Docs, Slack channels, etc.). If so, add those as additional fields — the prep and debrief commands will automatically check them.
 
 ### Operating Rhythm
 ```bash

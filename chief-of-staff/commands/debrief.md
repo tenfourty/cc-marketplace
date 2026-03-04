@@ -54,6 +54,23 @@ Construct the debrief file path from the identified meeting:
 
 **If no debrief file exists:** Continue to Step 2.
 
+### 1c. Apply Recurring Meeting Instructions
+
+If this is a recurring meeting, **read the full recurring meetings doc** if not already in context. Find its path from `kbx context` output (it's a pinned doc titled "Recurring Meetings"), then:
+
+```bash
+kbx view <path-from-kbx-context> --plain
+```
+
+Find the section for this meeting and read every field. Beyond the standard fields (Cadence, Attendees, Purpose, Prep needed), the entry may contain **additional fields with special instructions** — e.g., external data sources to check, Notion databases to fetch, Slack channels to scan, or any other meeting-specific context.
+
+**Follow all instructions in the entry.** Treat each additional field as a directive. Examples of what you might find:
+- A Notion DB to search for this week's meeting notes (fetch the page matching the meeting date and cross-reference with the transcript — catch items that were listed but not discussed)
+- A Slack channel to check for post-meeting discussion or follow-ups
+- A Google Doc with shared action items to reconcile against
+
+If an instruction references an external source and no matching content is found for this occurrence, skip silently — the transcript is sufficient for debrief.
+
 ### 2. Extract Structured Data
 
 From the transcript, extract:
