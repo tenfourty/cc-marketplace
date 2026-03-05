@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.27.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.26.0...cc-marketplace-v0.27.0) (2026-03-05)
+
+
+### Features
+
+* **chief-of-staff:** add open items tracking to debrief, prep, and review ([ddc58d3](https://github.com/tenfourty/cc-marketplace/commit/ddc58d3eb82c5b9357bfbfcfa25a33beba532ee7))
+
 ## [0.26.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.25.0...cc-marketplace-v0.26.0) (2026-03-05)
 
 
