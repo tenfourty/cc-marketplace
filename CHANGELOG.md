@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.27.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.27.0...cc-marketplace-v0.27.1) (2026-03-05)
+
+
+### Bug Fixes
+
+* **chief-of-staff:** use Edit tool for open items insertion order ([f060158](https://github.com/tenfourty/cc-marketplace/commit/f060158de327ba33f0f7eb9b88e27b5b4f9ed6ba))
+
 ## [0.27.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.26.0...cc-marketplace-v0.27.0) (2026-03-05)
 
 
