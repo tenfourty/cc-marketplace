@@ -45,12 +45,15 @@ Construct the debrief file path from the identified meeting:
 **If a debrief file already exists:**
 
 1. Read it with `kbx view <path> --plain`
-2. Display to the user: "Found existing debrief for this meeting:"
-3. Present the existing content
-4. Ask: "Want to **(a) review this as-is**, **(b) update with new information**, or **(c) regenerate from scratch**?"
+2. Check the frontmatter `source` field. If `source: cos-agent-unattended`, note to the user: "This debrief was auto-generated and hasn't had tasks extracted yet."
+3. Display to the user: "Found existing debrief for this meeting:"
+4. Present the existing content
+5. Ask: "Want to **(a) review this as-is**, **(b) update with new information**, **(c) regenerate from scratch**, or **(d) extract tasks and update systems**?"
    - **(a)** — Skip to Step 7 (next steps)
    - **(b)** — Continue the normal debrief process (Steps 2–4) using the existing debrief as reference. Save the updated version, overwriting the file
    - **(c)** — Continue the normal debrief process (Steps 2–4) from scratch. Save, overwriting the file
+   - **(d)** — Use the existing debrief content as-is. Also re-read the transcript (Step 1 sources) to catch entity signals the summary may have compressed. Then jump directly to Step 5 (Entity Change Detection) and Step 6 (Update Systems) — create gm tasks, log decisions, update people context. Skip Steps 2–4b.
+   - If `source: cos-agent-unattended`, recommend option **(d)** since tasks and entity updates weren't created during unattended generation.
 
 **If no debrief file exists:** Continue to Step 2.
 

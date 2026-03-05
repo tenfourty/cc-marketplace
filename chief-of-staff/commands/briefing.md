@@ -59,7 +59,11 @@ For full content of a specific pinned doc, use `kbx view <path> --plain`.
 - `--hide-declined` excludes declined events. `--counts` adds `meta.status_counts` to the response.
 - Check `meta.status_counts.tentative` — if > 0, flag in the schedule: "You have N tentative meetings to confirm."
 - Today's meetings with times, attendees, and purpose. Mark tentative meetings with `[tentative]` in the schedule.
-- Flag any meetings that need prep (check recurring meetings from kbx context)
+- **Prep status check:** For each meeting, check if a `.prep.md` file already exists:
+  1. Get `uid_prefix` = first 8 characters of `calendar_uid`
+  2. Check: `ls memory/meetings/YYYY/MM/DD/{uid_prefix}_*.prep.md 2>/dev/null`
+  3. If found, read the frontmatter `source` field to distinguish `cos-agent` (interactive) from `cos-agent-unattended` (automated)
+  4. Tag each meeting: `[prep ready]` if prep exists, `[needs prep]` if not. Skip the tag for routine standups/syncs where prep adds little value.
 - **Check for double-bookings:** Scan all non-declined events for time overlaps (event A starts before event B ends AND event B starts before event A ends). Flag any conflicts prominently with `[CONFLICT]` in the schedule.
 - Flag back-to-back runs of 3+ meetings with no breathing room
 
@@ -107,7 +111,7 @@ Use this structure:
 [Only if CIR "immediate" thresholds are triggered. Skip if nothing.]
 
 ### Today's Schedule
-[Timeline view of meetings. Flag which need prep. Mark tentative meetings with [tentative]. Mark double-bookings with [CONFLICT] and list the overlapping meetings.]
+[Timeline view of meetings. Show prep status tags: [prep ready] or [needs prep] — skip for routine standups/syncs. Mark tentative meetings with [tentative]. Mark double-bookings with [CONFLICT] and list the overlapping meetings.]
 
 ### Priority Actions
 [Top 3-5 things that need attention today, ranked by urgency and impact]
@@ -165,7 +169,13 @@ Apply the calendar streamlining heuristics (see Day Awareness section above). If
 ### 5. Offer Follow-ups
 
 After presenting the briefing, offer:
-- "Want me to /prep for any of today's meetings?"
+
+**Prep-aware offers (based on prep status tags from Step 2):**
+- If any meetings are tagged `[needs prep]`: "Want me to /prep for [meeting name(s)]?"
+- If all meetings already have `[prep ready]`: skip the prep offer entirely
+- Mixed: only offer for the unprepped ones
+
+**Standard offers:**
 - "Should I follow up on any of the 'Waiting On' items?"
 - "Anything here that should become a task?"
 
