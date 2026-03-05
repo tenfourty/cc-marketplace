@@ -199,11 +199,23 @@ For each meeting attendee, check if their profile needs updating:
 |-----------|-------------|-----|
 | User is personally accountable | Morgen task (Active or Right-Now) | `gm tasks create --title "..." --tag Active --list LIST --due ISO --description "..."` |
 | User needs to follow up on someone else's commitment (will be asked about it) | Morgen task (Waiting-On) | `gm tasks create --title "..." --tag Waiting-On --list LIST --description "..."` |
-| Someone else owns it on a steered project | Open Items on the **project** entity file | `kbx note edit <project-entity-path> --append "- [YYYY-MM-DD] Description (from: Meeting Title)"` — prepend to the `## Open Items` section (create it if it doesn't exist) |
-| Someone in a 1:1 owns it | Open Items on the **person** entity file | `kbx note edit <person-entity-path> --append "- [YYYY-MM-DD] Description (from: Meeting Title)"` — prepend to the `## Open Items` section (create it if it doesn't exist) |
-| General follow-up, no clear personal accountability | Open Items on the most relevant entity (person or project) | Same format as above |
+| Someone else owns it on a steered project | Open Items on the **project** entity file | See "Writing Open Items" below |
+| Someone in a 1:1 owns it | Open Items on the **person** entity file | See "Writing Open Items" below |
+| General follow-up, no clear personal accountability | Open Items on the most relevant entity (person or project) | See "Writing Open Items" below |
 
-**Open Items format:** `- [YYYY-MM-DD] Description (from: Meeting Title)` — always prepend new items to the top of the `## Open Items` section so the most recent items appear first. If the entity file has no `## Open Items` section yet, create one at the end of the file.
+**Writing Open Items to entity files:**
+
+Item format: `- [YYYY-MM-DD] Description (from: Meeting Title)`
+
+To keep the most recent items at the top of the section, use the **Edit tool** (not `--append`, which adds to the end of the file):
+
+1. Read the entity file with `kbx view <entity-path> --plain`
+2. **If a `## Open Items` section exists:** Use the Edit tool to insert the new item immediately after the `## Open Items` heading, before existing items
+3. **If no `## Open Items` section exists:** Use the Edit tool to append a new section at the end of the file:
+   ```
+   ## Open Items
+   - [YYYY-MM-DD] Description (from: Meeting Title)
+   ```
 
 **Project linking (for Morgen tasks):** If a task relates to a known kbx project, include `project: <ProjectName>` on a line in the `--description` (e.g., `--description "project: CoreLogic Migration\nFollow up on migration timeline"`). Multiple `project:` lines supported.
 
