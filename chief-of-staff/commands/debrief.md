@@ -193,10 +193,20 @@ For each meeting attendee, check if their profile needs updating:
 
 **Ask permission before updating**, then:
 
-**Tasks (gm):**
-- Executive's action items: `gm tasks create --title "..." --tag Active --list LIST --due ISO --description "..."`
-- Others' commitments: `gm tasks create --title "..." --tag Waiting-On --list LIST --description "..."`
-- **Project linking:** If the action item relates to a known kbx project, include `project: <ProjectName>` on a line in the `--description` (e.g., `--description "project: CoreLogic Migration\nFollow up on migration timeline"`). Multiple `project:` lines supported.
+**Route each item using this decision table:**
+
+| Condition | Destination | How |
+|-----------|-------------|-----|
+| User is personally accountable | Morgen task (Active or Right-Now) | `gm tasks create --title "..." --tag Active --list LIST --due ISO --description "..."` |
+| User needs to follow up on someone else's commitment (will be asked about it) | Morgen task (Waiting-On) | `gm tasks create --title "..." --tag Waiting-On --list LIST --description "..."` |
+| Someone else owns it on a steered project | Open Items on the **project** entity file | `kbx note edit <project-entity-path> --append "- [YYYY-MM-DD] Description (from: Meeting Title)"` — prepend to the `## Open Items` section (create it if it doesn't exist) |
+| Someone in a 1:1 owns it | Open Items on the **person** entity file | `kbx note edit <person-entity-path> --append "- [YYYY-MM-DD] Description (from: Meeting Title)"` — prepend to the `## Open Items` section (create it if it doesn't exist) |
+| General follow-up, no clear personal accountability | Open Items on the most relevant entity (person or project) | Same format as above |
+
+**Open Items format:** `- [YYYY-MM-DD] Description (from: Meeting Title)` — always prepend new items to the top of the `## Open Items` section so the most recent items appear first. If the entity file has no `## Open Items` section yet, create one at the end of the file.
+
+**Project linking (for Morgen tasks):** If a task relates to a known kbx project, include `project: <ProjectName>` on a line in the `--description` (e.g., `--description "project: CoreLogic Migration\nFollow up on migration timeline"`). Multiple `project:` lines supported.
+
 - Update any existing tasks that were discussed
 
 **Decisions (kbx):**

@@ -81,6 +81,12 @@ The weekly-review agent should gather in parallel:
 - Flag any pinned entities that have gone stale since last review
 - If a direct report hasn't been mentioned in any meeting this week, flag as a potential blind spot
 
+**Open Items Hygiene (kbx):**
+- Scan person and project entity files for `## Open Items` sections
+- Flag items older than 14 days as stale — these need triage (resolve, escalate, or re-commit)
+- Identify resolved items (~~strikethrough~~) older than 30 days — these can be pruned to keep entity files clean
+- Note any entities with a growing open items list (5+ items) — may indicate overload or unclear ownership
+
 ### 3. Synthesise with Coach Voice
 
 This is where you earn your keep. Don't just compile -- think.
@@ -165,6 +171,13 @@ N profiles haven't been updated in 30+ days. Stalest:
 - [Name] ([role]) — [N]d since last update
 - ...
 Consider running /debrief on recent meetings with these people.
+
+### Open Items Hygiene
+[Only if stale or pruneable open items exist. Skip entirely if clean.]
+**Stale (>14 days):** N items need triage:
+- [Entity name]: "[item description]" — [N]d old (from: [Meeting Title])
+**Ready to prune (resolved >30 days):** N resolved items can be removed from entity files.
+Want me to triage the stale items or prune the old resolved ones?
 
 ### Recommended Focus for Next Week
 [Based on the analysis, suggest 3-5 focus areas]

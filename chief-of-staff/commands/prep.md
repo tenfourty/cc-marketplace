@@ -72,7 +72,8 @@ Use `kbx context` if already in context (provides pinned docs including CIRs, in
 
 For each attendee:
 - `kbx person find "Name" --json` for their profile
-- Check if they relate to any known projects via `kbx project find "Name"`
+- Check their entity file for a `## Open Items` section — these are tracked commitments and follow-ups from previous meetings. Surface any open items in the prep's "Open Items" section as topics to raise.
+- Check if they relate to any known projects via `kbx project find "Name"`. If a related project entity has a `## Open Items` section, include relevant project-level open items too.
 
 ### Freshness Awareness
 
