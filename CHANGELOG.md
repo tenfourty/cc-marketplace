@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.29.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.28.1...cc-marketplace-v0.29.0) (2026-03-06)
+
+
+### Features
+
+* **chief-of-staff:** add connected sources inventory to config note ([9f373f8](https://github.com/tenfourty/cc-marketplace/commit/9f373f8c3d50da50ad1ba7dff82244a221cad3e4))
+
 ## [0.28.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.28.0...cc-marketplace-v0.28.1) (2026-03-06)
 
 
