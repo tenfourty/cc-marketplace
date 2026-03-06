@@ -14,11 +14,11 @@ You are preparing the executive for a meeting. Use the **staff voice**: efficien
 
 ### 1. Identify the Meeting
 
-Use `gm today` output if already in context, otherwise run `gm today --json --response-format concise --no-frames`. Match the user's description to a specific event. If ambiguous, ask for clarification.
+Load today's calendar using the configured calendar backend (see CoS Configuration note). Match the user's description to a specific event. If ambiguous, ask for clarification.
 
 **Skip declined meetings:** Check the `my_status` field on the matched event. If it is `"declined"`, tell the user: "You've declined that meeting — want me to prep anyway?" Only proceed if they confirm.
 
-**Check for double-bookings:** Compare the matched event's time slot against all other non-declined events from `gm today`. If another event overlaps (starts before this one ends AND this one starts before the other ends), warn the user: "Heads up — you're double-booked at [time]: [this meeting] overlaps with [other meeting]." Continue with the prep regardless.
+**Check for double-bookings:** Compare the matched event's time slot against all other non-declined events from today's calendar. If another event overlaps (starts before this one ends AND this one starts before the other ends), warn the user: "Heads up — you're double-booked at [time]: [this meeting] overlaps with [other meeting]." Continue with the prep regardless.
 
 Extract:
 - Meeting title
@@ -43,7 +43,7 @@ The meeting type shapes what kind of preparation and topic suggestions to provid
 
 Construct the prep file path from the identified meeting:
 
-1. Get `calendar_uid` and `start` date from the gm event
+1. Get `calendar_uid` and `start` date from the calendar event
 2. `uid_prefix` = first 8 characters of `calendar_uid`
 3. Date directory: `memory/meetings/YYYY/MM/DD/` (from event start date)
 4. Look for existing meeting files to reuse the established naming prefix:
@@ -94,11 +94,11 @@ If this is a recurring meeting, **read the full recurring meetings doc** if not 
 kbx view <path-from-kbx-context> --plain
 ```
 
-Find the section for this meeting and read every field. Beyond the standard fields (Cadence, Attendees, Purpose, Prep needed), the entry may contain **additional fields with special instructions** — e.g., external data sources to check, Notion databases to fetch, Slack channels to scan, specific queries to run, or any other meeting-specific context.
+Find the section for this meeting and read every field. Beyond the standard fields (Cadence, Attendees, Purpose, Prep needed), the entry may contain **additional fields with special instructions** — e.g., external data sources to check, Notion databases to fetch, chat channels to scan, specific queries to run, or any other meeting-specific context.
 
 **Follow all instructions in the entry.** Treat each additional field as a directive. Examples of what you might find:
 - A Notion DB to search for this week's meeting notes (fetch the page matching the meeting date and include key content in the prep)
-- A Slack channel to check for pre-meeting discussion
+- A chat channel to check for pre-meeting discussion
 - A Google Doc or Notion page with a standing agenda
 - Specific kbx queries to run for context
 
@@ -112,7 +112,7 @@ The meeting-prep agent should search in parallel across:
 
 **Recent interactions:**
 - `kbx person timeline "Name" --from YYYY-MM-DD --json` for each attendee (last 7 days)
-- Slack MCP for recent messages from/to each attendee
+- Chat MCP for recent messages from/to each attendee
 - Relevant channel discussions related to the meeting topic
 
 **Previous occurrence (if recurring):**
@@ -122,8 +122,8 @@ The meeting-prep agent should search in parallel across:
 - Any commitments made that may need follow-up
 
 **Tasks and project status:**
-- `gm tasks list --json --response-format concise` filtered for tasks related to attendees or topic
-- `gm tasks list --source linear --json` for related Linear items
+- List tasks via the task backend (see task-backend skill for syntax) filtered for tasks related to attendees or topic
+- List tasks from the project tracker for related items
 
 ### 4. Present the Brief
 
@@ -173,7 +173,7 @@ title: 'Prep: [Meeting Title]'
 date: '[meeting date YYYY-MM-DD]'
 type: prep
 source: cos-agent
-calendar_uid: '[full calendar_uid from gm event]'
+calendar_uid: '[full calendar_uid from calendar event]'
 attendees:
 - name: [Attendee Name]
   email: [attendee@example.com]
@@ -207,7 +207,7 @@ After presenting the brief, offer to push the prep notes to the meeting's Granol
    [full prep brief markdown from step 4]
    PREP
 
-   # Push using calendar_uid from gm event
+   # Push using calendar_uid from calendar event
    kbx granola push CALENDAR_UID --notes-file /tmp/prep-notes.md --title "Meeting Title"
    ```
 
@@ -217,8 +217,8 @@ After presenting the brief, offer to push the prep notes to the meeting's Granol
    ```
    Confirm to the user: "Prep notes synced to Granola." If the notes aren't there, report the issue.
 
-- Get the `calendar_uid` and meeting title from the event identified in step 1 (available as fields on `gm today` events)
-- **Always use the full `calendar_uid` from gm output.** Recurring events have instance-specific UIDs (e.g., `base_id_20260303T143000Z`) — using only the base ID could match the wrong week's occurrence.
+- Get the `calendar_uid` and meeting title from the event identified in step 1 (available as fields on calendar events)
+- **Always use the full `calendar_uid` from the calendar output.** Recurring events have instance-specific UIDs (e.g., `base_id_20260303T143000Z`) — using only the base ID could match the wrong week's occurrence.
 - Pass `--title` so the doc gets a proper name — Granola does not auto-populate the title from the calendar event
 
 **If the user declines or doesn't respond**, skip the push and continue to follow-ups.
@@ -255,8 +255,8 @@ For 1:1s with direct reports, add role and responsibility-aware reflections or q
 
 | Missing Source | Impact | Fallback |
 |---|---|---|
-| gm | Cannot identify meeting | Fall back to Calendar MCP if available, or ask user for details |
+| Calendar backend | Cannot identify meeting | Fall back to Calendar MCP if available, or ask user for details |
 | kbx | No attendee or meeting context | Fall back to Granola MCP for previous occurrence, note limited people context |
-| Slack | No recent interaction history | Note "no recent threads found" |
-| Linear | No project status | Skip that section |
+| Chat | No recent interaction history | Note "no recent threads found" |
+| Project tracker | No project status | Skip that section |
 | Granola (write) | Prep notes not synced to Granola | Present prep to user normally, note Granola sync was skipped |

@@ -23,7 +23,7 @@ Use `kbx search "meeting title" --fast --json --limit 5` to find the most recent
 
 Use all three to build the fullest picture: the transcript is the primary extraction source, notes highlight user intent, and the AI summary can catch things you might skim past in a long transcript.
 
-**Fallback — live Granola API:** If local files aren't found (sync hasn't run yet), fall back to `kbx granola view <calendar_uid> --all` to fetch notes, AI summary, and transcript directly from the Granola API. Get the `calendar_uid` from `gm today` output.
+**Fallback — live Granola API:** If local files aren't found (sync hasn't run yet), fall back to `kbx granola view <calendar_uid> --all` to fetch notes, AI summary, and transcript directly from the Granola API. Get the `calendar_uid` from today's calendar output (see CoS Configuration for the active calendar backend).
 
 If no transcript is available from any source, ask the user to provide a summary of what happened (they can paste notes, or just talk through it).
 
@@ -31,7 +31,7 @@ If no transcript is available from any source, ask the user to provide a summary
 
 Construct the debrief file path from the identified meeting:
 
-1. Get `calendar_uid` and meeting date — either from `gm today` output or from the transcript's frontmatter
+1. Get `calendar_uid` and meeting date — either from today's calendar output (see CoS Configuration for the active calendar backend) or from the transcript's frontmatter
 2. `uid_prefix` = first 8 characters of `calendar_uid`
 3. Date directory: `memory/meetings/YYYY/MM/DD/` (from meeting date)
 4. Look for existing meeting files to reuse the established naming prefix:
@@ -52,7 +52,7 @@ Construct the debrief file path from the identified meeting:
    - **(a)** — Skip to Step 7 (next steps)
    - **(b)** — Continue the normal debrief process (Steps 2–4) using the existing debrief as reference. Save the updated version, overwriting the file
    - **(c)** — Continue the normal debrief process (Steps 2–4) from scratch. Save, overwriting the file
-   - **(d)** — Use the existing debrief content as-is. Also re-read the transcript (Step 1 sources) to catch entity signals the summary may have compressed. Then jump directly to Step 5 (Entity Change Detection) and Step 6 (Update Systems) — create gm tasks, log decisions, update people context. Skip Steps 2–4b.
+   - **(d)** — Use the existing debrief content as-is. Also re-read the transcript (Step 1 sources) to catch entity signals the summary may have compressed. Then jump directly to Step 5 (Entity Change Detection) and Step 6 (Update Systems) — create tasks, log decisions, update people context. Skip Steps 2–4b.
    - If `source: cos-agent-unattended`, recommend option **(d)** since tasks and entity updates weren't created during unattended generation.
 
 **If no debrief file exists:** Continue to Step 2.
@@ -65,11 +65,11 @@ If this is a recurring meeting, **read the full recurring meetings doc** if not 
 kbx view <path-from-kbx-context> --plain
 ```
 
-Find the section for this meeting and read every field. Beyond the standard fields (Cadence, Attendees, Purpose, Prep needed), the entry may contain **additional fields with special instructions** — e.g., external data sources to check, Notion databases to fetch, Slack channels to scan, or any other meeting-specific context.
+Find the section for this meeting and read every field. Beyond the standard fields (Cadence, Attendees, Purpose, Prep needed), the entry may contain **additional fields with special instructions** — e.g., external data sources to check, Notion databases to fetch, chat channels to scan, or any other meeting-specific context.
 
 **Follow all instructions in the entry.** Treat each additional field as a directive. Examples of what you might find:
 - A Notion DB to search for this week's meeting notes (fetch the page matching the meeting date and cross-reference with the transcript — catch items that were listed but not discussed)
-- A Slack channel to check for post-meeting discussion or follow-ups
+- A chat channel to check for post-meeting discussion or follow-ups
 - A Google Doc with shared action items to reconcile against
 
 If an instruction references an external source and no matching content is found for this occurrence, skip silently — the transcript is sufficient for debrief.
@@ -118,7 +118,7 @@ An action item is a **future commitment** — not a status update. "I am doing X
 ### 3. Cross-Reference
 
 Check extracted items against:
-- `gm tasks list --json --response-format concise` — are any of these already tracked? Update status if so
+- List tasks via the task backend (see task-backend skill for syntax) — are any of these already tracked? Update status if so
 - `kbx note list --tag decision --json` — does this decision relate to or supersede previous decisions?
 - kbx context pinned docs — do any items affect active initiatives?
 - `kbx person find "Name"` — any new context about people that should be captured?
@@ -160,7 +160,7 @@ title: 'Debrief: [Meeting Title]'
 date: '[meeting date YYYY-MM-DD]'
 type: debrief
 source: cos-agent
-calendar_uid: '[full calendar_uid from gm event or transcript frontmatter]'
+calendar_uid: '[full calendar_uid from calendar event or transcript frontmatter]'
 attendees:
 - name: [Attendee Name]
   email: [attendee@example.com]
@@ -197,8 +197,8 @@ For each meeting attendee, check if their profile needs updating:
 
 | Condition | Destination | How |
 |-----------|-------------|-----|
-| User is personally accountable | Morgen task (Active or Right-Now) | `gm tasks create --title "..." --tag Active --list LIST --due ISO --description "..."` |
-| User needs to follow up on someone else's commitment (will be asked about it) | Morgen task (Waiting-On) | `gm tasks create --title "..." --tag Waiting-On --list LIST --description "..."` |
+| User is personally accountable | Task (Active or Right-Now) | Create a task via the task backend (see task-backend skill) with status active, appropriate area, due date, and description |
+| User needs to follow up on someone else's commitment (will be asked about it) | Task (Waiting-On) | Create a task via the task backend with status waiting-on, appropriate area, and description |
 | Someone else owns it on a steered project | Open Items on the **project** entity file | See "Writing Open Items" below |
 | Someone in a 1:1 owns it | Open Items on the **person** entity file | See "Writing Open Items" below |
 | General follow-up, no clear personal accountability | Open Items on the most relevant entity (person or project) | See "Writing Open Items" below |
@@ -217,7 +217,7 @@ To keep the most recent items at the top of the section, use the **Edit tool** (
    - [YYYY-MM-DD] Description (from: Meeting Title)
    ```
 
-**Project linking (for Morgen tasks):** If a task relates to a known kbx project, include `project: <ProjectName>` on a line in the `--description` (e.g., `--description "project: CoreLogic Migration\nFollow up on migration timeline"`). Multiple `project:` lines supported.
+**Project linking (for tasks):** If a task relates to a known kbx project, include `project: <ProjectName>` in the task description (e.g., `"project: CoreLogic Migration\nFollow up on migration timeline"`). One `project:` line per task — this links to the kbx project.
 
 - Update any existing tasks that were discussed
 
@@ -233,16 +233,16 @@ To keep the most recent items at the top of the section, use the **Edit tool** (
 Present a follow-on menu based on what's relevant to this meeting:
 
 **Always offer:**
-- "Should I create Linear issues for any of these?" (via Linear MCP)
+- "Should I create issues in the project tracker for any of these?"
 - "Any of these items need to be added to a specific initiative?"
 
 **Offer contextually:**
 
-- **Write a tldr** — Offer when the meeting had external attendees or cross-team relevance ("Want a tldr to share with the team?"). Format: Three sentences. First: "Met with [person/company] to discuss [topic]." Then two bullet points with key outcomes. Designed to be pasted into Slack immediately.
+- **Write a tldr** — Offer when the meeting had external attendees or cross-team relevance ("Want a tldr to share with the team?"). Format: Three sentences. First: "Met with [person/company] to discuss [topic]." Then two bullet points with key outcomes. Designed to be pasted into chat immediately.
 
 - **Draft a follow-up email** — Offer when there are action items involving external parties or when commitments need confirming. Write a short, casual, action-oriented email. If the executive promised something quick (<5 mins like finding a document), assume it's done and use placeholders (e.g., "[Insert link to DPA]"). If others promised something important, nudge them toward a deadline ("When do you think you'll have X ready?"). Use `[Insert X]` for any missing info. Don't quote the transcript.
 
-- **Schedule a follow-up meeting** — Offer when the discussion clearly needs continuation or a check-in was mentioned. Suggest what follow-up makes sense and a rough timeframe. Check free slots via `gm`. Create the event via `gm` if confirmed.
+- **Schedule a follow-up meeting** — Offer when the discussion clearly needs continuation or a check-in was mentioned. Suggest what follow-up makes sense and a rough timeframe. Check free slots via the configured calendar backend (see CoS Configuration note). Create the event if confirmed.
 
 - **Examine what wasn't asked** — Offer for substantive meetings (strategy sessions, planning, decision-making meetings). Ask: "What questions are you surprised weren't covered? What questions should you have been asking? What would have cut deeper into the topic? If you had 15 more minutes, what would be most incisive to tackle?"
 

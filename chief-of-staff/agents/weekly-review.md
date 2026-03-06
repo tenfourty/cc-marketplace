@@ -14,23 +14,23 @@ Gather the following information for the past 7 days. Be thorough but structured
 ## Data Collection
 
 ### 1. Calendar Analysis
-Using gm, gather:
-- `gm this-week --hide-declined --json --response-format concise --no-frames` for the week's events and tasks
+Load this week's calendar using the configured calendar backend (see task-backend skill for syntax):
+- Fetch this week's events (hide declined, concise format)
 - Calculate: total meeting hours, focus time hours, meeting-to-focus ratio
 - Categorise meetings: 1:1, team, cross-functional, external, recurring vs. one-off
 - Flag: any meetings that ran over, were cancelled, or had notable attendee changes
 
 ### 2. Task Movement
-Using gm, analyse:
-- `gm tasks list --status completed --updated-after YYYY-MM-DD --json` — tasks completed this week
-- `gm tasks list --status open --json --response-format concise` — current open items
-- `gm tasks list --tag Active --json` — tasks that have been active >2 weeks
-- `gm tasks list --tag Waiting-On --json` — tasks waiting on others >1 week
-- `gm tasks list --overdue --json` — overdue items
+Using the task backend (see task-backend skill for syntax), analyse:
+- List completed tasks since [start of week date] — tasks completed this week
+- List open tasks (concise) — current open items
+- List tasks with status `active` — tasks that have been active >2 weeks
+- List tasks with status `waiting-on` — tasks waiting on others >1 week
+- List overdue tasks — overdue items
 - Net change: how many tasks were added vs. completed?
 
 ### 3. Communication Themes
-Using Slack MCP, scan:
+Using chat MCP, scan:
 - Key channels relevant to the executive's priorities
 - Themes that appeared in 3+ messages or threads
 - DMs from direct reports or key stakeholders
@@ -46,8 +46,8 @@ Using kbx, gather:
 - Follow-ups still pending from last week's meetings
 
 ### 5. Project Tracker Status
-Using gm + kbx, check:
-- `gm tasks list --source linear --json --response-format concise` for Linear items
+Using the task backend + kbx, check:
+- List tasks from the connected project tracker (see task-backend skill for syntax)
 - `kbx project find "Name" --json` for each active initiative
 - Velocity trends: issues closed vs. opened this week
 - Any newly created blockers
