@@ -68,6 +68,23 @@ Include `ref: <url>` when the source system URL is known. Agents may follow refs
 
 Read the **CoS Configuration** pinned note from `kbx context` output. It declares the active task backend and provides backend-specific syntax (exact CLI commands or file operations). Follow that syntax for all task operations.
 
+**Example config note (gm backend):**
+```
+## Task Syntax (gm)
+- Create: `gm tasks create --title "..." --tag {Status} --list {Area} --due {ISO} --description "..."`
+- List: `gm tasks list --tag {Status} --json --response-format concise`
+- Close: `gm tasks close {id}`
+```
+
+**Example config note (tasks.md backend):**
+```
+## Task Syntax (tasks.md)
+- File: TASKS.md (in working directory)
+- Create: Edit tool — insert `- [ ] **{title}** — {description} (due: {due}, area: {area}, project: {project})` at top of `## {Status}` section
+- List: Read tool — parse `## {Status}` section for `- [ ]` lines
+- Close: Edit tool — change `- [ ]` to `- [x]`, wrap in ~~strikethrough~~, move to `## Done`
+```
+
 **If no config note exists** (user hasn't run `/setup`):
 1. Try `gm --help` — if it works, use gm backend
 2. Check for `TASKS.md` in working directory — if it exists, use tasks.md backend

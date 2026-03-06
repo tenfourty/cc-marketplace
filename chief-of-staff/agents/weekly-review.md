@@ -14,7 +14,7 @@ Gather the following information for the past 7 days. Be thorough but structured
 ## Data Collection
 
 ### 1. Calendar Analysis
-Load this week's calendar using the configured calendar backend (see task-backend skill for syntax):
+Load this week's calendar using the configured calendar backend (see CoS Configuration note for syntax):
 - Fetch this week's events (hide declined, concise format)
 - Calculate: total meeting hours, focus time hours, meeting-to-focus ratio
 - Categorise meetings: 1:1, team, cross-functional, external, recurring vs. one-off
