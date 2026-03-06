@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.28.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.28.0...cc-marketplace-v0.28.1) (2026-03-06)
+
+
+### Bug Fixes
+
+* **chief-of-staff:** remove duplicate MCP server declarations ([ed79f5f](https://github.com/tenfourty/cc-marketplace/commit/ed79f5f2ad9188b55f39613471262f84e07f1662))
+
 ## [0.28.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.27.1...cc-marketplace-v0.28.0) (2026-03-06)
 
 
