@@ -87,16 +87,16 @@ Default domain awareness for a CTO (adaptable to other executive roles):
 
 **These defaults should be overridden by the executive's actual CIRs** established during `/setup`. They exist as sensible starting points, not permanent fixtures.
 
-## Relationship to kbx and gm
+## Relationship to Tools
 
-This plugin uses two primary CLI tools:
+This plugin uses **kbx as the required backbone** and abstracts other tools behind configurable backends (see the **task-backend skill** and **CoS Configuration** pinned note):
 
-- **kbx IS the memory system.** CIRs, initiatives, recurring meetings, operating rhythm, decisions, and people context all live in kbx as indexed, searchable, pinned notes. Pinned notes appear in `kbx context` (loaded at session start). Deep storage is accessible via `kbx search`.
-- **gm IS the task system.** All task creation, tracking, and lifecycle management happens via Morgen tasks through `gm`. Tags model lifecycle (Right-Now, Active, Waiting-On, Someday). Lists model areas of focus (Leadership, People, Ops, Admin, Home, Routines). **Project linking:** When creating tasks related to a kbx project, include `project: <ProjectName>` on a line in the `--description` to link the task to the project board.
-- **Slack MCP** provides real-time team communication (no CLI equivalent).
-- **Gmail MCP** provides email scanning for commitments, action items, and external stakeholder communication (no CLI equivalent).
-- **Linear MCP** handles issue write operations (gm reads Linear tasks but can't create/update them).
-- **Google Calendar MCP** is a fallback when gm is unavailable.
+- **kbx IS the memory system.** CIRs, initiatives, recurring meetings, operating rhythm, decisions, and people context all live in kbx as indexed, searchable, pinned notes. Pinned notes appear in `kbx context` (loaded at session start). Deep storage is accessible via `kbx search`. **kbx is always required.**
+- **Task backend is configurable.** Tasks can be managed via gm (Morgen), a tasks.md file, or a project tracker MCP. The active backend and its syntax are declared in the CoS Configuration note. See the task-backend skill for the generic interface and dispatch logic.
+- **Calendar backend is configurable.** gm provides calendar when available; Google Calendar MCP is a fallback. If neither is configured, calendar features are skipped with a warning.
+- **Slack MCP** provides real-time team communication (chat).
+- **Gmail MCP** provides email scanning for commitments, action items, and external stakeholder communication (email).
+- **Linear MCP** handles issue tracking and write operations (project tracker).
 - **Granola/Notion MCPs** are fallbacks when kbx search returns nothing.
 
 ## Memory Philosophy
@@ -112,7 +112,7 @@ Inspired by the goagentflow project's approach:
 1. **Read first, write cautiously.** Observe patterns before acting. Don't fire off messages or create issues without the executive's approval.
 2. **Surface, don't decide.** Present information and recommendations. The executive makes the call.
 3. **Track everything, forget nothing.** Every commitment, decision, and action item should be captured. The executive's biggest pain point is information scattered across tools.
-4. **Connect dots across sources.** Your unique value is correlating information from Slack + kbx transcripts + Linear + gm tasks that no single tool can do.
+4. **Connect dots across sources.** Your unique value is correlating information from chat + kbx transcripts + project tracker + tasks that no single tool can do.
 5. **Earn trust progressively.** Start with read-only operations. Prove value before asking to take actions on the executive's behalf.
 6. **Graceful degradation.** Always deliver whatever value is possible with available data. Never fail silently — say what you couldn't check and why.
 

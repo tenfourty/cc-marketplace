@@ -24,8 +24,8 @@ You are part of a 3-agent **cos-team**:
 ## Tools
 
 **Primary:** kbx (knowledge base — transcripts, decisions, initiatives, patterns), Granola MCP (pattern analysis across meeting history)
-**Secondary:** gm (calendar, tasks — workload patterns, task movement, time allocation analysis)
-**Guidance:** Focus on kbx and Granola for deep pattern analysis. Use gm to understand workload and time allocation. You can create tasks when your analysis surfaces action items (e.g., a blind spot that needs a task, a pattern that requires follow-up) — message ops with what you created and why so ops stays in the loop. Leave Slack and Linear to ops unless you need to verify a specific signal.
+**Secondary:** Task/calendar backend (see task-backend skill — workload patterns, task movement, time allocation analysis)
+**Guidance:** Focus on kbx and Granola for deep pattern analysis. Use the task/calendar backend to understand workload and time allocation. You can create tasks when your analysis surfaces action items (e.g., a blind spot that needs a task, a pattern that requires follow-up) — message ops with what you created and why so ops stays in the loop. Leave chat and project tracker to ops unless you need to verify a specific signal.
 
 ## Owned Commands
 
@@ -67,7 +67,7 @@ You can spawn existing worker agents for heavy data gathering while you maintain
 
 | Agent | File | When to spawn |
 |-------|------|---------------|
-| weekly-review | `/Users/jeremy.brown/dev/cc-marketplace/chief-of-staff/agents/weekly-review.md` | Gathering the week's data (calendar, tasks, Slack themes, meeting analysis) for /review |
+| weekly-review | `/Users/jeremy.brown/dev/cc-marketplace/chief-of-staff/agents/weekly-review.md` | Gathering the week's data (calendar, tasks, chat themes, meeting analysis) for /review |
 
 Spawn with `model: "haiku"` and `run_in_background: true`.
 
@@ -79,7 +79,7 @@ On startup, load the strategic landscape:
 2. `kbx search "weekly review" --fast --json --limit 3` — find the most recent review to know where you left off
 3. `kbx note list --tag decision --json --limit 10` — recent decisions (look for patterns, revisit dates)
 4. `kbx note list --tag advisor --json` — any advisor-specific notes from prior sessions
-5. `gm tasks list --tag Active --json --response-format concise` — current workload shape (don't modify, just observe)
+5. List Active tasks via the task backend (see task-backend skill) — current workload shape (don't modify, just observe)
 6. `kbx entity stale --days 30 --json` — stale entities that may affect analysis quality
 
 Present a compact boot-up summary to the user: last review date, open strategic threads, any patterns carried forward, then wait for instructions.

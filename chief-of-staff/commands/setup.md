@@ -7,22 +7,67 @@ user_invocable: true
 
 You are running the initial setup for the Chief of Staff plugin. Your goal is to learn enough about this executive to be an effective Chief of Staff from day one.
 
-## Step 1: Check Tool Availability
+## Step 1: Detect Available Backends
 
-Verify the required CLI tools are available:
-- Run `kbx --help` if not already in context — confirms kbx is installed and shows commands
-- Run `gm --help` if not already in context — confirms gm is installed and shows commands
+### 1a. kbx (REQUIRED)
 
-If either tool is missing, tell the user which tool is needed and how to set it up.
+Run `kbx --help` if not already in context. If missing:
+
+```
+kbx is required for the Chief of Staff plugin. It's the knowledge backbone
+that stores your meetings, people, projects, decisions, and context.
+
+Install it:
+  uv tool install "kbx[search]"    # Standard install
+  uv tool install --editable ./kbx  # Dev mode (if you have the source)
+
+Then run /cos:setup again.
+```
+
+**Stop here if kbx is not available.** Nothing else works without it.
 
 Check for existing pinned notes:
 - Run `kbx context` if not already in context — shows any existing pinned docs (CIRs, initiatives, cadence, recurring meetings)
+- If pinned docs already exist from a previous setup, offer to update them using `kbx note edit <path> --body "..."` rather than creating new notes.
 
-Check for existing task lists:
-- `gm lists list --json` — verify required lists exist (Leadership, People, Ops, Admin, Home, Routines)
-- Suggest creating any missing lists via `gm lists create`
+### 1b. Detect task and calendar backends
 
-If pinned docs already exist from a previous setup, offer to update them using `kbx note edit <path> --body "..."` rather than creating new notes.
+Probe silently:
+- `gm --help` — note if gm is available (provides both tasks and calendar)
+- Check for project tracker MCP (Linear, Jira, etc.) — note availability
+- Check for calendar MCP (Google Calendar) — note availability
+- Check for chat MCP (Slack, etc.) — note availability
+- Check for email MCP (Gmail, etc.) — note availability
+
+### 1c. Ask about the user's tooling
+
+Ask: "What task/project management systems does your company use? (e.g., Linear, Jira, Notion, Todoist, Asana)" — this informs which MCPs to suggest connecting and how to route commitments.
+
+### 1d. Present task backend choice
+
+Based on detection results:
+
+- **If only one option available** (e.g., no gm, no project tracker MCP): use it and confirm.
+  - "I'll manage your tasks in a simple TASKS.md file — zero dependencies, editable anywhere."
+- **If multiple options available**: present the choice with tasks.md as a first-class option:
+  - "(a) **tasks.md** — a simple markdown file, zero dependencies, works everywhere"
+  - "(b) **Morgen** — full calendar + task integration via gm" (if detected)
+  - "(c) **[detected tracker]** — sync with your existing project tracker" (if MCP available)
+  - "Which would you prefer?"
+
+### 1e. Calendar and source availability
+
+- If no calendar backend detected, warn: "No calendar connection found. Calendar features (briefing schedule, time analysis) will be limited. You can connect one later."
+- Note which chat/email/project tracker MCPs are available for commitment scanning.
+- Do not mention specific vendor names in prompts — just categories.
+
+### 1f. Store configuration
+
+Create a pinned kbx config note tagged `config` with backend-specific syntax for the active backends. The note is LLM-generated — include the exact CLI commands or file operations for the chosen task backend. See the task-backend skill for the expected structure.
+
+```bash
+kbx memory add "CoS Configuration" --body "..." --tags config --pin
+```
 
 ## Step 2: Learn the Executive
 
@@ -49,7 +94,7 @@ Run a lightweight "Stop, Start, Continue" exercise:
 ### Critical Information Requirements (CIRs)
 Based on the McChrystal Group framework, establish what information the executive needs:
 - What events or thresholds require IMMEDIATE notification? (e.g., production outage, key person leaving, major customer escalation)
-- What should be surfaced in your DAILY briefing? (e.g., calendar conflicts, overdue action items, key Slack threads)
+- What should be surfaced in your DAILY briefing? (e.g., calendar conflicts, overdue action items, key chat threads)
 - What belongs in a WEEKLY review? (e.g., initiative progress, team health signals, decision backlog)
 
 ### Operating Rhythm
@@ -95,15 +140,15 @@ Present the choice:
 > If you have Granola meeting transcripts, let's sync them now. Run: `kbx sync granola --since 30d` then `kbx index run`. I'll wait, then scan what comes in.
 >
 > **Option B — Quick scan from connected tools:**
-> I'll scan your Slack channels, calendar, and Linear directly to learn your world now. Anything I learn gets written back to kbx so it's there for next time.
+> I'll scan your chat channels, calendar, and project tracker directly to learn your world now. Anything I learn gets written back to kbx so it's there for next time.
 
 If Option A: guide through sync, wait, then proceed as "Rich".
 
 If Option B: scan MCPs:
-- **Slack**: read key channels, recent DMs, extract people + projects
-- **Gmail**: recent sent/received, extract contacts, recurring correspondents, and terminology
-- **Calendar (gm)**: recent/upcoming events, attendee patterns
-- **Linear**: active projects, team members, labels/terminology
+- **Chat**: read key channels, recent DMs, extract people + projects
+- **Email**: recent sent/received, extract contacts, recurring correspondents, and terminology
+- **Calendar**: recent/upcoming events, attendee patterns
+- **Project tracker**: active projects, team members, labels/terminology
 - **Granola MCP**: recent transcripts if available
 
 ### 3. Decode Shorthand
@@ -124,6 +169,20 @@ For each confirmed/approved item:
 - People: `kbx memory add "[Name] context" --entity "Name"`
 - Terms/acronyms: include in a pinned "Workplace Glossary" note (`--tags glossary --pin`)
 - Projects: `kbx memory add "[Project] context" --entity "Project"`
+
+## Step 2.7: Import Existing Tasks
+
+Ask: "Do you have an existing task list you'd like to import? This could be:"
+- A file (todo.txt, TASKS.md, task list in a doc)
+- An app (Linear, Asana, Jira, Notion, Todoist) — if the MCP is connected
+- Or start fresh
+
+**If file:** Read it, decode shorthand, create kbx entities for people/projects mentioned. Import tasks into the active backend.
+**If app:** Sync via connected MCP, decode, create entities. Import key tasks.
+**If fresh:** Skip. Tasks will be created naturally through debriefs and todos.
+
+For the tasks.md backend: import creates the initial TASKS.md from the `templates/TASKS.md` template and populates it.
+For the gm backend: import creates gm tasks via CLI.
 
 ## Step 3: Write to kbx
 
@@ -209,6 +268,16 @@ Content format:
 - [any monthly rhythms]
 ```
 
+## Step 3.5: Create Task Areas
+
+Configure the areas of focus for the active backend:
+
+- **Default areas:** Inbox, Leadership, People, Ops, Admin, Home, Routines
+- Ask: "These are the default focus areas. Want to customise them?"
+- For gm backend: `gm lists list --json` to check existing lists, `gm lists create` for missing ones
+- For tasks.md backend: areas are metadata tags in parentheses — no setup action needed, just record the list in the config note
+- Store the final area list in the CoS Configuration note
+
 ### People Context
 For each key person mentioned:
 ```bash
@@ -222,6 +291,7 @@ Include: full name, role/title, relationship to the executive, what they own, co
 Summarise what you've learned back to the executive. Confirm:
 - "Here's what I understand about your priorities..."
 - "Here's how I'll filter information for you..."
+- "Your task backend is [tasks.md / gm / etc.], calendar is [gm / Google Calendar MCP / none], and I can scan [chat / email / project tracker] for commitments."
 - "Here are the commands available to you: /briefing, /prep, /debrief, /review, /status, /decision, /todos, /coach, /blindspots, /codify, /culture, /supergoal"
 - "I'll operate in staff voice for daily operations and coach voice for weekly reviews and strategic planning."
 
@@ -233,4 +303,4 @@ Based on what you've learned:
 - Suggest running `/briefing` to test the daily briefing
 - If there's an upcoming meeting, suggest `/prep [meeting name]`
 - If it's Friday, suggest `/review` for a weekly review
-- Offer to do a quick scan of Slack MCP to bootstrap communication context
+- Offer to do a quick scan of chat MCP to bootstrap communication context

@@ -92,8 +92,8 @@ Structured markdown format:
 ```
 
 Also:
-- Create follow-up tasks via `gm tasks create --title "..." --tag Active --list LIST --due ISO --description "..."`
-  - **Project linking:** Include `project: <ProjectName>` in the description if the task relates to a known kbx project
+- Create follow-up tasks via the task backend (see task-backend skill for syntax) with appropriate tag, list, due date, and description
+  - **Project linking:** Include `project: <ProjectName>` in the task description if it relates to a known kbx project. One `project:` line per task.
 - Update initiatives via `kbx memory add --tags initiative` if the decision affects an active initiative
 
 ## Decision Types
@@ -166,5 +166,5 @@ When recalling decisions:
 ### Decision Audit
 Periodically (in weekly review), check:
 - Decisions with "Revisit by" dates that have passed
-- Decisions whose action items are still incomplete in `gm tasks list`
+- Decisions whose action items are still incomplete in the task backend
 - Decisions that might need revisiting given new information

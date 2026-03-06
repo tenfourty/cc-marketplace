@@ -67,11 +67,11 @@ Monitor these signals for each initiative:
 
 | Signal | Source | Meaning |
 |--------|--------|---------|
-| No Slack activity in 7+ days | Slack MCP | Possibly stalled |
-| No Linear movement in 5+ days | `gm tasks list --source linear` | Execution has stopped |
-| Owner hasn't mentioned it in 2+ weeks | `kbx search` + Slack MCP | May have deprioritised |
+| No chat activity in 7+ days | Chat MCP | Possibly stalled |
+| No project tracker movement in 5+ days | Task backend (project tracker source) | Execution has stopped |
+| Owner hasn't mentioned it in 2+ weeks | `kbx search` + chat MCP | May have deprioritised |
 | Scope changes discussed without decision | `kbx search` transcripts | Scope creep risk |
-| Multiple people asking "what's happening with X?" | Slack MCP | Visibility gap |
+| Multiple people asking "what's happening with X?" | Chat MCP | Visibility gap |
 | Deadline passed without update | kbx pinned initiative note | Slippage |
 
 ## Pattern Detection
@@ -81,7 +81,7 @@ The Chief of Staff's highest-value strategic function is detecting patterns the 
 ### Types of Patterns
 
 **Convergence:** Multiple sources pointing to the same issue
-- Same topic in Slack + kbx transcript + Linear → something important is emerging
+- Same topic in chat + kbx transcript + project tracker → something important is emerging
 - Three people independently raising the same concern → systemic issue
 
 **Divergence:** Stated intent vs. actual behaviour
@@ -100,7 +100,7 @@ The Chief of Staff's highest-value strategic function is detecting patterns the 
 
 **Acceleration/Deceleration:** Rate of change shifting
 - Meeting frequency on a topic increasing → something heating up
-- Linear velocity declining (`gm tasks list --source linear`) → team may be struggling
+- Project tracker velocity declining (list tasks from the project tracker source) → team may be struggling
 - Decision-making speeding up → possible reactive mode
 
 ### How to Surface Patterns

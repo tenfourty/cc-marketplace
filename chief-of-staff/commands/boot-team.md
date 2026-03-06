@@ -40,11 +40,11 @@ Every agent prompt should start with this shared context block, then the agent-s
 >
 > **Tools:**
 > - **kbx** (CLI) — knowledge base: meetings, people, projects, notes, decisions. Shared by all agents.
-> - **gm** (CLI) — calendar and tasks. All agents can create/modify tasks. When you create a task, message ops with what you created and why so ops stays in the loop.
-> - **MCP servers** — Slack, Linear, Gmail, Google Calendar, Granola, Notion, Figma. All agents have access; focus on what's relevant to your role.
+> - **Task and calendar backends** — configured in the CoS Configuration note (see task-backend skill). All agents can create/modify tasks. When you create a task, message ops with what you created and why so ops stays in the loop.
+> - **MCP servers** — chat, project tracker, email, calendar, Granola, Notion, Figma. All agents have access; focus on what's relevant to your role.
 >
 > **Handoff patterns:**
-> - **briefer → ops:** After debrief, briefer creates gm tasks for extracted action items and messages ops with what was created.
+> - **briefer → ops:** After debrief, briefer creates tasks via the task backend for extracted action items and messages ops with what was created.
 > - **ops → briefer:** Before meetings, ops asks briefer for prep context.
 > - **ops → advisor:** For briefings (priority input) and decisions (implications).
 > - **advisor → ops:** When patterns require action (blind spots, overdue commitments, decision debt).

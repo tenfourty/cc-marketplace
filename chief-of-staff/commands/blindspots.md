@@ -40,8 +40,8 @@ Deep search for everything related to the topic, then analyse the aggregate pict
 - `kbx search "term" --json --full-chunks --dedupe --merge-chunks --limit 10` for each variant (semantic / embeddings)
 - `kbx search "term" --fast --json --full-chunks --dedupe --merge-chunks` for keyword matches
 - If early results surface sub-themes, generate additional search terms and search deeper
-- Slack MCP for related discussions and concerns raised informally
-- `gm tasks list --json --response-format concise` for related tasks and their status
+- Chat MCP for related discussions and concerns raised informally
+- List tasks via the task backend (see task-backend skill) for related tasks and their status
 - `kbx note list --tag decision --json` for related decisions already made
 
 **Read results in parallel:** From the search results, identify the 10-15 most relevant documents. Spawn background sub-agents to analyse risk-relevant content in parallel — one agent per 3-4 documents.

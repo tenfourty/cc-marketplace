@@ -29,8 +29,8 @@ Search broadly across the last 2-4 weeks of meetings to get a representative sam
 **Source preference:** Prefer `.transcript.md` files — they capture tone, dynamics, and who-said-what, which are essential for culture analysis. `.notes.md` and `.ai-summary.md` strip out the interpersonal signals this command depends on.
 
 Also check:
-- Slack MCP for communication patterns, tone, and norms across channels
-- `gm this-week --hide-declined --json --response-format concise --no-frames` for meeting cadence patterns
+- Chat MCP for communication patterns, tone, and norms across channels
+- Load this week's calendar using the configured calendar backend (see CoS Configuration note) for meeting cadence patterns
 
 ### 1b. Parse Transcripts in Parallel
 

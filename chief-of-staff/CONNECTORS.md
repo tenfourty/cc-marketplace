@@ -1,8 +1,8 @@
 # Tools
 
-This plugin uses local CLI tools as primary data sources, with Claude.ai integrations as fallbacks.
+This plugin uses kbx as its required backbone and abstracts all other tools behind configurable backends. See the **task-backend** skill and the **CoS Configuration** pinned note for the active backend setup.
 
-## Primary Tools
+## Required
 
 ### kbx — Knowledge Base
 
@@ -11,28 +11,31 @@ The `kbx --help` output should be in context from session startup hooks. If not,
 
 Key capabilities: search (keyword + semantic), people/project profiles, notes with tags, agent context orientation. Use `--plain` flag with `kbx view` for clean markdown output. Use `kbx note edit` to update existing notes (body, tags, pin status).
 
-### gm — Calendar & Tasks
+**kbx is always required.** CoS cannot function without it.
 
-Calendar events (Google/Fastmail) + cross-source tasks (Morgen, Linear, Notion).
-The `gm --help` output should be in context from session startup hooks. If not, run `gm --help` to load the command reference.
+## Configurable Backends
 
-Key capabilities: events, tasks (cross-source), availability, scheduling, task lifecycle via tags (Right-Now, Active, Waiting-On, Someday) and lists (Leadership, People, Ops, Admin, Home, Routines).
+These are declared in the **CoS Configuration** pinned note (created during `/setup`). The task-backend skill provides dispatch logic.
 
-## Claude.ai Integrations (Fallback)
+### Task Backend (one of)
+- **tasks.md** — simple markdown file, zero dependencies (default for new users)
+- **gm (Morgen)** — calendar + cross-source tasks via CLI
+- **Project tracker MCP** — Linear, Jira, Asana, etc.
 
-When CLI tools are unavailable, use these Claude.ai integrations:
-- **Granola** — meeting transcripts, if kbx search returns nothing
-- **Notion** — knowledge base, if kbx search returns nothing
-- **Google Calendar** — calendar events, if gm is unavailable
-- **Linear** — issue updates/creation (gm only reads Linear tasks)
+### Calendar Backend (one of)
+- **gm** — Google Calendar + Fastmail via CLI
+- **Google Calendar MCP** — fallback when gm unavailable
+- **none** — calendar features skipped with a warning
 
-## Always via MCP
+## MCP Integrations
 
-These tools are always accessed via Claude.ai MCP (no CLI equivalent):
-- **Slack** — real-time team communication and channel scanning
-- **Gmail** — email scanning for commitments, action items, and people context
-- **Linear** — for write operations (create/update issues)
+These are always accessed via MCP when connected:
+- **Slack** — real-time team communication and channel scanning (chat)
+- **Gmail** — email scanning for commitments, action items, and people context (email)
+- **Linear** — issue tracking, write operations (project tracker)
+- **Granola** — meeting transcripts, fallback when kbx search returns nothing
+- **Notion** — knowledge base, fallback when kbx search returns nothing
 
 ## Graceful Degradation
 
-All commands degrade gracefully when tools are unavailable. Missing sources are noted in output, and the plugin works with whatever subset is available.
+All commands degrade gracefully when tools are unavailable. Missing sources are noted in output, and the plugin works with whatever subset is available. The task-backend skill documents fallback behaviour for each backend.

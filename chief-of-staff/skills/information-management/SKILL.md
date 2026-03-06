@@ -25,7 +25,7 @@ Surface as soon as detected. Don't wait for a briefing. Examples:
 Include in the morning briefing via `/briefing`. Examples:
 - Calendar conflicts or notable gaps
 - Overdue action items (>2 days past due)
-- Key Slack threads requiring response
+- Key chat threads requiring response
 - Sprint/project blockers
 
 **Tier 3 — Weekly:**
@@ -38,7 +38,7 @@ Include in the weekly review via `/review`. Examples:
 
 ### Evaluating Information Against CIRs
 
-When scanning any source (kbx, gm, Slack MCP, Linear), evaluate each item:
+When scanning any source (kbx, task backend, chat, project tracker), evaluate each item:
 
 1. **Does it match a Tier 1 CIR?** → Surface immediately with context
 2. **Does it match a Tier 2 CIR?** → Queue for next briefing
@@ -74,17 +74,17 @@ The highest-value information management is connecting signals across sources:
 
 | Pattern | What It Means |
 |---------|--------------|
-| Same topic in Slack + Gmail + kbx transcript + Linear | Convergence signal: this is important and needs attention |
+| Same topic in chat + email + kbx transcript + project tracker | Convergence signal: this is important and needs attention |
 | Person mentioned in 3+ contexts this week | This person is central to something — check in with them |
-| Project in Linear has no recent Slack, Gmail, or kbx activity | Possibly stalled or deprioritised silently |
-| Decision from meeting not reflected in gm tasks | Execution gap: decision made but not actioned |
-| Action item in gm tasks but no follow-up in any channel | Dropped ball: nobody's working on this |
-| Email commitment not tracked in gm tasks | Dropped ball: promised something via email but never captured it |
-| External stakeholder emailing frequently with no kbx/Slack activity | Relationship happening outside internal channels — may need visibility |
+| Project in project tracker has no recent chat, email, or kbx activity | Possibly stalled or deprioritised silently |
+| Decision from meeting not reflected in task backend | Execution gap: decision made but not actioned |
+| Action item in task backend but no follow-up in any channel | Dropped ball: nobody's working on this |
+| Email commitment not tracked in task backend | Dropped ball: promised something via email but never captured it |
+| External stakeholder emailing frequently with no kbx/chat activity | Relationship happening outside internal channels — may need visibility |
 
 ## Entity Resolution
 
-When processing any input (user message, meeting transcript, Slack thread), resolve all entity references before acting.
+When processing any input (user message, meeting transcript, chat thread), resolve all entity references before acting.
 
 ### Lookup Flow
 
