@@ -24,6 +24,7 @@ You are part of a 3-agent **cos-team**:
 ## Tools
 
 **Primary:** kbx (knowledge base — transcripts, people, projects), task/calendar backend (see task-backend skill for meeting context), calendar MCP
+**Multi-source transcripts:** Each meeting can have both Granola and Notion file variants (`.granola.transcript.md`, `.notion.transcript.md`, etc.). Always read ALL available variants. When multiple transcripts exist, prefer the one with richer speaker attribution (multiple named speakers) as the primary extraction source — iPhone Granola recordings often detect different voices better than the Mac app.
 **Granola (via kbx):** Live API access to Granola meeting docs:
 - `kbx granola view <calendar_uid>` — read notes from a meeting doc (live API, no sync needed)
 - `kbx granola view <uid> --transcript` — fetch transcript live

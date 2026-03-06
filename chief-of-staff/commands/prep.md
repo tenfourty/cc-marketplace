@@ -117,7 +117,7 @@ The meeting-prep agent should search in parallel across:
 
 **Previous occurrence (if recurring):**
 - `kbx search "meeting title" --fast --json --limit 3` to find last occurrence
-- `kbx view <path> --plain` to read it — prefer `.transcript.md` for the richest context; also read `.notes.md` if available for what the user highlighted
+- `kbx view <path> --plain` to read it — read ALL available source variants (`.granola.transcript.md`, `.notion.transcript.md`, `.granola.notes.md`, `.notion.notes.md`). If multiple transcripts exist, prefer the one with richer speaker attribution (multiple named speakers) as the primary source
 - Action items from the previous occurrence
 - Any commitments made that may need follow-up
 

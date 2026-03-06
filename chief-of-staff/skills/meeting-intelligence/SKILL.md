@@ -4,27 +4,33 @@ This skill defines how the Chief of Staff works with meeting transcripts, meetin
 
 ## Meeting Data Sources
 
-Meeting data is accessed primarily via kbx, which indexes content from Granola and Notion. Each meeting can have up to three file types:
+Meeting data is accessed primarily via kbx, which indexes content from Granola and Notion. Each meeting can have up to three file types, and each file type can exist in multiple source variants:
 
-| File Type | Extension | What It Is | When to Use |
-|-----------|-----------|------------|-------------|
-| **Transcript** | `.transcript.md` | Raw speaker-attributed transcript | Ground truth. Use for: action extraction, exact quotes, decision capture, deep analysis. Longest but most reliable. |
-| **Notes** | `.notes.md` | User-curated highlights and edits | Quick context. Use for: what the user considered important, prep for follow-ups. May omit details the user didn't highlight. |
-| **AI Summary** | `.ai-summary.md` | Granola's AI-generated digest | Quick orientation when transcript is too long, scanning for themes. **Treat as lossy** — always verify key claims against transcript before acting on them. |
+| File Type | Granola variant | Notion variant | When to Use |
+|-----------|----------------|----------------|-------------|
+| **Transcript** | `.granola.transcript.md` | `.notion.transcript.md` | **Ground truth.** Action extraction, exact quotes, decision capture, deep analysis. Longest but most reliable. |
+| **Notes** | `.granola.notes.md` | `.notion.notes.md` | Quick context. What the user considered important, prep for follow-ups. May omit details the user didn't highlight. |
+| **AI Summary** | `.granola.ai-summary.md` | — | Quick orientation when transcript is too long, scanning for themes. **Treat as lossy** — always verify key claims against transcript before acting on them. |
+
+### Multi-Source Meeting Files
+
+A single meeting can have files from **both** Granola and Notion — each source produces its own transcript, notes, and (for Granola) AI summary. Always read **every available file** for the meeting, not just one source's files.
+
+**Speaker attribution quality:** When multiple transcripts exist for the same meeting, prefer the one with richer speaker attribution (multiple named speakers, e.g., "Jeremy: … Pierre: …") as the **primary extraction source**. The iPhone Granola app often detects different voices better than the Mac app, producing multi-speaker transcripts while the Mac version may attribute everything to a single speaker. A multi-speaker transcript is higher fidelity — use it as primary, and cross-reference the other transcript for anything it may have captured that the primary missed (e.g., side comments, different audio pickup).
 
 ### Source Priority
 
-The transcript is always the primary source for action items, decisions, and quotes. Notes and AI summaries are supplementary — they add context but should not replace the transcript.
+The transcript is always the primary source for action items, decisions, and quotes — regardless of which recording source produced it. Notes and AI summaries are supplementary — they add context but should not replace the transcript.
 
-**For debrief and deep extraction:** Read all available sources for the meeting. The transcript is mandatory; notes show what the user flagged as important; the AI summary is a useful cross-check.
+**For debrief and deep extraction:** Read all available source variants for the meeting. Transcripts are mandatory; notes show what the user flagged as important; the AI summary is a useful cross-check.
 
-**For search and scanning:** `kbx search` indexes all three types. When results include multiple files for the same meeting, prefer the transcript for detailed reading.
+**For search and scanning:** `kbx search` indexes all file types and source variants. When results include multiple files for the same meeting, prefer the transcript with the best speaker attribution for detailed reading.
 
 **Important:** Do not extract action items or decisions solely from AI summaries. They may miss, misattribute, or hallucinate commitments.
 
 ### Discovery
 
-Use `kbx search` to find meeting data and `kbx view <path> --plain` to read it. kbx indexes all three file types. If kbx returns nothing, fall back to `kbx granola view <calendar_uid> --all` to fetch live from the Granola API.
+Use `kbx search` to find meeting data and `kbx view <path> --plain` to read it. kbx indexes all file types and source variants. If kbx returns nothing, fall back to `kbx granola view <calendar_uid> --all` to fetch live from the Granola API.
 
 ## Working with Transcripts
 

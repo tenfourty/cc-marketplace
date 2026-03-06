@@ -41,7 +41,7 @@ If the meeting has an agenda or clear topic:
 ### 5. Previous Occurrence
 If this is a recurring meeting:
 - `kbx search "meeting title" --fast --json --limit 3` to find the last occurrence
-- `kbx view <path> --plain` to read it — prefer `.transcript.md` for the richest context; also read `.notes.md` if available
+- `kbx view <path> --plain` to read it — read ALL available source variants (`.granola.transcript.md`, `.notion.transcript.md`, `.granola.notes.md`, `.notion.notes.md`). If multiple transcripts exist, prefer the one with richer speaker attribution (multiple named speakers) as the primary source
 - Extract: what was discussed, decisions made, action items assigned
 - Cross-reference action items against tasks listed via the task backend to check which are still open
 

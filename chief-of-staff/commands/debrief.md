@@ -16,12 +16,17 @@ You are extracting structured intelligence from a meeting that just happened. Us
 
 Use `kbx search "meeting title" --fast --json --limit 5` to find the most recent or specified meeting. Use `kbx view <path> --plain` to read each file.
 
-**Read all available sources for the meeting:**
-- **Transcript** (`.transcript.md`) — **always read this.** It is the ground truth for action items, decisions, and exact quotes.
-- **Notes** (`.notes.md`) — read when available. Shows what the user flagged as important during the meeting. May surface items the user was already tracking mentally.
-- **AI Summary** (`.ai-summary.md`) — read when available. Useful as a cross-check, but do not extract action items or decisions solely from AI summaries — they may miss or misattribute commitments.
+**Read all available sources for the meeting.** Each meeting can have files from multiple recording sources (Granola and Notion), each with its own set of artifacts. Read every file you find for the meeting — not just one source's files.
 
-Use all three to build the fullest picture: the transcript is the primary extraction source, notes highlight user intent, and the AI summary can catch things you might skim past in a long transcript.
+| File type | Granola variant | Notion variant | Priority |
+|-----------|----------------|----------------|----------|
+| **Transcript** | `.granola.transcript.md` | `.notion.transcript.md` | **Primary.** Ground truth for action items, decisions, and exact quotes. Always read ALL available transcripts. |
+| **Notes** | `.granola.notes.md` | `.notion.notes.md` | Supplementary. Shows what the user flagged as important. |
+| **AI Summary** | `.granola.ai-summary.md` | — | Cross-check only. Do not extract action items or decisions solely from AI summaries — they may miss or misattribute commitments. |
+
+**When multiple transcripts exist:** Prefer the transcript with richer speaker attribution (multiple named speakers, e.g., "Jeremy: … Pierre: …") as the primary extraction source. The iPhone Granola app often detects different voices better than the Mac app, producing multi-speaker transcripts while the Mac version may attribute everything to a single speaker. A multi-speaker transcript is higher fidelity — use it as the primary source, and cross-reference the other transcript for anything it may have captured that the primary missed (e.g., side comments, different audio pickup).
+
+Use all sources to build the fullest picture: transcripts are the primary extraction source, notes highlight user intent, and the AI summary can catch things you might skim past in a long transcript.
 
 **Fallback — live Granola API:** If local files aren't found (sync hasn't run yet), fall back to `kbx granola view <calendar_uid> --all` to fetch notes, AI summary, and transcript directly from the Granola API. Get the `calendar_uid` from today's calendar output (see CoS Configuration for the active calendar backend).
 

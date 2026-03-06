@@ -17,7 +17,7 @@ You will be given either:
 
 When given a transcript:
 
-**Source priority:** Prefer `.transcript.md` files — they are the ground truth for commitments. `.notes.md` can supplement with user-flagged items. Do not extract action items solely from `.ai-summary.md` files — they may miss, misattribute, or hallucinate commitments.
+**Source priority:** Transcripts are the ground truth for commitments. Each meeting can have files from multiple sources — read ALL available variants (`.granola.transcript.md`, `.notion.transcript.md`). If multiple transcripts exist, prefer the one with richer speaker attribution (multiple named speakers) as the primary extraction source. Also read `.granola.notes.md` and `.notion.notes.md` as supplements for user-flagged items. Do not extract action items solely from `.ai-summary.md` files — they may miss, misattribute, or hallucinate commitments.
 
 ### 1. Identify Commitments
 Scan the transcript for:
