@@ -19,7 +19,7 @@ The task backend is fully abstracted via `skills/task-backend/SKILL.md`. Key con
 - **Generic interface**: create, list, update, close — works with any backend
 - **Status values**: right-now, active, waiting-on, someday, done
 - **Area selection**: Keyword heuristic maps tasks to areas (People, Leadership, Ops, Admin, Home, Routines, Inbox)
-- **CoS Configuration note**: Created by `/setup`, tagged `config`, pinned in kbx. Contains backend-specific syntax (exact CLI commands or file operations). All commands read this note to dispatch task operations.
+- **CoS Configuration note**: Created by `/setup`, tagged `config`, pinned in kbx. Contains a `## Connected Sources` inventory (which categories are available) and backend-specific syntax. All commands read this note to dispatch task operations and skip sections for missing sources.
 - **Backend options**: tasks.md (default, zero deps), gm (Morgen CLI), project tracker MCP
 - **Template**: `templates/TASKS.md` — used when a new user chooses the tasks.md backend
 

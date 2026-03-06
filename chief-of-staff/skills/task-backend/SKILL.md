@@ -66,18 +66,30 @@ Include `ref: <url>` when the source system URL is known. Agents may follow refs
 
 ## Backend Dispatch
 
-Read the **CoS Configuration** pinned note from `kbx context` output. It declares the active task backend and provides backend-specific syntax (exact CLI commands or file operations). Follow that syntax for all task operations.
+Read the **CoS Configuration** pinned note from `kbx context` output. It declares the active task backend, connected sources, and backend-specific syntax. Follow that syntax for all task operations. Check the `## Connected Sources` section to know which source categories are available — skip sections for missing categories.
 
-**Example config note (gm backend):**
+**Example config note (gm backend, full sources):**
 ```
+## Connected Sources
+- task: gm (Morgen CLI)
+- calendar: gm (Morgen CLI)
+- chat: Slack (claude.ai MCP)
+- email: Gmail (claude.ai MCP)
+- project tracker: Linear (claude.ai MCP)
+- knowledge base: Notion (claude.ai MCP)
+
 ## Task Syntax (gm)
 - Create: `gm tasks create --title "..." --tag {Status} --list {Area} --due {ISO} --description "..."`
 - List: `gm tasks list --tag {Status} --json --response-format concise`
 - Close: `gm tasks close {id}`
 ```
 
-**Example config note (tasks.md backend):**
+**Example config note (tasks.md backend, minimal sources):**
 ```
+## Connected Sources
+- task: tasks.md
+- calendar: Google Calendar (claude.ai MCP)
+
 ## Task Syntax (tasks.md)
 - File: TASKS.md (in working directory)
 - Create: Edit tool — insert `- [ ] **{title}** — {description} (due: {due}, area: {area}, project: {project})` at top of `## {Status}` section

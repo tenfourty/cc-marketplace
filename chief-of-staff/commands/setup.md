@@ -60,14 +60,37 @@ Based on detection results:
 - If no calendar backend detected, warn: "No calendar connection found. Calendar features (briefing schedule, time analysis) will be limited. You can connect one later."
 - Note which chat/email/project tracker MCPs are available for commitment scanning.
 - Do not mention specific vendor names in prompts — just categories.
+- **Suggest missing sources:** For each category that has no connected MCP, suggest the user connect one. Frame as value-add, not requirement:
+  - No chat: "Connecting a chat source (e.g., Slack) enables commitment scanning and team signal detection."
+  - No email: "Connecting email enables tracking external commitments and follow-ups."
+  - No project tracker: "Connecting a project tracker enables initiative status in briefings."
+  - No calendar: "Connecting a calendar enables time analysis and scheduling."
 
 ### 1f. Store configuration
 
-Create a pinned kbx config note tagged `config` with backend-specific syntax for the active backends. The note is LLM-generated — include the exact CLI commands or file operations for the chosen task backend. See the task-backend skill for the expected structure.
+Create a pinned kbx config note tagged `config` with backend-specific syntax for the active backends **and a connected sources inventory**. The note is LLM-generated — include the exact CLI commands or file operations for the chosen task backend. See the task-backend skill for the expected structure.
 
 ```bash
 kbx memory add "CoS Configuration" --body "..." --tags config --pin
 ```
+
+The config note MUST include a `## Connected Sources` section listing what's available. This is how all commands know which sections to run and which to skip. Example:
+
+```markdown
+## Connected Sources
+- task: gm (Morgen CLI)
+- calendar: gm (Morgen CLI)
+- chat: Slack (claude.ai MCP)
+- email: Gmail (claude.ai MCP)
+- project tracker: Linear (claude.ai MCP)
+- knowledge base: Notion (claude.ai MCP)
+
+## Task Syntax (gm)
+- Create: `gm tasks create --title "..." --tag {Status} --list {Area} --due {ISO} --description "..."`
+...
+```
+
+Sources not connected are omitted from the list. Commands check this list and skip sections for missing categories.
 
 ## Step 2: Learn the Executive
 
