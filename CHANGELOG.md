@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.30.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.29.0...cc-marketplace-v0.30.0) (2026-03-06)
+
+
+### Features
+
+* **chief-of-staff:** add multi-source transcript handling and speaker preference ([8fe1873](https://github.com/tenfourty/cc-marketplace/commit/8fe1873af22a40d0da15b5ad33ca236930f59c8f))
+
 ## [0.29.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.28.1...cc-marketplace-v0.29.0) (2026-03-06)
 
 
