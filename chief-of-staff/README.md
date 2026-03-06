@@ -1,17 +1,22 @@
 # Chief of Staff Plugin
 
-An AI Chief of Staff for technology executives, built as a Claude Cowork plugin. Provides strategic briefings, meeting intelligence, decision support, and proactive oversight using `kbx` (knowledge base) and `gm` (calendar/tasks) as primary data sources.
+An AI Chief of Staff for technology executives, built as a Claude Code plugin. Provides strategic briefings, meeting intelligence, decision support, and proactive oversight using `kbx` (knowledge base) as the required backbone, with configurable task and calendar backends.
 
 CTO-flavoured by default, adaptable to any executive role.
 
 ## Prerequisites
 
-This plugin requires two local CLI tools:
+### Required
 
 - **[kbx](https://github.com/tenfourty/kbx)** — Knowledge base with hybrid search across meetings, people, projects, notes
-- **[gm (guten-morgen)](https://github.com/tenfourty/guten-morgen)** — Calendar events and cross-source task management (Morgen, Linear, Notion)
 
-Both must be installed and configured before using this plugin. They should be set up with session startup hooks so their usage and context are available automatically — see the respective repos for installation instructions.
+kbx must be installed and configured before using this plugin. It should be set up with session startup hooks so its context is available automatically — see the repo for installation instructions.
+
+### Optional (configured during /setup)
+
+- **[gm (guten-morgen)](https://github.com/tenfourty/guten-morgen)** — Calendar events and cross-source task management (Morgen, Linear, Notion)
+- **tasks.md** — Simple markdown task file, zero dependencies (default for new users without gm)
+- **MCP integrations** — Slack (chat), Gmail (email), Linear (project tracker), Google Calendar, Granola, Notion
 
 ## Installation
 
@@ -102,20 +107,21 @@ Pinned docs appear in `kbx context` output, loaded at session start.
 
 ### Task System
 
-gm IS the task system. Task lifecycle uses tags (Right-Now, Active, Waiting-On, Someday) and lists (Leadership, People, Ops, Admin, Home, Routines).
+The task backend is configurable (see `skills/task-backend/SKILL.md`). Options: gm (Morgen), tasks.md (simple markdown file), or a project tracker MCP. Task lifecycle uses statuses (right-now, active, waiting-on, someday, done) and areas (Leadership, People, Ops, Admin, Home, Routines). The active backend and its syntax are declared in the CoS Configuration pinned note, created during `/setup`.
 
 ## Connected Tools
 
 | Tool | Type | Purpose |
 |------|------|---------|
-| kbx | CLI (primary) | Knowledge base, search, people, projects, notes |
-| gm | CLI (primary) | Calendar, tasks, scheduling |
-| Slack | Claude.ai MCP | Real-time team communication |
-| Gmail | Claude.ai MCP | Email scanning for commitments, action items, external comms |
-| Linear | Claude.ai MCP | Issue creation/updates (write operations) |
-| Google Calendar | Claude.ai MCP (fallback) | Calendar events if gm is unavailable |
-| Granola | Claude.ai MCP (fallback) | Meeting transcripts if kbx returns nothing |
-| Notion | Claude.ai MCP (fallback) | Knowledge base if kbx returns nothing |
+| kbx | CLI (required) | Knowledge base, search, people, projects, notes |
+| gm | CLI (optional) | Calendar and cross-source tasks — one of several task/calendar backends |
+| tasks.md | File (optional) | Simple markdown task file — zero-dependency task backend |
+| Slack | MCP (chat) | Real-time team communication |
+| Gmail | MCP (email) | Email scanning for commitments, action items, external comms |
+| Linear | MCP (project tracker) | Issue creation/updates |
+| Google Calendar | MCP (calendar fallback) | Calendar events if gm is unavailable |
+| Granola | MCP (fallback) | Meeting transcripts if kbx returns nothing |
+| Notion | MCP (fallback) | Knowledge base if kbx returns nothing |
 
 Optional: Figma, HubSpot, n8n. See [CONNECTORS.md](CONNECTORS.md) for details.
 
