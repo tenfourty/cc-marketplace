@@ -94,9 +94,9 @@ This plugin uses **kbx as the required backbone** and abstracts other tools behi
 - **kbx IS the memory system.** CIRs, initiatives, recurring meetings, operating rhythm, decisions, and people context all live in kbx as indexed, searchable, pinned notes. Pinned notes appear in `kbx context` (loaded at session start). Deep storage is accessible via `kbx search`. **kbx is always required.**
 - **Task backend is configurable.** Tasks can be managed via gm (Morgen), a tasks.md file, or a project tracker MCP. The active backend and its syntax are declared in the CoS Configuration note. See the task-backend skill for the generic interface and dispatch logic.
 - **Calendar backend is configurable.** gm provides calendar when available; Google Calendar MCP is a fallback. If neither is configured, calendar features are skipped with a warning.
-- **Slack MCP** provides real-time team communication (chat).
-- **Gmail MCP** provides email scanning for commitments, action items, and external stakeholder communication (email).
-- **Linear MCP** handles issue tracking and write operations (project tracker).
+- **Chat MCP** (Slack, Teams, etc.) provides real-time team communication.
+- **Email MCP** (Gmail, Outlook, etc.) provides email scanning for commitments, action items, and external stakeholder communication.
+- **Project tracker MCP** (Linear, Jira, etc.) handles issue tracking and write operations.
 - **Granola/Notion MCPs** are fallbacks when kbx search returns nothing.
 
 ## Memory Philosophy
