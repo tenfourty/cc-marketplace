@@ -1,5 +1,5 @@
 ---
-description: Parallel research agent for meeting preparation. Gathers attendee context, recent interactions, open items, and relevant history from kbx, gm, and Slack.
+description: Parallel research agent for meeting preparation. Gathers attendee context, recent interactions, open items, and relevant history from kbx, the task backend, and chat.
 model: haiku
 ---
 
@@ -25,17 +25,17 @@ For each attendee:
 ### 2. Recent Interactions
 For each attendee:
 - `kbx person timeline "Name" --from YYYY-MM-DD --json` (last 7 days) for recent meeting/note mentions
-- Slack MCP: recent messages from/to them (last 7 days)
+- Chat MCP: recent messages from/to them (last 7 days)
 
 ### 3. Open Items
-- `gm tasks list --json --response-format concise` filtered for items related to attendees
+- List open tasks via the task backend (see task-backend skill for syntax), filtered for items related to attendees
 - `kbx note list --tag decision --json` for recent decisions involving attendees
 
 ### 4. Topic Research
 If the meeting has an agenda or clear topic:
 - `kbx search "topic" --json --limit 10` for relevant knowledge base content
-- Slack MCP for recent discussions on the topic
-- `gm tasks list --source linear --json` for related Linear items
+- Chat MCP for recent discussions on the topic
+- List tasks from the connected project tracker (see task-backend skill) for related items
 - Check kbx context pinned docs for related initiatives
 
 ### 5. Previous Occurrence
@@ -43,7 +43,7 @@ If this is a recurring meeting:
 - `kbx search "meeting title" --fast --json --limit 3` to find the last occurrence
 - `kbx view <path> --plain` to read it — prefer `.transcript.md` for the richest context; also read `.notes.md` if available
 - Extract: what was discussed, decisions made, action items assigned
-- Cross-reference action items against `gm tasks list` to check which are still open
+- Cross-reference action items against tasks listed via the task backend to check which are still open
 
 ## Output Format
 

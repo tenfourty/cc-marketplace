@@ -70,8 +70,8 @@ The structured markdown body should follow this format:
 ```
 
 Also:
-- Create follow-up tasks: `gm tasks create --title "..." --tag Active --list LIST --due ISO --description "..."`
-  - **Project linking:** Include `project: <ProjectName>` in the description if the task relates to a known kbx project
+- Create follow-up tasks via the task backend (see task-backend skill for syntax) with appropriate tag, list, due date, and description
+  - **Project linking:** Include `project: <ProjectName>` in the task description if it relates to a known kbx project. One `project:` line per task.
 - Update initiatives: `kbx memory add "Initiative update" --entity "Project Name" --tags initiative` if applicable
 
 ## Recalling Decisions
@@ -83,7 +83,7 @@ When the user asks to recall:
 - `kbx search "topic" --json` for semantic match
 - `kbx note list --tag decision --json` for all decision notes
 - `kbx search "topic decision" --from YYYY-MM-DD --json` for decisions in meeting transcripts
-- Slack MCP for decision-related threads
+- Chat MCP for decision-related threads
 - Notion MCP if kbx returns nothing relevant
 
 ### 2. Present
@@ -103,7 +103,7 @@ Show decisions in reverse chronological order:
 When showing past decisions, add:
 - **Pattern:** "You've made 3 decisions on this topic in 2 months. Is the framing right?"
 - **Trajectory:** "This decision reversed one from [date]. What changed?"
-- **Open items:** "The action items from this decision are still in gm tasks — are they done?"
+- **Open items:** "The action items from this decision are still tracked as tasks — are they done?"
 - **Revisit flag:** "You said to revisit this by [date]. That's [past due / coming up]."
 
 ## Helping Decide
@@ -117,7 +117,7 @@ When the user runs `/decision help` or `/decision help <topic>`:
 **If no topic is provided:**
 - Search recent meetings for undecided items: `kbx search "decision" --from YYYY-MM-DD --fast --json`
 - Check for deferred decisions: `kbx search "revisit" --from YYYY-MM-DD --fast --json`
-- Check gm tasks for items that imply pending decisions
+- Check the task backend for items that imply pending decisions
 - Identify **at least 3 big decisions** discussed recently. Summarise them briefly.
 - From these, define the **largest, most important decision** and explain why.
 - Ask if the executive agrees, or if they want to define the problem differently.

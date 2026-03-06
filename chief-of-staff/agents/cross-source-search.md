@@ -1,5 +1,5 @@
 ---
-description: Searches across kbx, gm, Slack, and Linear for a topic, person, project, or query. Returns consolidated results from all available sources.
+description: Searches across kbx, the task backend, chat, and the project tracker for a topic, person, project, or query. Returns consolidated results from all available sources.
 model: haiku
 ---
 
@@ -22,17 +22,17 @@ Search these sources in parallel:
 - `kbx project find "Name" --json` if query matches a project
 - `kbx note list --tag decision --json` for related decisions
 
-### 2. Tasks (gm)
-- `gm tasks list --json --response-format concise` filtered for the query
-- `gm tasks list --source linear --json` for related Linear items
+### 2. Tasks (task backend)
+- List open tasks via the task backend (see task-backend skill for syntax), filtered for the query
+- List tasks from the connected project tracker for related items
 
-### 3. Chat (Slack MCP)
+### 3. Chat
 - Search across relevant channels for the query
 - Find the most recent and most relevant messages
 - Note which channels and who is discussing this
 
-### 4. Linear (for deeper detail)
-- Linear MCP for detailed issue information when gm task search indicates related items
+### 4. Project Tracker (for deeper detail)
+- Project tracker MCP for detailed issue information when task backend search indicates related items
 
 ### 5. Notion (fallback)
 - Only if kbx returns nothing relevant for the query
@@ -49,13 +49,13 @@ Search these sources in parallel:
 ### Knowledge Base (kbx)
 [Relevant entries: transcripts, notes, people, projects]
 
-### Tasks (gm)
-[Relevant tasks with status, tags, and lists]
+### Tasks
+[Relevant tasks with status and area]
 
-### Chat (Slack)
+### Chat
 [Relevant messages with channel, author, date, and snippet]
 
-### Project Tracker (Linear)
+### Project Tracker
 [Relevant items with status]
 
 ### Sources Unavailable
@@ -67,5 +67,5 @@ Search these sources in parallel:
 - Cast a wide net. Better to return too much than miss something relevant.
 - Always include the source and date for each result so the executive can dig deeper.
 - If the query is ambiguous (could refer to multiple things), return results for all interpretations and let the user clarify.
-- Deduplicate: if the same information appears in multiple sources, note that ("mentioned in both Slack and a kbx transcript") rather than repeating it.
+- Deduplicate: if the same information appears in multiple sources, note that ("mentioned in both chat and a kbx transcript") rather than repeating it.
 - Order results by recency within each source (most recent first).

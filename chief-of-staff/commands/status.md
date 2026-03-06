@@ -22,7 +22,7 @@ Parse what the user is asking about. It could be:
 - A **project/initiative** from kbx (check pinned initiatives in `kbx context`)
 - A **person** — use `kbx person find "Name" --json`
 - A **topic** that spans multiple contexts
-- A **task** — search `gm tasks list --json --response-format concise`
+- A **task** — search via the task backend (see task-backend skill for syntax)
 - Something not yet tracked
 
 ### Freshness Awareness
@@ -44,17 +44,17 @@ Search in parallel across all available sources:
 - `kbx project find "Name"` if it's a project
 - `kbx note list --tag decision --json` for related decisions
 
-**Tasks (gm):**
-- `gm tasks list --json --response-format concise` filtered for related items
-- `gm tasks list --source linear --json` for related Linear issues
+**Tasks:**
+- List tasks via the task backend filtered for related items
+- List tasks from the project tracker for related issues
 
-**Chat (Slack MCP):**
+**Chat:**
 - Search for the topic across relevant channels
 - Find the most recent substantive discussion
 - Note who's been talking about it and what they're saying
 
-**Linear (for deeper detail):**
-- Linear MCP if gm task search suggests related issues needing more detail
+**Project tracker (for deeper detail):**
+- Project tracker MCP if task search suggests related issues needing more detail
 
 **Notion (fallback):**
 - kbx covers synced Notion content. Fall back to Notion MCP only if kbx returns nothing relevant.
@@ -94,7 +94,7 @@ Search in parallel across all available sources:
 
 If the topic isn't found in any source:
 - Tell the executive: "I don't have any tracked information on [topic]. Would you like me to start tracking it?"
-- Offer to create an initiative entry via kbx or a task via gm
+- Offer to create an initiative entry via kbx or a task via the task backend
 - Ask if there's a different name or framing that might match
 
 ## Graceful Degradation
@@ -102,6 +102,6 @@ If the topic isn't found in any source:
 | Missing Source | Impact | Fallback |
 |---|---|---|
 | kbx | No knowledge base search | Fall back to Granola + Notion MCPs |
-| gm | No task search | Skip task section |
-| Slack | No chat search | Note it |
-| Linear | No deep issue detail | Use gm task list only |
+| Task backend | No task search | Skip task section |
+| Chat | No chat search | Note it |
+| Project tracker | No deep issue detail | Use task backend list only |
