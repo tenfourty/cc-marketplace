@@ -30,37 +30,37 @@ Spawn the weekly-review agent using the `Agent` tool with `run_in_background: tr
 
 The weekly-review agent should gather in parallel:
 
-**Calendar (gm) — Week in Review:**
-- `gm this-week --hide-declined --json --response-format concise --no-frames` for the week's events and tasks
+**Calendar — Week in Review:**
+- Load this week's calendar using the configured calendar backend (see CoS Configuration note for syntax)
 - Where did the executive actually spend time this week?
 - How does actual time allocation compare to stated priorities?
 - What percentage was meetings vs. focus time?
 - Any meetings that happened that weren't in the rhythm?
 - Any double-bookings that occurred? (overlapping events = a scheduling process issue worth noting)
 
-**Tasks (gm) — Movement Analysis:**
-- `gm tasks list --status completed --updated-after YYYY-MM-DD --json` for tasks completed this week
-- `gm tasks list --status open --json --response-format concise` for current open items
-- `gm tasks list --overdue --json` for stale items
-- `gm tasks list --tag Waiting-On --json` for pending-from-others
+**Tasks — Movement Analysis (see task-backend skill for active backend syntax):**
+- List completed tasks since [start of week date]
+- List open tasks
+- List overdue tasks
+- List tasks with status waiting-on
 - Net task count: growing, shrinking, or stable?
 
-**Chat (Slack MCP) — Communication Patterns:**
-- Themes across Slack messages this week
+**Chat — Communication Patterns:**
+- Themes across chat messages this week
 - Channels with notably high or low activity
 - Threads the executive started vs. was pulled into
 - Any tension or conflict signals in team communications
 - Topics that keep coming up (recurring themes)
 
-**Email (Gmail MCP) — External Communication Patterns:**
+**Email — External Communication Patterns:**
 - Sent mail volume and key recipients this week
 - Unanswered inbound emails from important senders (>48 hours)
 - Email threads with external stakeholders (customers, partners, board)
-- Commitments made via email that aren't tracked in gm tasks
+- Commitments made via email that aren't tracked in tasks
 
 **Missed Commitment Detection (always, lightweight):**
-- Search Slack and sent email for the executive's own commitment language in the past week: "I'll", "I will", "let me", "I'll send"
-- Cross-reference against gm tasks created this week
+- Search chat and sent email for the executive's own commitment language in the past week: "I'll", "I will", "let me", "I'll send"
+- Cross-reference against tasks created this week
 - Surface any commitments that don't have a corresponding task
 
 **Meeting Transcripts (kbx) — Decision Flow:**
@@ -69,8 +69,8 @@ The weekly-review agent should gather in parallel:
 - Cross-meeting themes via broader `kbx search` queries
 - Commitments made by others — are they being honoured?
 
-**Project Tracker (gm + kbx) — Initiative Health:**
-- `gm tasks list --source linear --json --response-format concise` for Linear status
+**Project Tracker (task backend + kbx) — Initiative Health:**
+- List tasks from the connected project tracker (see task-backend skill)
 - `kbx project find "Name" --json` for each active initiative
 - Velocity trends (improving, stable, declining)
 - Any initiatives that are drifting without attention
@@ -143,11 +143,11 @@ and needs intervention, it's been silently deprioritised, or
 it's done and nobody closed it. Which is it?"
 
 After the discussion, execute whatever the user decides via
-gm tasks commands.]
+task backend commands (see task-backend skill).]
 
 ### Commitments Not Yet Tracked
-[Items the executive said they'd do in Slack/meetings this week
-that aren't in gm tasks. Only show if any are found — skip the
+[Items the executive said they'd do in chat/meetings this week
+that aren't in tasks. Only show if any are found — skip the
 section entirely if clean.]
 
 * **[Channel/meeting]** ([date]): "[quote]" — no matching task
@@ -220,7 +220,7 @@ After the discussion, offer these follow-on options:
   - Tag uncertain items with `[PLEASE VERIFY: detail]` or `[INFERRED: basis]`
   - If any tags exist, append a review section at the end
   - Always highlight new developments since the last update
-  - Output as a Slack message ready to send
+  - Output as a chat message ready to send
 
 - **"Want me to draft a recap for your direct reports?"** — Generates a downward-facing weekly recap. Format:
 
@@ -245,7 +245,7 @@ After the discussion, offer these follow-on options:
   - Focus on what's relevant to the team, not everything the executive did
   - Include decisions that affect team direction or priorities
   - Recognise good work — the team should see the executive notices
-  - Keep it concise and Slack-ready
+  - Keep it concise and chat-ready
 
 - **"Want a deeper risk analysis on this week's plans?"** — Triggers `/cos:blindspots` in post-review mode.
 
@@ -267,12 +267,12 @@ If a previous weekly review exists, always compare:
 
 ## Graceful Degradation
 
-This review is most powerful with all sources. But even with just gm and kbx, it provides value. Note which sources were unavailable and what insights they would have added.
+This review is most powerful with all sources. But even with just the task/calendar backend and kbx, it provides value. Note which sources were unavailable and what insights they would have added.
 
 | Sources Available | Review Quality |
 |---|---|
-| All sources (kbx + gm + Slack + Gmail + Linear) | Full strategic review |
-| kbx + gm + Slack + Gmail | Good review, limited on project tracking |
-| kbx + gm + Slack | Good operational review, limited on external comms and project tracking |
-| kbx + gm only | Basic time/task analysis, limited pattern detection |
-| gm only | Task and calendar movement analysis only, flag that more data would help |
+| All sources (kbx + task backend + calendar backend + chat + email + project tracker) | Full strategic review |
+| kbx + task backend + calendar backend + chat + email | Good review, limited on project tracking |
+| kbx + task backend + calendar backend + chat | Good operational review, limited on external comms and project tracking |
+| kbx + task backend + calendar backend only | Basic time/task analysis, limited pattern detection |
+| Task/calendar backend only | Task and calendar movement analysis only, flag that more data would help |

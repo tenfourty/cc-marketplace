@@ -1,5 +1,5 @@
 ---
-description: Extracts commitments and action items from meeting transcripts and maps them to gm tasks. Tracks who owes what and flags overdue items.
+description: Extracts commitments and action items from meeting transcripts and maps them to tasks. Tracks who owes what and flags overdue items.
 model: haiku
 ---
 
@@ -37,14 +37,14 @@ For each item, extract:
 
 ### 3. Categorise
 
-- **Executive's own items** → Will be created via `gm tasks create --tag Active --list LIST --description "..."`
-- **Others' commitments** → Will be created via `gm tasks create --tag Waiting-On --list LIST --description "..."`
+- **Executive's own items** → Create task with status active, appropriate area (see task-backend skill for active backend syntax)
+- **Others' commitments** → Create task with status waiting-on, appropriate area (see task-backend skill)
 - **Follow-ups (no clear owner)** → Flag for the executive to assign
-- **Project linking:** If the action item relates to a known kbx project, include `project: <ProjectName>` on a line in the `--description`. This links the task to the project board in brief-deck. Multiple `project:` lines supported for cross-project items.
+- **Project linking:** If the action item relates to a known kbx project, include `project: <ProjectName>` in the description. This links the task to the kbx project. One project per task.
 
 ### 4. Cross-Reference
 
-Check each item against `gm tasks list --json --response-format concise`:
+Check each item against existing tasks via the task backend (see task-backend skill):
 - Is this already tracked? If so, note it (don't duplicate)
 - Does this update an existing task? If so, note the update
 - Is this entirely new? Flag it for addition
@@ -57,12 +57,12 @@ Check each item against `gm tasks list --json --response-format concise`:
 ### Executive's Actions
 1. [Action] — due [date] — confidence: [clear/implied/vague]
    Context: [why]
-   Existing in gm tasks: [yes/no, with reference if yes]
+   Existing in tasks: [yes/no, with reference if yes]
 
 ### Waiting On Others
 1. [Person]: [Action] — due [date] — confidence: [clear/implied/vague]
    Context: [why]
-   Existing in gm tasks: [yes/no, with reference if yes]
+   Existing in tasks: [yes/no, with reference if yes]
 
 ### Unassigned Follow-ups
 1. [Topic] — needs an owner
@@ -77,16 +77,16 @@ Check each item against `gm tasks list --json --response-format concise`:
 When asked to audit:
 
 ### 1. Load All Sources
-- `gm tasks list --tag Active --json` and `gm tasks list --tag Waiting-On --json` for current tasks
-- `gm tasks list --source linear --json` for Linear items
-- Slack MCP for recent commitment language ("I'll", "I will", "by Friday")
+- List tasks with status active and tasks with status waiting-on via the task backend (see task-backend skill)
+- List tasks from the connected project tracker (see task-backend skill)
+- Chat MCP for recent commitment language ("I'll", "I will", "by Friday")
 - `kbx search "action item" --from YYYY-MM-DD --fast --json` for recent transcript action items
 
 ### 2. Cross-Reference
-- Items in gm from Linear source → status consistent with Linear?
-- Items in kbx transcripts not in gm tasks → dropped balls
-- Items in Slack not in gm tasks → informal commitments not tracked
-- Items in gm tasks with no activity in any source for >5 days → possibly stalled
+- Items from project tracker source → status consistent with project tracker?
+- Items in kbx transcripts not in tasks → dropped balls
+- Items in chat not in tasks → informal commitments not tracked
+- Items in tasks with no activity in any source for >5 days → possibly stalled
 
 ### 3. Age Analysis
 - Items due today or overdue
@@ -108,10 +108,10 @@ When asked to audit:
 [Items with no recent activity in any source]
 
 ### Untracked Commitments
-[Items found in transcripts/chat not in gm tasks]
+[Items found in transcripts/chat not in tasks]
 
 ### Inconsistencies
-[Items where gm task and Linear status don't match]
+[Items where task status and project tracker status don't match]
 
 ### Stats
 - Total active items: [count]

@@ -21,7 +21,7 @@ The rhythms below are defaults. Actual cadence is stored in a pinned kbx note ta
 ### Weekly
 - **Weekly review** (`/review`): Strategic synthesis, pattern analysis, coach-voice reflection. Post-review outputs: coaching session, status update for CEO, recap for direct reports, deep risk analysis.
 - **Coaching session** (`/coach`): Mochary Method coaching — energy audit, accountability, conscious leadership. Can run standalone or after review.
-- **Task triage**: Review gm tasks for stale items, reprioritise, complete done items
+- **Task triage**: Review tasks for stale items, reprioritise, complete done items
 - **Memory maintenance**: Update kbx pinned notes, update people context
 
 ### As Needed
@@ -50,11 +50,11 @@ The rhythms below are defaults. Actual cadence is stored in a pinned kbx note ta
 **Trigger:** `/briefing` command
 **Outputs:** Structured daily brief
 **What it checks:**
-1. `gm today` for calendar and today's tasks
-2. `gm tasks list --overdue` for overdue items
-3. `gm tasks list --tag Right-Now` for today's focus
-4. Slack MCP for overnight/morning signals
-5. `gm tasks list --source linear` for blockers
+1. Load today's calendar using the configured calendar backend (see CoS Configuration note for syntax)
+2. List overdue tasks via the task backend (see task-backend skill)
+3. List tasks with status right-now via the task backend
+4. Chat MCP for overnight/morning signals
+5. List tasks from the connected project tracker (see task-backend skill)
 
 ### Weekly Review Routine
 **When:** Friday afternoon or Monday morning (configurable)
@@ -62,21 +62,21 @@ The rhythms below are defaults. Actual cadence is stored in a pinned kbx note ta
 **Trigger:** `/review` command
 **Outputs:** Weekly review document, kbx updates, adjusted priorities
 **What it checks:**
-1. `gm this-week` for calendar and task overview
+1. Load this week's calendar using the configured calendar backend (see CoS Configuration note for syntax)
 2. `kbx search` with date ranges for meeting transcript analysis
 3. `kbx note list --tag decision` for the week's decisions
-4. `gm tasks list` variants for task movement
-5. Slack MCP for communication themes
+4. List tasks (various status filters) via the task backend (see task-backend skill)
+5. Chat MCP for communication themes
 6. `kbx project find` for initiative status
 
 ### Post-Meeting Routine
 **When:** After any significant meeting
 **Duration:** 3-5 minutes
 **Trigger:** `/debrief` command
-**Outputs:** Action items, decision log entries, gm task updates
+**Outputs:** Action items, decision log entries, task updates
 **What it checks:**
 1. `kbx search` for the most recent meeting transcript
-2. `gm tasks list` for cross-reference against existing tasks
+2. List existing tasks via the task backend for cross-reference (see task-backend skill)
 3. `kbx person find` for attendee context
 
 ## Operating Rhythm Health Indicators
@@ -88,7 +88,7 @@ Monitor these to assess whether the OR is working:
 | Briefing frequency | Daily or near-daily | Skipped 3+ days |
 | Review frequency | Weekly | Skipped 2+ weeks |
 | Debrief frequency | After most meetings | Rarely or never |
-| Task list freshness | gm tasks updated within 3 days | Items stale >1 week |
+| Task list freshness | Tasks updated within 3 days | Items stale >1 week |
 | Decision log currency | Current month has entries in kbx | No decision notes in 2+ weeks |
 | kbx pinned notes freshness | Updated this week | Stale >2 weeks |
 
@@ -126,17 +126,17 @@ In each case, note the disruption and suggest adjusted routines.
 
 ## Tool Integration
 
-kbx and gm are the primary tools underpinning the operating rhythm:
+kbx and the task/calendar backends are the primary tools underpinning the operating rhythm:
 
 | Tool | Role in OR |
 |------|-----------|
-| `gm today` / `gm this-week` | Calendar awareness for briefings and reviews |
-| `gm tasks list` variants | Task movement tracking, overdue detection |
-| `gm tasks create` / `gm tasks close` | Task lifecycle from debriefs. Include `project: <Name>` in `--description` to link to kbx projects. |
+| Calendar backend (see CoS Configuration note) | Calendar awareness for briefings and reviews |
+| Task backend (see task-backend skill) | Task movement tracking, overdue detection |
+| Task backend — create / close | Task lifecycle from debriefs. Include `project: <Name>` in description to link to kbx projects. One project per task. |
 | `kbx context` | Pinned docs provide CIRs, initiatives, rhythm, meetings |
 | `kbx search` | Transcript analysis for decisions and actions |
 | `kbx memory add` | Create new notes (decisions, people context) |
 | `kbx note edit` | Update existing notes (body, tags, pin/unpin) |
-| Slack MCP | Real-time communication signals |
+| Chat MCP | Real-time communication signals |
 
-The two systems complement each other. gm handles the "what" (events and tasks). kbx handles the "who" and "why" (people, context, decisions). The CoS plugin provides the "so what" (analysis, patterns, strategic advice).
+The two systems complement each other. The task/calendar backend handles the "what" (events and tasks). kbx handles the "who" and "why" (people, context, decisions). The CoS plugin provides the "so what" (analysis, patterns, strategic advice).

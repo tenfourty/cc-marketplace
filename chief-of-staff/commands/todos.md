@@ -1,5 +1,5 @@
 ---
-description: List your outstanding action items and commitments others owe you from recent meetings. Creates gm tasks for tracking.
+description: List your outstanding action items and commitments others owe you from recent meetings. Creates tasks for tracking.
 user_invocable: true
 args: "[--deep]"
 ---
@@ -24,7 +24,7 @@ For each relevant meeting found, read the transcript: `kbx view <path> --plain`
 **Source preference:** Always prefer `.transcript.md` files for action item extraction — they are the ground truth. Fall back to `.notes.md` if no transcript exists. Do not extract commitments from `.ai-summary.md` files alone — they may miss or misattribute action items.
 
 Also check:
-- `gm tasks list --json --response-format concise` to cross-reference against already-tracked items
+- List all tasks via the task backend (see task-backend skill for active backend syntax) to cross-reference against already-tracked items
 
 ### 2. Extract Action Items
 
@@ -57,19 +57,19 @@ Be thoughtful about this distinction, especially in standups or project updates 
 
 ### 3. Cross-Reference
 
-Check each item against existing gm tasks:
+Check each item against existing tasks via the task backend:
 - Already tracked? → Note it, don't duplicate
 - Updates an existing task? → Note the update needed
 - Entirely new? → Flag for creation
 
 ### 4. Stale Task Audit
 
-After cross-referencing extracted items against gm, scan for stale tasks:
+After cross-referencing extracted items, scan for stale tasks via the task backend (see task-backend skill for active backend syntax):
 
 Query:
-- `gm tasks list --overdue --json`
-- `gm tasks list --tag Active --json` (filter to items older than 30 days by created/updated date)
-- `gm tasks list --tag Waiting-On --json` (filter to items waiting >5 business days)
+- List overdue tasks
+- List tasks with status active older than 30 days by created/updated date
+- List tasks with status waiting-on waiting >5 business days
 
 These are presented after the main action items output (see Step 5).
 
@@ -141,7 +141,7 @@ For each item, offer:
 - ✕ Delete (no longer relevant)
 - ⏭ Skip (leave as-is for now)
 
-Process the user's choices via gm tasks commands.
+Process the user's choices via task backend commands (see task-backend skill).
 
 ### 7. Pagination
 
@@ -156,24 +156,24 @@ Show the most recent calendar day of meetings first. If that's fewer than 5 meet
 
 When the user passes `--deep`, extend the scan beyond kbx meeting transcripts to all available MCP sources.
 
-**Slack:**
+**Chat:**
 - Read recent messages in key channels (last 5 business days)
 - Read recent DMs
 - Search for commitment language: "I'll", "I will", "can you", "action item", "todo", "by Friday", "follow up", "send"
 - Extract: who committed, what, when, which channel/thread
 
-**Email (Gmail MCP):**
+**Email:**
 - Search sent mail for commitment language (last 5 business days): "I'll", "I will", "I'll send", "will follow up", "will get back to you"
 - Search inbox for requests directed at the executive: "can you", "please", "could you", "action required"
 - Extract: who committed/requested, what, when, which thread
-- Cross-reference against gm tasks — surface commitments not yet tracked
+- Cross-reference against existing tasks — surface commitments not yet tracked
 
-**Calendar (gm):**
-- `gm this-week --hide-declined --json --response-format concise --no-frames`
+**Calendar:**
+- Load this week's calendar using the configured calendar backend (see CoS Configuration note for syntax)
 - For each recent meeting (where `my_status` is not `"declined"`), check if there's a corresponding kbx transcript. If not, flag it: "No transcript found for [meeting] — anything come out of that?"
 
-**Linear (MCP):**
-- Check for issues assigned to the executive that aren't reflected in gm tasks
+**Project Tracker:**
+- Check for issues assigned to the executive that aren't reflected in tasks
 - Check for issues where the executive is mentioned in comments but not assigned
 
 **Granola (kbx, fallback):**
@@ -187,9 +187,9 @@ When the user passes `--deep`, extend the scan beyond kbx meeting transcripts to
 
 ## Caught in the Net
 
-Items from Slack, email, calendar, and project tracker that aren't tracked anywhere:
+Items from chat, email, calendar, and project tracker that aren't tracked anywhere:
 
-### From Slack
+### From Chat
 * **#[channel]** ([date]): "[commitment quote]" — not in your tasks
 
 ### From Email
@@ -199,8 +199,8 @@ Items from Slack, email, calendar, and project tracker that aren't tracked anywh
 ### Unaccounted Meetings
 * **[Meeting name]** ([date]) — no transcript found, no action items captured
 
-### Linear Gaps
-* **[Issue title]** — assigned to you, not in gm tasks
+### Project Tracker Gaps
+* **[Issue title]** — assigned to you, not in your tasks
 ```
 
 Ask: "Want me to create tasks for any of these, or were they already handled?"
@@ -209,14 +209,13 @@ Ask: "Want me to create tasks for any of these, or were they already handled?"
 
 After presenting, ask:
 
-> "Want me to create gm tasks for these? Your items will be tagged Active, others' commitments will be tagged Waiting-On."
+> "Want me to create tasks for these? Your items will be tagged Active, others' commitments will be tagged Waiting-On."
 
-If yes:
-- Executive's items: `gm tasks create --title "..." --tag Active --list LIST --due ISO --description "..."`
-- Others' commitments: `gm tasks create --title "[Person]: [Action]" --tag Waiting-On --list LIST --due ISO --description "..."`
-- Skip items that are already tracked in gm
-- Choose the appropriate list (Leadership, People, Ops, Admin) based on the item's context
-- **Project linking:** If the action item relates to a known kbx project (check `kbx project list --json`), include `project: <ProjectName>` on a line in the `--description`. This links the task to the project board in brief-deck. Use multiple `project:` lines if a task spans multiple projects.
+If yes, create tasks via the task backend (see task-backend skill for active backend syntax):
+- Executive's items: Create task with title, status=active, appropriate area (Leadership, People, Ops, Admin based on context), due date if stated, description with project link
+- Others' commitments: Create task with title "[Person]: [Action]", status=waiting-on, appropriate area, due date if stated, description with project link
+- Skip items that are already tracked
+- **Project linking:** If the action item relates to a known kbx project (check `kbx project list --json`), include `project: <ProjectName>` in the description. This links the task to the project board. One project per task.
 
 ## Date Handling
 

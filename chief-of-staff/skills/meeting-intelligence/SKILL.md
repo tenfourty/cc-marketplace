@@ -35,7 +35,7 @@ From every meeting transcript, the Chief of Staff should be able to extract:
 1. **Action Items** — WHO committed to WHAT by WHEN
    - Distinguish between the executive's own commitments and others' commitments
    - Flag vague commitments ("I'll look into it") for clarification
-   - Map to existing tasks via `gm tasks list` where possible
+   - Map to existing tasks via the task backend where possible (see task-backend skill)
 
 2. **Decisions** — WHAT was decided, by WHOM, with what RATIONALE
    - Note dissent or conditions
@@ -54,9 +54,9 @@ From every meeting transcript, the Chief of Staff should be able to extract:
    - Scope changes
 
 5. **Commitments from Others** — What other people promised
-   - These become Waiting-On tasks via `gm tasks create --tag Waiting-On --description "..."`
+   - Create a task with status waiting-on via the task backend (see task-backend skill for syntax)
    - Track who, what, and when
-   - Include `project: <ProjectName>` in the description if related to a known kbx project
+   - Include `project: <ProjectName>` in the description if related to a known kbx project (one project per task)
 
 ### Extraction Principles
 
@@ -72,16 +72,16 @@ From every meeting transcript, the Chief of Staff should be able to extract:
 Recurring meetings have context in the pinned kbx meetings note. For these:
 1. `kbx search "meeting title" --fast --json --limit 3` to find the last transcript
 2. `kbx view <path> --plain` to read it
-3. Cross-reference action items against `gm tasks list` to check which are still open
+3. Cross-reference action items against the task backend to check which are still open
 4. Note any changes to the attendee list
 5. Surface any relevant developments since last time
 
 ### For One-Off Meetings
 
-1. Research attendees via `kbx person find "Name" --json`, Slack MCP
-2. Identify the likely topic/agenda from the calendar invite (`gm today`)
+1. Research attendees via `kbx person find "Name" --json`, chat MCP
+2. Identify the likely topic/agenda from the calendar invite (via the calendar backend)
 3. `kbx note list --tag decision --json` for related past decisions
-4. `gm tasks list` for open items with attendees
+4. List tasks via the task backend for open items with attendees
 
 ### Pre-Meeting Intelligence Template
 
@@ -89,7 +89,7 @@ For each attendee, build a micro-profile:
 ```
 - **[Name]** ([role])
   - Last interaction: [date and context from kbx person timeline]
-  - Open items with them: [list from gm tasks]
+  - Open items with them: [list from task backend]
   - Recent activity: [what they've been posting/discussing]
   - Context to know: [anything relevant from kbx]
 ```
@@ -99,8 +99,8 @@ For each attendee, build a micro-profile:
 After a meeting (via `/debrief`):
 
 1. **Immediate extraction** — Pull action items, decisions, follow-ups from `kbx search` + `kbx view --plain`
-2. **Cross-reference** — Check against `gm tasks list` and `kbx note list --tag decision`
-3. **Update tasks** — `gm tasks create` for new items (include `project: <ProjectName>` in `--description` when related to a kbx project), update existing ones
+2. **Cross-reference** — Check against the task backend and `kbx note list --tag decision`
+3. **Update tasks** — Create tasks via the task backend for new items (include `project: <ProjectName>` in description when related to a kbx project, one project per task), update existing ones
 4. **Log decisions** — `kbx memory add --tags decision` for each decision
 5. **Update people** — `kbx memory add --entity "Name"` for new context about attendees
 6. **Flag for briefing** — Queue any CIR-matching items for next briefing
@@ -130,7 +130,7 @@ Stored in the pinned kbx meetings note:
 - **Key outputs:** [decisions, status updates, action items]
 - **Last held:** [date]
 - **Notes:** [any context about dynamics, effectiveness, concerns]
-- **[Any additional fields]:** Special instructions for prep/debrief — e.g., a Notion DB to check for shared meeting notes, a Slack channel to scan, a Google Doc with standing agenda. The prep and debrief commands read every field and follow any instructions they find here.
+- **[Any additional fields]:** Special instructions for prep/debrief — e.g., a Notion DB to check for shared meeting notes, a chat channel to scan, a Google Doc with standing agenda. The prep and debrief commands read every field and follow any instructions they find here.
 ```
 
 ## When Transcripts Aren't Available

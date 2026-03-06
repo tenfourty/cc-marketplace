@@ -54,9 +54,9 @@ For full content of a specific pinned doc, use `kbx view <path> --plain`.
 
 ### 2. Gather Intelligence
 
-**Calendar (gm):**
-- Use `gm today` output if already in context, otherwise run `gm today --hide-declined --counts --json --response-format concise --no-frames`
-- `--hide-declined` excludes declined events. `--counts` adds `meta.status_counts` to the response.
+**Calendar:**
+- Load today's calendar using the configured calendar backend (see CoS Configuration note for active backend and syntax)
+- Check for declined-event exclusion and status counts in the response (backend-specific flags — see CoS Configuration note).
 - Check `meta.status_counts.tentative` — if > 0, flag in the schedule: "You have N tentative meetings to confirm."
 - Today's meetings with times, attendees, and purpose. Mark tentative meetings with `[tentative]` in the schedule.
 - **Prep status check:** For each meeting, check if a `.prep.md` file already exists:
@@ -67,29 +67,40 @@ For full content of a specific pinned doc, use `kbx view <path> --plain`.
 - **Check for double-bookings:** Scan all non-declined events for time overlaps (event A starts before event B ends AND event B starts before event A ends). Flag any conflicts prominently with `[CONFLICT]` in the schedule.
 - Flag back-to-back runs of 3+ meetings with no breathing room
 
-**Tasks (gm):**
-- `gm tasks list --tag Right-Now --json` for today's focus items
-- `gm tasks list --overdue --json` for overdue items
-- `gm tasks list --tag Waiting-On --json` for items pending from others that have been waiting too long (>3 business days)
-- `gm tasks list --tag Active --json` for stale item detection (items older than 30 days)
+**Tasks (see task-backend skill for active backend syntax):**
+- List tasks with status `right-now` for today's focus items
+- List overdue tasks for items past their due date
+- List tasks with status `waiting-on` for items pending from others that have been waiting too long (>3 business days)
+- List tasks with status `active` for stale item detection (items older than 30 days)
 
-**Chat (Slack MCP):**
+**Chat:**
 - Scan key channels for messages requiring executive attention
 - Check DMs for unanswered messages from direct reports or key stakeholders
 - Flag any threads matching CIR criteria (immediate or daily thresholds)
 
-**Email (Gmail MCP):**
+**Email:**
 - Scan recent inbox for messages from direct reports, key stakeholders, or external contacts
 - Flag unanswered emails that need a response (>24 hours old from important senders)
 - Surface any emails matching CIR criteria (escalations, urgent requests, executive-level comms)
-- Check sent mail for commitments made via email that aren't tracked in gm tasks
+- Check sent mail for commitments made via email that aren't tracked as tasks
 
 **Entity Freshness (kbx):**
 - `kbx entity stale --days 30 --type person --json` for stale people profiles
 - If stale entities exist, note them for the briefing output
 
-**Project Tracker (gm + Linear):**
-- `gm tasks list --source linear --json` for Linear task status
+**Commitment Inbox (only if chat or email MCPs are connected — check CoS Configuration):**
+- Search chat (last 24h) for the executive's own commitment language: "I'll", "I will", "let me", "I'll send", "will follow up", "by Friday"
+- Search sent email (last 24h) for the same commitment patterns
+- Search inbox from important senders for requests directed at the executive: "can you", "please", "could you", "action required"
+- For each detected commitment, check if it's already tracked:
+  1. Search existing tasks via the task backend (list all statuses)
+  2. Check entity Open Items for similar items
+  3. If >70% token overlap with an existing task title/description, consider it tracked
+- Only surface commitments NOT already tracked — the goal is catching dropped balls
+- Skip this section entirely if no chat or email MCPs are connected
+
+**Project Tracker:**
+- List tasks from the connected project tracker (see task-backend skill for active backend syntax)
 - Any blocked or stalled items on active initiatives
 - New issues assigned to the executive
 
@@ -97,7 +108,7 @@ For full content of a specific pinned doc, use `kbx view <path> --plain`.
 
 Cross-reference findings. Look for:
 - Connections between meeting topics and open tasks/decisions
-- Topics that appear in multiple channels (Slack + Gmail + Linear + kbx transcripts = something important)
+- Topics that appear in multiple channels (chat + email + project tracker + kbx transcripts = something important)
 - Items that match CIR thresholds
 
 ### 4. Present the Briefing
@@ -122,6 +133,18 @@ Use this structure:
 ### Signals
 [Notable patterns or items from chat that don't require action but the exec should know about]
 
+### Commitment Inbox
+[Only if untracked commitments found AND chat/email MCPs connected. Skip entirely if clean or if no MCPs.]
+
+**From chat:**
+- "[commitment quote]" — #channel, [date]. Not in your tasks.
+
+**From email:**
+- Sent to [recipient] ([date]): "[commitment quote]". Not in your tasks.
+- From [sender] ([date]): "[request quote]". Not in your tasks.
+
+Want me to create tasks for any of these?
+
 ### Quick Stats
 [Any relevant metrics: open issues count, sprint progress, items completed this week]
 
@@ -137,15 +160,15 @@ N people profiles haven't been updated in 30+ days:
 Consider reviewing these before today's meetings, or run a debrief on recent meetings involving them.
 ```
 
-If the user says yes, run an inline mini-triage: present each stale item and offer mark done / reschedule / move to Someday / delete. Staff voice, fast. Process choices via `gm tasks` commands.
+If the user says yes, run an inline mini-triage: present each stale item and offer mark done / reschedule / move to Someday / delete. Staff voice, fast. Process choices via the task backend.
 
 ### Week Ahead (Saturday / Sunday / Monday Only)
 
 On Sat, Sun, or Mon, add this section after Quick Stats:
 
 **Gather the week ahead:**
-- `gm next-week --hide-declined --counts --json --response-format concise --no-frames` (or `gm this-week --hide-declined --counts --json --response-format concise --no-frames` if Monday)
-- Check `meta.status_counts.tentative` — if tentative meetings exist in the week, note them in the assessment
+- Load next week's calendar using the configured calendar backend (or this week if Monday). Exclude declined events.
+- Check for tentative meetings — if any exist in the week, note them in the assessment
 - Map out the full week's meetings
 
 **Present:**
@@ -182,10 +205,11 @@ After presenting the briefing, offer:
 ## Graceful Degradation
 
 If a data source is unavailable:
-- **No gm:** Fall back to Google Calendar MCP if available, note tasks unavailable
+- **No calendar backend:** Skip calendar sections, note it. Suggest /setup to connect one.
+- **No task backend:** Skip task sections, note it. Suggest /setup to configure one.
 - **No kbx:** Note context is limited, skip CIR-based filtering
-- **No Slack:** Skip signals from chat, note it
-- **No Gmail:** Skip email scanning, note it
-- **No Linear:** Skip project tracker stats, note it
+- **No chat MCP:** Skip signals from chat, note it
+- **No email MCP:** Skip email scanning, note it
+- **No project tracker:** Skip project tracker stats, note it
 
 Always deliver whatever briefing is possible with available data. Never fail silently -- tell the executive what you couldn't check.
