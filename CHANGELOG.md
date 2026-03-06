@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.28.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.27.1...cc-marketplace-v0.28.0) (2026-03-06)
+
+
+### Features
+
+* **chief-of-staff:** task backend abstraction — decouple from gm ([b75cc52](https://github.com/tenfourty/cc-marketplace/commit/b75cc5211b6b72410216422c5faa699446602079))
+
+
+### Bug Fixes
+
+* task backend code review follow-ups ([4bebc00](https://github.com/tenfourty/cc-marketplace/commit/4bebc008cbcd6f692ae13b6409c29ea1fdc6210a))
+
 ## [0.27.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.27.0...cc-marketplace-v0.27.1) (2026-03-05)
 
 
