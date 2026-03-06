@@ -57,7 +57,7 @@ This is a knowledge extraction task — cast the widest possible net.
 Collect results from all background agents before proceeding to Step 3. Pay attention to insights from different people — the same topic discussed in different contexts yields richer principles.
 
 **Supplementary sources:**
-- Slack MCP for related discussions and informal takes
+- Chat MCP for related discussions and informal takes
 - Notion MCP for any existing documents on the topic
 
 ### 3. Synthesise
