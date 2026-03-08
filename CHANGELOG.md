@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.31.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.30.0...cc-marketplace-v0.31.0) (2026-03-08)
+
+
+### Features
+
+* **chief-of-staff:** add cos-focus.sh script for atomic tmux layout changes ([8132ab3](https://github.com/tenfourty/cc-marketplace/commit/8132ab33b9f192cf80ed9e38c80a08c79fd9b9b9))
+
 ## [0.30.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.29.0...cc-marketplace-v0.30.0) (2026-03-06)
 
 
