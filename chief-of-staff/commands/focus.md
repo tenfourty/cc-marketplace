@@ -62,54 +62,19 @@ ops_width = 45%, briefer_height = 50%
 
 Parse the argument. If missing or unrecognised, ask: "Focus on which agent? (ops / briefer / advisor / reset)"
 
-### 2. Discover tmux state
+### 2. Run the focus script
+
+The layout is applied atomically by a shell script using tmux custom layout strings with checksums. Run it:
 
 ```bash
-# Get current session and window
-tmux display-message -p '#{session_name}:#{window_index}'
-
-# List panes with IDs
-tmux list-panes -t SESSION:WINDOW -F '#{pane_id}'
+bash /Users/jeremy.brown/dev/cc-marketplace/chief-of-staff/scripts/cos-focus.sh <target>
 ```
 
-There should be 3 panes. Identify which is ops, briefer, and advisor by checking `pane-border-format`:
-```bash
-tmux display-message -t %PANE_ID -p '#{pane-border-format}'
-```
-Match the pane to its agent by looking for "ops", "briefer", or "advisor" in the border format string.
+The script auto-detects the CoS team window by scanning for panes with `"ops"` in their `pane-border-format`, discovers all three panes, computes proportional dimensions from the current window size, and applies the layout atomically via `select-layout`.
 
-### 3. Get window dimensions and compute target sizes
+### 3. Report the result
 
-```bash
-tmux display-message -p '#{window_width} #{window_height}'
-```
-
-Use the proportions from the Layouts section to compute pixel sizes:
-
-| Layout | ops_width | briefer_height |
-|--------|-----------|----------------|
-| ops | 70% of window_width | 50% of window_height |
-| briefer | 30% of window_width | 70% of window_height |
-| advisor | 30% of window_width | 30% of window_height |
-| reset | 45% of window_width | 50% of window_height |
-
-### 4. Resize panes
-
-Two `resize-pane` commands are all that's needed:
-
-```bash
-# Set ops width (adjusts the left/right column boundary)
-tmux resize-pane -t %OPS_PANE_ID -x OPS_WIDTH
-
-# Set briefer height (adjusts the top/bottom split in the right column)
-tmux resize-pane -t %BRIEFER_PANE_ID -y BRIEFER_HEIGHT
-```
-
-Replace `%OPS_PANE_ID` and `%BRIEFER_PANE_ID` with the actual pane IDs from step 2. Replace `OPS_WIDTH` and `BRIEFER_HEIGHT` with the computed pixel values from step 3.
-
-### 5. Confirm
-
-After applying, output a one-line confirmation: "Focused on [target]." or "Layout reset to default."
+The script outputs a one-line confirmation. Relay it to the user. If the script exits with an error (e.g., team not booted, panes not found), relay the error message.
 
 ## Notes
 
