@@ -116,17 +116,23 @@ Arrange the tmux panes so ops gets the left column (~45% width) and briefer/advi
 
 Steps:
 
-1. **Discover the current tmux session and window dynamically:**
+1. **Discover the ops pane and its window reliably:**
    ```bash
-   tmux display-message -p '#{session_name}:#{window_index}'
+   # $TMUX_PANE is set per-pane by tmux and never changes — unlike
+   # display-message -p which returns whichever window the USER has focused.
+   OPS_PANE="$TMUX_PANE"
+   SESSION_WINDOW=$(tmux display-message -t "$OPS_PANE" -p '#{session_name}:#{window_index}')
+   echo "ops=$OPS_PANE  window=$SESSION_WINDOW"
    ```
-   Use this `SESSION:WINDOW` value in all subsequent tmux commands (do NOT hardcode a session name).
+   Use `$SESSION_WINDOW` in all subsequent tmux commands. Use `$OPS_PANE` as the ops pane ID.
+
+   **WARNING:** Do NOT use bare `tmux display-message -p` — it returns the *focused* window, which may differ from the window where this shell is running.
 
 2. **Identify pane IDs and positions:**
    ```bash
-   tmux list-panes -t SESSION:WINDOW -F '#{pane_id} #{pane_index}'
+   tmux list-panes -t $SESSION_WINDOW -F '#{pane_id} #{pane_index} #{pane_left}'
    ```
-   There should be 3 panes. The ops/main pane is the one that existed before spawning — typically the first pane (lowest index). Briefer and advisor are the two spawned panes.
+   There should be 3 panes. The ops pane is `$OPS_PANE` (identified in step 1). Briefer and advisor are the other two panes.
 
 3. **Identify which spawned pane is briefer vs advisor** by checking pane content or titles. If unclear from position alone, the pane order typically matches the spawn order from step 2.
 
@@ -142,16 +148,16 @@ Steps:
 
 6. **Resize panes to the default 45/55 layout.** Get the window dimensions, then use `resize-pane` to set ops to ~45% width and briefer to ~50% height (even split):
    ```bash
-   # Get window dimensions
-   tmux display-message -p '#{window_width} #{window_height}'
+   # Get window dimensions (use -t to target the correct window)
+   tmux display-message -t "$OPS_PANE" -p '#{window_width} #{window_height}'
 
    # Set ops width to 45% of window_width
-   tmux resize-pane -t %OPS_PANE_ID -x OPS_WIDTH
+   tmux resize-pane -t $OPS_PANE -x OPS_WIDTH
 
    # Set briefer height to 50% of window_height (even top/bottom split)
    tmux resize-pane -t %BRIEFER_PANE_ID -y BRIEFER_HEIGHT
    ```
-   Replace pane IDs and computed pixel values accordingly.
+   Replace `%BRIEFER_PANE_ID` and computed pixel values accordingly. `$OPS_PANE` carries over from step 1.
 
 ### 5. Collect reports and summarise
 
