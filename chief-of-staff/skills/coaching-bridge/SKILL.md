@@ -22,6 +22,7 @@ tags: [coaching-insight, <source-tag>, <signal-type>]
 source_plugin: chief-of-staff | inner-game
 source_agent: advisor | coach
 signal_type: pattern | state | connection | observation
+supersedes: "YYYY-MM-DD-<slug>"  # optional — only for state signals replacing a previous one
 ---
 
 [2-5 sentences. Specific, dated, actionable. Reference actual meetings, scores, or behaviours.]
@@ -69,15 +70,9 @@ Write a coaching insight when:
 
 ## How to Write
 
-```bash
-kbx memory add "Insight title" \
-  --body "2-5 sentence observation. Be specific — reference dates, meetings, people, scores." \
-  --tags coaching-insight,cos-insight,<signal-type>
-```
+Write directly to `memory/coaching/insights/YYYY-MM-DD-<slug>.md` with proper frontmatter using the Write tool. kbx will auto-index it on next search.
 
-The file will be created in `memory/notes/` by default. After writing, move it to the shared directory:
-
-Actually — simpler: just write directly via the Write tool to `memory/coaching/insights/YYYY-MM-DD-<slug>.md` with proper frontmatter. kbx will auto-index it on next search.
+Keep insights to 2-5 sentences. Be specific — reference dates, meetings, people, scores.
 
 ## When to Read (CoS Side)
 
@@ -109,5 +104,5 @@ When the CoS advisor reads an inner-game insight:
 
 - Insights are append-only — never overwrite or delete
 - Patterns that persist for 4+ weeks should be flagged as "persistent" in a follow-up insight
-- State signals naturally expire — a new state signal supersedes the old one
-- The weekly review is a natural point to check if previous insights are still current
+- **State signal supersession:** When writing a new state signal that replaces a previous one, add `supersedes: "YYYY-MM-DD-<slug>"` to the frontmatter. Consumers skip superseded files — only the latest state in a chain is current. This keeps old states for history without polluting active reads.
+- The weekly review is a natural point to check if previous insights are still current — and to write superseding state signals when a state has shifted

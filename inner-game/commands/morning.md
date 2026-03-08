@@ -14,6 +14,7 @@ Companion voice. Warm, brief, low-friction. This is a 2-5 minute ritual, not a c
 - Read The Document: `memory/coaching/the-document.md`
 - Check if today's journal exists: `memory/journal/daily/YYYY-MM-DD.md`
 - Read yesterday's evening entry (if exists) for continuity
+- Recent CoS state signals (last 48h only): `kbx search "coaching-insight" --tag cos-insight --tag state --from YYYY-MM-DD --fast --json --limit 3` (where date = 2 days ago). If a recent work-stress state exists, weave it naturally into the Document Moment or Energy Check — don't announce it. See the coaching-bridge skill for interpretation.
 
 ### 2. Document Moment
 

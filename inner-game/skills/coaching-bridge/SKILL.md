@@ -22,6 +22,7 @@ tags: [coaching-insight, <source-tag>, <signal-type>]
 source_plugin: inner-game | chief-of-staff
 source_agent: coach | advisor
 signal_type: pattern | state | connection | observation
+supersedes: "YYYY-MM-DD-<slug>"  # optional — only for state signals replacing a previous one
 ---
 
 [2-5 sentences. Specific, dated, actionable. Reference actual journal entries, scores, sessions, or behaviours.]
@@ -86,7 +87,11 @@ Read CoS insights during:
 
 3. **`/ig:review` data gathering** (Step 2): Include CoS insights in the period's analysis.
 
-4. **`/ig:morning`**: Only if a recent (last 48h) state or pattern signal exists — weave it into the morning orientation.
+4. **`/ig:morning` context loading** (Step 1): Only recent state signals (last 48h) — weave into the morning orientation if present.
+   ```bash
+   kbx search "coaching-insight" --tag cos-insight --tag state --from YYYY-MM-DD --fast --json --limit 3
+   ```
+   Where `YYYY-MM-DD` is 2 days ago. Keep it light — only state signals, not patterns or connections.
 
 ## What to Do With CoS Insights
 
@@ -102,5 +107,5 @@ When the inner-game coach reads a CoS insight:
 
 - Insights are append-only — never overwrite or delete
 - Patterns that persist for 4+ weeks should be flagged as "persistent" in a follow-up insight
-- State signals naturally expire — a new state signal supersedes the old one
-- Reviews (both `/ig:review` and CoS `/review`) are natural points to check if previous insights are still current
+- **State signal supersession:** When writing a new state signal that replaces a previous one, add `supersedes: "YYYY-MM-DD-<slug>"` to the frontmatter. Consumers skip superseded files — only the latest state in a chain is current. This keeps old states for history without polluting active reads.
+- Reviews (both `/ig:review` and CoS `/review`) are natural points to check if previous insights are still current — and to write superseding state signals when a state has shifted

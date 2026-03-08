@@ -99,6 +99,7 @@ This is where you earn your keep. Don't just compile -- think.
 - What themes appeared across 2+ sources this week?
 - What's NOT being discussed that should be? (conspicuous absence)
 - Where is the executive's attention vs. where should it be?
+- **Cross-domain narrative** (if both cos-insights and ig-insights exist): Synthesise a 2-3 sentence narrative connecting work patterns to life patterns. This is the unique value of the coaching bridge — neither plugin alone can see this story. Example: "Hero mode intensified this week, and the inner-game coach noted energy scores at 3-4 range with health domain declining. The overcommitment may be self-reinforcing."
 
 **Trajectory Analysis:**
 - Compare to last week (if available). What's improving? What's degrading?

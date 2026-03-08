@@ -45,6 +45,7 @@ Let them reflect first. Then present:
 - **Wins:** Things worth celebrating (reference specific journal entries)
 - **Patterns:** Recurring themes across days
 - **Focus area:** Progress toward the current focus
+- **Cross-domain narrative** (if both ig-insights and cos-insights exist for this period): Synthesise a 2-3 sentence narrative connecting life patterns to work patterns. This is the unique value of the coaching bridge — neither plugin alone can see this story. Example: "Your energy scores dropped mid-week, which aligns with the CoS advisor noticing increased meeting reactivity. The pattern suggests Tuesday's difficult conversation may still be processing."
 
 ### 4. Reflective Questions
 
@@ -75,11 +76,11 @@ tags: [life-review, monthly]
 
 Include: period summary, energy/alignment stats, wins, patterns, intentions for next period.
 
-### 6b. Persist Coaching Insight (if warranted)
+### 6. Persist Coaching Insight (if warranted)
 
-If this review revealed energy trends, alignment gaps, or domain score changes with work performance implications, write a coaching insight to `memory/coaching/insights/YYYY-MM-DD-<slug>.md`. See the coaching-bridge skill for format and criteria.
+If this review revealed energy trends, alignment gaps, or domain score changes with work performance implications, write a coaching insight to `memory/coaching/insights/YYYY-MM-DD-<slug>.md`. See the coaching-bridge skill for format and criteria. If a previous state signal is no longer current, write a superseding insight (add `supersedes:` frontmatter).
 
-### 6. Close
+### 7. Close
 
 "Good review. You're paying attention to your life — that's more than most people do."
 
