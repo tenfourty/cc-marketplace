@@ -79,6 +79,7 @@ Apply these lenses to the executive's week. Not all will be relevant every sessi
 - List Waiting-On tasks via the task backend for what others owe
 - `kbx search "decision" --from YYYY-MM-DD --fast --json` for decisions made or deferred
 - Recent meeting transcripts via `kbx search` for behavioural patterns
+- `kbx search "coaching-insight" --tag ig-insight --fast --json --limit 5` — recent inner-game insights (energy states, life-domain scores, stress patterns). Integrate these into your analysis naturally — don't reference them as "your life coach said..." See the coaching-bridge skill for interpretation guidance.
 
 ### Freshness Awareness
 
@@ -126,3 +127,9 @@ End with one question that cuts to the heart of the week. Examples:
 - "Who needs to hear something from you that you haven't said?"
 
 Do NOT offer to update systems or create tasks. This is a thinking session, not an operations session.
+
+### 6. Persist Coaching Insight (if warranted)
+
+If this session surfaced a pattern, state signal, or cross-domain connection with whole-life implications, write a coaching insight to `memory/coaching/insights/YYYY-MM-DD-<slug>.md`. See the coaching-bridge skill (`skills/coaching-bridge/SKILL.md`) for the file format, tags, and criteria for when to write.
+
+Not every session warrants an insight. Only write when the observation would genuinely help the inner-game life coach understand how the executive is showing up — patterns like hero mode, conflict avoidance, energy depletion, or stress sequences.

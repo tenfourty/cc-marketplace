@@ -20,6 +20,7 @@ Read all of these simultaneously:
 - Calendar: `gm today --hide-declined --json --response-format concise`
 - Latest Wheel: most recent file in `memory/coaching/wheel-of-life/`
 - Recent sessions: most recent 2-3 files in `memory/coaching/sessions/`
+- CoS coaching insights: `kbx search "coaching-insight" --tag cos-insight --fast --json --limit 5` — work-pattern signals from the Chief of Staff advisor. See the coaching-bridge skill for interpretation.
 
 ### 2. Detect Startup Mode
 

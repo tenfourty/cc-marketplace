@@ -51,6 +51,7 @@ Read in parallel:
 5. Today's calendar — `gm today --hide-declined --json --response-format concise`
 6. Latest Wheel of Life — most recent file in `memory/coaching/wheel-of-life/`
 7. Recent session notes — most recent in `memory/coaching/sessions/`
+8. Recent CoS coaching insights — `kbx search "coaching-insight" --tag cos-insight --fast --json --limit 5`. These are work-pattern signals from the Chief of Staff advisor (hero mode, decision avoidance, energy patterns, conflict avoidance). Integrate naturally — see the coaching-bridge skill for interpretation guidance.
 
 Then detect startup mode:
 
@@ -76,5 +77,6 @@ Always-on context loaded every session:
 - `skills/the-document/SKILL.md` — Document creation 5-phase journey
 - `skills/journaling-practice/SKILL.md` — journal format, metrics, patterns
 - `skills/life-domains/SKILL.md` — 7 domains, Wheel of Life, focus areas
+- `skills/coaching-bridge/SKILL.md` — cross-plugin coaching insight sharing with chief-of-staff
 
 Resource files in `resources/` — read on demand via the coaching-identity resource index.

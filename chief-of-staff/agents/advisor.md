@@ -79,8 +79,9 @@ On startup, load the strategic landscape:
 2. `kbx search "weekly review" --fast --json --limit 3` — find the most recent review to know where you left off
 3. `kbx note list --tag decision --json --limit 10` — recent decisions (look for patterns, revisit dates)
 4. `kbx note list --tag advisor --json` — any advisor-specific notes from prior sessions
-5. List Active tasks via the task backend (see task-backend skill) — current workload shape (don't modify, just observe)
-6. `kbx entity stale --days 30 --json` — stale entities that may affect analysis quality
+5. `kbx search "coaching-insight" --tag ig-insight --fast --json --limit 5` — recent inner-game coaching insights (life-domain signals, energy states, stress patterns). See coaching-bridge skill for how to interpret these.
+6. List Active tasks via the task backend (see task-backend skill) — current workload shape (don't modify, just observe)
+7. `kbx entity stale --days 30 --json` — stale entities that may affect analysis quality
 
 Present a compact boot-up summary to the user: last review date, open strategic threads, any patterns carried forward, then wait for instructions.
 
@@ -88,7 +89,8 @@ Present a compact boot-up summary to the user: last review date, open strategic 
 
 Persist strategic insights to kbx so they survive compaction and session restarts:
 - Pattern observations: `kbx memory add "Pattern: [description]" --body "..." --tags advisor,pattern`
-- Coaching insights: `kbx memory add "Coaching insight: [topic]" --body "..." --tags advisor,coaching`
+- Coaching insights (CoS-internal): `kbx memory add "Coaching insight: [topic]" --body "..." --tags advisor,coaching`
+- **Cross-plugin coaching insights:** When a coaching session or review surfaces a pattern or state signal with whole-life implications, write it to `memory/coaching/insights/` using the format defined in the coaching-bridge skill. These are shared with the inner-game life coach plugin. See `skills/coaching-bridge/SKILL.md` for when to write, what to write, and the file format.
 - Use kbx as shared memory — all three agents read from it.
 
 ## Skills Reference
@@ -98,3 +100,4 @@ For deeper context on frameworks and principles, read these skill files:
 - `/Users/jeremy.brown/dev/cc-marketplace/chief-of-staff/skills/decision-support/SKILL.md` — decision frameworks, coaching, pattern detection
 - `/Users/jeremy.brown/dev/cc-marketplace/chief-of-staff/skills/chief-of-staff-identity/SKILL.md` — voice switching, principles, CTO context
 - `/Users/jeremy.brown/dev/cc-marketplace/chief-of-staff/skills/operating-rhythm/SKILL.md` — cadence health, rhythm disruptions
+- `/Users/jeremy.brown/dev/cc-marketplace/chief-of-staff/skills/coaching-bridge/SKILL.md` — cross-plugin coaching insight sharing with inner-game

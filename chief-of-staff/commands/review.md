@@ -81,6 +81,10 @@ The weekly-review agent should gather in parallel:
 - Flag any pinned entities that have gone stale since last review
 - If a direct report hasn't been mentioned in any meeting this week, flag as a potential blind spot
 
+**Coaching Insights (cross-plugin):**
+- `kbx search "coaching-insight" --tag ig-insight --fast --json --limit 5` — recent inner-game coaching insights (energy states, life-domain scores, stress patterns)
+- `kbx search "coaching-insight" --tag cos-insight --fast --json --limit 5` — recent CoS insights from previous sessions (check if patterns are persisting or resolving)
+
 **Open Items Hygiene (kbx):**
 - Scan person and project entity files for `## Open Items` sections
 - Flag items older than 14 days as stale — these need triage (resolve, escalate, or re-commit)
@@ -256,6 +260,7 @@ Based on the discussion:
 - Update kbx pinned CIRs note if thresholds should change
 - Archive completed initiatives
 - `kbx memory add "context" --entity "Name"` for new people context
+- **Coaching insight** (if warranted): If the review revealed energy patterns, avoidance patterns, or alignment gaps with whole-life implications, write a coaching insight to `memory/coaching/insights/`. See the coaching-bridge skill for format and criteria. Also check if any previous coaching insights (CoS or inner-game) are no longer current — note them as resolved in a follow-up insight.
 
 ## Trajectory Comparison
 

@@ -16,6 +16,7 @@ Read in parallel:
 - Recent journal entries (last 3-5 days)
 - Current focus area
 - Last session notes (if any): most recent in `memory/coaching/sessions/`
+- Recent CoS coaching insights: `kbx search "coaching-insight" --tag cos-insight --fast --json --limit 5`. Work-pattern signals (hero mode, avoidance, energy) that may inform this conversation. Integrate naturally — see the coaching-bridge skill.
 
 ### 2. Open
 
@@ -79,6 +80,12 @@ framework: "[framework used, if any]"
 ```
 
 Include: topic explored, key insights, commitments made, follow-up items.
+
+### 8. Persist Coaching Insight (if warranted)
+
+If this session surfaced a pattern, state signal, or cross-domain connection with work performance implications, write a coaching insight to `memory/coaching/insights/YYYY-MM-DD-<slug>.md`. See the coaching-bridge skill (`skills/coaching-bridge/SKILL.md`) for the file format, tags, and criteria for when to write.
+
+Not every session warrants a cross-plugin insight. Only write when the observation would genuinely help the CoS advisor understand how the user is showing up at work — stress states, energy depletion, identity conflicts, or life-domain pressures affecting professional performance.
 
 ## Graceful Degradation
 

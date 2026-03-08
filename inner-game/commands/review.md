@@ -23,12 +23,14 @@ Spawn a background worker (`run_in_background: true`, `model: "sonnet"`) to anal
 - All daily journals from the past 7 days
 - Session notes from the week
 - Current focus area progress
+- CoS coaching insights from the week: `kbx search "coaching-insight" --tag cos-insight --fast --json --limit 5`
 
 **Monthly:**
 - All daily journals from the past 30 days
 - All weekly reviews from the month
 - Wheel of Life trend (if multiple assessments exist)
 - Session notes from the month
+- CoS coaching insights from the month: `kbx search "coaching-insight" --tag cos-insight --from YYYY-MM-DD --fast --json`
 
 Worker returns: energy trends, gratitude themes, alignment trajectory, intention follow-through rate, notable patterns.
 
@@ -72,6 +74,10 @@ tags: [life-review, monthly]
 ```
 
 Include: period summary, energy/alignment stats, wins, patterns, intentions for next period.
+
+### 6b. Persist Coaching Insight (if warranted)
+
+If this review revealed energy trends, alignment gaps, or domain score changes with work performance implications, write a coaching insight to `memory/coaching/insights/YYYY-MM-DD-<slug>.md`. See the coaching-bridge skill for format and criteria.
 
 ### 6. Close
 
