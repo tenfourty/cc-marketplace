@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.33.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.32.0...cc-marketplace-v0.33.0) (2026-03-08)
+
+
+### Features
+
+* improve coaching bridge with state supersession, morning integration, and cross-domain synthesis ([4aa3d39](https://github.com/tenfourty/cc-marketplace/commit/4aa3d394f68412d4402e89e0bbf84decfd52ac2a))
+
 ## [0.32.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.31.0...cc-marketplace-v0.32.0) (2026-03-08)
 
 
