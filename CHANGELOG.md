@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.33.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.33.0...cc-marketplace-v0.33.1) (2026-03-08)
+
+
+### Bug Fixes
+
+* use $TMUX_PANE for reliable pane discovery in boot-team ([b92b050](https://github.com/tenfourty/cc-marketplace/commit/b92b05090a6707288dfe4ceca6bbf6e0d8452ea4))
+
 ## [0.33.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.32.0...cc-marketplace-v0.33.0) (2026-03-08)
 
 
