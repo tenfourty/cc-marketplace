@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.32.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.31.0...cc-marketplace-v0.32.0) (2026-03-08)
+
+
+### Features
+
+* add coaching bridge for cross-plugin insight sharing ([1b448da](https://github.com/tenfourty/cc-marketplace/commit/1b448dab718866565f2cc6191d0fb0fd4a8922b6))
+
 ## [0.31.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.30.0...cc-marketplace-v0.31.0) (2026-03-08)
 
 
