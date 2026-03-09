@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.34.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.33.1...cc-marketplace-v0.34.0) (2026-03-09)
+
+
+### Features
+
+* **inner-game:** add 1-10 scale explanations to all score prompts ([127b362](https://github.com/tenfourty/cc-marketplace/commit/127b3627733f1490e5adeb4d3f0d77acefbf9c56))
+
+
+### Bug Fixes
+
+* **inner-game:** replace stale /ig: references with /inner-game: prefix ([6be1c01](https://github.com/tenfourty/cc-marketplace/commit/6be1c018baab4f783c290189a3361e06bc8fa065))
+
 ## [0.33.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.33.0...cc-marketplace-v0.33.1) (2026-03-08)
 
 
