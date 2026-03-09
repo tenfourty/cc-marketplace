@@ -18,7 +18,7 @@ Coaching voice. Help choose where to direct energy for the next 4-8 weeks.
 
 ### 2. Detect Mode
 
-**No Wheel assessment exists:** Suggest running `/ig:wheel` first. Can proceed without it, but scores help.
+**No Wheel assessment exists:** Suggest running `/inner-game:wheel` first. Can proceed without it, but scores help.
 
 **No current focus area:** Selection mode — guide them to choose.
 

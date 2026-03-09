@@ -26,9 +26,9 @@ Read all of these simultaneously:
 
 | Condition | Mode | Action |
 |-----------|------|--------|
-| No setup note found in kbx | First ever | Auto-run `/ig:setup` |
-| Before noon, no morning entry today | Cold morning | Suggest `/ig:morning` |
-| After 6pm, no evening entry today | Cold evening | Suggest `/ig:evening` |
+| No setup note found in kbx | First ever | Auto-run `/inner-game:setup` |
+| Before noon, no morning entry today | Cold morning | Suggest `/inner-game:morning` |
+| After 6pm, no evening entry today | Cold evening | Suggest `/inner-game:evening` |
 | Today's journal has entries | Warm start | Summarize + offer next |
 | Last journal entry > 3 days ago | Return | "Life happens. Welcome back." |
 | Saturday or Sunday | Weekend | Lighter energy, no schedule pressure |
@@ -45,14 +45,14 @@ Compact summary adapted to the mode:
 
 ### 4. Ready
 
-Coaching mode is active. All `/ig:` commands available. Wait for the user's direction.
+Coaching mode is active. All `/inner-game:` commands available. Wait for the user's direction.
 
 ## Graceful Degradation
 
 | Missing | Fallback |
 |---------|----------|
-| No Document | Note it — suggest `/ig:document` when ready |
+| No Document | Note it — suggest `/inner-game:document` when ready |
 | No journals | Note it — this is fine for new users |
-| No focus area | Note it — suggest `/ig:focus` or `/ig:wheel` |
+| No focus area | Note it — suggest `/inner-game:focus` or `/inner-game:wheel` |
 | gm unavailable | Skip calendar, proceed with coaching context |
 | kbx unavailable | Read files directly via Glob/Read tools |

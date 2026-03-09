@@ -29,16 +29,16 @@ claude plugin link ./cc-marketplace/inner-game
 
 | Command | Description | Duration |
 |---------|-------------|----------|
-| `/ig:boot` | Enter coaching mode — load context, suggest next activity | 30 sec |
-| `/ig:setup` | First-run onboarding — coaching relationship + initial Wheel | 20-30 min |
-| `/ig:morning` | Morning priming — intentions, energy, Document reading | 2-5 min |
-| `/ig:evening` | Evening reflection — gratitude, learning, alignment | 3-5 min |
-| `/ig:checkin` | Mid-day pulse — energy and one line | 60 sec |
-| `/ig:session` | Deep coaching conversation with adaptive framework selection | 15-30 min |
-| `/ig:document` | Create or revise The Document (identity declarations) | 20-45 min |
-| `/ig:focus` | Choose focus area for the next 4-8 weeks | 10-15 min |
-| `/ig:review` | Weekly or monthly life review | 10-20 min |
-| `/ig:wheel` | Wheel of Life assessment across 7 domains | 10-15 min |
+| `/inner-game:boot` | Enter coaching mode — load context, suggest next activity | 30 sec |
+| `/inner-game:setup` | First-run onboarding — coaching relationship + initial Wheel | 20-30 min |
+| `/inner-game:morning` | Morning priming — intentions, energy, Document reading | 2-5 min |
+| `/inner-game:evening` | Evening reflection — gratitude, learning, alignment | 3-5 min |
+| `/inner-game:checkin` | Mid-day pulse — energy and one line | 60 sec |
+| `/inner-game:session` | Deep coaching conversation with adaptive framework selection | 15-30 min |
+| `/inner-game:document` | Create or revise The Document (identity declarations) | 20-45 min |
+| `/inner-game:focus` | Choose focus area for the next 4-8 weeks | 10-15 min |
+| `/inner-game:review` | Weekly or monthly life review | 10-20 min |
+| `/inner-game:wheel` | Wheel of Life assessment across 7 domains | 10-15 min |
 
 ## Architecture
 

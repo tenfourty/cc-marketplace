@@ -13,16 +13,16 @@ Read your skills for detailed methodology. This file defines your operational st
 
 | Trigger | File | Voice |
 |---------|------|-------|
-| `/ig:boot` | `commands/boot.md` | — |
-| `/ig:setup` | `commands/setup.md` | Coaching |
-| `/ig:morning` | `commands/morning.md` | Companion |
-| `/ig:evening` | `commands/evening.md` | Companion |
-| `/ig:checkin` | `commands/checkin.md` | Companion |
-| `/ig:session` | `commands/session.md` | Coaching |
-| `/ig:document` | `commands/document.md` | Ceremonial |
-| `/ig:focus` | `commands/focus.md` | Coaching |
-| `/ig:review` | `commands/review.md` | Coaching |
-| `/ig:wheel` | `commands/wheel.md` | Coaching |
+| `/inner-game:boot` | `commands/boot.md` | — |
+| `/inner-game:setup` | `commands/setup.md` | Coaching |
+| `/inner-game:morning` | `commands/morning.md` | Companion |
+| `/inner-game:evening` | `commands/evening.md` | Companion |
+| `/inner-game:checkin` | `commands/checkin.md` | Companion |
+| `/inner-game:session` | `commands/session.md` | Coaching |
+| `/inner-game:document` | `commands/document.md` | Ceremonial |
+| `/inner-game:focus` | `commands/focus.md` | Coaching |
+| `/inner-game:review` | `commands/review.md` | Coaching |
+| `/inner-game:wheel` | `commands/wheel.md` | Coaching |
 
 When the user runs a command, read the corresponding command file and follow its process exactly.
 
@@ -37,9 +37,9 @@ When the user runs a command, read the corresponding command file and follow its
 Spawn workers for heavy analysis: `run_in_background: true`, `model: "sonnet"`. No `team_name` — anonymous workers that report back and terminate.
 
 Use cases:
-- `/ig:review`: analyze journal patterns across many files
-- `/ig:wheel`: compare assessments over time
-- `/ig:session`: gather context from kbx while greeting the user
+- `/inner-game:review`: analyze journal patterns across many files
+- `/inner-game:wheel`: compare assessments over time
+- `/inner-game:session`: gather context from kbx while greeting the user
 
 ## Boot-Up Routine
 
@@ -57,9 +57,9 @@ Then detect startup mode:
 
 | Scenario | Behavior |
 |----------|----------|
-| First ever (no setup note) | Auto-run `/ig:setup` |
-| Cold morning (before noon, no morning entry) | Suggest `/ig:morning` |
-| Cold evening (after 6pm, no evening entry) | Suggest `/ig:evening` |
+| First ever (no setup note) | Auto-run `/inner-game:setup` |
+| Cold morning (before noon, no morning entry) | Suggest `/inner-game:morning` |
+| Cold evening (after 6pm, no evening entry) | Suggest `/inner-game:evening` |
 | Warm start (today's entries exist) | Summarize + offer next activity |
 | After 3+ day gap | "Life happens. Welcome back." |
 | Weekend | Different energy, no schedule pressure |

@@ -54,13 +54,13 @@ Every insight gets `coaching-insight` plus:
 
 Write a coaching insight when:
 
-1. **After `/ig:session`** (Step 7): If the session surfaces a pattern or state that has work performance implications. Not every session produces a cross-plugin insight — only write when something is genuinely useful for the work advisor.
+1. **After `/inner-game:session`** (Step 7): If the session surfaces a pattern or state that has work performance implications. Not every session produces a cross-plugin insight — only write when something is genuinely useful for the work advisor.
 
-2. **After `/ig:review`** (Step 5): If the weekly/monthly review reveals energy trends, alignment gaps, or domain scores that connect to work patterns.
+2. **After `/inner-game:review`** (Step 5): If the weekly/monthly review reveals energy trends, alignment gaps, or domain scores that connect to work patterns.
 
-3. **After `/ig:wheel`**: If Wheel of Life scores reveal significant changes (2+ point drops) or persistent lows that affect work domains (Career, Health, Inner Life).
+3. **After `/inner-game:wheel`**: If Wheel of Life scores reveal significant changes (2+ point drops) or persistent lows that affect work domains (Career, Health, Inner Life).
 
-4. **After `/ig:evening`**: Only if a clear state signal emerges from repeated patterns across 3+ days (e.g., declining energy, recurring frustration theme). Do NOT write an insight after every evening entry.
+4. **After `/inner-game:evening`**: Only if a clear state signal emerges from repeated patterns across 3+ days (e.g., declining energy, recurring frustration theme). Do NOT write an insight after every evening entry.
 
 **Do NOT write:**
 - Every journal reflection (that's noise)
@@ -78,16 +78,16 @@ Keep insights to 2-5 sentences. Be specific — reference dates, scores, journal
 
 Read CoS insights during:
 
-1. **`/ig:boot` context loading** (Step 1): Search for recent CoS insights alongside other coaching context.
+1. **`/inner-game:boot` context loading** (Step 1): Search for recent CoS insights alongside other coaching context.
    ```bash
    kbx search "coaching-insight" --tag cos-insight --fast --json --limit 5
    ```
 
-2. **`/ig:session` context loading** (Step 1): Check for work-pattern signals that inform the coaching conversation.
+2. **`/inner-game:session` context loading** (Step 1): Check for work-pattern signals that inform the coaching conversation.
 
-3. **`/ig:review` data gathering** (Step 2): Include CoS insights in the period's analysis.
+3. **`/inner-game:review` data gathering** (Step 2): Include CoS insights in the period's analysis.
 
-4. **`/ig:morning` context loading** (Step 1): Only recent state signals (last 48h) — weave into the morning orientation if present.
+4. **`/inner-game:morning` context loading** (Step 1): Only recent state signals (last 48h) — weave into the morning orientation if present.
    ```bash
    kbx search "coaching-insight" --tag cos-insight --tag state --from YYYY-MM-DD --fast --json --limit 3
    ```
@@ -108,4 +108,4 @@ When the inner-game coach reads a CoS insight:
 - Insights are append-only — never overwrite or delete
 - Patterns that persist for 4+ weeks should be flagged as "persistent" in a follow-up insight
 - **State signal supersession:** When writing a new state signal that replaces a previous one, add `supersedes: "YYYY-MM-DD-<slug>"` to the frontmatter. Consumers skip superseded files — only the latest state in a chain is current. This keeps old states for history without polluting active reads.
-- Reviews (both `/ig:review` and CoS `/review`) are natural points to check if previous insights are still current — and to write superseding state signals when a state has shifted
+- Reviews (both `/inner-game:review` and CoS `/review`) are natural points to check if previous insights are still current — and to write superseding state signals when a state has shifted
