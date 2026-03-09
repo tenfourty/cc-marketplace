@@ -16,6 +16,16 @@ Read today's journal: `memory/journal/daily/YYYY-MM-DD.md`
 ### 2. Ask Two Things
 
 1. "Energy right now? (1-10)"
+
+| 1-2 | Barely functioning. Exhausted, foggy, can't focus. |
+| 3-4 | Low. Tired, pushing through, not sharp. |
+| 5 | Neutral. Functional but flat — no spark, no drag. |
+| 6-7 | Decent. Alert, can engage, have some momentum in you. |
+| 8-9 | Sharp. Clear-headed, motivated, ready to move. |
+| 10 | Firing on all cylinders. Rare — save it for when you genuinely feel unstoppable. |
+
+Don't overthink it. First number that comes to mind is usually right.
+
 2. "One line — what's happening?"
 
 That's it. Don't ask follow-ups unless energy has shifted dramatically from morning (±3 or more).

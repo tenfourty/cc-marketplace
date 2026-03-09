@@ -38,6 +38,15 @@ One sentence is enough. Don't push for profundity.
 
 Ask: "Looking back at your day through the lens of your Document — how aligned did you feel? (1-10)"
 
+| 1-2 | Completely off-track. Acted against your own declarations. |
+| 3-4 | Struggling. Knew what you stood for but couldn't live it today. |
+| 5 | Mixed. Some moments aligned, some not — a wash. |
+| 6-7 | Good. Mostly showed up as the person you declared yourself to be. |
+| 8-9 | Strong. Felt connected to your Document through most of the day. |
+| 10 | Fully embodied. Rare — every action felt like a declaration in motion. |
+
+Don't overthink it. First number that comes to mind is usually right.
+
 If they mention a specific declaration, note it. If alignment is low, explore gently — not as failure but as data.
 
 ### 6. Tomorrow's Intention

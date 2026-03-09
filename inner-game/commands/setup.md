@@ -5,7 +5,7 @@ user_invocable: true
 
 # Setup
 
-Coaching voice. One-time onboarding. Runs automatically on first `/ig:boot` if no setup note exists.
+Coaching voice. One-time onboarding. Runs automatically on first `/inner-game:boot` if no setup note exists.
 
 ## Pre-check
 
@@ -27,7 +27,18 @@ If found: "You've already completed setup. Want to review or update your profile
 
 ### 3. Initial Wheel of Life (Quick Version)
 
-Walk through all 7 domains, one at a time. For each:
+Walk through all 7 domains, one at a time. Present the satisfaction scale first:
+
+| 1-2 | Crisis or deep neglect. |
+| 3-4 | Struggling. Needs real attention. |
+| 5 | Getting by, nothing special. |
+| 6-7 | Good. Solid, room to grow. |
+| 8-9 | Thriving, genuinely fulfilled. |
+| 10 | Peak — couldn't ask for more. Rare. |
+
+Don't overthink it. First number that comes to mind is usually right.
+
+For each domain:
 - Brief description of what the domain covers
 - "How would you rate this area of your life right now? (1-10)"
 - One follow-up question based on the score
@@ -61,9 +72,9 @@ Save first Wheel of Life assessment to `memory/coaching/wheel-of-life/YYYY-MM-DD
 ### 7. Suggest Next Steps
 
 Based on what emerged:
-- If they're ready for depth: suggest `/ig:document` to start The Document journey
-- If they want to start light: suggest `/ig:morning` for daily ritual
-- If one domain is urgent: suggest `/ig:focus` to set a focus area
+- If they're ready for depth: suggest `/inner-game:document` to start The Document journey
+- If they want to start light: suggest `/inner-game:morning` for daily ritual
+- If one domain is urgent: suggest `/inner-game:focus` to set a focus area
 
 "There's no rush. We'll go at your pace."
 

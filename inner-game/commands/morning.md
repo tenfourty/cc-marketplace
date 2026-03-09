@@ -26,6 +26,15 @@ Ask: "Which of these feels most alive for you today?"
 
 Ask: "How's your energy this morning? (1-10)"
 
+| 1-2 | Barely functioning. Exhausted, foggy, dragging yourself out of bed. |
+| 3-4 | Low. Tired, slow to start, need caffeine before you can think. |
+| 5 | Neutral. Functional but flat — no spark, no drag. |
+| 6-7 | Decent. Alert, can engage, have some momentum in you. |
+| 8-9 | Sharp. Clear-headed, motivated, ready to move. |
+| 10 | Firing on all cylinders. Rare — save it for when you genuinely feel unstoppable. |
+
+Don't overthink it. First number that comes to mind is usually right.
+
 If they offered a score yesterday evening, reference it: "You were at a 6 last night. How did you wake up?"
 
 ### 4. Intentions

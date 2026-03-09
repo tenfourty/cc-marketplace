@@ -21,6 +21,17 @@ First time: "The Wheel of Life is a simple check-in across seven areas of your l
 
 Returning: "Let's update your Wheel. Same seven areas — how are things today?"
 
+Present the satisfaction scale before walking through domains:
+
+| 1-2 | Crisis or deep neglect. |
+| 3-4 | Struggling. Needs real attention. |
+| 5 | Getting by, nothing special. |
+| 6-7 | Good. Solid, room to grow. |
+| 8-9 | Thriving, genuinely fulfilled. |
+| 10 | Peak — couldn't ask for more. Rare. |
+
+Don't overthink it. First number that comes to mind is usually right.
+
 ### 3. Walk Through Domains
 
 For each of the 7 domains, in order:
@@ -66,7 +77,7 @@ Highlight: highest score, lowest score, biggest change (up or down).
 
 ### 6. Bridge to Focus
 
-If no focus area set or current focus seems stale: "Would you like to choose a focus area based on what you're seeing? We can do that now with `/ig:focus`."
+If no focus area set or current focus seems stale: "Would you like to choose a focus area based on what you're seeing? We can do that now with `/inner-game:focus`."
 
 Don't push — offer.
 

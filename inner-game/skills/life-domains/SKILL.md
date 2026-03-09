@@ -18,7 +18,16 @@ Read `resources/domains/<domain-name>.md` for deep-dive coaching questions, patt
 
 ## Wheel of Life Assessment
 
-**Scoring:** 1-10 per domain. Walk through each domain: brief description, ask for score, ask one follow-up question.
+**Scoring:** 1-10 per domain. Walk through each domain: brief description, ask for score, ask one follow-up question. Present the scale before scoring begins:
+
+| 1-2 | Crisis or deep neglect. |
+| 3-4 | Struggling. Needs real attention. |
+| 5 | Getting by, nothing special. |
+| 6-7 | Good. Solid, room to grow. |
+| 8-9 | Thriving, genuinely fulfilled. |
+| 10 | Peak — couldn't ask for more. Rare. |
+
+Don't overthink it. First number that comes to mind is usually right.
 
 **Storage:** `memory/coaching/wheel-of-life/YYYY-MM-DD.md` with YAML frontmatter:
 
@@ -42,7 +51,7 @@ tags: [wheel-of-life, assessment]
 
 **Trend tracking:** Compare to previous assessments. Highlight biggest changes (up or down). Surface domains that have been low for multiple assessments.
 
-**Frequency:** Initial assessment during `/ig:setup`. Then quarterly, or when selecting a new focus area.
+**Frequency:** Initial assessment during `/inner-game:setup`. Then quarterly, or when selecting a new focus area.
 
 ## Focus Area Selection
 
@@ -54,7 +63,7 @@ After a Wheel assessment, help choose one primary focus area (+ optional seconda
 3. Consider Document alignment — which domain connects most to identity declarations?
 4. Consider current life context — don't pick Finances during a relationship crisis
 
-**Duration:** 4-8 weeks. Review at each `/ig:review`.
+**Duration:** 4-8 weeks. Review at each `/inner-game:review`.
 
 **Storage:** Pinned kbx note tagged `focus-area, inner-game`. Replace previous focus area note on change.
 
