@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.34.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.34.0...cc-marketplace-v0.34.1) (2026-03-12)
+
+
+### Bug Fixes
+
+* **chief-of-staff:** deduplicate tasks in debrief before creating new ones ([732607d](https://github.com/tenfourty/cc-marketplace/commit/732607df8b0226198ed76601e7613a8e1d9ea957))
+
 ## [0.34.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.33.1...cc-marketplace-v0.34.0) (2026-03-09)
 
 
