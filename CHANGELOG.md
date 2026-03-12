@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.37.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.36.1...cc-marketplace-v0.37.0) (2026-03-12)
+
+
+### Features
+
+* **chief-of-staff:** add search-strategy skill for kbx query routing ([52710e9](https://github.com/tenfourty/cc-marketplace/commit/52710e9e9f64c36e6285826f1c1c63070b0722c4))
+
 ## [0.36.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.36.0...cc-marketplace-v0.36.1) (2026-03-12)
 
 
