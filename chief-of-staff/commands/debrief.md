@@ -202,8 +202,8 @@ For each meeting attendee, check if their profile needs updating:
 
 | Condition | Destination | How |
 |-----------|-------------|-----|
-| User is personally accountable | Task (Active or Right-Now) | Create a task via the task backend (see task-backend skill) with status active, appropriate area, due date, and description |
-| User needs to follow up on someone else's commitment (will be asked about it) | Task (Waiting-On) | Create a task via the task backend with status waiting-on, appropriate area, and description |
+| User is personally accountable | Task (Active or Right-Now) | Before creating, list open tasks via the task backend and check for an existing task with a similar title. If a match exists, enrich it with new context (update description) rather than creating a duplicate. If no match, create a new task with status active, appropriate area, due date, and description. |
+| User needs to follow up on someone else's commitment (will be asked about it) | Task (Waiting-On) | Before creating, check open tasks for a similar title. If a match exists, enrich it. If not, create a new task with status waiting-on, appropriate area, and description. |
 | Someone else owns it on a steered project | Open Items on the **project** entity file | See "Writing Open Items" below |
 | Someone in a 1:1 owns it | Open Items on the **person** entity file | See "Writing Open Items" below |
 | General follow-up, no clear personal accountability | Open Items on the most relevant entity (person or project) | See "Writing Open Items" below |
