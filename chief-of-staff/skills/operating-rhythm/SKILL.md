@@ -1,3 +1,8 @@
+---
+description: Cadence patterns, routine health, rhythm awareness, communication timing.
+always_on: false
+---
+
 # Operating Rhythm
 
 This skill defines how the Chief of Staff maintains cadence, routines, and structured communication patterns.

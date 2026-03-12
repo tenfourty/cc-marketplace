@@ -1,3 +1,8 @@
+---
+description: Initiative tracking, SuperGoal, trajectory analysis, strategic pattern detection.
+always_on: false
+---
+
 # Strategic Oversight
 
 This skill defines how the Chief of Staff monitors strategic initiatives, detects patterns, and operates as a trusted advisor.

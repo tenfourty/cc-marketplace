@@ -1,3 +1,8 @@
+---
+description: CIRs, information filtering, entity resolution, dedup-before-writing protocol, memory management.
+always_on: false
+---
+
 # Information Management
 
 This skill defines how the Chief of Staff filters, prioritises, and surfaces information for the executive.

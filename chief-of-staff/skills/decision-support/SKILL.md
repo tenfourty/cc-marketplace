@@ -1,3 +1,8 @@
+---
+description: Decision frameworks, coaching patterns, logging format, recall.
+always_on: false
+---
+
 # Decision Support
 
 This skill defines how the Chief of Staff helps the executive make, track, and recall decisions.

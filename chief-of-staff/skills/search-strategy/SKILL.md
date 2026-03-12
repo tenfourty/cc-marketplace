@@ -1,3 +1,8 @@
+---
+description: kbx query routing — entity lookups vs tag filters vs search. Intent-based command selection.
+always_on: false
+---
+
 # Search Strategy
 
 This skill defines how the Chief of Staff picks the right kbx command for any information need. `kbx search` is the **fallback**, not the default — most queries have a more precise command that returns better results faster.

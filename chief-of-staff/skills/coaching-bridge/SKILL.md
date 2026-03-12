@@ -1,3 +1,8 @@
+---
+description: Cross-plugin coaching insight sharing with inner-game. Format, tags, interpretation.
+always_on: false
+---
+
 # Coaching Bridge — Cross-Plugin Insight Sharing
 
 This skill defines how the Chief of Staff shares and consumes coaching observations with the inner-game life coach plugin. Both plugins use kbx as their shared memory layer.

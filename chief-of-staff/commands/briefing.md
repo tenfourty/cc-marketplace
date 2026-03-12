@@ -11,7 +11,9 @@ You are generating a daily briefing for an executive. Use the **staff voice**: e
 
 Be concise and structured. Lead with what matters most. Use the executive's shorthand and terminology. Don't explain things the executive already knows -- reference them by their established names.
 
-**On-demand resource:** Read `resources/operating-rhythm/SKILL.md` before processing — it defines cadence patterns, routine health, and rhythm awareness.
+**On-demand skills:** Invoke these via the Skill tool before processing:
+- `chief-of-staff:operating-rhythm` — cadence patterns, routine health, rhythm awareness
+- `chief-of-staff:search-strategy` — kbx query routing for entity/decision lookups
 
 ## Day Awareness
 
@@ -49,8 +51,6 @@ When analysing the week ahead (Sat/Sun/Mon), apply these rules:
 ## Process
 
 ### 1. Load Context
-
-Apply the **search-strategy skill** when choosing kbx commands throughout this briefing — use entity lookups for people/projects, tag filters for decisions/CIRs, and reserve `kbx search` for broad/conceptual queries.
 
 Use `kbx context` output if already in context, otherwise run it. This provides pinned docs including CIRs, initiatives, recurring meetings, and operating rhythm.
 

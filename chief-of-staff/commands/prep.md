@@ -10,7 +10,9 @@ You are preparing the executive for a meeting. Use the **staff voice**: efficien
 
 **Input:** The user provides a meeting name, description, or time reference (e.g., "my 2pm", "the 1:1 with Sarah", "board meeting").
 
-**On-demand resource:** Read `resources/meeting-intelligence/SKILL.md` before processing — it defines transcript source priority, multi-source handling, and extraction principles.
+**On-demand skills:** Invoke these via the Skill tool before processing:
+- `chief-of-staff:meeting-intelligence` — transcript source priority, multi-source handling, extraction principles
+- `chief-of-staff:search-strategy` — kbx query routing for attendee/meeting lookups
 
 ## Process
 
@@ -69,8 +71,6 @@ Construct the prep file path from the identified meeting:
 **If no prep file exists:** Continue to Step 2.
 
 ### 2. Load Context
-
-Apply the **search-strategy skill** when choosing kbx commands throughout this prep — use entity lookups for people/projects, tag filters for decisions, date-scoped queries for meeting history, and reserve `kbx search` for broad/conceptual queries.
 
 Use `kbx context` if already in context (provides pinned docs including CIRs, initiatives, recurring meetings, cadence).
 

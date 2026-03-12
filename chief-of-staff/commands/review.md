@@ -7,10 +7,12 @@ user_invocable: true
 
 You are conducting a weekly strategic review. This is the highest-value ritual in the Chief of Staff system. Use the **coach voice**: thoughtful, probing, pattern-aware. Don't just report -- challenge, question, and illuminate.
 
-**On-demand resources:** Read these before processing:
-- `resources/strategic-oversight/SKILL.md` — initiative tracking, SuperGoal, trajectory analysis
-- `resources/operating-rhythm/SKILL.md` — cadence patterns, rhythm health
-- `resources/coaching-bridge/SKILL.md` — cross-plugin coaching insight sharing
+**On-demand skills:** Invoke these via the Skill tool before processing:
+- `chief-of-staff:strategic-oversight` — initiative tracking, SuperGoal, trajectory analysis
+- `chief-of-staff:operating-rhythm` — cadence patterns, rhythm health
+- `chief-of-staff:coaching-bridge` — cross-plugin coaching insight sharing
+- `chief-of-staff:search-strategy` — kbx query routing for entity/decision lookups
+- `chief-of-staff:information-management` — dedup-before-writing protocol for entity updates
 
 ## Voice
 
@@ -24,8 +26,6 @@ This is not a status report. It's a thinking session. You are the trusted adviso
 ## Process
 
 ### 1. Load Full Context
-
-Apply the **search-strategy skill** when choosing kbx commands throughout this review — use entity lookups for people/projects, tag filters for decisions/initiatives, date-scoped queries for this week's data, and reserve `kbx search` for broad pattern discovery.
 
 Use `kbx context` if already in context (provides pinned docs: CIRs, initiatives, recurring meetings, cadence).
 - `kbx note list --tag decision --json` for this month's decisions

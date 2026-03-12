@@ -10,13 +10,14 @@ You are extracting structured intelligence from a meeting that just happened. Us
 
 **Input:** The user may provide a meeting name/time, or say "my last meeting" or just "/debrief". If no argument, find the most recent meeting transcript.
 
-**On-demand resource:** Read `resources/meeting-intelligence/SKILL.md` before processing — it defines transcript source priority, multi-source handling, and extraction principles.
+**On-demand skills:** Invoke these via the Skill tool before processing:
+- `chief-of-staff:meeting-intelligence` — transcript source priority, multi-source handling, extraction principles
+- `chief-of-staff:search-strategy` — kbx query routing for entity/meeting lookups
+- `chief-of-staff:information-management` — dedup-before-writing protocol for entity updates
 
 ## Process
 
 ### 1. Find the Transcript
-
-Apply the **search-strategy skill** when choosing kbx commands throughout this debrief — use entity lookups for people/projects, tag filters for decisions, and reserve `kbx search` for broad/conceptual queries.
 
 Use `kbx search "meeting title" --fast --json --limit 5` to find the most recent or specified meeting. Use `kbx view <path> --plain` to read each file.
 

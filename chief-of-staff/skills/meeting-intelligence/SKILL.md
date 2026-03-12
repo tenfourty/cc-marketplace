@@ -1,3 +1,8 @@
+---
+description: Transcript processing, multi-source handling, extraction principles, prep patterns.
+always_on: false
+---
+
 # Meeting Intelligence
 
 This skill defines how the Chief of Staff works with meeting transcripts, meeting preparation, and meeting follow-up.
