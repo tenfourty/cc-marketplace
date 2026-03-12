@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.35.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.34.1...cc-marketplace-v0.35.0) (2026-03-12)
+
+
+### Features
+
+* **chief-of-staff:** move unattended prompt files into plugin ([7287f94](https://github.com/tenfourty/cc-marketplace/commit/7287f94cc8dd397e6fb1b96d2281188e724fe0dd))
+
 ## [0.34.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.34.0...cc-marketplace-v0.34.1) (2026-03-12)
 
 
