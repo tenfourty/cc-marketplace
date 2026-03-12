@@ -68,6 +68,8 @@ Construct the prep file path from the identified meeting:
 
 ### 2. Load Context
 
+Apply the **search-strategy skill** when choosing kbx commands throughout this prep — use entity lookups for people/projects, tag filters for decisions, date-scoped queries for meeting history, and reserve `kbx search` for broad/conceptual queries.
+
 Use `kbx context` if already in context (provides pinned docs including CIRs, initiatives, recurring meetings, cadence).
 
 For each attendee:

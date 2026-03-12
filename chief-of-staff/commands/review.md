@@ -20,6 +20,8 @@ This is not a status report. It's a thinking session. You are the trusted adviso
 
 ### 1. Load Full Context
 
+Apply the **search-strategy skill** when choosing kbx commands throughout this review — use entity lookups for people/projects, tag filters for decisions/initiatives, date-scoped queries for this week's data, and reserve `kbx search` for broad pattern discovery.
+
 Use `kbx context` if already in context (provides pinned docs: CIRs, initiatives, recurring meetings, cadence).
 - `kbx note list --tag decision --json` for this month's decisions
 - For full content of any pinned doc: `kbx view <path> --plain`

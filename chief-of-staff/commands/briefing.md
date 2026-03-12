@@ -48,6 +48,8 @@ When analysing the week ahead (Sat/Sun/Mon), apply these rules:
 
 ### 1. Load Context
 
+Apply the **search-strategy skill** when choosing kbx commands throughout this briefing — use entity lookups for people/projects, tag filters for decisions/CIRs, and reserve `kbx search` for broad/conceptual queries.
+
 Use `kbx context` output if already in context, otherwise run it. This provides pinned docs including CIRs, initiatives, recurring meetings, and operating rhythm.
 
 For full content of a specific pinned doc, use `kbx view <path> --plain`.

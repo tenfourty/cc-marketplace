@@ -14,6 +14,8 @@ You are extracting structured intelligence from a meeting that just happened. Us
 
 ### 1. Find the Transcript
 
+Apply the **search-strategy skill** when choosing kbx commands throughout this debrief — use entity lookups for people/projects, tag filters for decisions, and reserve `kbx search` for broad/conceptual queries.
+
 Use `kbx search "meeting title" --fast --json --limit 5` to find the most recent or specified meeting. Use `kbx view <path> --plain` to read each file.
 
 **Read all available sources for the meeting.** Each meeting can have files from multiple recording sources (Granola and Notion), each with its own set of artifacts. Read every file you find for the meeting — not just one source's files.

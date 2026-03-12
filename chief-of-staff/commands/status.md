@@ -18,6 +18,8 @@ You are running a cross-source status check. Use the **staff voice**: fast, fact
 
 ### 1. Understand the Query
 
+Apply the **search-strategy skill** when choosing kbx commands throughout this status check — classify the query first (person, project, topic, task) and pick the right command. Entity lookups for people/projects, tag filters for decisions, `kbx search` only for broad/conceptual queries.
+
 Parse what the user is asking about. It could be:
 - A **project/initiative** from kbx (check pinned initiatives in `kbx context`)
 - A **person** — use `kbx person find "Name" --json`
