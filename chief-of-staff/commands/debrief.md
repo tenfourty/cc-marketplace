@@ -10,6 +10,8 @@ You are extracting structured intelligence from a meeting that just happened. Us
 
 **Input:** The user may provide a meeting name/time, or say "my last meeting" or just "/debrief". If no argument, find the most recent meeting transcript.
 
+**On-demand resource:** Read `resources/meeting-intelligence/SKILL.md` before processing — it defines transcript source priority, multi-source handling, and extraction principles.
+
 ## Process
 
 ### 1. Find the Transcript

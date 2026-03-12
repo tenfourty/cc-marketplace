@@ -10,6 +10,8 @@ You are preparing the executive for a meeting. Use the **staff voice**: efficien
 
 **Input:** The user provides a meeting name, description, or time reference (e.g., "my 2pm", "the 1:1 with Sarah", "board meeting").
 
+**On-demand resource:** Read `resources/meeting-intelligence/SKILL.md` before processing — it defines transcript source priority, multi-source handling, and extraction principles.
+
 ## Process
 
 ### 1. Identify the Meeting
