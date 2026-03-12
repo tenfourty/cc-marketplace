@@ -7,8 +7,9 @@ UNATTENDED MODE — follow these rules strictly:
    - Items someone else owes on a project → append to "## Open Items" on the **project** entity: `kbx note edit "Project Name" --append "- [YYYY-MM-DD] Description (from: Meeting Title)"`
    - Items for a person (1:1 topic, commitment) → append to "## Open Items" on the **person** entity: `kbx note edit "Person Name" --append "- [YYYY-MM-DD] Description (from: Meeting Title)"`
    - If the entity doesn't have an "## Open Items" section yet, create one before the first item.
+   - **Dedup check (required):** Before writing any Open Item, read the target entity file with `kbx view <entity-path> --plain` and check existing Open Items for the same commitment (even if from a different meeting). SKIP duplicates. If the new item adds detail to an existing one, update it in place (MERGE) rather than adding a new line.
    - Items where Jeremy is personally accountable: before creating a new gm task, run `gm tasks list --status open --json` and check for an existing task with a similar title. If a match exists, enrich it via `gm tasks update <id> --description "..."` with the new context rather than creating a duplicate. If no match exists, create the task normally.
-3. Auto-update kbx entities for HIGH-CONFIDENCE changes only — role changes, team moves, reporting line changes that are explicitly stated in the transcript. Skip ambiguous signals.
+3. Auto-update kbx entities for HIGH-CONFIDENCE changes only — role changes, team moves, reporting line changes that are explicitly stated in the transcript. Skip ambiguous signals. **Dedup check:** Before writing any fact or entity edit, read the entity file and check if the information is already captured. SKIP duplicates, MERGE if the new info updates existing content.
 4. Skip the follow-up menu entirely. Do not offer next steps.
 5. No interactive prompts. Do not ask for clarification — make your best judgement.
 6. Do NOT push to Granola for debriefs.

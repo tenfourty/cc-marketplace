@@ -115,6 +115,36 @@ Entity context goes stale. When referencing a person or project from kbx:
 - If >90 days ago: explicitly caveat any analysis — "This data may be outdated — consider verifying before acting on it"
 - After `/debrief`, check if any attendees' profiles were updated. If they weren't and should have been, flag it.
 
+## Dedup Before Writing (Entity Writes)
+
+Before writing **any** fact, entity update, or Open Items entry to a kbx entity, run this dedup check to prevent duplicate information accumulating over time.
+
+### Protocol
+
+1. **Read the target entity file:** `kbx view <entity-path> --plain`
+2. **Compare** the candidate write against existing content — facts, metadata, and Open Items already on the entity
+3. **Decide** one of three outcomes:
+
+| Decision | When | Action |
+|----------|------|--------|
+| **SKIP** | Information is already captured (same meaning, even if phrased differently) | Do nothing. Log "SKIP: [reason]" internally. |
+| **MERGE** | Known but stale, incomplete, or less specific — the new information adds meaningful detail | Update the existing entry in place (e.g., `kbx memory edit-fact <id> --text "updated text"` for facts, or Edit tool for Open Items). |
+| **CREATE** | Genuinely new information not present on the entity | Write normally (`kbx memory add --entity`, `kbx person edit`, or Edit tool for Open Items). |
+
+### What Counts as a Duplicate
+
+- **Facts:** Same core meaning regardless of phrasing. "Henri prefers async" and "Henri likes asynchronous communication" are duplicates. "Henri prefers async for status updates but sync for decisions" is a MERGE (more specific).
+- **Open Items:** Same commitment/action even if the meeting source differs. "Follow up on migration timeline" from two different meetings is a duplicate — keep the most recent date.
+- **Entity metadata:** Same role/team/reporting line already set. Only MERGE if the new value is different.
+
+### Lightweight Execution
+
+This is an in-context check — no extra tool calls beyond the `kbx view` that commands already perform. The LLM compares existing content with candidate writes in a single reasoning step. Do not over-engineer: if the entity file is short, scan it visually. If long, focus on the `## Facts` and `## Open Items` sections.
+
+### Batch Writes
+
+When writing multiple items to the same entity (common in debriefs), read the entity file **once**, then apply the dedup check to all candidate writes together before executing any of them.
+
 ## Memory Management
 
 kbx IS the memory system. Manage information across two tiers:

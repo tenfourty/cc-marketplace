@@ -183,16 +183,18 @@ Confirm to the user: "Debrief saved to `[file path]` — it'll be indexed by kbx
 For each meeting attendee, check if their profile needs updating:
 
 1. Look up their current profile: `kbx person find "Name" --json`
-2. Scan the transcript for signals that someone's profile may have changed:
+2. **Read the full entity file:** `kbx view <entity-path> --plain` — you'll need this for the dedup check below
+3. Scan the transcript for signals that someone's profile may have changed:
    - Role/title changes ("is now leading...", "moved to the X team", "promoted to...")
    - Reporting line changes ("reports to Y now", "joining Z's team")
    - Responsibility shifts ("taking over...", "handing off...", "no longer owns...")
    - Departures/arrivals ("last day is...", "new hire starting...", "leaving the company")
-3. If a change is detected and you're confident:
+4. **Dedup check (required):** Before writing any fact or entity edit, apply the **Dedup Before Writing** protocol (see information-management skill). Compare each candidate write against the entity file content you already loaded. Only proceed with CREATE or MERGE — skip duplicates.
+5. If a change is detected, passes dedup, and you're confident:
    - Edit directly: `kbx person edit "Name" --role "New Role"` (or `--team`, `--meta "key=value"`)
    - Add a dated fact: `kbx memory add "change description" --entity "Name"`
    - Report what you changed in the debrief output under "Notable Context"
-4. If ambiguous, note it in the debrief output for the user to verify
+6. If ambiguous, note it in the debrief output for the user to verify
 
 ### 6. Update Systems
 
@@ -212,9 +214,11 @@ For each meeting attendee, check if their profile needs updating:
 
 Item format: `- [YYYY-MM-DD] Description (from: Meeting Title)`
 
+**Dedup check (required):** Before writing any Open Item, apply the **Dedup Before Writing** protocol (see information-management skill). Read the entity file (if not already loaded from Step 5) and check existing Open Items for the same commitment — even if from a different meeting. SKIP duplicates, MERGE if the new item adds meaningful detail (update the date and description of the existing item).
+
 To keep the most recent items at the top of the section, use the **Edit tool** (not `--append`, which adds to the end of the file):
 
-1. Read the entity file with `kbx view <entity-path> --plain`
+1. Read the entity file with `kbx view <entity-path> --plain` (skip if already loaded in Step 5)
 2. **If a `## Open Items` section exists:** Use the Edit tool to insert the new item immediately after the `## Open Items` heading, before existing items
 3. **If no `## Open Items` section exists:** Use the Edit tool to append a new section at the end of the file:
    ```
@@ -227,11 +231,13 @@ To keep the most recent items at the top of the section, use the **Edit tool** (
 - Update any existing tasks that were discussed
 
 **Decisions (kbx):**
+- Before logging, check for existing decisions on the same topic: `kbx search "decision topic" --tag decision --fast --json --limit 3`. If an existing decision covers the same subject, note the update or supersession in the new entry rather than creating an unlinked duplicate.
 - `kbx memory add "Decision Title" --body "structured markdown" --tags decision` for each decision made
 - If person-related, also `--entity "Name"`
 
 **People context (kbx):**
-- `kbx memory add "context" --entity "Name"` for new context about attendees
+- Apply the **Dedup Before Writing** protocol (see information-management skill) — read the entity file (if not already loaded from Step 5), check if the context is already captured as a fact or in the entity body. SKIP if duplicate, MERGE if it updates existing context.
+- `kbx memory add "context" --entity "Name"` for genuinely new context about attendees
 
 ### 7. Offer Next Steps
 

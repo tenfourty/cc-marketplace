@@ -107,8 +107,8 @@ After a meeting (via `/debrief`):
 1. **Immediate extraction** — Pull action items, decisions, follow-ups from `kbx search` + `kbx view --plain`
 2. **Cross-reference** — Check against the task backend and `kbx note list --tag decision`
 3. **Update tasks** — Create tasks via the task backend for new items (include `project: <ProjectName>` in description when related to a kbx project, one project per task), update existing ones
-4. **Log decisions** — `kbx memory add --tags decision` for each decision
-5. **Update people** — `kbx memory add --entity "Name"` for new context about attendees
+4. **Log decisions** — Check for existing decisions on the same topic first (`kbx search "topic" --tag decision --fast --json`). Then `kbx memory add --tags decision` for each genuinely new decision.
+5. **Update people** — Apply the **Dedup Before Writing** protocol (see information-management skill) before writing any fact or context to an entity. Read the entity file, compare candidate writes against existing content, and only CREATE genuinely new facts or MERGE updates to stale ones. `kbx memory add --entity "Name"` for new context only.
 6. **Flag for briefing** — Queue any CIR-matching items for next briefing
 
 ## Meeting Pattern Analysis (for Weekly Review)
