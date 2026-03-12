@@ -9,19 +9,19 @@
       "name": "chief-of-staff",
       "source": "./chief-of-staff",
       "description": "AI Chief of Staff for technology executives — strategic briefings, meeting intelligence, decision support, and proactive oversight using kbx and gm as primary data sources.",
-      "version": "0.35.0"
+      "version": "0.36.0"
     },
     {
       "name": "inner-game",
       "source": "./inner-game",
       "description": "Personal life coach inspired by Tim Gallwey's Inner Game — coaching conversations, identity work (The Document), daily journaling, and life assessment using kbx and gm.",
-      "version": "0.35.0"
+      "version": "0.36.0"
     },
     {
       "name": "draft",
       "source": "./draft",
       "description": "Drafts Slack messages and emails in your authentic voice — 8 communication styles, PCM-aware audience adaptation, and Slack MCP delivery using kbx for people context.",
-      "version": "0.35.0"
+      "version": "0.36.0"
     }
   ]
 }

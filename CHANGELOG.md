@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.36.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.35.0...cc-marketplace-v0.36.0) (2026-03-12)
+
+
+### Features
+
+* **chief-of-staff:** add fact dedup protocol before writing to kbx entities ([46d9f76](https://github.com/tenfourty/cc-marketplace/commit/46d9f76f9f7c473003da27e493ad613a283619f8))
+
 ## [0.35.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.34.1...cc-marketplace-v0.35.0) (2026-03-12)
 
 
