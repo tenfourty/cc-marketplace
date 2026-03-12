@@ -141,6 +141,8 @@ Before writing **any** fact, entity update, or Open Items entry to a kbx entity,
 
 This is an in-context check — no extra tool calls beyond the `kbx view` that commands already perform. The LLM compares existing content with candidate writes in a single reasoning step. Do not over-engineer: if the entity file is short, scan it visually. If long, focus on the `## Facts` and `## Open Items` sections.
 
+> **Future improvement:** When `kbx memory similar "text" --entity "Name" --threshold 0.85` becomes available, call it first to get embedding-based candidate matches, then pass only those candidates to the LLM for the CREATE/MERGE/SKIP decision. This is more reliable (vector similarity catches paraphrases the LLM might miss in a long file) and cheaper (shorter context). Until then, the full entity file read + in-context comparison is the correct approach.
+
 ### Batch Writes
 
 When writing multiple items to the same entity (common in debriefs), read the entity file **once**, then apply the dedup check to all candidate writes together before executing any of them.
