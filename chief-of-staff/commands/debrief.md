@@ -231,8 +231,9 @@ To keep the most recent items at the top of the section, use the **Edit tool** (
 - Update any existing tasks that were discussed
 
 **Decisions (kbx):**
-- Before logging, check for existing decisions on the same topic: `kbx search "decision topic" --tag decision --fast --json --limit 3`. If an existing decision covers the same subject, note the update or supersession in the new entry rather than creating an unlinked duplicate.
-- `kbx memory add "Decision Title" --body "structured markdown" --tags decision` for each decision made
+- Discover existing decisions: `kbx search "decision topic" --tag decision --fast --json --limit 3`
+- Apply the **Dedup Before Writing** protocol (see information-management skill) — if an existing decision covers the same subject, read it with `kbx view`, then SKIP (already captured), MERGE (update the existing note with new context via `kbx note edit`), or CREATE (genuinely new decision).
+- `kbx memory add "Decision Title" --body "structured markdown" --tags decision` for genuinely new decisions
 - If person-related, also `--entity "Name"`
 
 **People context (kbx):**

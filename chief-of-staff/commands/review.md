@@ -260,7 +260,8 @@ Based on the discussion:
 - Update kbx pinned initiatives note if status changed: `kbx note edit <path> --body "updated content"` or `--append "new info"`
 - Update kbx pinned CIRs note if thresholds should change
 - Archive completed initiatives
-- `kbx memory add "context" --entity "Name"` for new people context
+- Apply the **Dedup Before Writing** protocol (see information-management skill) before writing people context — the weekly review synthesises from multiple already-debriefed meetings, so duplication risk is high. Read the entity file, check existing facts, then SKIP/MERGE/CREATE as appropriate.
+- `kbx memory add "context" --entity "Name"` for genuinely new people context only
 - **Coaching insight** (if warranted): If the review revealed energy patterns, avoidance patterns, or alignment gaps with whole-life implications, write a coaching insight to `memory/coaching/insights/`. See the coaching-bridge skill for format and criteria. Also check if any previous coaching insights (CoS or inner-game) are no longer current — note them as resolved in a follow-up insight.
 
 ## Trajectory Comparison

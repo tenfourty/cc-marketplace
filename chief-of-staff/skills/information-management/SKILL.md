@@ -128,7 +128,7 @@ Before writing **any** fact, entity update, or Open Items entry to a kbx entity,
 | Decision | When | Action |
 |----------|------|--------|
 | **SKIP** | Information is already captured (same meaning, even if phrased differently) | Do nothing. Log "SKIP: [reason]" internally. |
-| **MERGE** | Known but stale, incomplete, or less specific — the new information adds meaningful detail | Update the existing entry in place (e.g., `kbx memory edit-fact <id> --text "updated text"` for facts, or Edit tool for Open Items). |
+| **MERGE** | Known but stale, incomplete, or less specific — the new information adds meaningful detail | Update the existing entry in place using the Edit tool — read the entity file, find the existing fact or Open Item line, replace it with the updated version. |
 | **CREATE** | Genuinely new information not present on the entity | Write normally (`kbx memory add --entity`, `kbx person edit`, or Edit tool for Open Items). |
 
 ### What Counts as a Duplicate

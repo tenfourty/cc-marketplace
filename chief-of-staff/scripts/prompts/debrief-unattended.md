@@ -4,10 +4,11 @@ UNATTENDED MODE — follow these rules strictly:
 
 1. Use "source: cos-agent-unattended" in the frontmatter (not "cos-agent").
 2. Do NOT create gm tasks in unattended mode — too noisy. Instead, write non-personal items as Open Items on the relevant kbx entity file:
-   - Items someone else owes on a project → append to "## Open Items" on the **project** entity: `kbx note edit "Project Name" --append "- [YYYY-MM-DD] Description (from: Meeting Title)"`
-   - Items for a person (1:1 topic, commitment) → append to "## Open Items" on the **person** entity: `kbx note edit "Person Name" --append "- [YYYY-MM-DD] Description (from: Meeting Title)"`
-   - If the entity doesn't have an "## Open Items" section yet, create one before the first item.
-   - **Dedup check (required):** Before writing any Open Item, read the target entity file with `kbx view <entity-path> --plain` and check existing Open Items for the same commitment (even if from a different meeting). SKIP duplicates. If the new item adds detail to an existing one, update it in place (MERGE) rather than adding a new line.
+   - Read the entity file first: `kbx view <entity-path> --plain`
+   - **Dedup check (required):** Check existing Open Items for the same commitment (even if from a different meeting). SKIP duplicates. If the new item adds detail to an existing one, use the Edit tool to update it in place (MERGE) rather than adding a new line.
+   - **If a `## Open Items` section exists:** Use the Edit tool to insert the new item immediately after the `## Open Items` heading, before existing items (most-recent-first ordering).
+   - **If no `## Open Items` section exists:** Use the Edit tool to append a new `## Open Items` section at the end of the file with the item.
+   - Do NOT use `kbx note edit --append` for Open Items — it appends to EOF and breaks most-recent-first ordering.
    - Items where Jeremy is personally accountable: before creating a new gm task, run `gm tasks list --status open --json` and check for an existing task with a similar title. If a match exists, enrich it via `gm tasks update <id> --description "..."` with the new context rather than creating a duplicate. If no match exists, create the task normally.
 3. Auto-update kbx entities for HIGH-CONFIDENCE changes only — role changes, team moves, reporting line changes that are explicitly stated in the transcript. Skip ambiguous signals. **Dedup check:** Before writing any fact or entity edit, read the entity file and check if the information is already captured. SKIP duplicates, MERGE if the new info updates existing content.
 4. Skip the follow-up menu entirely. Do not offer next steps.
