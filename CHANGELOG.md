@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.36.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.36.0...cc-marketplace-v0.36.1) (2026-03-12)
+
+
+### Bug Fixes
+
+* **chief-of-staff:** address 4 dedup review issues ([9f5d365](https://github.com/tenfourty/cc-marketplace/commit/9f5d365352e5b5561aa9e8084607ec15e17d2914))
+
 ## [0.36.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.35.0...cc-marketplace-v0.36.0) (2026-03-12)
 
 
