@@ -1,3 +1,8 @@
+---
+description: "Task Backend"
+always_on: true
+---
+
 # Task Backend
 
 This skill defines how CoS manages tasks across any backend. The active backend and its concrete syntax are in the **CoS Configuration** pinned note (loaded via `kbx context`). This skill provides the generic interface and heuristics.
