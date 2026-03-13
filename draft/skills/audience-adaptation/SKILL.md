@@ -1,3 +1,8 @@
+---
+description: "Audience Adaptation"
+always_on: true
+---
+
 # Audience Adaptation
 
 How to tailor messages for different audiences, channels, and individuals. The voice stays the same — the calibration changes.
