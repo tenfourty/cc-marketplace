@@ -1,6 +1,6 @@
 ---
 description: CIRs, information filtering, entity resolution, dedup-before-writing protocol, memory management.
-always_on: false
+always_on: true
 ---
 
 # Information Management

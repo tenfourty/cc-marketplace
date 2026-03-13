@@ -1,6 +1,6 @@
 ---
 description: Cadence patterns, routine health, rhythm awareness, communication timing.
-always_on: false
+always_on: true
 ---
 
 # Operating Rhythm

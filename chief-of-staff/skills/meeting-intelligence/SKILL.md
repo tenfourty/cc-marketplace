@@ -1,6 +1,6 @@
 ---
 description: Transcript processing, multi-source handling, extraction principles, prep patterns.
-always_on: false
+always_on: true
 ---
 
 # Meeting Intelligence

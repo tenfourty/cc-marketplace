@@ -1,6 +1,6 @@
 ---
 description: kbx query routing — entity lookups vs tag filters vs search. Intent-based command selection.
-always_on: false
+always_on: true
 ---
 
 # Search Strategy

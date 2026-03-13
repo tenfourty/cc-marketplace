@@ -18,9 +18,6 @@ You are running a cross-source status check. Use the **staff voice**: fast, fact
 
 ### 1. Understand the Query
 
-**On-demand skills:** Invoke via the Skill tool before processing:
-- `chief-of-staff:search-strategy` — kbx query routing for entity/topic lookups
-
 Parse what the user is asking about. It could be:
 - A **project/initiative** from kbx (check pinned initiatives in `kbx context`)
 - A **person** — use `kbx person find "Name" --json`

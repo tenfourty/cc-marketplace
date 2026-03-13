@@ -1,6 +1,6 @@
 ---
 description: Initiative tracking, SuperGoal, trajectory analysis, strategic pattern detection.
-always_on: false
+always_on: true
 ---
 
 # Strategic Oversight

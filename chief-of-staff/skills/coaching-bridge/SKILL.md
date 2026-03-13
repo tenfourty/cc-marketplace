@@ -1,6 +1,6 @@
 ---
 description: Cross-plugin coaching insight sharing with inner-game. Format, tags, interpretation.
-always_on: false
+always_on: true
 ---
 
 # Coaching Bridge — Cross-Plugin Insight Sharing

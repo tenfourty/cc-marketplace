@@ -1,6 +1,6 @@
 ---
 description: Decision frameworks, coaching patterns, logging format, recall.
-always_on: false
+always_on: true
 ---
 
 # Decision Support
