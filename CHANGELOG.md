@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.38.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.37.0...cc-marketplace-v0.38.0) (2026-03-13)
+
+
+### Features
+
+* **chief-of-staff:** demote 5 domain skills to on-demand resources ([c879d91](https://github.com/tenfourty/cc-marketplace/commit/c879d91cc78c57c23583b5e6a37dd7603226c462))
+* **draft,inner-game:** set all skills to always-on ([0d3ff59](https://github.com/tenfourty/cc-marketplace/commit/0d3ff5989aa2eede2cec3608b5d9f6c3e3cc931e))
+
+
+### Bug Fixes
+
+* **chief-of-staff:** add always_on frontmatter to identity and task-backend skills ([fc7a9ef](https://github.com/tenfourty/cc-marketplace/commit/fc7a9efbb2ea5c94e596e6fd236a29b1ddf9e753))
+* **chief-of-staff:** move skills back from resources/ to skills/ with on-demand frontmatter ([79fb89e](https://github.com/tenfourty/cc-marketplace/commit/79fb89e63f28ff8c5926e56fdfa557a80452d904))
+
+
+### Reverts
+
+* **chief-of-staff:** restore all skills as always-on ([b2ea1ea](https://github.com/tenfourty/cc-marketplace/commit/b2ea1ea6843dbec5ff8e75feaeed9f754350112a))
+
 ## [0.37.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.36.1...cc-marketplace-v0.37.0) (2026-03-12)
 
 
