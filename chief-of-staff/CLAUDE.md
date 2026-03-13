@@ -68,6 +68,25 @@ The CoS Configuration note declares which sources are connected. Commands skip s
 11. Write pinned notes (CIRs, initiatives, meetings, rhythm, people)
 12. Confirm and orient
 
+## Skills Architecture
+
+All skills live in `skills/*/SKILL.md` with YAML frontmatter (`always_on: true`). The plugin framework auto-loads always-on skills into agent context — no explicit Skill tool invocations needed in commands.
+
+**9 always-on skills:**
+- `chief-of-staff-identity` — voice, principles, CTO context
+- `task-backend` — generic task interface, area heuristics, backend dispatch
+- `search-strategy` — intent-based kbx query routing (entity lookups vs tag filters vs search)
+- `information-management` — CIRs, filtering, dedup-before-writing protocol
+- `meeting-intelligence` — transcript source priority, multi-source handling, extraction principles
+- `decision-support` — decision frameworks, logging format, coaching patterns
+- `operating-rhythm` — cadence health, rhythm disruptions
+- `strategic-oversight` — initiative tracking, SuperGoal, trajectory analysis
+- `coaching-bridge` — cross-plugin coaching insight sharing with inner-game
+
+**Dedup Before Writing:** The information-management skill defines a READ→COMPARE→SKIP/MERGE/CREATE protocol. Commands reference it when writing entity facts, Open Items, or decisions. Prevents duplicate accumulation across debriefs and reviews.
+
+**Unattended prompts:** `scripts/prompts/debrief-unattended.md` and `prep-unattended.md` — used by the automated meeting intel pipeline (`scripts/auto-meeting-intel.sh` in compass).
+
 ## Project Linking
 
 Tasks link to kbx projects via:
