@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.38.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.38.0...cc-marketplace-v0.38.1) (2026-03-16)
+
+
+### Bug Fixes
+
+* use immediate merge instead of auto-merge in release workflow ([751d417](https://github.com/tenfourty/cc-marketplace/commit/751d417112f516b691e3308cd9bc12913307ebb3))
+
 ## [0.38.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.37.0...cc-marketplace-v0.38.0) (2026-03-16)
 
 
