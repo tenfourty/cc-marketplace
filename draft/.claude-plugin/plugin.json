@@ -1,6 +1,6 @@
 {
   "name": "draft",
-  "version": "0.38.0",
+  "version": "0.38.1",
   "description": "Drafts Slack messages and emails in your authentic voice — 8 communication styles, PCM-aware audience adaptation, and Slack MCP delivery using kbx for people context.",
   "author": {
     "name": "Jeremy Brown"
