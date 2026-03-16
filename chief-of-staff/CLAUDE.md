@@ -46,6 +46,7 @@ Commands never reference specific tool names (Slack, Linear, Gmail). Instead the
 | Category | Examples |
 |----------|----------|
 | project tracker | Linear, Jira, Asana, GitHub Issues |
+| messaging | Beeper (WhatsApp, Signal, Telegram, iMessage aggregator) |
 | chat | Slack, Teams, Discord |
 | email | Gmail, Outlook |
 | knowledge base | Notion, Confluence |

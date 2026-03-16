@@ -99,6 +99,7 @@ This plugin uses **kbx as the required backbone** and abstracts other tools behi
 - **kbx IS the memory system.** CIRs, initiatives, recurring meetings, operating rhythm, decisions, and people context all live in kbx as indexed, searchable, pinned notes. Pinned notes appear in `kbx context` (loaded at session start). Deep storage is accessible via `kbx search`. **kbx is always required.**
 - **Task backend is configurable.** Tasks can be managed via gm (Morgen), a tasks.md file, or a project tracker MCP. The active backend and its syntax are declared in the CoS Configuration note. See the task-backend skill for the generic interface and dispatch logic.
 - **Calendar backend is configurable.** gm provides calendar when available; Google Calendar MCP is a fallback. If neither is configured, calendar features are skipped with a warning.
+- **Messaging MCP** (Beeper, etc.) provides personal messaging across WhatsApp, Signal, Telegram, iMessage — used by `/sweep` for inbox triage and contact enrichment.
 - **Chat MCP** (Slack, Teams, etc.) provides real-time team communication.
 - **Email MCP** (Gmail, Outlook, etc.) provides email scanning for commitments, action items, and external stakeholder communication.
 - **Project tracker MCP** (Linear, Jira, etc.) handles issue tracking and write operations.

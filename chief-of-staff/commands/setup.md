@@ -30,7 +30,7 @@ Check for existing pinned notes:
 - Run `kbx context` if not already in context — shows any existing pinned docs (CIRs, initiatives, cadence, recurring meetings)
 - If pinned docs already exist from a previous setup, offer to update them using `kbx note edit <path> --body "..."` rather than creating new notes.
 
-### 1b. Detect task and calendar backends
+### 1b. Detect task, calendar, and communication backends
 
 Probe silently:
 - `gm --help` — note if gm is available (provides both tasks and calendar)
@@ -38,6 +38,7 @@ Probe silently:
 - Check for calendar MCP (Google Calendar) — note availability
 - Check for chat MCP (Slack, etc.) — note availability
 - Check for email MCP (Gmail, etc.) — note availability
+- Check for messaging MCP (Beeper, etc.) — note availability for personal messaging
 
 ### 1c. Ask about the user's tooling
 
@@ -63,6 +64,7 @@ Based on detection results:
 - **Suggest missing sources:** For each category that has no connected MCP, suggest the user connect one. Frame as value-add, not requirement:
   - No chat: "Connecting a chat source (e.g., Slack) enables commitment scanning and team signal detection."
   - No email: "Connecting email enables tracking external commitments and follow-ups."
+  - No messaging: "Connecting a personal messaging source (e.g., Beeper) enables inbox sweep across WhatsApp, Signal, Telegram, and other messaging apps."
   - No project tracker: "Connecting a project tracker enables initiative status in briefings."
   - No calendar: "Connecting a calendar enables time analysis and scheduling."
 
@@ -80,6 +82,7 @@ The config note MUST include a `## Connected Sources` section listing what's ava
 ## Connected Sources
 - task: gm (Morgen CLI)
 - calendar: gm (Morgen CLI)
+- messaging: Beeper (claude.ai MCP)
 - chat: Slack (claude.ai MCP)
 - email: Gmail (claude.ai MCP)
 - project tracker: Linear (claude.ai MCP)

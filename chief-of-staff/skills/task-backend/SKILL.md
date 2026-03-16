@@ -118,7 +118,8 @@ Use these categories instead of hardcoded tool names:
 | Category | Meaning |
 |----------|---------|
 | project tracker | Linear, Jira, Asana, GitHub Issues — whatever's connected |
-| chat | Slack, Teams, Discord — whatever's connected |
+| messaging | Beeper, or other personal messaging aggregators — WhatsApp, Signal, Telegram, iMessage |
+| chat | Slack, Teams, Discord — work messaging, whatever's connected |
 | email | Gmail, Outlook — whatever's connected |
 | knowledge base | Notion, Confluence — beyond kbx |
 | calendar | Google Calendar, Fastmail — if not using gm |

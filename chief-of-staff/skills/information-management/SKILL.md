@@ -122,7 +122,7 @@ Entity context goes stale. When referencing a person or project from kbx:
 
 ## Dedup Before Writing (Entity Writes)
 
-Before writing **any** fact, entity update, or Open Items entry to a kbx entity, run this dedup check to prevent duplicate information accumulating over time.
+Before writing **any** fact, entity update, or Open Items entry to a kbx entity — whether from meeting transcripts, messaging conversations, email threads, or any other source — run this dedup check to prevent duplicate information accumulating over time.
 
 ### Protocol
 

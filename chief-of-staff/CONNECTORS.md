@@ -30,6 +30,7 @@ These are declared in the **CoS Configuration** pinned note (created during `/se
 ## MCP Integrations
 
 These are always accessed via MCP when connected:
+- **Beeper** — personal messaging aggregator: WhatsApp, Signal, Telegram, iMessage, etc. (messaging)
 - **Slack** — real-time team communication and channel scanning (chat)
 - **Gmail** — email scanning for commitments, action items, and people context (email)
 - **Linear** — issue tracking, write operations (project tracker)

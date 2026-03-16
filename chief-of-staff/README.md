@@ -16,7 +16,7 @@ kbx must be installed and configured before using this plugin. It should be set 
 
 - **[gm (guten-morgen)](https://github.com/tenfourty/guten-morgen)** — Calendar events and cross-source task management (Morgen, Linear, Notion)
 - **tasks.md** — Simple markdown task file, zero dependencies (default for new users without gm)
-- **MCP integrations** — Slack (chat), Gmail (email), Linear (project tracker), Google Calendar, Granola, Notion
+- **MCP integrations** — Beeper (personal messaging), Slack (chat), Gmail (email), Linear (project tracker), Google Calendar, Granola, Notion
 
 ## Installation
 
@@ -44,6 +44,7 @@ Then run `/cos:setup` to personalise the Chief of Staff for your role, team, and
 | `/cos:debrief` | Post-meeting — extract actions, decisions, follow-ups. Follow-on: tldr, follow-up email, schedule follow-up, risk analysis |
 | `/cos:status <topic>` | Cross-source status check on any topic, project, or person |
 | `/cos:todos` | Scan recent meetings for your action items and commitments others owe you |
+| `/cos:sweep` | Inbox triage — walk through messaging, email, or chat items one-by-one with GTD processing, reply drafting, and contact enrichment |
 
 ### Weekly Cadence
 | Command | Description |
@@ -116,6 +117,7 @@ The task backend is configurable (see `skills/task-backend/SKILL.md`). Options: 
 | kbx | CLI (required) | Knowledge base, search, people, projects, notes |
 | gm | CLI (optional) | Calendar and cross-source tasks — one of several task/calendar backends |
 | tasks.md | File (optional) | Simple markdown task file — zero-dependency task backend |
+| Beeper | MCP (messaging) | Personal messaging — WhatsApp, Signal, Telegram, iMessage |
 | Slack | MCP (chat) | Real-time team communication |
 | Gmail | MCP (email) | Email scanning for commitments, action items, external comms |
 | Linear | MCP (project tracker) | Issue creation/updates |
