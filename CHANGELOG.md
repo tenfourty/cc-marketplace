@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.38.2](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.38.1...cc-marketplace-v0.38.2) (2026-05-22)
+
+
+### Bug Fixes
+
+* **chief-of-staff:** remove granola push step (kbx write path retired) ([023baec](https://github.com/tenfourty/cc-marketplace/commit/023baeca1692244c4bb1976e6d8066b4e7ec0894))
+
 ## [0.38.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.38.0...cc-marketplace-v0.38.1) (2026-03-16)
 
 
