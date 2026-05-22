@@ -13,10 +13,9 @@ UNATTENDED MODE — follow these rules strictly:
 3. Auto-update kbx entities for HIGH-CONFIDENCE changes only — role changes, team moves, reporting line changes that are explicitly stated in the transcript. Skip ambiguous signals. **Dedup check:** Before writing any fact or entity edit, read the entity file and check if the information is already captured. SKIP duplicates, MERGE if the new info updates existing content.
 4. Skip the follow-up menu entirely. Do not offer next steps.
 5. No interactive prompts. Do not ask for clarification — make your best judgement.
-6. Do NOT push to Granola for debriefs.
-7. If a .debrief.md file already exists for this meeting, skip entirely — do not overwrite.
-8. Read ALL available source files for the meeting — a single meeting can have both Granola and Notion variants of each file type:
+6. If a .debrief.md file already exists for this meeting, skip entirely — do not overwrite.
+7. Read ALL available source files for the meeting — a single meeting can have both Granola and Notion variants of each file type:
    - **Transcripts** (`.granola.transcript.md`, `.notion.transcript.md`) — always read ALL available transcripts. These are the ground truth for action items, decisions, and exact quotes.
    - **Notes** (`.granola.notes.md`, `.notion.notes.md`) — read when available. Shows what the user flagged as important during the meeting.
    - **AI Summary** (`.granola.ai-summary.md`) — read when available. Useful as cross-check but do not extract action items solely from summaries.
-9. **Speaker attribution preference:** When multiple transcripts exist for the same meeting, prefer the one with more named speakers as the primary extraction source. iPhone Granola recordings often detect different voices better than the Mac app — a transcript with "Speaker A: ... Speaker B: ..." is higher fidelity than one with no speaker labels or a single "Speaker:" throughout. Read all transcripts, but weight the multi-speaker one most heavily for extraction.
+8. **Speaker attribution preference:** When multiple transcripts exist for the same meeting, prefer the one with more named speakers as the primary extraction source. iPhone Granola recordings often detect different voices better than the Mac app — a transcript with "Speaker A: ... Speaker B: ..." is higher fidelity than one with no speaker labels or a single "Speaker:" throughout. Read all transcripts, but weight the multi-speaker one most heavily for extraction.

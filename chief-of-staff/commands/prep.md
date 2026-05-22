@@ -60,7 +60,7 @@ Construct the prep file path from the identified meeting:
 2. Display to the user: "Found existing prep for this meeting:"
 3. Present the existing content
 4. Ask: "Want to **(a) use this as-is**, **(b) refresh with latest context**, or **(c) start from scratch**?"
-   - **(a)** — Skip to Step 5 (Granola sync)
+   - **(a)** — Skip to Step 5 (Offer follow-ups)
    - **(b)** — Continue the normal prep process (Steps 2–4) using the existing prep as reference context. Save the updated version, overwriting the file
    - **(c)** — Continue the normal prep process (Steps 2–4) from scratch. Save, overwriting the file
 
@@ -186,46 +186,7 @@ attendees:
 
 Confirm to the user: "Prep saved to `[file path]` — it'll be indexed by kbx on next search."
 
-### 5. Offer Granola Sync
-
-After presenting the brief, offer to push the prep notes to the meeting's Granola document:
-
-> "Want me to push these prep notes to Granola so they're ready when the meeting starts?"
-
-**If the user confirms:**
-
-1. **Pre-check** — see if notes already exist on the Granola doc:
-   ```bash
-   kbx granola view CALENDAR_UID
-   ```
-   If the doc already has notes, tell the user: "This meeting already has notes in Granola. Push will prepend your prep — want to continue?" Only proceed if they confirm.
-
-2. **Push** the prep brief:
-   ```bash
-   # Write prep markdown to temp file
-   cat > /tmp/prep-notes.md << 'PREP'
-   [full prep brief markdown from step 4]
-   PREP
-
-   # Push using calendar_uid from calendar event
-   kbx granola push CALENDAR_UID --notes-file /tmp/prep-notes.md --title "Meeting Title"
-   ```
-
-3. **Verify** the push landed:
-   ```bash
-   kbx granola view CALENDAR_UID
-   ```
-   Confirm to the user: "Prep notes synced to Granola." If the notes aren't there, report the issue.
-
-- Get the `calendar_uid` and meeting title from the event identified in step 1 (available as fields on calendar events)
-- **Always use the full `calendar_uid` from the calendar output.** Recurring events have instance-specific UIDs (e.g., `base_id_20260303T143000Z`) — using only the base ID could match the wrong week's occurrence.
-- Pass `--title` so the doc gets a proper name — Granola does not auto-populate the title from the calendar event
-
-**If the user declines or doesn't respond**, skip the push and continue to follow-ups.
-
-**Graceful fallback:** If the push fails for any reason, tell the user: "Prep notes ready but couldn't sync to Granola: [reason]. You can copy them manually."
-
-### 6. Offer Follow-ups
+### 5. Offer Follow-ups
 
 - "Want me to draft talking points for any of these topics?"
 - "Should I check anything else before the meeting?"
@@ -259,4 +220,3 @@ For 1:1s with direct reports, add role and responsibility-aware reflections or q
 | kbx | No attendee or meeting context | Fall back to Granola MCP for previous occurrence, note limited people context |
 | Chat | No recent interaction history | Note "no recent threads found" |
 | Project tracker | No project status | Skip that section |
-| Granola (write) | Prep notes not synced to Granola | Present prep to user normally, note Granola sync was skipped |
