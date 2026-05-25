@@ -17,7 +17,7 @@ case "$FILE_PATH" in
 esac
 
 cat <<'EOF'
-You edited a CoS plugin command/skill/prompt. If it references `kbx`, `gm`, or any external CLI, verify the command syntax matches the current version (`kbx --help` / `gm --help`). Update if drifted.
+You edited a CoS plugin command/skill/prompt. Verify any `kbx` / `gm` CLI references against the current `--help` (the LLM contract). For `gm` event-vs-task filtering, cross-check the `## Scoping axes` section in `gm --help` — events and tasks scope on independent axes (`--group` only narrows events). Update if drifted.
 EOF
 
 exit 0
