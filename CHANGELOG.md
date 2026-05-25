@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.39.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.38.2...cc-marketplace-v0.39.0) (2026-05-25)
+
+
+### Features
+
+* **chief-of-staff:** use kbx note edit --insert-under for Open Items ([#92](https://github.com/tenfourty/cc-marketplace/issues/92)) ([1d5e0ab](https://github.com/tenfourty/cc-marketplace/commit/1d5e0ab0f23a6ae1c24bf7d4462f8b264aa85faa))
+
 ## [0.38.2](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.38.1...cc-marketplace-v0.38.2) (2026-05-22)
 
 
