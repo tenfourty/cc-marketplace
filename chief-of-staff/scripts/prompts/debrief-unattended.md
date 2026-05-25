@@ -6,8 +6,11 @@ UNATTENDED MODE — follow these rules strictly:
 2. Do NOT create gm tasks in unattended mode — too noisy. Instead, write non-personal items as Open Items on the relevant kbx entity file:
    - Read the entity file first: `kbx view <entity-path> --plain`
    - **Dedup check (required):** Check existing Open Items for the same commitment (even if from a different meeting). SKIP duplicates. If the new item adds detail to an existing one, use the Edit tool to update it in place (MERGE) rather than adding a new line.
-   - **If a `## Open Items` section exists:** Use the Edit tool to insert the new item immediately after the `## Open Items` heading, before existing items (most-recent-first ordering).
-   - **If no `## Open Items` section exists:** Use the Edit tool to append a new `## Open Items` section at the end of the file with the item.
+   - **Insert new items with `kbx note edit --insert-under`** (kbx >= 0.2.13). This is the deterministic path — creates the section if absent, inserts most-recent-first if present, idempotent on exact duplicates:
+     ```
+     kbx note edit <entity-path> --insert-under "## Open Items" --body "- [YYYY-MM-DD] description (from: Meeting Title)"
+     ```
+   - Do NOT use the raw Edit tool for Open Items insertion — it has produced duplicate `## Open Items` headings on the same file. `--insert-under` is the only supported path.
    - Do NOT use `kbx note edit --append` for Open Items — it appends to EOF and breaks most-recent-first ordering.
    - Items where Jeremy is personally accountable: before creating a new gm task, run `gm tasks list --status open --json` and check for an existing task with a similar title. If a match exists, enrich it via `gm tasks update <id> --description "..."` with the new context rather than creating a duplicate. If no match exists, create the task normally.
 3. Auto-update kbx entities for HIGH-CONFIDENCE changes only — role changes, team moves, reporting line changes that are explicitly stated in the transcript. Skip ambiguous signals. **Dedup check:** Before writing any fact or entity edit, read the entity file and check if the information is already captured. SKIP duplicates, MERGE if the new info updates existing content.
