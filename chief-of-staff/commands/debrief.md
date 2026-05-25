@@ -216,15 +216,13 @@ Item format: `- [YYYY-MM-DD] Description (from: Meeting Title)`
 
 **Dedup check (required):** Before writing any Open Item, apply the **Dedup Before Writing** protocol (see information-management skill). Read the entity file (if not already loaded from Step 5) and check existing Open Items for the same commitment — even if from a different meeting. SKIP duplicates, MERGE if the new item adds meaningful detail (update the date and description of the existing item).
 
-To keep the most recent items at the top of the section, use the **Edit tool** (not `--append`, which adds to the end of the file):
+Use `kbx note edit --insert-under` (kbx >= 0.2.13) — it is deterministic, creates the section if absent, inserts most-recent-first if present, and is idempotent on exact duplicates:
 
-1. Read the entity file with `kbx view <entity-path> --plain` (skip if already loaded in Step 5)
-2. **If a `## Open Items` section exists:** Use the Edit tool to insert the new item immediately after the `## Open Items` heading, before existing items
-3. **If no `## Open Items` section exists:** Use the Edit tool to append a new section at the end of the file:
-   ```
-   ## Open Items
-   - [YYYY-MM-DD] Description (from: Meeting Title)
-   ```
+```
+kbx note edit <entity-path> --insert-under "## Open Items" --body "- [YYYY-MM-DD] Description (from: Meeting Title)"
+```
+
+Do NOT use the raw Edit tool for Open Items insertion — it has repeatedly produced duplicate `## Open Items` headings on the same file. Do NOT use `kbx note edit --append` — it writes to EOF and breaks most-recent-first ordering.
 
 **Project linking (for tasks):** If a task relates to a known kbx project, include `project: <ProjectName>` in the task description (e.g., `"project: CoreLogic Migration\nFollow up on migration timeline"`). One `project:` line per task — this links to the kbx project.
 
