@@ -53,7 +53,7 @@ Every insight gets `coaching-insight` plus:
 | **pattern** | Behaviour seen 2+ times across meetings/weeks | "Hero mode pattern: third week in a row taking on direct reports' blockers instead of coaching them through it" |
 | **state** | Current state that affects the other plugin's coaching | "Persister stress sequence active — increasingly critical in meetings, withdrawing from 1:1s. Triggered by Series C pressure." |
 | **connection** | A link between work and life domains | "Overcommitment on 3 concurrent initiatives correlates with Health score dropping from 6 to 3 over the same period" |
-| **observation** | Notable one-off signal worth tracking | "Avoided salary conversation with Eric for the second time — deferral may indicate conflict avoidance beyond just scheduling" |
+| **observation** | Notable one-off signal worth tracking | "Avoided salary conversation with a direct report for the second time — deferral may indicate conflict avoidance beyond just scheduling" |
 
 ## When to Write (CoS Side)
 
