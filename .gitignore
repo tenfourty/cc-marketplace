@@ -1,3 +1,18 @@
 .DS_Store
 .claude/settings.local.json
 chief-of-staff/releases/
+
+# Internal planning docs don't belong in the public repo (any depth)
+docs/plans/
+**/docs/plans/
+
+# Local PII denylist (patterns are sensitive — never tracked; see scripts/pii-scan.py)
+.pii-denylist
+
+# Local/private config that may carry internal details
+.config.toml
+*.local.toml
+
+# Python bytecode cache (scripts/ helpers are stdlib python)
+__pycache__/
+*.pyc

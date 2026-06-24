@@ -1,0 +1,12 @@
+# Pre-commit hooks for cc-marketplace (PUBLIC repo).
+# Install once per clone:  pre-commit install
+# The PII scan reads patterns from .git/pii-denylist (per-clone, untracked) —
+# see scripts/pii-scan.py. With no denylist configured it skips green.
+repos:
+  - repo: local
+    hooks:
+      - id: pii-denylist
+        name: PII denylist scan
+        entry: python3 scripts/pii-scan.py
+        language: system
+        exclude: '^.*\.(png|jpg|jpeg|gif|ico|woff2?|pdf)$'
