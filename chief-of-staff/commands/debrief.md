@@ -24,7 +24,7 @@ Use `kbx search "meeting title" --fast --json --limit 5` to find the most recent
 | **Notes** | `.granola.notes.md` | `.notion.notes.md` | Supplementary. Shows what the user flagged as important. |
 | **AI Summary** | `.granola.ai-summary.md` | — | Cross-check only. Do not extract action items or decisions solely from AI summaries — they may miss or misattribute commitments. |
 
-**When multiple transcripts exist:** Prefer the transcript with richer speaker attribution (multiple named speakers, e.g., "Jeremy: … Pierre: …") as the primary extraction source. The iPhone Granola app often detects different voices better than the Mac app, producing multi-speaker transcripts while the Mac version may attribute everything to a single speaker. A multi-speaker transcript is higher fidelity — use it as the primary source, and cross-reference the other transcript for anything it may have captured that the primary missed (e.g., side comments, different audio pickup).
+**When multiple transcripts exist:** Prefer the transcript with richer speaker attribution (multiple named speakers, e.g., "Alex: … Sam: …") as the primary extraction source. The iPhone Granola app often detects different voices better than the Mac app, producing multi-speaker transcripts while the Mac version may attribute everything to a single speaker. A multi-speaker transcript is higher fidelity — use it as the primary source, and cross-reference the other transcript for anything it may have captured that the primary missed (e.g., side comments, different audio pickup).
 
 Use all sources to build the fullest picture: transcripts are the primary extraction source, notes highlight user intent, and the AI summary can catch things you might skim past in a long transcript.
 
@@ -224,7 +224,7 @@ kbx note edit <entity-path> --insert-under "## Open Items" --body "- [YYYY-MM-DD
 
 Do NOT use the raw Edit tool for Open Items insertion — it has repeatedly produced duplicate `## Open Items` headings on the same file. Do NOT use `kbx note edit --append` — it writes to EOF and breaks most-recent-first ordering.
 
-**Project linking (for tasks):** If a task relates to a known kbx project, include `project: <ProjectName>` in the task description (e.g., `"project: CoreLogic Migration\nFollow up on migration timeline"`). One `project:` line per task — this links to the kbx project.
+**Project linking (for tasks):** If a task relates to a known kbx project, include `project: <ProjectName>` in the task description (e.g., `"project: Platform Migration\nFollow up on migration timeline"`). One `project:` line per task — this links to the kbx project.
 
 - Update any existing tasks that were discussed
 

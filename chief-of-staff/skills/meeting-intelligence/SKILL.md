@@ -21,7 +21,7 @@ Meeting data is accessed primarily via kbx, which indexes content from Granola a
 
 A single meeting can have files from **both** Granola and Notion — each source produces its own transcript, notes, and (for Granola) AI summary. Always read **every available file** for the meeting, not just one source's files.
 
-**Speaker attribution quality:** When multiple transcripts exist for the same meeting, prefer the one with richer speaker attribution (multiple named speakers, e.g., "Jeremy: … Pierre: …") as the **primary extraction source**. The iPhone Granola app often detects different voices better than the Mac app, producing multi-speaker transcripts while the Mac version may attribute everything to a single speaker. A multi-speaker transcript is higher fidelity — use it as primary, and cross-reference the other transcript for anything it may have captured that the primary missed (e.g., side comments, different audio pickup).
+**Speaker attribution quality:** When multiple transcripts exist for the same meeting, prefer the one with richer speaker attribution (multiple named speakers, e.g., "Alex: … Sam: …") as the **primary extraction source**. The iPhone Granola app often detects different voices better than the Mac app, producing multi-speaker transcripts while the Mac version may attribute everything to a single speaker. A multi-speaker transcript is higher fidelity — use it as primary, and cross-reference the other transcript for anything it may have captured that the primary missed (e.g., side comments, different audio pickup).
 
 ### Source Priority
 
