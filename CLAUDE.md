@@ -32,3 +32,16 @@ The hook reads stdin JSON for `tool_input.file_path` and matches with a bash `ca
 ## Privacy
 
 cc-marketplace is **public**. Plugin files must contain zero PII — no real names, no internal team names, no company-specific details. Personal voice profiles, examples, and identity content live in the consumer's private `memory/` directory (loaded at runtime via kbx), never in the plugin.
+
+### PII denylist scan (pre-commit + CI)
+
+ggshield catches *secrets*; internal infra hosts, corporate emails, real names and private slugs are not secrets, so `scripts/pii-scan.py` covers those. It's the **dev-team canonical scanner** — the same file lives verbatim in kbx and guten-morgen.
+
+- **Pre-commit:** `.pre-commit-config.yaml` runs it on staged files. Install once: `pre-commit install`.
+- **CI:** `.github/workflows/ci.yml` (`guards` job) runs it with the `PII_DENYLIST` secret.
+
+**The denylist patterns are themselves sensitive, so they are never stored in the repo.** `pii-scan.py` resolves them from, first match wins: `$PII_DENYLIST` (newline/comma-separated regexes — the CI Actions secret) → `$PII_DENYLIST_FILE` → `.git/pii-denylist` (per-clone, untracked). With none configured it **skips green** — so it never blocks unconfigured contributors, and **CI scans nothing until the `PII_DENYLIST` secret is set on the repo.** Setting that secret is what activates enforcement.
+
+**Matching:** Python `re`, case-insensitive, each pattern searched as a **substring** (not `\b`-bounded) — macOS BSD `grep -E` silently drops `\b`, so a shell audit misses identifier-embedded terms like `acme_dir`; Python's `re` is portable and substring matching catches them. Some false positives are accepted by design (under-matching is worse); write specific patterns (anchors, `(?-i:...)`) when a term over-matches. Reports **filenames only** — never the matched text — so a public CI log can't leak the term it caught.
+
+**uv.lock registry guard is N/A here** (no `uv.lock` — pure markdown/JSON plugins).

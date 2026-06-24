@@ -42,15 +42,15 @@ Every time you need to read from kbx, pause and classify what you're looking for
 | Check Henri's role | `kbx search "Henri role"` | `kbx person find "Henri" --json` |
 | Find last week's decisions | `kbx search "decision"` | `kbx note list --tag decision --from 2026-03-03 --json` |
 | Read a meeting transcript | `kbx search "meeting title"` then read | `kbx view memory/meetings/2026/03/12/uid_Title.granola.transcript.md --plain` (if path known) |
-| Who reports to Pierre? | `kbx search "reports to Pierre"` | `kbx person list --json` then filter by reporting line |
+| Who reports to Alex? | `kbx search "reports to Alex"` | `kbx person list --json` then filter by reporting line |
 | "What themes are emerging across meetings?" | `kbx person find "themes"` | `kbx search "themes" --from YYYY-MM-DD --json --limit 15` |
-| Check project Open Items | `kbx search "open items CoreLogic"` | `kbx project find "CoreLogic" --json` → `kbx view <path> --plain` |
+| Check project Open Items | `kbx search "open items Platform"` | `kbx project find "Platform" --json` → `kbx view <path> --plain` |
 
 ## FTS vs Hybrid Search
 
 When you do need `kbx search`:
 
-- **`--fast`** (FTS only): Use for keyword-specific queries where you know the exact terms — "CoreLogic migration", "incident P0", "Coralogix". Instant results.
+- **`--fast`** (FTS only): Use for keyword-specific queries where you know the exact terms — "database migration", "incident P0", "rate limiting". Instant results.
 - **Without `--fast`** (hybrid): Use for conceptual queries where synonyms or paraphrases matter — "team morale concerns", "infrastructure cost worries". ~2s but catches semantic matches.
 
 ## Compound Queries

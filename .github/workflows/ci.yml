@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  guards:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: PII denylist scan
+        env:
+          PII_DENYLIST: ${{ secrets.PII_DENYLIST }}
+        run: python3 scripts/pii-scan.py
