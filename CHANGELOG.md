@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.39.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.39.0...cc-marketplace-v0.39.1) (2026-06-24)
+
+
+### Bug Fixes
+
+* **chief-of-staff:** untrack internal plan docs and genericise name examples ([#95](https://github.com/tenfourty/cc-marketplace/issues/95)) ([d2b70a7](https://github.com/tenfourty/cc-marketplace/commit/d2b70a73698acaf3440fde2282407a855282e6a5))
+
 ## [0.39.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.38.2...cc-marketplace-v0.39.0) (2026-05-25)
 
 
