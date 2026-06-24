@@ -12,7 +12,7 @@ UNATTENDED MODE — follow these rules strictly:
      ```
    - Do NOT use the raw Edit tool for Open Items insertion — it has produced duplicate `## Open Items` headings on the same file. `--insert-under` is the only supported path.
    - Do NOT use `kbx note edit --append` for Open Items — it appends to EOF and breaks most-recent-first ordering.
-   - Items where Jeremy is personally accountable: before creating a new gm task, run `gm tasks list --status open --json` and check for an existing task with a similar title. If a match exists, enrich it via `gm tasks update <id> --description "..."` with the new context rather than creating a duplicate. If no match exists, create the task normally.
+   - Items where the user is personally accountable: before creating a new gm task, run `gm tasks list --status open --json` and check for an existing task with a similar title. If a match exists, enrich it via `gm tasks update <id> --description "..."` with the new context rather than creating a duplicate. If no match exists, create the task normally.
 3. Auto-update kbx entities for HIGH-CONFIDENCE changes only — role changes, team moves, reporting line changes that are explicitly stated in the transcript. Skip ambiguous signals. **Dedup check:** Before writing any fact or entity edit, read the entity file and check if the information is already captured. SKIP duplicates, MERGE if the new info updates existing content.
 4. Skip the follow-up menu entirely. Do not offer next steps.
 5. No interactive prompts. Do not ask for clarification — make your best judgement.

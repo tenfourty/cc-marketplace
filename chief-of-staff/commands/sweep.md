@@ -186,7 +186,7 @@ The test: would this still be true and useful in 6 months?
 **Not facts — don't persist:**
 - Temporary states ("Broke his finger last week")
 - Upcoming events ("Birthday party this Saturday")
-- Pending actions ("Jeremy still needs to reach out to Thomas") → these are tasks
+- Pending actions ("still needs to reach out to a colleague") → these are tasks
 - Specific scores, election results, weather, current events
 
 **Relationship graph.** When someone mentions another person ("my boss Hans", "my
