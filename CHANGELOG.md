@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.40.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.39.1...cc-marketplace-v0.40.0) (2026-06-25)
+
+
+### Features
+
+* **chief-of-staff:** document entity-link hygiene in information-management skill ([#97](https://github.com/tenfourty/cc-marketplace/issues/97)) ([5a31708](https://github.com/tenfourty/cc-marketplace/commit/5a31708eff3fff50979a48dca827e98c24d2bcdf))
+
 ## [0.39.1](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.39.0...cc-marketplace-v0.39.1) (2026-06-24)
 
 
