@@ -195,6 +195,26 @@ When `kbx context` is loaded at session start, also check for stale entity profi
 3. If any stale entities are pinned, list them by name so the executive is immediately aware
 4. This check is lightweight and should NOT block the session — surface and move on
 
+## Entity Link Hygiene (false-positive matches)
+
+kbx links documents to people/projects heuristically. Occasionally it attaches a
+document to the **wrong** entity — most often when a bare first name is shared by two
+people, or an accented name collides with its plain-ASCII twin. As of kbx 0.3.11 an
+*ambiguous* bare first name no longer auto-links unless the document corroborates it
+(a tag, a full-name mention, or the person being a listed attendee), so most of these
+are prevented automatically. Unambiguous first names still link as before.
+
+When you still spot a wrong attribution — e.g. a meeting showing under a person it
+clearly wasn't about, or a profile's recent-documents list containing an unrelated item:
+
+- **Un-link it:** `kbx entity unlink "<Entity Name>" <document>` — drops the bad link and
+  records a suppression that survives reindex and sync. `<document>` is a path, title, or hash.
+- **Undo:** `kbx entity relink "<Entity Name>" <document>` — re-derives the link on next index.
+
+In Cowork, use the `kb_entity_unlink` / `kb_entity_relink` MCP tools. Prefer fixing a wrong
+link the moment you notice it — left in place, it pollutes that person's context in every
+future briefing and prep.
+
 ## Information Freshness
 
 All information has a shelf life. Track and manage it:
