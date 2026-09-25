@@ -50,6 +50,11 @@ commitment is as serious as inventing one.
    it under discussion or open questions — do not silently drop it, and do not promote
    it. Options weighed, preferences voiced and thinking-aloud are not decisions. Never
    invent a rationale; if the reason was not stated, do not supply one.
+   The same applies to action items and reported facts: keep the speaker's modality.
+   "Maybe", "we could", "I'd like to", "probably", "I think" are not commitments — carry
+   the hedge into the item or file it under open questions. No date is attached to a
+   follow-up unless one was spoken. Something a speaker reports second-hand ("I heard",
+   "apparently", "he told me") stays attributed to that speaker, never stated as fact.
 
 4. PRONOUN ANTECEDENTS AND POORLY DIARISED TRANSCRIPTS.
    Many transcripts are badly diarised — every line may be labelled "Me", or speakers
@@ -64,6 +69,9 @@ commitment is as serious as inventing one.
    combine them, and never assert which direction an adjustment moves a number unless
    the transcript says so. If two figures conflict, record both and flag it — unless the
    speaker self-corrects in the following lines, in which case take the correction.
+   Transcription garbles numbers. If a figure is implausible for its context, or the words
+   around it are garbled, write it as spoken and add "(figure unclear in transcript)" rather
+   than cleaning it into a confident number.
 
 6. NAMES AND ENTITY RESOLUTION — check for collisions before you resolve.
    This knowledge base contains people with very similar names (two people sharing a
@@ -72,6 +80,9 @@ commitment is as serious as inventing one.
    person exists and the transcript does not disambiguate, use the name EXACTLY as spoken
    and add "(ambiguous — more than one match in KB)". A confidently wrong person is worse
    than an unresolved first name.
+   "No KB match" is itself a claim. Before writing that someone or something is not in the
+   KB, try the first name alone, likely spelling and transcription variants, and a full-text
+   `kbx search`. Only then say it is not found — and say what you searched.
 
 7. NEVER STATE A ROLE OR TITLE FROM MEMORY.
    Verify every title against that person's kbx entity file. If you cannot verify it,
@@ -89,26 +100,14 @@ commitment is as serious as inventing one.
 
 10. BRITISH ENGLISH throughout — organise, prioritise, finalise, recognise.
 
-=== MODEL-SPECIFIC DISCIPLINE ===
+=== SPECIFICS MUST TRACE TO A SOURCE ===
 
-Your characteristic failure is CONFIDENT OVER-ASSERTION OF SPECIFICS. You are strong at
-synthesis, and that strength makes you supply precise-sounding detail you have not
-actually verified. Observed real examples of your own errors: reading a task created for a June event as "due
-tomorrow"; naming the wrong person where two people share a first name; placing someone
-in a meeting when the notes say they are away that day; listing an unsigned candidate
-among arrivals that "have landed".
-
-Therefore, for THIS document:
-
-- EVERY specific — a date, a calendar event, a person's attendance, a task's status, a
-  figure, a full name — must trace to something you actually opened in this session. If
-  you did not read it, do not assert it. Silence is better than a plausible invention.
-- Before naming any meeting, event or double-booking, confirm it exists in the calendar.
-- Before placing anyone in the room, confirm they are actually attending AND that nothing
-  says they are away, departed, or not yet confirmed.
-- Before calling anything due, current, or outstanding, open the item and check its own
-  date and the event it refers to. A task written for a past event is stale.
-- Where a first name could match more than one person in the KB, do not resolve it.
-- Prefer "not verified in the KB" over a confident specific. You will be scored down for
-  a fabricated detail far more heavily than for an acknowledged gap.
-- Trim social colour and anecdote. Keep every commitment, decision and open question.
+Every specific — a date, a calendar event, a person's attendance, a task's status, a figure,
+a full name — must trace to something opened in this session. If it was not read, do not
+assert it; "not verified in the KB" is better than a plausible invention.
+- Before naming any meeting, event or double-booking, confirm it exists in the calendar
+  (`gm events list … --group all --all-calendars`).
+- Before placing anyone in the room, confirm they are attending and that nothing says they
+  are away, departed or not yet confirmed.
+- Before calling anything due, current or outstanding, open the item and check its date and
+  the event it refers to, then look for anything later that completed, replaced or reversed it.
