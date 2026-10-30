@@ -78,7 +78,7 @@ Include: period summary, energy/alignment stats, wins, patterns, intentions for 
 
 ### 6. Persist Coaching Insight (if warranted)
 
-If this review revealed energy trends, alignment gaps, or domain score changes with work performance implications, write a coaching insight to `memory/coaching/insights/YYYY-MM-DD-<slug>.md`. See the coaching-bridge skill for format and criteria. If a previous state signal is no longer current, write a superseding insight (add `supersedes:` frontmatter).
+If this review revealed energy trends, alignment gaps, or domain score changes with work performance implications, write a coaching insight to `memory/coaching/insights/YYYY-MM-DD-<slug>.md`. See the inner-game-coaching-bridge skill for format and criteria. If a previous state signal is no longer current, write a superseding insight (add `supersedes:` frontmatter).
 
 ### 7. Close
 

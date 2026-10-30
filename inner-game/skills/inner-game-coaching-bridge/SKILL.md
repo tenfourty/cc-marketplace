@@ -1,5 +1,5 @@
 ---
-description: "Coaching Bridge — Cross-Plugin Insight Sharing"
+description: Cross-plugin coaching insight sharing with chief-of-staff. Format, tags, interpretation.
 always_on: true
 ---
 

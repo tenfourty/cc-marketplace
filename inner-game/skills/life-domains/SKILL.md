@@ -1,3 +1,7 @@
+---
+description: "Seven life domains, Wheel of Life assessment, focus-area selection, cross-domain connections."
+---
+
 # Life Domains
 
 Seven life domains for assessment, focus selection, and balanced growth. Based on the Wheel of Life (Paul J. Meyer, 1960), adapted for coaching.

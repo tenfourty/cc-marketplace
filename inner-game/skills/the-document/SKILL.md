@@ -1,3 +1,7 @@
+---
+description: "The Document: personal identity declarations, 5-phase creation journey, phase detection, revision triggers, storage."
+---
+
 # The Document
 
 Personal identity declarations. Not goals, not affirmations — declarations of who you ARE. Read aloud morning and evening. Based on Steve Hardison's work and the BEing Movement.

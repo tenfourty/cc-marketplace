@@ -1,3 +1,7 @@
+---
+description: "Daily journaling method: file locations, morning/check-in/evening templates, Obsidian compatibility, metrics."
+---
+
 # Journaling Practice
 
 Daily journaling methodology, format specs, and pattern detection. All journal files are Obsidian-compatible.
