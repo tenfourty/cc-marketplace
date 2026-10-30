@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.41.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.40.0...cc-marketplace-v0.41.0) (2026-10-30)
+
+
+### Features
+
+* **chief-of-staff:** harden unattended debrief and prep prompts ([68cd08a](https://github.com/tenfourty/cc-marketplace/commit/68cd08aff43b5ce86a7ebb5a60329a8afd0f9d44))
+* **chief-of-staff:** tune unattended debrief and prep prompts for Opus 5.5 ([949cd61](https://github.com/tenfourty/cc-marketplace/commit/949cd61a7a7dbde988237b461c003c3e8e01209e))
+
 ## [0.40.0](https://github.com/tenfourty/cc-marketplace/compare/cc-marketplace-v0.39.1...cc-marketplace-v0.40.0) (2026-06-25)
 
 
